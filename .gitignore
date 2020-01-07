@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+*.meta
+Space Dragons/Library/EditorInstance.json
+Space Dragons/Library/ArtifactDB
+Space Dragons/Library/ArtifactDB
+Space Dragons/Library/ArtifactDB
+Space Dragons/Temp/UnityLockfile
