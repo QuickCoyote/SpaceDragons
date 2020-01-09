@@ -122,20 +122,13 @@ public class SnakeMovement : MonoBehaviour
 
         if (removeIndex != 0)
         {
-            List<GameObject> objectsToKill = new List<GameObject>();
             int partCount = bodyPartObjects.Count - 1;
 
             for (int j = partCount; j > removeIndex; j--)
             {
-                objectsToKill.Add(bodyPartObjects[j]);
+                Destroy(bodyPartObjects[j]);
                 bodyPartObjects.RemoveAt(j);
                 bodyPartTransforms.RemoveAt(j);
-                Debug.Log("Got Here");
-            }
-
-            foreach (GameObject obj in objectsToKill)
-            {
-                Destroy(obj);
             }
         }
     }
