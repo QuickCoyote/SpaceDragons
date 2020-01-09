@@ -10,7 +10,7 @@ public class Ship : MonoBehaviour
     public List<GameObject> bodyPartPrefabs = null;
 
     public Sprite[] ShipHeadSprites;
-    public Sprite ShipHeadSprite = null;
+    public SpriteRenderer ShipHeadSprite = null;
 
     public float minDst = 1.0f;
 
@@ -28,6 +28,7 @@ public class Ship : MonoBehaviour
 
     private void Start()
     {
+        ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
@@ -142,6 +143,6 @@ public class Ship : MonoBehaviour
 
     public void SetShipHeadSprite(int val)
     {
-        ShipHeadSprite = ShipHeadSprites[val];
+        ShipHeadSprite.sprite = ShipHeadSprites[val];
     }
 }
