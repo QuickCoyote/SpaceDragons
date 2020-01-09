@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 196209910265618381}
   - component: {fileID: 196209910265618380}
   - component: {fileID: 196209910265618379}
-  m_Layer: 0
+  - component: {fileID: 5953242214076433349}
+  m_Layer: 8
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +69,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthMax: 100
   healthCount: 100
+--- !u!61 &5953242214076433349
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196209910265618382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &196209910334023939
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196209910334023938}
   - component: {fileID: 196209910334023937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,9 +186,9 @@ GameObject:
   m_Component:
   - component: {fileID: 196209910753800036}
   - component: {fileID: 196209910753800035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Object
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +231,7 @@ MonoBehaviour:
   ShipHeadSprite: {fileID: 196209910334023937}
   minDst: 1
   startSize: 2
-  speed: 2
+  speed: 5
   rotationSpeed: 50
 --- !u!1 &196209911218918719
 GameObject:
@@ -218,7 +245,7 @@ GameObject:
   - component: {fileID: 196209911218918717}
   - component: {fileID: 196209911218918718}
   - component: {fileID: 196209911218918715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
