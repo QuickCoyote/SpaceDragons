@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeMovement : MonoBehaviour
+public class Ship : MonoBehaviour
 {
+    #region Variables
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
+    public List<GameObject> bodyPartPrefabs = null;
+
+    public Sprite[] ShipHeadSprites;
+    public Sprite ShipHeadSprite = null;
 
     public float minDst = 1.0f;
 
@@ -14,14 +19,17 @@ public class SnakeMovement : MonoBehaviour
     public float speed = 1.0f;
     public float rotationSpeed = 50.0f;
 
-    public List<GameObject> bodyPartPrefabs = null;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;
     private Transform prevBodyPart = null;
 
+    #endregion
+
     private void Start()
     {
+        PlayerPrefs.SetInt("PlayerHead", 0);
+        SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
     }
@@ -85,7 +93,6 @@ public class SnakeMovement : MonoBehaviour
 
     public void AddBodyPart(GameObject bodyPart)
     {
-        Debug.Log("Added Body Part");
         Transform newPart = (Instantiate(bodyPart, bodyPartTransforms[bodyPartTransforms.Count - 1].position, bodyPartTransforms[bodyPartTransforms.Count - 1].rotation) as GameObject).transform;
 
         newPart.SetParent(transform);
@@ -131,5 +138,10 @@ public class SnakeMovement : MonoBehaviour
                 bodyPartTransforms.RemoveAt(j);
             }
         }
+    }
+
+    public void SetShipHeadSprite(int val)
+    {
+        ShipHeadSprite = ShipHeadSprites[val];
     }
 }
