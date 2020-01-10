@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     public float attackSpeed = 0.25f;
     public float attackTimer = 0.0f;
 
-    Inventory inventory = null;
     public int money = 100;
+
+    Inventory inventory = null;
 
     [SerializeField] GameObject head = null;
     [SerializeField] GameObject headBullet = null;
