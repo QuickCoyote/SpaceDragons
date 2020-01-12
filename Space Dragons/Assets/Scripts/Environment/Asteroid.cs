@@ -48,6 +48,7 @@ public class Asteroid : MonoBehaviour
             {
                 Instantiate(itemtodrop, null); // drops item in world space
             }
+            Debug.Log(this.name + " Destroyed");
 
             GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
             Destroy(gameObject);

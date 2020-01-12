@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float attackTimer = 0.0f;
 
     public int money = 100;
+    public float attackDamage = 25.0f;
 
     Inventory inventory = null;
 
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
             GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, transform) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parent = head;
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parent.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
+            projectile.damage = attackDamage;
+            projectile.Fire();
 
             attackTimer = 0;
         }

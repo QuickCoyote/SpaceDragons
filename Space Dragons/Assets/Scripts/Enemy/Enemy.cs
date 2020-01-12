@@ -4,49 +4,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float sightDistance = 25.0f;
     [SerializeField] GameObject projectile = null;
-    public float speed = 3f;
-    public float rotationSpeed = 8f;
-    public float shootingSpeed = 2.0f;
+    [SerializeField] GameObject gunNozzle = null;
+    public float speed = 0.5f;
+    public float rotationSpeed = 2f;
+    public float shootingSpeed = 0.5f;
+    public float sightDistance = 10.0f;
+    public float attackDamage = 5.0f;
 
     float wanderTimer = 0.0f;
     float shootingTimer = 2.0f;
     Rigidbody2D rb;
     Vector3 target;
+    Health hp;
+    GameObject Player;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        if (IsPlayerInSight())
-        {
-            target = GameObject.FindGameObjectWithTag("Player").transform.position;
-            shootingTimer -= Time.deltaTime;
-            if (shootingTimer < 0.0f)
-            {
-                shootingTimer = shootingSpeed;
-                if (projectile) Instantiate(projectile);
-            }
-            Debug.Log("PlayerSighted");
-
-        }
-        else
-        {
-            target = (transform.position + new Vector3(Random.Range(-sightDistance, +sightDistance), Random.Range(-sightDistance, +sightDistance), 0));
-            wanderTimer = Random.Range(2.0f, 10.0f);
-        }
-        Debug.Log(target);
+        hp = GetComponent<Health>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        target = (transform.position + new Vector3(Random.Range(-sightDistance, +sightDistance), Random.Range(-sightDistance, +sightDistance), 0));
     }
 
     void Update()
     {
         MoveBasic();
+
+        if (hp.healthCount < 0.0f)
+        {
+            Destroy(gameObject);
+            Debug.Log(this.name + " Died");
+        }
     }
 
     bool IsPlayerInSight()
     {
-        if (GameObject.FindGameObjectWithTag("Player"))
+        if (Player)
         {
             return (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= sightDistance);
         } else
@@ -59,25 +53,26 @@ public class Enemy : MonoBehaviour
     {
         if (IsPlayerInSight())
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform.position;
+            target = Player.transform.position;
             shootingTimer -= Time.deltaTime;
             if (shootingTimer < 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile) Instantiate(projectile);
+                if (projectile)
+                {
+                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform) as GameObject);
+                    Projectile p = projectileGO.GetComponent<Projectile>();
+                    p.parent = gunNozzle;
+                    p.damage = attackDamage;
+                    p.Fire();
+                }
             }
-            Debug.Log("PlayerSighted");
-                    Debug.Log("New Target:" + target);
-
-
         } else
         {
             wanderTimer -= Time.deltaTime;
             if (wanderTimer < 0.0f)
             {
                 target = (transform.position + new Vector3(Random.Range(-sightDistance,+sightDistance), Random.Range(-sightDistance, +sightDistance),0));
-                Debug.Log(target);
-
                 wanderTimer = Random.Range(2.0f, 10.0f);
             }
         }

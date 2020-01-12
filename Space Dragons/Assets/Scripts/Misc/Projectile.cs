@@ -6,17 +6,32 @@ public class Projectile : MonoBehaviour
 {
     public float bulletSpeed = 0.01f;
     public float lifetime = 1.0f;
-
+    public float damage = 0.0f;
     public GameObject parent = null;
-
-    private float timer = 0.0f;
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > lifetime)
+        lifetime -= Time.deltaTime;
+        if( lifetime < 0.0f)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Health collidedHP = collision.gameObject.GetComponent<Health>();
+        if (collidedHP)
+        {
+            Debug.Log("Damaged " + collision.gameObject.name);
+            collidedHP.DealDamage(damage);
+            Destroy(gameObject);
+
+        }
+    }
+
+    public void Fire()
+    {
+        GetComponent<Rigidbody2D>().AddForce(parent.transform.up * bulletSpeed * Time.smoothDeltaTime);
     }
 }
