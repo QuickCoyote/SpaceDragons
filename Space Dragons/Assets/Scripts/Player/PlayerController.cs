@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //shoot from head
         attackTimer += Time.deltaTime;

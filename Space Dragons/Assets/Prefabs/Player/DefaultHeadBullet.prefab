@@ -121,6 +121,7 @@ MonoBehaviour:
   lifetime: 2
   damage: 0
   parentobj: {fileID: 0}
+  rb: {fileID: 2532223516486878602}
 --- !u!58 &1428152543217758845
 CircleCollider2D:
   m_ObjectHideFlags: 0

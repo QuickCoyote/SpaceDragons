@@ -16,7 +16,7 @@ public class RustyOldTurret : Turret
         base.Awake();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (enemies.Count > 0)
         {
@@ -70,7 +70,6 @@ public class RustyOldTurret : Turret
         if (enemy)
         {
             enemies.Enqueue(enemy);
-            Debug.Log(name + ": ADDED AN ENEMY");
         }
     }
 

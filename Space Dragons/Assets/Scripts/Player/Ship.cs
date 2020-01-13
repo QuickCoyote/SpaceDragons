@@ -35,7 +35,7 @@ public class Ship : MonoBehaviour
         AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
 

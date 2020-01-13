@@ -14,7 +14,7 @@ public class FollowTarget : MonoBehaviour
         Target.TryGetComponent(out targetS);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(targetS)
         {

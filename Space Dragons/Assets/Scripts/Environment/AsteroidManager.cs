@@ -15,7 +15,6 @@ public class AsteroidManager : MonoBehaviour
         Vector2 worldSize = FindObjectOfType<WorldManager>().WorldCorner.position;
         for (int i = 0; i < Random.Range(ClusterMinimum, ClusterMaximum); i++)
         {
-            
             Vector2 location = new Vector2(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y)); //select spot for cluster
             asteroidClusters.Add(Instantiate(asteroidClusterPrefab, location, Quaternion.identity, transform));
         }
