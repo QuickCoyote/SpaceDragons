@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ShipyardShip
+  - ShopShip
+  - SellButton
+  - RepairButton
+  - UpgradeButton
   layers:
   - Default
   - TransparentFX
