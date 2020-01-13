@@ -54,8 +54,8 @@ public class Asteroid : MonoBehaviour
         if (itemPrefab)
         {
            ItemObject g =  Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.ItemData = FindObjectOfType<WorldManager>().GetRandomItemData();
-
+            g.itemData = FindObjectOfType<WorldManager>().GetRandomItemData();
+            
 
         }
         GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
