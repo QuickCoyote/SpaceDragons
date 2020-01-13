@@ -50,7 +50,8 @@ public class ShipyardController : MonoBehaviour
             ShipyardShopSetup();
         }
 
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.F3
+            ))
         {
             Timer = 5;
         }
