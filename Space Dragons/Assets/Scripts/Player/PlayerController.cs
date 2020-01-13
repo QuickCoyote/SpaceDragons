@@ -9,17 +9,15 @@ public class PlayerController : MonoBehaviour
 
     public int money = 100;
     public float attackDamage = 25.0f;
-
-    Inventory inventory = null;
+    public Inventory inventory = null;
 
     [SerializeField] GameObject head = null;
     [SerializeField] GameObject headBullet = null;
-
     [SerializeField] float bulletOffsetY = 1.0f;
 
     void Start()
     {
-        
+        inventory = GetComponent<Inventory>();
     }
 
     void Update()

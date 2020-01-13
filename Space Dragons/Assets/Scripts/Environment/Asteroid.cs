@@ -2,7 +2,7 @@
 
 public class Asteroid : MonoBehaviour
 {
-    public GameObject itemtodrop = null;
+    public ItemObject itemPrefab = null;
     public GameObject asteroid = null;
 
     Health health;
@@ -39,21 +39,24 @@ public class Asteroid : MonoBehaviour
 
     public void KillAsteroid()
     {
-        if (sizeAndWeight > .25f && asteroid) // if larger than a 1/4 asteroid
+        if (sizeAndWeight > 0.5f && asteroid) // if larger than a 1/4 asteroid
         {
             for (int i = 0; i < 2; i++)
             {
                 Asteroid child = Instantiate(asteroid, transform.parent).GetComponent<Asteroid>(); // creates new asteroids at 1/2 the size
                 if (child)
                 {
-                    child.sizeAndWeight = (sizeAndWeight - 0.20f);
+                    child.sizeAndWeight = (sizeAndWeight - 0.45f);
                     GetComponentInParent<AsteroidCluster>().asteroids.Add(child);
                 }
             }
         }
-        if (itemtodrop)
+        if (itemPrefab)
         {
-            Instantiate(itemtodrop, null); // drops item in world space
+           ItemObject g =  Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
+            g.ItemData = FindObjectOfType<WorldManager>().GetRandomItemData();
+
+
         }
         Debug.Log(this.name + " Destroyed");
 
