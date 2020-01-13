@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 021
   m_EditorClassIdentifier: 
   itemID: 021
-  itemName: 
-  description: 
+  itemName: Volatile Rock
+  description: The energy stored in this could power one very strong explosive. Best
+    be careful with it.
   itemImage: {fileID: 21300000, guid: 0b954138123ea1c4ba8f43b5a8bec2b6, type: 3}

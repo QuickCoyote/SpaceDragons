@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 029
   m_EditorClassIdentifier: 
   itemID: 029
-  itemName: 
-  description: 
+  itemName: Blood Orange Ore
+  description: 'Dont be intimidated by the name. Contains no actual blood or oranges. '
   itemImage: {fileID: 21300000, guid: 55c5784caa5df5c409c766c0e12b22e0, type: 3}

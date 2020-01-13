@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 014
   m_EditorClassIdentifier: 
   itemID: 014
-  itemName: 
-  description: 
+  itemName: Strange Crystals
+  description: Someone probably knows what these are.
   itemImage: {fileID: 21300000, guid: ed7c8ca56d5e9cc4d9fd7193e03b68ce, type: 3}

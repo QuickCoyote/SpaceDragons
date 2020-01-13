@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 030
   m_EditorClassIdentifier: 
   itemID: 030
-  itemName: 
-  description: 
+  itemName: Slate Rock
+  description: Dark grey colored rock
   itemImage: {fileID: 21300000, guid: cd1c5c193574d64448cef0da77cfaf32, type: 3}
