@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidClusterPrefab: {fileID: 3165330668577441390, guid: eb8e4b59b7edd7a4a9005b8ab66d024d,
     type: 3}
-  ClusterMinimum: 500
-  ClusterMaximum: 800
+  ClusterMinimum: 300
+  ClusterMaximum: 500
   asteroidClusters: []
