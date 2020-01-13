@@ -8,13 +8,14 @@ public class CameraZoom : MonoBehaviour
 
     [SerializeField] Ship player;
     CinemachineTargetGroup targetGroup;
+    SpriteRenderer spr = null;
 
     void Start()
     {
-        targetGroup = GameObject.Find("TargetGroup1").GetComponent<CinemachineTargetGroup>();
+        targetGroup = GetComponent<CinemachineTargetGroup>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         targetGroup.m_Targets = new CinemachineTargetGroup.Target[player.bodyPartTransforms.Count];
         for(int i = 0; i < player.bodyPartTransforms.Count; i++)

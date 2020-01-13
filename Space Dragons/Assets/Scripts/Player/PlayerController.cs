@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponent<Inventory>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //shoot from head
         attackTimer += Time.deltaTime;

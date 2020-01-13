@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
         target = (transform.position + new Vector3(Random.Range(-sightDistance, +sightDistance), Random.Range(-sightDistance, +sightDistance), 0));
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveBasic();
 

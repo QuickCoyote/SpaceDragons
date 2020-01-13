@@ -26,10 +26,9 @@ public class AsteroidCluster : MonoBehaviour
             a.gameObject.SetActive(false);
         }
         driftTimer = Random.Range(0.0f, 5.0f);
-      
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (asteroids.Count == 0)
         {

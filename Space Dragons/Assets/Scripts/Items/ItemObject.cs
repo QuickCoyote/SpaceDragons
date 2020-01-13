@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    [SerializeField] public ItemData ItemData;
+    [SerializeField] public ItemData itemData;
     [SerializeField] public SpriteRenderer image;
 
-    private void Start()
+    private void SetItemData(ItemData item)
     {
-        image.sprite = ItemData.itemImage;
+        itemData = item;
+        image.sprite = itemData.itemImage;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponentInParent<Inventory>().AddItem(ItemData, 1);
+            other.GetComponentInParent<Inventory>().AddItem(itemData, 1);
             Destroy(gameObject);
         }
     }
