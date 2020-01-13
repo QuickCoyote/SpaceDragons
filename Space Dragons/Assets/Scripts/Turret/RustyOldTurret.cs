@@ -5,8 +5,6 @@ using System.Linq;
 
 public class RustyOldTurret : Turret
 {
-    [SerializeField] GameObject turretSprite = null;
-
     [SerializeField] GameObject bullet = null;
     [SerializeField] float rotationSpeed = 45f;
     [SerializeField] float bulletOffsetY = 1f;
@@ -29,14 +27,16 @@ public class RustyOldTurret : Turret
         Enemy enemy = enemies.Peek();
         if (enemy)
         {
-            Vector3 direction = enemy.transform.position - turretSprite.transform.position;
+            Vector3 direction = enemy.transform.position - spriteRenderer.gameObject.transform.position;
+            //Debug.DrawLine(turretSprite.transform.position, direction, Color.red);
+            Debug.DrawRay(spriteRenderer.gameObject.transform.position, direction);
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             if (angle < 5)
             {
                 Attack();
             }
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            spriteRenderer.gameObject.transform.rotation = Quaternion.Slerp(spriteRenderer.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -44,20 +44,16 @@ public class RustyOldTurret : Turret
     {
         // Find closest enemy... BLAST'EM
         Enemy targetEnemy = enemies.Peek();
+        attackTimer += Time.deltaTime;
 
-        if (targetEnemy)
+        if (attackTimer > attackSpeed)
         {
-            attackTimer += Time.deltaTime;
+            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), Quaternion.identity, transform) as GameObject);
+            Projectile projectile = projectileGO.GetComponent<Projectile>();
+            projectile.parentobj = gameObject;
+            projectile.Fire();
 
-            if (attackTimer > attackSpeed)
-            {
-                GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), Quaternion.identity, transform) as GameObject);
-                Projectile projectile = projectileGO.GetComponent<Projectile>();
-                projectile.parentobj = gameObject;
-                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parentobj.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
-
-                attackTimer = 0;
-            }
+            attackTimer = 0;
         }
     }
 

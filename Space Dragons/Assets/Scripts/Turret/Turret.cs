@@ -8,6 +8,7 @@ public abstract class Turret : MonoBehaviour
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
     public float price = 10.0f;
+    public SpriteRenderer spriteRenderer = null;
 
     protected float attackTimer = 0.0f;
 
@@ -17,6 +18,7 @@ public abstract class Turret : MonoBehaviour
     protected void Awake()
     {
         GetComponent<CircleCollider2D>().radius = range;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
