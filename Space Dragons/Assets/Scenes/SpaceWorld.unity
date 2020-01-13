@@ -360,6 +360,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AsteroidManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4621478483943767822, guid: 28328e8298bffd743a1e33ede72d1e9e,
+        type: 3}
+      propertyPath: ClusterMinimum
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621478483943767822, guid: 28328e8298bffd743a1e33ede72d1e9e,
+        type: 3}
+      propertyPath: ClusterMaximum
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 5203443758738299533, guid: 28328e8298bffd743a1e33ede72d1e9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -604,6 +614,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4229753921854191403, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
       propertyPath: m_Name
@@ -618,6 +638,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4751970860924683898, guid: f97cabc6f1b543a4a96c8c4302866e67,
+        type: 3}
+      propertyPath: EnemiesMin
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751970860924683898, guid: f97cabc6f1b543a4a96c8c4302866e67,
+        type: 3}
+      propertyPath: EnemiesMax
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 4751970860924683899, guid: f97cabc6f1b543a4a96c8c4302866e67,
         type: 3}
       propertyPath: m_Name
