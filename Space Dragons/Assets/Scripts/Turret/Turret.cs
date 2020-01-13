@@ -7,6 +7,7 @@ public abstract class Turret : MonoBehaviour
     public float damage = 5;
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
+    public float price = 10.0f;
 
     protected float attackTimer = 0.0f;
 

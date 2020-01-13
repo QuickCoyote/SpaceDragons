@@ -8,11 +8,15 @@ public class Projectile : MonoBehaviour
     public float lifetime = 1.0f;
     public float damage = 0.0f;
     public GameObject parentobj = null;
+    public Vector3 goDirection = Vector3.zero;
     public Rigidbody2D rb = null;
 
     private void FixedUpdate()
     {
         lifetime -= Time.deltaTime;
+        
+        Move();
+
         if(lifetime < 0.0f)
         {
             Destroy(gameObject);
@@ -34,6 +38,13 @@ public class Projectile : MonoBehaviour
 
     public void Fire()
     {
-        rb.velocity = (parentobj.transform.up * bulletSpeed * Time.smoothDeltaTime);
+        goDirection = parentobj.transform.up;
+        //rb.velocity = (parentobj.transform.up * bulletSpeed * Time.smoothDeltaTime);
+    }
+
+    public void Move()
+    {
+
+        transform.position += (goDirection * bulletSpeed * Time.smoothDeltaTime);
     }
 }

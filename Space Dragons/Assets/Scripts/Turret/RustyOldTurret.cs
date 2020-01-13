@@ -35,7 +35,7 @@ public class RustyOldTurret : Turret
             {
                 Attack();
             }
-            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
     }
