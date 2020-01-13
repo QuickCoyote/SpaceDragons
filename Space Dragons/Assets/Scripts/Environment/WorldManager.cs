@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class WorldManager : MonoBehaviour
 {
-
-    
-
-    public void Start()
-    {
-        initializeAsteroids();
-    }
+    [SerializeField] public Transform WorldCorner = null;
 
 
-    private void initializeAsteroids()
-    {
 
-    }
+
+
+    ///
 }
 
