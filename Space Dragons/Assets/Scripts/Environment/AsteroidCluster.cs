@@ -30,16 +30,16 @@ public class AsteroidCluster : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (asteroids.Count == 0)
+        {
+            GetComponentInParent<AsteroidManager>().asteroidClusters.Remove(this);
+        }
         driftTimer -= Time.deltaTime;
         if (driftTimer < 0.0f)
         {
             Vector2 randomForce = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f)); // Sends them in any random direction
             rb.AddForce(randomForce, ForceMode2D.Force);
             driftTimer = Random.Range(0.0f, 5.0f);
-        }
-        if (asteroids.Count == 0)
-        {
-            GetComponentInParent<AsteroidManager>().asteroidClusters.Remove(this);
         }
     }
 

@@ -1442,6 +1442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldCorner: {fileID: 4229753923452401460}
+  Items:
+  - {fileID: 11400000, guid: 221da0f1a7f193b4aa1591eb48889353, type: 2}
+  - {fileID: 11400000, guid: 4d8260c7b3de4d74ba3f6bc7c7cd057d, type: 2}
 --- !u!1 &4229753922998177941
 GameObject:
   m_ObjectHideFlags: 0

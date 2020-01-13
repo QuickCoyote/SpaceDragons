@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 196209910753800036}
   - component: {fileID: 196209910753800035}
   - component: {fileID: 1753379421}
+  - component: {fileID: 5215258217068158141}
   m_Layer: 8
   m_Name: Player Object
   m_TagString: Untagged
@@ -241,10 +242,23 @@ MonoBehaviour:
   attackTimer: 0
   money: 100
   attackDamage: 15
+  inventory: {fileID: 0}
   head: {fileID: 196209910265618382}
   headBullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774,
     type: 3}
   bulletOffsetY: 1
+--- !u!114 &5215258217068158141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196209910753800038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8116ec6a62cbb4f489c98e7642cf39ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &196209911218918719
 GameObject:
   m_ObjectHideFlags: 0

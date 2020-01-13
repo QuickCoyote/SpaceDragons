@@ -5,7 +5,8 @@ using UnityEngine;
 public class WorldManager : MonoBehaviour
 {
     [SerializeField] public Transform WorldCorner = null;
-
+    
+    [SerializeField] public List<ItemData> Items = null;
     [SerializeField] GameObject[] objectsToRender = null;
 
     private GameObject player = null;
@@ -13,6 +14,11 @@ public class WorldManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public ItemData GetRandomItemData()
+    {
+        return Items[Random.Range(0, Items.Count)];
     }
 
     private void FixedUpdate()

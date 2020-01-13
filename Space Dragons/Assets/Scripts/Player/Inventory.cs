@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    Dictionary<Item, int> items = new Dictionary<Item, int>();
+    Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
     
-    public void AddItem(Item item, int num)
+    public void AddItem(ItemData item, int num)
     {
-        List<Item> itemsTemp = items.Keys.ToList();
+        List<ItemData> itemsTemp = items.Keys.ToList();
         for (int i = 0; i < items.Keys.Count; i++)
         {
             if(itemsTemp[i] == item)
@@ -20,9 +20,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItem(Item item, int num)
+    public void RemoveItem(ItemData item, int num)
     {
-        List<Item> itemsTemp = items.Keys.ToList();
+        List<ItemData> itemsTemp = items.Keys.ToList();
         for (int i = 0; i < items.Keys.Count; i++)
         {
             if (itemsTemp[i] == item)
@@ -42,16 +42,15 @@ public class Inventory : MonoBehaviour
 
     private void FixedUpdate()
     {
-        List<Item> itemsTemp = items.Keys.ToList();
+        List<ItemData> itemsTemp = items.Keys.ToList();
         for (int i = 0; i < items.Keys.Count; i++)
         {
-            Item item = itemsTemp[i];
+            ItemData item = itemsTemp[i];
             if (items[item] <= 0)
             {
                 items.Remove(item);
             }
         }
-
         UpdateDisplay();
     }
 
