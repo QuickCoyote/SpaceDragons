@@ -36,4 +36,20 @@ public class PlayerController : MonoBehaviour
             attackTimer = 0;
         }
     }
+
+    public void AddMoney(int amount)
+    {
+        money += amount;
+    }
+
+    public bool RemoveMoney(int amount)
+    {
+        if(money - amount > 0)
+        {
+            money -= amount;
+            return true;
+        }
+
+        return false;
+    }
 }

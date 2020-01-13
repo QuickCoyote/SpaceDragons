@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31db7f8778f87464196826f69b904d9a, type: 3}
-  m_Name: 002
+  m_Name: 036
   m_EditorClassIdentifier: 
-  itemID: 002
-  itemName: CoralStone
-  description: A weird, wave-like pattern covers the top of this red stone.
-  itemImage: {fileID: 21300000, guid: 3a29908ee6108214d9f91b66e2575f82, type: 3}
+  itemID: 036
+  itemName: Pink Stones
+  description: A strange mineral gives this rock it's color
+  itemImage: {fileID: 21300000, guid: e54e92034d6776f49b5a93ade64ea779, type: 3}
