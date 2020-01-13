@@ -27,15 +27,17 @@ public class RustyOldTurret : Turret
     public void RotateTurret()
     {
         Enemy enemy = enemies.Peek();
-
-        Vector3 direction = enemy.transform.position - turretSprite.transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        if(angle < 5)
+        if (enemy)
         {
-            Attack();
+            Vector3 direction = enemy.transform.position - turretSprite.transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            if (angle < 5)
+            {
+                Attack();
+            }
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-        turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 
     public override void Attack()

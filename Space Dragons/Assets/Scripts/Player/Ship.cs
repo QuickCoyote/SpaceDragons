@@ -60,7 +60,7 @@ public class Ship : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
             targetPos.z = 0;
-
+            Debug.Log(targetPos);
             // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
             Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;

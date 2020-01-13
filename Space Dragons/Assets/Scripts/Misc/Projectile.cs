@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bulletSpeed = 0.01f;
+    public float bulletSpeed = 10000;
     public float lifetime = 1.0f;
     public float damage = 0.0f;
     public GameObject parent = null;
@@ -17,16 +17,19 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Health collidedHP = collision.gameObject.GetComponent<Health>();
-        if (collidedHP)
+        if (collision.gameObject != parent) // make sure its not hitting itself
         {
-            Debug.Log("Damaged " + collision.gameObject.name);
-            collidedHP.DealDamage(damage);
-            Destroy(gameObject);
+            Health collidedHP = collision.gameObject.GetComponent<Health>();
+            if (collidedHP)
+            {
+                Debug.Log("Damaged " + collision.gameObject.name);
+                collidedHP.DealDamage(damage);
+                Destroy(gameObject);
 
+            }
         }
     }
 

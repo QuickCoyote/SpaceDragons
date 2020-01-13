@@ -51,8 +51,8 @@ MonoBehaviour:
   projectile: {fileID: 0}
   gunNozzle: {fileID: 0}
   speed: 0.5
-  rotationSpeed: 2
-  shootingSpeed: 0.5
+  rotationSpeed: 0.5
+  shootingSpeed: 2
   sightDistance: 10
   attackDamage: 5
 --- !u!50 &5405416691029662828

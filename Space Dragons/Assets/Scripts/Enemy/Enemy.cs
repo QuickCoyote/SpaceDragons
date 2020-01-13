@@ -80,7 +80,6 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        //transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
         rb.AddForce(transform.up.normalized * speed, ForceMode2D.Force);
     }
 }

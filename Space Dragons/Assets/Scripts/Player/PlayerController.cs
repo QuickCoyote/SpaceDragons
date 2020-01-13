@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if(attackTimer > attackSpeed)
         {
-            GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, transform) as GameObject);
+            GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, head.transform) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parent = head;
             projectile.damage = attackDamage;
