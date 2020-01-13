@@ -26,20 +26,20 @@ public class AsteroidCluster : MonoBehaviour
             a.gameObject.SetActive(false);
         }
         driftTimer = Random.Range(0.0f, 5.0f);
+    }
+
+    void FixedUpdate()
+    {
+        if (asteroids.Count == 0)
+        {
+            GetComponentInParent<AsteroidManager>().asteroidClusters.Remove(this);
+        }
         driftTimer -= Time.deltaTime;
         if (driftTimer < 0.0f)
         {
             Vector2 randomForce = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f)); // Sends them in any random direction
             rb.AddForce(randomForce, ForceMode2D.Force);
             driftTimer = Random.Range(0.0f, 5.0f);
-        }
-    }
-
-    void Update()
-    {
-        if (asteroids.Count == 0)
-        {
-            GetComponentInParent<AsteroidManager>().asteroidClusters.Remove(this);
         }
     }
 

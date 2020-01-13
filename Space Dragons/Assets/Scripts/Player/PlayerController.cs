@@ -8,30 +8,30 @@ public class PlayerController : MonoBehaviour
     public float attackTimer = 0.0f;
 
     public int money = 100;
-
-    Inventory inventory = null;
+    public float attackDamage = 25.0f;
+    public Inventory inventory = null;
 
     [SerializeField] GameObject head = null;
     [SerializeField] GameObject headBullet = null;
-
     [SerializeField] float bulletOffsetY = 1.0f;
 
     void Start()
     {
-        
+        inventory = GetComponent<Inventory>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //shoot from head
         attackTimer += Time.deltaTime;
 
         if(attackTimer > attackSpeed)
         {
-            GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, transform) as GameObject);
+            GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
-            projectile.parent = head;
-            projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parent.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
+            projectile.parentobj = head;
+            projectile.damage = attackDamage;
+            projectile.Fire();
 
             attackTimer = 0;
         }

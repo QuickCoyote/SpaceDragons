@@ -5,4 +5,5 @@ using UnityEngine;
 public class ShipTest : MonoBehaviour
 {
     public Sprite ShipSprite;
+    public int SellPrice = 10;
 }

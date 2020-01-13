@@ -16,7 +16,7 @@ public class RustyOldTurret : Turret
         base.Awake();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (enemies.Count > 0)
         {
@@ -27,15 +27,17 @@ public class RustyOldTurret : Turret
     public void RotateTurret()
     {
         Enemy enemy = enemies.Peek();
-
-        Vector3 direction = enemy.transform.position - turretSprite.transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        if(angle < 5)
+        if (enemy)
         {
-            Attack();
+            Vector3 direction = enemy.transform.position - turretSprite.transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            if (angle < 5)
+            {
+                Attack();
+            }
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-        turretSprite.transform.rotation = Quaternion.Slerp(turretSprite.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 
     public override void Attack()
@@ -51,8 +53,8 @@ public class RustyOldTurret : Turret
             {
                 GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), Quaternion.identity, transform) as GameObject);
                 Projectile projectile = projectileGO.GetComponent<Projectile>();
-                projectile.parent = gameObject;
-                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parent.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
+                projectile.parentobj = gameObject;
+                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parentobj.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
 
                 attackTimer = 0;
             }
@@ -68,7 +70,6 @@ public class RustyOldTurret : Turret
         if (enemy)
         {
             enemies.Enqueue(enemy);
-            Debug.Log(name + ": ADDED AN ENEMY");
         }
     }
 
