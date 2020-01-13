@@ -235,7 +235,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 20
 --- !u!61 &3526563778569352880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   damage: 5
   range: 10
   attackSpeed: 0.25
+  price: 10
   turretSprite: {fileID: 2013710388852829490}
   bullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774, type: 3}
   rotationSpeed: 45
