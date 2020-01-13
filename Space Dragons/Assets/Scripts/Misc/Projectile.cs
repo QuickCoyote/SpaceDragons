@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bulletSpeed = 10000;
+    public float bulletSpeed = 1000;
     public float lifetime = 1.0f;
     public float damage = 0.0f;
-    public GameObject parent = null;
+    public GameObject parentobj = null;
 
     private void Update()
     {
@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject != parent) // make sure its not hitting itself
+        if (collision.gameObject != parentobj) // make sure its not hitting itself
         {
             Health collidedHP = collision.gameObject.GetComponent<Health>();
             if (collidedHP)
@@ -35,6 +35,6 @@ public class Projectile : MonoBehaviour
 
     public void Fire()
     {
-        GetComponent<Rigidbody2D>().AddForce(parent.transform.up * bulletSpeed * Time.smoothDeltaTime);
+        GetComponent<Rigidbody2D>().velocity = (parentobj.transform.up * bulletSpeed * Time.smoothDeltaTime);
     }
 }

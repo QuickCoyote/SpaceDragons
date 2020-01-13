@@ -53,8 +53,8 @@ public class RustyOldTurret : Turret
             {
                 GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), Quaternion.identity, transform) as GameObject);
                 Projectile projectile = projectileGO.GetComponent<Projectile>();
-                projectile.parent = gameObject;
-                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parent.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
+                projectile.parentobj = gameObject;
+                projectile.GetComponent<Rigidbody2D>().AddForce(projectile.parentobj.transform.up * projectile.bulletSpeed * Time.smoothDeltaTime);
 
                 attackTimer = 0;
             }
