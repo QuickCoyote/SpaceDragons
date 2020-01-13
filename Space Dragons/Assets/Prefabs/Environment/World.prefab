@@ -1413,7 +1413,7 @@ Transform:
   m_GameObject: {fileID: 4229753921854191403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 2000010039917731514}
   - {fileID: 8167054895190543089}
@@ -1445,6 +1445,7 @@ MonoBehaviour:
   Items:
   - {fileID: 11400000, guid: 221da0f1a7f193b4aa1591eb48889353, type: 2}
   - {fileID: 11400000, guid: 4d8260c7b3de4d74ba3f6bc7c7cd057d, type: 2}
+  objectsToRender: []
 --- !u!1 &4229753922998177941
 GameObject:
   m_ObjectHideFlags: 0
