@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 50
   lifetime: 2
-  damage: 0
+  damage: 5
   parentobj: {fileID: 0}
   goDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
