@@ -23,8 +23,6 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
-        Player = GameObject.FindGameObjectWithTag("Player");
-        target = (transform.position + new Vector3(Random.Range(-sightDistance, +sightDistance), Random.Range(-sightDistance, +sightDistance), 0));
     }
 
     void FixedUpdate()
@@ -34,26 +32,20 @@ public class Enemy : MonoBehaviour
         if (hp.healthCount < 0.0f)
         {
             Destroy(gameObject);
-            Debug.Log(this.name + " Died");
         }
     }
 
     bool IsPlayerInSight()
     {
-        if (Player)
-        {
-            return (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) <= sightDistance);
-        } else
-        {
-            return false;
-        }
+        return (Vector3.Distance(Player.transform.position, transform.position) <= sightDistance);
     }
 
     void MoveBasic()
     {
+        target = Player.transform.position;
+
         if (IsPlayerInSight())
         {
-            target = Player.transform.position;
             shootingTimer -= Time.deltaTime;
             if (shootingTimer < 0.0f)
             {
@@ -67,13 +59,8 @@ public class Enemy : MonoBehaviour
                     p.Fire();
                 }
             }
-        } else
-        {
-            if (Vector3.Distance(transform.position,target) < targetDistance)
-            {
-                target = (transform.position + new Vector3(Random.Range(-sightDistance,+sightDistance), Random.Range(-sightDistance, +sightDistance),0));
-            }
         }
+
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
@@ -81,6 +68,5 @@ public class Enemy : MonoBehaviour
 
         //rb.AddForce(transform.up.normalized * speed, ForceMode2D.Force);
         transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
-
     }
 }
