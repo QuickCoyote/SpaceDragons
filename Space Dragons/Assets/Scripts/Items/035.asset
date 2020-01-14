@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 035
   m_EditorClassIdentifier: 
   itemID: 035
-  itemName: 
-  description: 
-  itemImage: {fileID: 21300000, guid: fac8114b97790014e8fbc90486cfc5f7, type: 3}
+  itemName: Weird Looking Ore
+  description: Is it a helmet? a rabbit? a fish?
+  itemImage: {fileID: 21300000, guid: cace8b0929a635e42a9b8438966e892b, type: 3}

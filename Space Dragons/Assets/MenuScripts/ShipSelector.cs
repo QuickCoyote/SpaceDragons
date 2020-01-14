@@ -7,7 +7,7 @@ public class ShipSelector : MonoBehaviour
 {
     public GameObject ShipMenu;
     public GameObject ShopMenu;
-    public ShipTest SelectedShip;
+    public Turret SelectedShip;
     public ShipyardController controller;
     public bool IsSlotFilled = false;
 
@@ -22,13 +22,13 @@ public class ShipSelector : MonoBehaviour
             {
                 if(child.tag == "ShipyardShip")
                 {
-                    child.GetComponent<Image>().sprite = SelectedShip.ShipSprite;
+                    child.GetComponent<Image>().sprite = SelectedShip.GetComponent<SpriteRenderer>().sprite;
                 }
                 if(child.tag == "SellButton")
                 {
                     Button button = child.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
-                    button.onClick.AddListener(delegate { Sell(SelectedShip.SellPrice); });
+                    button.onClick.AddListener(delegate { Sell(10); });
                     button.onClick.AddListener(delegate { Repair(); });
                     button.onClick.AddListener(delegate { Upgrade(); });
                 }

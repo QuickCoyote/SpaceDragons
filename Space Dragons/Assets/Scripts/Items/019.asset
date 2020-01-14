@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 019
   m_EditorClassIdentifier: 
   itemID: 019
-  itemName: 
-  description: 
+  itemName: Crytal Cluster
+  description: Probably better than a single crystal
   itemImage: {fileID: 21300000, guid: 917927ad68e4c4844b79a98bbdafd13c, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 017
   m_EditorClassIdentifier: 
   itemID: 017
-  itemName: 
-  description: 
+  itemName: Red Crystal
+  description: 'Hex code: #FF0000'
   itemImage: {fileID: 21300000, guid: 1afaaed669a9b4f4bb031ac4d5cb4391, type: 3}

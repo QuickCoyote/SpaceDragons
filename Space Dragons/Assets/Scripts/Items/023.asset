@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 023
   m_EditorClassIdentifier: 
   itemID: 023
-  itemName: 
-  description: 
+  itemName: (Not) Silver Metal
+  description: Looks like silver, doesnt it?
   itemImage: {fileID: 21300000, guid: 7f39f0187c872fa45872e3b9c877fa5c, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 027
   m_EditorClassIdentifier: 
   itemID: 027
-  itemName: 
-  description: 
+  itemName: Impressive Blue Crystal
+  description: It has an impressive blue sheen.
   itemImage: {fileID: 21300000, guid: 98c36b190872747409ad9890d694bc11, type: 3}

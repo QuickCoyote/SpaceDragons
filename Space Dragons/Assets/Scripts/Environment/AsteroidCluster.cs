@@ -19,9 +19,10 @@ public class AsteroidCluster : MonoBehaviour
         for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
         {
             asteroids.Add(Instantiate(asteroidPrefab, transform.position + new Vector3(Random.value, Random.value,0), Quaternion.identity, transform)); //Select smaller locations for each asteroid
+
         }
 
-        foreach(Asteroid a in asteroids)
+        foreach (Asteroid a in asteroids)
         {
             a.gameObject.SetActive(false);
         }

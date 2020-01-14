@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 033
   m_EditorClassIdentifier: 
   itemID: 033
-  itemName: 
-  description: 
-  itemImage: {fileID: 21300000, guid: 2c990bd770fb53443af54198c63f92b3, type: 3}
+  itemName: Red Ore
+  description: Used to make red ships.
+  itemImage: {fileID: 21300000, guid: 1c68badc5b4f11440b15f161a8e90c3d, type: 3}
