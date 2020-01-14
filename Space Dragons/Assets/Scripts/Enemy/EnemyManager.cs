@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 
-    [SerializeField] Enemy EnemyPrefab = null;
+    [SerializeField] List<Enemy> EnemyPrefabs = null;
 
     public int EnemiesMin = 500;
     public int EnemiesMax = 800;
@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < Random.Range(EnemiesMin, EnemiesMax); i++)
         {
             Vector2 location = new Vector2(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y)); //select spot for cluster
-            Enemies.Add(Instantiate(EnemyPrefab, location, Quaternion.identity, transform));
+            Enemies.Add(Instantiate(EnemyPrefabs[0], location, Quaternion.identity, transform));
         }
     }
 

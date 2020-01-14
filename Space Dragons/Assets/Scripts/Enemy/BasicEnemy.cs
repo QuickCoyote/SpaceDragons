@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastEnemy : Enemy
+public class BasicEnemy : Enemy
 {
-    [SerializeField] GameObject Turret = null;
-    public float targetChangeDistance;
-    public float targetflydistance;
     protected override void Attack()
     {
-        Turret.transform.LookAt(Player.transform.position,-Vector3.forward);
         if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
@@ -30,12 +26,7 @@ public class FastEnemy : Enemy
 
     protected override void Move()
     {
-        if (Vector3.Distance(transform.position, target) < targetChangeDistance)
-        {
-            Vector3 newDirection = Player.transform.position - transform.position;
-            target = transform.position + (newDirection * targetflydistance);
-        }
-
+        target = Player.transform.position;
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);

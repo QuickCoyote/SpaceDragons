@@ -1,15 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FastEnemy : Enemy
+public class HeavyEnemy : Enemy
 {
-    [SerializeField] GameObject Turret = null;
-    public float targetChangeDistance;
-    public float targetflydistance;
+    public float stoppingDistance;
+
     protected override void Attack()
     {
-        Turret.transform.LookAt(Player.transform.position,-Vector3.forward);
         if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
@@ -30,17 +26,17 @@ public class FastEnemy : Enemy
 
     protected override void Move()
     {
-        if (Vector3.Distance(transform.position, target) < targetChangeDistance)
-        {
-            Vector3 newDirection = Player.transform.position - transform.position;
-            target = transform.position + (newDirection * targetflydistance);
-        }
+        target = Player.transform.position;
 
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-        transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
+        if (Vector3.Distance(transform.position, target) > stoppingDistance) //Stop moving if player gets too close.
+        {
+            transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
+        }
     }
+
 }
