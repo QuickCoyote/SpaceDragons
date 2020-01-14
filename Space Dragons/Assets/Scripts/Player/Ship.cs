@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
 
     public float speed = 1.0f;
     public float rotationSpeed = 50.0f;
-
+    public int maxShipsAllowed = 4;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;

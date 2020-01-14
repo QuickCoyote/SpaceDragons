@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31db7f8778f87464196826f69b904d9a, type: 3}
+  m_Name: 017
+  m_EditorClassIdentifier: 
+  itemID: 017
+  itemName: Red Crystal
+  description: 'Hex code: #FF0000'
+  itemImage: {fileID: 21300000, guid: 1afaaed669a9b4f4bb031ac4d5cb4391, type: 3}
