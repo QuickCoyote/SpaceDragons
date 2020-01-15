@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 2.21, y: 3.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2013710388852829490
@@ -291,9 +291,9 @@ MonoBehaviour:
   damage: 5
   range: 10
   attackSpeed: 0.25
-  price: 10
-  spriteRenderer: {fileID: 0}
-  turretRarity: 2
+  price: 0
+  spriteRenderer: {fileID: 7442977588847348390}
+  turretRarity: 0
   bullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774, type: 3}
   rotationSpeed: 45
   bulletOffsetY: 1
