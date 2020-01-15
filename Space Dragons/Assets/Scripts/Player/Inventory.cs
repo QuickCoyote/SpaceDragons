@@ -2,40 +2,52 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] Sprite emptyItemImage;
+    [SerializeField] GameObject inventoryDisplay = null;
+    [SerializeField] GameObject closeInventory = null;
+
+    List<ItemData> inventory = new List<ItemData>();
     Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
-    
+
     public void AddItem(ItemData item, int num)
     {
-        List<ItemData> itemsTemp = items.Keys.ToList();
-        for (int i = 0; i < items.Keys.Count; i++)
+        if (items.Keys.Count < inventory.Count)
         {
-            if(itemsTemp[i] == item)
+            List<ItemData> itemsTemp = items.Keys.ToList();
+            for (int i = 0; i < items.Keys.Count; i++)
             {
-                items[item] += num;
-                break;
+                if (itemsTemp[i] == item)
+                {
+                    items[item] += num;
+                    break;
+                }
             }
         }
     }
 
     public void RemoveItem(ItemData item, int num)
     {
-        List<ItemData> itemsTemp = items.Keys.ToList();
-        for (int i = 0; i < items.Keys.Count; i++)
+        if (items.Keys.Count > 0)
         {
-            if (itemsTemp[i] == item)
+            List<ItemData> itemsTemp = items.Keys.ToList();
+            for (int i = 0; i < items.Keys.Count; i++)
             {
-                if(items[item] >= num)
+                if (itemsTemp[i] == item)
                 {
-                    items[item] -= num;
+                    if (items[item] >= num)
+                    {
+                        items[item] -= num;
+                    }
+                    else
+                    {
+                        // You don't have that many
+                    }
+                    break;
                 }
-                else
-                {
-                    // You don't have that many
-                }
-                break;
             }
         }
     }
@@ -56,6 +68,42 @@ public class Inventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        int num = 0;
+        for (int i = 0; i < items.Keys.Count; i++)
+        {
+            if (items[items.Keys.ElementAt(i)] > 0)
+            {
+                inventory[num] = items.Keys.ElementAt(i);
+                num++;
+            }
+        }
 
+        for (int i = 0; i < inventoryDisplay.transform.childCount; i++)
+        {
+            if (i < inventory.Count)
+            {
+                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<SpriteRenderer>().sprite = inventory[i].itemImage;
+                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "x" + items[inventory[i]];
+            }
+            else
+            {
+                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<SpriteRenderer>().sprite = emptyItemImage;
+                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
+    }
+
+    public void ToggleDisplay()
+    {
+        inventoryDisplay.SetActive(!inventoryDisplay.activeSelf);
+        closeInventory.SetActive(!closeInventory.activeSelf);
+        if (inventoryDisplay.activeSelf)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
     }
 }
