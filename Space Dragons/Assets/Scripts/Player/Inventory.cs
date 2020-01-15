@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -78,17 +79,17 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < inventoryDisplay.transform.childCount-1; i++)
+        for (int i = 0; i < inventoryDisplay.transform.childCount; i++)
         {
             if (i < inventory.Count)
             {
-                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<SpriteRenderer>().sprite = inventory[i].itemImage;
+                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<Image>().sprite = inventory[i].itemImage;
                 inventoryDisplay.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "x" + items[inventory[i]];
             }
             else
             {
-                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<SpriteRenderer>().sprite = emptyItemImage;
-                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "";
+                inventoryDisplay.transform.GetChild(i).gameObject.GetComponentInChildren<Image>().sprite = emptyItemImage;
+                inventoryDisplay.transform.GetChild(i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
