@@ -7,7 +7,7 @@ public class ShipSelector : MonoBehaviour
 {
     public GameObject ShipMenu;
     public GameObject ShopMenu;
-    public Turret SelectedShip;
+    public GameObject SelectedShip;
     public ShipyardController controller;
     public bool IsSlotFilled = false;
 

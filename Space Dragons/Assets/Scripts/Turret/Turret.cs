@@ -9,14 +9,7 @@ public abstract class Turret : MonoBehaviour
     public float attackSpeed = 0.25f;
     public float price = 10.0f;
     public SpriteRenderer spriteRenderer = null;
-    public eTurretRarity turretRarity = eTurretRarity.COMMON;
-
-    public enum eTurretRarity
-    {
-        COMMON,
-        RARE,
-        EPIC
-    }
+    public ShipData.eTurretRarity turretRarity = ShipData.eTurretRarity.COMMON;
 
     private float rarityModifier = 1.0f;
     protected float attackTimer = 0.0f;
@@ -31,13 +24,13 @@ public abstract class Turret : MonoBehaviour
 
         switch (turretRarity)
         {
-            case eTurretRarity.COMMON:
+            case ShipData.eTurretRarity.COMMON:
                 rarityModifier = 1.0f;
                 break;
-            case eTurretRarity.RARE:
+            case ShipData.eTurretRarity.RARE:
                 rarityModifier = 1.5f;
                 break;
-            case eTurretRarity.EPIC:
+            case ShipData.eTurretRarity.EPIC:
                 rarityModifier = 2.0f;
                 break;
         }

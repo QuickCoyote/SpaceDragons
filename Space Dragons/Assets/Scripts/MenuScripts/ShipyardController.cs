@@ -95,7 +95,7 @@ public class ShipyardController : MonoBehaviour
                 NumOfShips++;
                 button.image.sprite = Ships[i].GetComponent<Turret>().spriteRenderer.sprite;
                 selector.IsSlotFilled = true;
-                selector.SelectedShip = Ships[i].GetComponent<Turret>();
+                selector.SelectedShip = Ships[i];
             }
             button.onClick.AddListener(delegate { selector.OpenMenu(); });
             obj.transform.SetParent(ShipScrollContent.transform);
@@ -133,7 +133,7 @@ public class ShipyardController : MonoBehaviour
             Button button = obj.GetComponentInChildren<Button>();
             if (ShopShips[i] != null)
             {
-                button.image.sprite = ShopShips[i].GetComponent<ShipTest>().ShipSprite;
+                button.image.sprite = ShopShips[i].GetComponent<Turret>().spriteRenderer.sprite;
             }
             obj.transform.SetParent(ShopShipScrollContent.transform);
         }
@@ -148,7 +148,7 @@ public class ShipyardController : MonoBehaviour
             if(randNum > EpicProbability)
             {
                 //Add Random Epic to Shop List
-                int rand = Random.Range(0, 5);
+                int rand = Random.Range(0, EpicShips.Count);
                 ShipData EpicShip = EpicShips[(int)rand];
                 GameObject Ship = CreateShipFromData(EpicShip);
 
@@ -157,7 +157,7 @@ public class ShipyardController : MonoBehaviour
             else if(randNum > RareProbability)
             {
                 //Add Random Rare to Shop List
-                int rand = Random.Range(0, 5);
+                int rand = Random.Range(0, RareShips.Count);
                 ShipData RareShip = RareShips[(int)rand];
                 GameObject Ship = CreateShipFromData(RareShip);
 
@@ -166,7 +166,7 @@ public class ShipyardController : MonoBehaviour
             else
             {
                 //Add Random Common to Shop List
-                int rand = Random.Range(0, 5);
+                int rand = Random.Range(0, CommonShips.Count);
                 ShipData CommonShip = CommonShips[(int)rand];
                 GameObject Ship = CreateShipFromData(CommonShip);
 
@@ -182,7 +182,7 @@ public class ShipyardController : MonoBehaviour
         ShipTurret.spriteRenderer.sprite = data.sprite;
         ShipTurret.price = data.price;
         ShipTurret.spriteRenderer.color = data.color;
-        
+        ShipTurret.turretRarity = data.rarity;
 
         return Ship;
     }
@@ -201,7 +201,7 @@ public class ShipyardController : MonoBehaviour
     {
         if(NumOfShips != Ships.Count)
         {
-            Turret purchase = ShopShips[selectedPurchase];
+            GameObject purchase = ShopShips[selectedPurchase];
             for (int i = 0; i < Ships.Count; i++)
             {
                 if(Ships[i] == null)
