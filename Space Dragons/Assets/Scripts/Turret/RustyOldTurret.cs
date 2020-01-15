@@ -28,8 +28,6 @@ public class RustyOldTurret : Turret
         if (enemy)
         {
             Vector3 direction = enemy.transform.position - spriteRenderer.gameObject.transform.position;
-            //Debug.DrawLine(turretSprite.transform.position, direction, Color.red);
-            Debug.DrawRay(spriteRenderer.gameObject.transform.position, direction);
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             if (angle < 5)
             {

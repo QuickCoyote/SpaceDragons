@@ -65,29 +65,29 @@ public class Ship : MonoBehaviour
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
-        }
 
-        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
+            bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
 
-        for (int i = 1; i < bodyPartTransforms.Count; i++)
-        {
-            curBodyPart = bodyPartTransforms[i];
-            prevBodyPart = bodyPartTransforms[i - 1];
-
-            dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
-            Vector3 newPos = prevBodyPart.position;
-            newPos.z = bodyPartTransforms[0].position.z;
-
-            float t = Time.deltaTime * dst / minDst * curSpeed;
-
-            if (t > .5f)
+            for (int i = 1; i < bodyPartTransforms.Count; i++)
             {
-                t = 0.5f;
-            }
+                curBodyPart = bodyPartTransforms[i];
+                prevBodyPart = bodyPartTransforms[i - 1];
 
-            curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
-            curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                Vector3 newPos = prevBodyPart.position;
+                newPos.z = bodyPartTransforms[0].position.z;
+
+                float t = Time.deltaTime * dst / minDst * curSpeed;
+
+                if (t > .5f)
+                {
+                    t = 0.5f;
+                }
+
+                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+            }
         }
     }
 

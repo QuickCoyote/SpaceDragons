@@ -7,31 +7,28 @@ public class EnemyWaveManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 
-    [SerializeField] int StartingEnemies = 5;
-    [SerializeField] AnimationCurve difficultyScale = null;
-
-    [SerializeField] float minSpawnDistance = 25.0f;
-    [SerializeField] float maxSpawnDistance = 50.0f;
-
     [SerializeField] float waveSpawnTimer = 25.0f;
-    
 
+    [SerializeField] List<Wave> waves = new List<Wave>();
+  
     public int currentWave = 0;
-
     public GameObject Player = null;
+
+    float dt = 0.0f;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        CreateSceneParameters sceneParams = new CreateSceneParameters();
+        dt += Time.deltaTime;
 
-        Scene newScene = SceneManager.GetActiveScene();
-
-        
-
+        if(dt >= waveSpawnTimer)
+        {
+            waves[currentWave].StartWave();
+            dt = 0.0f;
+        }
     }
 }
