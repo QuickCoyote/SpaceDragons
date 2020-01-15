@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
     public void Fire()
     {
         goDirection = parentobj.transform.up;
-        transform.rotation = Quaternion.LookRotation(goDirection, -transform.forward);
+        transform.rotation = parentobj.transform.rotation;
     }
 
     public void Move()

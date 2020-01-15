@@ -46,7 +46,7 @@ public class Ship : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            RemoveBodyPart(bodyPartObjects[2]);
+            RemoveBodyPart(bodyPartObjects[2], false);
         }
     }
 
@@ -116,7 +116,7 @@ public class Ship : MonoBehaviour
         return bPart;
     }
 
-    public void RemoveBodyPart(GameObject bodyPart)
+    public void RemoveBodyPart(GameObject bodyPart, bool selling)
     {
         int removeIndex = 0;
         for (int i = 0; i < bodyPartObjects.Count; i++)
@@ -127,16 +127,25 @@ public class Ship : MonoBehaviour
             }
         }
 
-        if (removeIndex != 0)
+        if (!selling)
         {
-            int partCount = bodyPartObjects.Count - 1;
-
-            for (int j = partCount; j > removeIndex; j--)
+            if (removeIndex != 0)
             {
-                Destroy(bodyPartObjects[j]);
-                bodyPartObjects.RemoveAt(j);
-                bodyPartTransforms.RemoveAt(j);
+                int partCount = bodyPartObjects.Count - 1;
+
+                for (int j = partCount; j > removeIndex; j--)
+                {
+                    Destroy(bodyPartObjects[j]);
+                    bodyPartObjects.RemoveAt(j);
+                    bodyPartTransforms.RemoveAt(j);
+                }
             }
+        }
+        else
+        {
+            Destroy(bodyPartObjects[removeIndex]);
+            bodyPartObjects.RemoveAt(removeIndex);
+            bodyPartTransforms.RemoveAt(removeIndex);
         }
     }
 
