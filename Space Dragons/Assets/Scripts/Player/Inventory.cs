@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < inventoryDisplay.transform.childCount; i++)
+        for (int i = 0; i < inventoryDisplay.transform.childCount-1; i++)
         {
             if (i < inventory.Count)
             {
