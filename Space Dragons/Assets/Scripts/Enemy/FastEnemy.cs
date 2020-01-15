@@ -9,7 +9,6 @@ public class FastEnemy : Enemy
     public float targetflydistance;
     protected override void Attack()
     {
-        Turret.transform.LookAt(Player.transform.position,-Vector3.forward);
         if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
@@ -40,7 +39,12 @@ public class FastEnemy : Enemy
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-
         transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
+
+
+        Vector3 turretdirection = Player.transform.position - transform.position;
+        float turretangle = Mathf.Atan2(turretdirection.x, turretdirection.y) * Mathf.Rad2Deg;
+        Quaternion turretrotation = Quaternion.AngleAxis(-turretangle, Vector3.forward);
+        Turret.transform.rotation = Quaternion.Slerp(Turret.transform.rotation, turretrotation, rotationSpeed * 2 * Time.deltaTime);
     }
 }
