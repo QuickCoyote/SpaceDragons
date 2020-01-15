@@ -93,7 +93,10 @@ public class ShipyardController : MonoBehaviour
             if (Ships[i] != null)
             {
                 NumOfShips++;
-                button.image.sprite = Ships[i].GetComponent<Turret>().spriteRenderer.sprite;
+                Turret turret = Ships[i].GetComponent<Turret>();
+
+                button.image.sprite = turret.spriteRenderer.sprite;
+                button.image.color = turret.spriteRenderer.color;
                 selector.IsSlotFilled = true;
                 selector.SelectedShip = Ships[i];
             }
@@ -133,7 +136,9 @@ public class ShipyardController : MonoBehaviour
             Button button = obj.GetComponentInChildren<Button>();
             if (ShopShips[i] != null)
             {
-                button.image.sprite = ShopShips[i].GetComponent<Turret>().spriteRenderer.sprite;
+                Turret turret = ShopShips[i].GetComponent<Turret>();
+                button.image.sprite = turret.spriteRenderer.sprite;
+                button.image.color = turret.spriteRenderer.color;
             }
             obj.transform.SetParent(ShopShipScrollContent.transform);
         }
@@ -177,7 +182,8 @@ public class ShipyardController : MonoBehaviour
 
     public GameObject CreateShipFromData(ShipData data)
     {
-        GameObject Ship = data.prefab;
+        GameObject Ship = Instantiate(data.prefab);
+        Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
         ShipTurret.spriteRenderer.sprite = data.sprite;
         ShipTurret.price = data.price;
@@ -207,6 +213,14 @@ public class ShipyardController : MonoBehaviour
                 if(Ships[i] == null)
                 {
                     Ships[i] = purchase;
+                    if(i+1 < MotherShip.bodyPartObjects.Count)
+                    {
+                        MotherShip.bodyPartObjects[i+1] = purchase;
+                    }
+                    else
+                    {
+                        MotherShip.AddBodyPart(purchase);
+                    }
                     break;
                 }
             }
