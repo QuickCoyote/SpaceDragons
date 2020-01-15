@@ -7,11 +7,11 @@ using TMPro;
 public class ShipyardController : MonoBehaviour
 {
     public Ship MotherShip;
-    public List<Turret> Ships;
-    public List<Turret> ShopShips;
-    public List<Turret> CommonShips;
-    public List<Turret> RareShips;
-    public List<Turret> EpicShips;
+    public List<GameObject> Ships;
+    public List<GameObject> ShopShips;
+    public List<ShipData> CommonShips;
+    public List<ShipData> RareShips;
+    public List<ShipData> EpicShips;
     [Range(0, 2)] public int ShopDifficulty;
     public GameObject ShipScrollContent;
     public GameObject ShopShipScrollContent;
@@ -46,7 +46,7 @@ public class ShipyardController : MonoBehaviour
         }
         else if (Timer <= 0)
         {
-            ShopShips = new List<Turret>();
+            ShopShips = new List<GameObject>();
             ShipyardShopSetup();
         }
 
@@ -62,12 +62,12 @@ public class ShipyardController : MonoBehaviour
     public void ShipyardShipSetup()
     {
         int size = MotherShip.maxShipsAllowed;
-        Ships = new List<Turret>(size);
+        Ships = new List<GameObject>(size);
         for(int i = 0; i < size; i++)
         {
             if(i+1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
             {
-                Ships.Add(MotherShip.bodyPartObjects[i + 1].GetComponent<Turret>());
+                Ships.Add(MotherShip.bodyPartObjects[i + 1]);
             }
             else
             {
@@ -93,7 +93,7 @@ public class ShipyardController : MonoBehaviour
             if (Ships[i] != null)
             {
                 NumOfShips++;
-                button.image.sprite = Ships[i].spriteRenderer.sprite;
+                button.image.sprite = Ships[i].GetComponent<Turret>().spriteRenderer.sprite;
                 selector.IsSlotFilled = true;
                 selector.SelectedShip = Ships[i].GetComponent<Turret>();
             }
@@ -149,24 +149,42 @@ public class ShipyardController : MonoBehaviour
             {
                 //Add Random Epic to Shop List
                 int rand = Random.Range(0, 5);
-                Turret EpicShip = EpicShips[(int)rand];
-                ShopShips.Add(EpicShip);
+                ShipData EpicShip = EpicShips[(int)rand];
+                GameObject Ship = CreateShipFromData(EpicShip);
+
+                ShopShips.Add(Ship);
             }
             else if(randNum > RareProbability)
             {
                 //Add Random Rare to Shop List
                 int rand = Random.Range(0, 5);
-                Turret RareShip = RareShips[(int)rand];
-                ShopShips.Add(RareShip);
+                ShipData RareShip = RareShips[(int)rand];
+                GameObject Ship = CreateShipFromData(RareShip);
+
+                ShopShips.Add(Ship);
             }
             else
             {
                 //Add Random Common to Shop List
                 int rand = Random.Range(0, 5);
-                Turret CommonShip = CommonShips[(int)rand];
-                ShopShips.Add(CommonShip);
+                ShipData CommonShip = CommonShips[(int)rand];
+                GameObject Ship = CreateShipFromData(CommonShip);
+
+                ShopShips.Add(Ship);
             }
         }
+    }
+
+    public GameObject CreateShipFromData(ShipData data)
+    {
+        GameObject Ship = data.prefab;
+        Turret ShipTurret = Ship.GetComponent<Turret>();
+        ShipTurret.spriteRenderer.sprite = data.sprite;
+        ShipTurret.price = data.price;
+        ShipTurret.spriteRenderer.color = data.color;
+        
+
+        return Ship;
     }
 
     public void SelectionIncrement()
