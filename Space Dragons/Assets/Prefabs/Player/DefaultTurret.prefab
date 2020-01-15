@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907886232745900671}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.399, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.3989999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3203934535235123941}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &6893461471801671079
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   range: 10
   attackSpeed: 0.25
   price: 10
-  turretSprite: {fileID: 2013710388852829490}
+  spriteRenderer: {fileID: 0}
   bullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774, type: 3}
   rotationSpeed: 45
   bulletOffsetY: 1

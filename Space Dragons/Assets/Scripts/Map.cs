@@ -9,7 +9,7 @@ public class Map : MonoBehaviour
     public void MapOpen()
     {
         MainMap.SetActive(true);
-        Time.timeScale = 0.0000000000001f;
+        Time.timeScale = 0;
     }
 
     public void MapClose()
