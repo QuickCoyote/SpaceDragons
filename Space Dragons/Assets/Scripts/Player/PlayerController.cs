@@ -22,18 +22,20 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //shoot from head
-        attackTimer += Time.deltaTime;
-
-        if(attackTimer > attackSpeed)
+        if (Input.touchCount > 0)
         {
-            GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
-            Projectile projectile = projectileGO.GetComponent<Projectile>();
-            projectile.parentobj = head;
-            projectile.damage = attackDamage;
-            projectile.Fire();
+            attackTimer += Time.deltaTime;
 
-            attackTimer = 0;
+            if (attackTimer > attackSpeed)
+            {
+                GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
+                Projectile projectile = projectileGO.GetComponent<Projectile>();
+                projectile.parentobj = head;
+                projectile.damage = attackDamage;
+                projectile.Fire();
+
+                attackTimer = 0;
+            }
         }
     }
 
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public bool RemoveMoney(int amount)
     {
-        if(money - amount > 0)
+        if (money - amount > 0)
         {
             money -= amount;
             return true;
