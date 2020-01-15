@@ -406,6 +406,17 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3444605818881253907, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 204911e6ac4b7f745a3d0de8266d1852,
+        type: 3}
+    - target: {fileID: 4872505726963452805, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7727138449512577727, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: orthographic size
@@ -856,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 7044326793431985128, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985132, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
