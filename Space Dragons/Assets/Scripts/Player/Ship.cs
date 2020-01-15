@@ -143,6 +143,7 @@ public class Ship : MonoBehaviour
         }
         else
         {
+            Destroy(bodyPartObjects[removeIndex]);
             bodyPartObjects.RemoveAt(removeIndex);
             bodyPartTransforms.RemoveAt(removeIndex);
         }
