@@ -22,11 +22,12 @@ public abstract class Enemy : MonoBehaviour
         NONE
     }
     
+    public GameObject Player;
+
     protected float shootingTimer;
     protected Rigidbody2D rb;
     protected Vector3 target;
     protected Health hp;
-    protected GameObject Player;
 
     void Start()
     {
