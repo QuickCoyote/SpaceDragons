@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Wave", menuName = "Wave")]
 public class Wave : ScriptableObject
 {
-    [SerializeField] List<Enemy> myEnemies = new List<Enemy>();
+    [SerializeField] List<GameObject> myEnemies = new List<GameObject>();
     [SerializeField] float minSpawnDistance = 25.0f;
     [SerializeField] float maxSpawnDistance = 50.0f;
 
     public void StartWave()
     {
-        GameObject player = GameObject.FindObjectOfType<EnemyWaveManager>().Player;
+        GameObject player = FindObjectOfType<EnemyWaveManager>().Player;
 
         for (int i = 0; i < myEnemies.Count; i++)
         {

@@ -190,6 +190,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c03491f4a3e540f418e56991ec4cd7be, type: 3}
+--- !u!114 &921045696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5215258217068158141, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1497893408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8116ec6a62cbb4f489c98e7642cf39ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069360482
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1753379421, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 921045696}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -360,10 +376,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs: []
-  waveSpawnTimer: 25
-  waves: []
+  waveSpawnTimer: 60
+  waves:
+  - {fileID: 11400000, guid: 56db1f46babcb5f44bf067366ec05e94, type: 2}
+  - {fileID: 11400000, guid: 0de6d74a85233e643937282ff363b80a, type: 2}
+  - {fileID: 11400000, guid: 4be0a8f3f94f5204db4b87261f36d0fc, type: 2}
+  - {fileID: 11400000, guid: 3692d2044ac98ed419c8560d49f811ec, type: 2}
+  - {fileID: 11400000, guid: 03b3b06bab0334446834026f767f4c85, type: 2}
+  - {fileID: 11400000, guid: fd7cb8d4e51050341b8498ccde7e8b37, type: 2}
+  - {fileID: 11400000, guid: 6cec5e187abf36846a2231cc766eb609, type: 2}
+  - {fileID: 11400000, guid: a658a1a639a64ea4380587d36c491451, type: 2}
+  - {fileID: 11400000, guid: 8d83a2cae69b7404cab977b6fe24e019, type: 2}
+  - {fileID: 11400000, guid: ad17269c886113c479026a09a4772be4, type: 2}
   currentWave: 0
-  Player: {fileID: 0}
+  cycleCount: 0
+  Player: {fileID: 1691247125}
 --- !u!4 &1643072407
 Transform:
   m_ObjectHideFlags: 0
