@@ -16,18 +16,24 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData item, int num)
     {
-        if (items.Keys.Count < inventory.Count)
+        Debug.Log(items.Count);
+        if (items.ContainsKey(item))
         {
-            List<ItemData> itemsTemp = items.Keys.ToList();
-            for (int i = 0; i < items.Keys.Count; i++)
+            for (int i = 0; i < inventory.Count; i++)
             {
-                if (itemsTemp[i] == item)
+                if (items.Keys.ElementAt(i) == item)
                 {
                     items[item] += num;
                     break;
                 }
             }
         }
+        else
+        {
+            items.Add(item, num);
+            Debug.Log("Added item: " + item.itemName);
+        }
+        Debug.Log(items.Count);
     }
 
     public void RemoveItem(ItemData item, int num)
@@ -70,12 +76,12 @@ public class Inventory : MonoBehaviour
     public void UpdateDisplay()
     {
         int num = 0;
+        inventory = new List<ItemData>();
         for (int i = 0; i < items.Keys.Count; i++)
         {
             if (items[items.Keys.ElementAt(i)] > 0)
             {
-                inventory[num] = items.Keys.ElementAt(i);
-                num++;
+                inventory.Add(items.Keys.ElementAt(i));
             }
         }
 

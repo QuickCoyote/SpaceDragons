@@ -9,6 +9,8 @@ public class Ship : MonoBehaviour
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
 
+    public GameObject head = null;
+
     public Sprite[] ShipHeadSprites;
     public SpriteRenderer ShipHeadSprite = null;
 
@@ -152,5 +154,11 @@ public class Ship : MonoBehaviour
     public void SetShipHeadSprite(int val)
     {
         ShipHeadSprite.sprite = ShipHeadSprites[val];
+    }
+
+    public void SortBody()
+    {
+        bodyPartObjects.Sort();
+        bodyPartTransforms.Sort();
     }
 }
