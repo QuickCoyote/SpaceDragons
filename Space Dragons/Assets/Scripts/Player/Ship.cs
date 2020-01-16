@@ -51,13 +51,13 @@ public class Ship : MonoBehaviour
             RemoveBodyPart(bodyPartObjects[2], false);
         }
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             RemoveBodyPart(bodyPartObjects[2], true);
             SortBody();
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SortBody();
         }
@@ -180,7 +180,10 @@ public class Ship : MonoBehaviour
 
         for (int i = 0; i < bodyPartObjects.Count; i++)
         {
-            bodyPartTransforms[i] = bodyPartObjects[i].transform;
+            if (bodyPartObjects[i] != null)
+            {
+                bodyPartTransforms[i] = bodyPartObjects[i].transform;
+            }
         }
     }
 }

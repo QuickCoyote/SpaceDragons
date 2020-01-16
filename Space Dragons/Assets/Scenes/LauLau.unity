@@ -263,16 +263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: bodyPartTransforms.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: bodyPartTransforms.Array.data[0]
-      value: 
-      objectReference: {fileID: 1497893409}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -338,19 +328,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1738985361}
-    - target: {fileID: 9050757591192326804, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MapOpen
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
---- !u!4 &1497893409 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 196209910265618381, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1497893408}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691247125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 196209910265618382, guid: 9cf8245b2f173ab449c7aafd54978c1b,
