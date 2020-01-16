@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 011
   itemName: Platinum Bars
-  description: These would have caught a fortune on earth. Too bad you're in space.
+  description: These would have cost a fortune on earth. Too bad you're in space.
   itemImage: {fileID: 21300000, guid: df12aff720c1d6e4f9014b39aec79f4f, type: 3}

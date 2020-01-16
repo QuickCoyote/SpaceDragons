@@ -52,7 +52,7 @@ public class ShipSelector : MonoBehaviour
         controller.Ships.Add(null);
         controller.MotherShip.bodyPartObjects.Remove(SelectedShip);
         controller.MotherShip.bodyPartObjects.Add(null);
-        controller.MotherShip.RemoveBodyPart(SelectedShip);
+        controller.MotherShip.RemoveBodyPart(SelectedShip, true);
         controller.ShipyardShipSetup();
         //PLACE MONEY ADDING HERE
     }
