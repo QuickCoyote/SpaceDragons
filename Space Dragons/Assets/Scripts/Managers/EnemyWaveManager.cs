@@ -12,6 +12,7 @@ public class EnemyWaveManager : MonoBehaviour
     [SerializeField] List<Wave> waves = new List<Wave>();
   
     public int currentWave = 0;
+    public int cycleCount = 0;
     public GameObject Player = null;
 
     float dt = 0.0f;
@@ -27,8 +28,35 @@ public class EnemyWaveManager : MonoBehaviour
 
         if(dt >= waveSpawnTimer)
         {
-            waves[currentWave].StartWave();
+            for(int i = 0; i <= cycleCount; i++)
+            {
+                waves[currentWave].StartWave();
+            }
             dt = 0.0f;
+            currentWave++;
         }
+
+        if(currentWave == 10)
+        {
+            currentWave = 0;
+            cycleCount++;
+        }
+    }
+
+    public void ReduceCycleCount(int amount)
+    {
+        if(cycleCount - amount > 0)
+        {
+            cycleCount -= amount;
+        }
+        else
+        {
+            cycleCount = 0;
+        }
+    }
+    
+    public void IncreaseCycleCount(int amount)
+    {
+        cycleCount += amount;
     }
 }
