@@ -217,10 +217,12 @@ public class ShipyardController : MonoBehaviour
                     if(i+1 < MotherShip.bodyPartObjects.Count)
                     {
                         MotherShip.bodyPartObjects[i+1] = purchase;
+                        MotherShip.SortBody();
                     }
                     else
                     {
                         MotherShip.AddBodyPart(purchase);
+                        MotherShip.SortBody();
                     }
                     break;
                 }
