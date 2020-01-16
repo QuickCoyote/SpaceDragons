@@ -217,7 +217,7 @@ public class ShipyardController : MonoBehaviour
                     Ships[i] = purchase;
                     if(i+1 < MotherShip.bodyPartObjects.Count)
                     {
-                        MotherShip.bodyPartObjects.ElementAt(i + 1) = purchase;
+                        MotherShip.bodyPartObjects.ToList()[i + 1] = purchase;
                     }
                     else
                     {

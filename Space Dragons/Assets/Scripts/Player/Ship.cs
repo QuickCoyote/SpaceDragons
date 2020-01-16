@@ -10,6 +10,8 @@ public class Ship : MonoBehaviour
     public Queue<GameObject> bodyPartObjects = new Queue<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
 
+    public GameObject head = null;
+
     public Sprite[] ShipHeadSprites;
     public SpriteRenderer ShipHeadSprite = null;
 
@@ -31,7 +33,8 @@ public class Ship : MonoBehaviour
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
-        bodyPartObjects.Enqueue(bodyPartTransforms.Peek().gameObject);
+        bodyPartTransforms.Enqueue(head.transform);
+        bodyPartObjects.Enqueue(head);
         AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
     }
 
