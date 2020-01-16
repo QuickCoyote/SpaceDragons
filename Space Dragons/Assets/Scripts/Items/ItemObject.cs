@@ -18,6 +18,7 @@ public class ItemObject : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponentInParent<Inventory>().AddItem(itemData, 1);
+            other.GetComponentInParent<Inventory>().UpdateDisplay();
             Destroy(gameObject);
         }
     }
