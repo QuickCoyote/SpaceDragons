@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Ship : MonoBehaviour
 {
     #region Variables
-    public List<Transform> bodyPartTransforms = new List<Transform>();
-    public List<GameObject> bodyPartObjects = new List<GameObject>();
+    public Queue<Transform> bodyPartTransforms = new Queue<Transform>();
+    public Queue<GameObject> bodyPartObjects = new Queue<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
 
     public Sprite[] ShipHeadSprites;
@@ -23,7 +24,6 @@ public class Ship : MonoBehaviour
     private float dst = 1.0f;
     private Transform curBodyPart = null;
     private Transform prevBodyPart = null;
-
     #endregion
 
     private void Start()
@@ -31,7 +31,7 @@ public class Ship : MonoBehaviour
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
-        bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
+        bodyPartObjects.Enqueue(bodyPartTransforms.Peek().gameObject);
         AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
     }
 
@@ -46,7 +46,7 @@ public class Ship : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            RemoveBodyPart(bodyPartObjects[2], false);
+            RemoveBodyPart(bodyPartObjects.ElementAt(2), false);
         }
     }
 
@@ -61,22 +61,22 @@ public class Ship : MonoBehaviour
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
             targetPos.z = 0;
             // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+            Vector3 direction = targetPos - bodyPartTransforms.ElementAt(0).transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+            bodyPartTransforms.ElementAt(0).rotation = Quaternion.Slerp(bodyPartTransforms.Peek().rotation, rotation, rotationSpeed * Time.deltaTime);
 
-            bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
+            bodyPartTransforms.Peek().Translate(bodyPartTransforms.Peek().up * curSpeed * Time.smoothDeltaTime, Space.World);
 
             for (int i = 1; i < bodyPartTransforms.Count; i++)
             {
-                curBodyPart = bodyPartTransforms[i];
-                prevBodyPart = bodyPartTransforms[i - 1];
+                curBodyPart = bodyPartTransforms.ElementAt(i);
+                prevBodyPart = bodyPartTransforms.ElementAt(i - 1);
 
                 dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
 
                 Vector3 newPos = prevBodyPart.position;
-                newPos.z = bodyPartTransforms[0].position.z;
+                newPos.z = bodyPartTransforms.Peek().position.z;
 
                 float t = Time.deltaTime * dst / minDst * curSpeed;
 
@@ -93,11 +93,12 @@ public class Ship : MonoBehaviour
 
     public void AddBodyPart(GameObject bodyPart)
     {
-        Transform newPart = (Instantiate(bodyPart, bodyPartTransforms[bodyPartTransforms.Count - 1].position, bodyPartTransforms[bodyPartTransforms.Count - 1].rotation) as GameObject).transform;
+        List<Transform> BodyPartTransformList = bodyPartTransforms.ToList();
+        Transform newPart = (Instantiate(bodyPart, BodyPartTransformList[bodyPartTransforms.Count - 1].position, BodyPartTransformList[bodyPartTransforms.Count - 1].rotation) as GameObject).transform;
 
         newPart.SetParent(transform);
-        bodyPartTransforms.Add(newPart);
-        bodyPartObjects.Add(newPart.gameObject);
+        bodyPartTransforms.Enqueue(newPart);
+        bodyPartObjects.Enqueue(newPart.gameObject);
     }
 
     public GameObject FindBodyPartFromPrefabs(string partName)
@@ -118,10 +119,13 @@ public class Ship : MonoBehaviour
 
     public void RemoveBodyPart(GameObject bodyPart, bool selling)
     {
+        List<Transform> BodyPartTransformList = bodyPartTransforms.ToList();
+        List<GameObject> BodyPartObjectList = bodyPartObjects.ToList();
+
         int removeIndex = 0;
         for (int i = 0; i < bodyPartObjects.Count; i++)
         {
-            if (bodyPartObjects[i] == bodyPart)
+            if (bodyPartObjects.ElementAt(i) == bodyPart)
             {
                 removeIndex = i;
             }
@@ -135,18 +139,20 @@ public class Ship : MonoBehaviour
 
                 for (int j = partCount; j > removeIndex; j--)
                 {
-                    Destroy(bodyPartObjects[j]);
-                    bodyPartObjects.RemoveAt(j);
-                    bodyPartTransforms.RemoveAt(j);
+                    Destroy(bodyPartObjects.ElementAt(j));
+                    BodyPartObjectList.RemoveAt(j);
+                    BodyPartTransformList.RemoveAt(j);
                 }
             }
         }
-        else
+        else if (removeIndex != 0)
         {
-            Destroy(bodyPartObjects[removeIndex]);
-            bodyPartObjects.RemoveAt(removeIndex);
-            bodyPartTransforms.RemoveAt(removeIndex);
+            Destroy(bodyPartObjects.ElementAt(removeIndex));
+            BodyPartObjectList.RemoveAt(removeIndex);
+            BodyPartTransformList.RemoveAt(removeIndex);
         }
+        bodyPartObjects = new Queue<GameObject>(BodyPartObjectList);
+        bodyPartTransforms = new Queue<Transform>(BodyPartTransformList);
     }
 
     public void SetShipHeadSprite(int val)

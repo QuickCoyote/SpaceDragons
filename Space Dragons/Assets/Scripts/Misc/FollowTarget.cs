@@ -18,7 +18,7 @@ public class FollowTarget : MonoBehaviour
     {
         if(targetS)
         {
-            transform.Translate(targetS.bodyPartTransforms[0].up * targetS.speed * Time.smoothDeltaTime);
+            transform.Translate(targetS.bodyPartTransforms.Peek().up * targetS.speed * Time.smoothDeltaTime);
         }
         else
         {
