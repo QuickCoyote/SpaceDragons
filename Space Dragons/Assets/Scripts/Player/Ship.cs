@@ -33,12 +33,7 @@ public class Ship : MonoBehaviour
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
-<<<<<<< HEAD
-        bodyPartTransforms.Enqueue(head.transform);
-        bodyPartObjects.Enqueue(head);
-=======
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
->>>>>>> parent of 0026dd3... Conversion from lists to Queues in Ship.cs
         AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
     }
 
@@ -159,5 +154,11 @@ public class Ship : MonoBehaviour
     public void SetShipHeadSprite(int val)
     {
         ShipHeadSprite.sprite = ShipHeadSprites[val];
+    }
+
+    public void SortBody()
+    {
+        bodyPartObjects.Sort();
+        bodyPartTransforms.Sort();
     }
 }
