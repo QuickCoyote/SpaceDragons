@@ -216,11 +216,7 @@ public class ShipyardController : MonoBehaviour
                     Ships[i] = purchase;
                     if(i+1 < MotherShip.bodyPartObjects.Count)
                     {
-<<<<<<< HEAD
-                        MotherShip.bodyPartObjects.ToList()[i + 1] = purchase;
-=======
                         MotherShip.bodyPartObjects[i+1] = purchase;
->>>>>>> parent of 0026dd3... Conversion from lists to Queues in Ship.cs
                     }
                     else
                     {
