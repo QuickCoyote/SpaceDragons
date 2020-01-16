@@ -11313,11 +11313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9fb3d0729a0ff4eb9ac2b86d1acb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPartTransforms:
-  - {fileID: 196209910265618381}
-  bodyPartObjects: []
   bodyPartPrefabs:
   - {fileID: 4977157105735039448, guid: 51edef244fd707f40ab9f44d41c43cd9, type: 3}
+  head: {fileID: 196209910265618382}
   ShipHeadSprites:
   - {fileID: 21300000, guid: 1e7400fa874a7d74092e8605559f035e, type: 3}
   ShipHeadSprite: {fileID: 196209910334023937}
