@@ -36,6 +36,10 @@ public class RustyOldTurret : Turret
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             spriteRenderer.gameObject.transform.rotation = Quaternion.Slerp(spriteRenderer.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
+        else
+        {
+            enemies.Dequeue();
+        }
     }
 
     public override void Attack()

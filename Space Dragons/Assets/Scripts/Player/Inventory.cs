@@ -16,7 +16,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData item, int num)
     {
-        Debug.Log(items.Count);
         if (items.ContainsKey(item))
         {
             for (int i = 0; i < inventory.Count; i++)
@@ -31,9 +30,7 @@ public class Inventory : MonoBehaviour
         else
         {
             items.Add(item, num);
-            Debug.Log("Added item: " + item.itemName);
         }
-        Debug.Log(items.Count);
     }
 
     public void RemoveItem(ItemData item, int num)
