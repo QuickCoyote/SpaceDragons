@@ -27,16 +27,20 @@ public class ShipyardController : MonoBehaviour
     float MaxTime = 300;
     int selectedPurchase = 0;
 
-    private void Start()
+    public void Start()
     {
         ShipyardShipSetup();
         ShipyardShopSetup();
-
     }
 
-    private void Update()
+    public void Update()
     {
-        if(Timer > 0)
+        if(Ships[0] == null)
+        {
+            Start();
+        }
+
+        if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
             int seconds = (int)Timer % 60;
@@ -44,7 +48,7 @@ public class ShipyardController : MonoBehaviour
             //ShopTimer.text = string.Format("{0d1:##}", ShopTimer.text);
             Timer -= 1 * Time.deltaTime;
         }
-        else if (Timer <= 0)
+        else if (Timer <= 0 )
         {
             ShopShips = new List<GameObject>();
             ShipyardShopSetup();
@@ -65,7 +69,7 @@ public class ShipyardController : MonoBehaviour
         Ships = new List<GameObject>(size);
         for(int i = 0; i < size; i++)
         {
-            if(i+1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
+            if(i + 1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
             {
                 MotherShip.bodyPartObjects[i + 1].SetActive(true);
                 Ships.Add(MotherShip.bodyPartObjects[i + 1]);

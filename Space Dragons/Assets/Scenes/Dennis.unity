@@ -1741,7 +1741,7 @@ PrefabInstance:
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_RotationMode: 1
   m_UpdateMethod: 2
   m_Targets:
-  - target: {fileID: 0}
+  - target: {fileID: 1307720006}
     weight: 1
     radius: 0
 --- !u!4 &380349359
@@ -6525,6 +6525,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eea9dd53479d845b7ba567ae487978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1307720006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 196209910265618381, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 289189702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1309644601
 GameObject:
   m_ObjectHideFlags: 0
@@ -10456,7 +10462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884864159
 GameObject:
@@ -12107,11 +12113,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shipyard
       objectReference: {fileID: 0}
-    - target: {fileID: 2806653248138247144, guid: 5f4cf970ff9ecc042bd224115fa14acd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2806653248138247145, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12150,7 +12151,7 @@ PrefabInstance:
     - target: {fileID: 2806653248138247145, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2806653248138247145, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -12219,7 +12220,7 @@ PrefabInstance:
     - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
