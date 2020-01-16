@@ -67,6 +67,7 @@ public class ShipyardController : MonoBehaviour
         {
             if(i+1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
             {
+                MotherShip.bodyPartObjects[i + 1].SetActive(true);
                 Ships.Add(MotherShip.bodyPartObjects[i + 1]);
             }
             else
