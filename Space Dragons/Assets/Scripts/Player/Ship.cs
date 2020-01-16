@@ -9,6 +9,8 @@ public class Ship : MonoBehaviour
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
 
+    public GameObject head = null;
+
     public Sprite[] ShipHeadSprites;
     public SpriteRenderer ShipHeadSprite = null;
 
@@ -48,6 +50,17 @@ public class Ship : MonoBehaviour
         {
             RemoveBodyPart(bodyPartObjects[2], false);
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RemoveBodyPart(bodyPartObjects[2], true);
+            SortBody();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SortBody();
+        }
     }
 
     public void Move()
@@ -70,23 +83,27 @@ public class Ship : MonoBehaviour
 
             for (int i = 1; i < bodyPartTransforms.Count; i++)
             {
-                curBodyPart = bodyPartTransforms[i];
-                prevBodyPart = bodyPartTransforms[i - 1];
-
-                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
-                Vector3 newPos = prevBodyPart.position;
-                newPos.z = bodyPartTransforms[0].position.z;
-
-                float t = Time.deltaTime * dst / minDst * curSpeed;
-
-                if (t > .5f)
+                if (bodyPartTransforms[i] != null)
                 {
-                    t = 0.5f;
-                }
 
-                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
-                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+                    curBodyPart = bodyPartTransforms[i];
+                    prevBodyPart = bodyPartTransforms[i - 1];
+
+                    dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                    Vector3 newPos = prevBodyPart.position;
+                    newPos.z = bodyPartTransforms[0].position.z;
+
+                    float t = Time.deltaTime * dst / minDst * curSpeed;
+
+                    if (t > .5f)
+                    {
+                        t = 0.5f;
+                    }
+
+                    curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                    curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+                }
             }
         }
     }
@@ -152,5 +169,25 @@ public class Ship : MonoBehaviour
     public void SetShipHeadSprite(int val)
     {
         ShipHeadSprite.sprite = ShipHeadSprites[val];
+    }
+
+    public void SortBody()
+    {
+        for (int i = 1; i < bodyPartObjects.Count; i++)
+        {
+            if (bodyPartObjects[i - 1] == null)
+            {
+                bodyPartObjects[i - 1] = bodyPartObjects[i];
+                bodyPartObjects[i] = null;
+            }
+        }
+
+        for (int i = 0; i < bodyPartObjects.Count; i++)
+        {
+            if (bodyPartObjects[i] != null)
+            {
+                bodyPartTransforms[i] = bodyPartObjects[i].transform;
+            }
+        }
     }
 }

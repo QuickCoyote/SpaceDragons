@@ -9,10 +9,10 @@ public class Wave : ScriptableObject
     [SerializeField] float minSpawnDistance = 25.0f;
     [SerializeField] float maxSpawnDistance = 50.0f;
 
-    [SerializeField] GameObject player = null;
-
     public void StartWave()
     {
+        GameObject player = GameObject.FindObjectOfType<EnemyWaveManager>().Player;
+
         for (int i = 0; i < myEnemies.Count; i++)
         {
             float randX = Random.Range(minSpawnDistance, maxSpawnDistance);
