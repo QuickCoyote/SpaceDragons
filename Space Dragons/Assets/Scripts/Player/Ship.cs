@@ -83,23 +83,27 @@ public class Ship : MonoBehaviour
 
             for (int i = 1; i < bodyPartTransforms.Count; i++)
             {
-                curBodyPart = bodyPartTransforms[i];
-                prevBodyPart = bodyPartTransforms[i - 1];
-
-                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
-                Vector3 newPos = prevBodyPart.position;
-                newPos.z = bodyPartTransforms[0].position.z;
-
-                float t = Time.deltaTime * dst / minDst * curSpeed;
-
-                if (t > .5f)
+                if (bodyPartTransforms[i] != null)
                 {
-                    t = 0.5f;
-                }
 
-                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
-                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+                    curBodyPart = bodyPartTransforms[i];
+                    prevBodyPart = bodyPartTransforms[i - 1];
+
+                    dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                    Vector3 newPos = prevBodyPart.position;
+                    newPos.z = bodyPartTransforms[0].position.z;
+
+                    float t = Time.deltaTime * dst / minDst * curSpeed;
+
+                    if (t > .5f)
+                    {
+                        t = 0.5f;
+                    }
+
+                    curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                    curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+                }
             }
         }
     }
