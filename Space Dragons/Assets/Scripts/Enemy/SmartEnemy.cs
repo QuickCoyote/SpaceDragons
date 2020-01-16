@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SmartEnemy : Enemy
@@ -30,7 +29,7 @@ public class SmartEnemy : Enemy
     {
         if (!playerShip) playerShip = Player.GetComponentInParent<Ship>();
 
-        target = playerShip.bodyPartObjects.ElementAt(playerShip.bodyPartObjects.Count - 1).transform.position;
+        target = playerShip.bodyPartObjects[playerShip.bodyPartObjects.Count - 1].transform.position;
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);

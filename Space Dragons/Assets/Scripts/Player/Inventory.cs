@@ -21,18 +21,13 @@ public class Inventory : MonoBehaviour
             List<ItemData> itemsTemp = items.Keys.ToList();
             for (int i = 0; i < items.Keys.Count; i++)
             {
-                if (items.Keys.Contains(item))
+                if (itemsTemp[i] == item)
                 {
                     items[item] += num;
                     break;
                 }
-                else
-                {
-                    items.Add(item, num);
-                }
             }
         }
-
     }
 
     public void RemoveItem(ItemData item, int num)
