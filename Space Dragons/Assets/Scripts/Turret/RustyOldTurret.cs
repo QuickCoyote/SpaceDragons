@@ -9,11 +9,6 @@ public class RustyOldTurret : Turret
     [SerializeField] float rotationSpeed = 45f;
     [SerializeField] float bulletOffsetY = 1f;
 
-    private new void Awake()
-    {
-        base.Awake();
-    }
-
     void FixedUpdate()
     {
         if (enemies.Count > 0)
@@ -28,14 +23,14 @@ public class RustyOldTurret : Turret
         Enemy enemy = enemies.Peek();
         if (enemy)
         {
-            Vector3 direction = enemy.transform.position - spriteRenderer.gameObject.transform.position;
+            Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             if (angle < 15)
             {
                 Attack();
             }
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            spriteRenderer.gameObject.transform.rotation = Quaternion.Slerp(spriteRenderer.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
         else
         {
