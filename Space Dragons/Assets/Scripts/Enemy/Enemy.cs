@@ -41,8 +41,9 @@ public abstract class Enemy : MonoBehaviour
         Attack();
         Move();
 
-        if (hp.healthCount < 0.0f)
+        if (hp.healthCount <= 0.0f)
         {
+            FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
             Destroy(gameObject);
         }
     }

@@ -7,6 +7,7 @@ public class WorldManager : MonoBehaviour
     [SerializeField] public Transform WorldCorner = null;
     
     [SerializeField] public List<ItemData> Items = null;
+    [SerializeField] public List<GameObject> Explosions = null;
     [SerializeField] GameObject[] objectsToRender = null;
 
     private GameObject player = null;
@@ -19,6 +20,11 @@ public class WorldManager : MonoBehaviour
     public ItemData GetRandomItemData()
     {
         return Items[Random.Range(0, Items.Count)];
+    }
+
+    public void SpawnRandomExplosion(Vector3 target)
+    {
+        Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
     }
 
     private void FixedUpdate()

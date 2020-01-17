@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 0c9c617ec6b21c94b906a067dc237257
+guid: e0d833b59ef7679479eb7a983aabeb5b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - ShipSprite: {fileID: 21300000, guid: bd136e38679bd504fa60438213914b9b, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

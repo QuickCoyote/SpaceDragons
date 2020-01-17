@@ -54,12 +54,13 @@ MonoBehaviour:
   projectile: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
     type: 3}
   gunNozzle: {fileID: 7279849889630746265}
-  speed: 5
+  speed: 6
   rotationSpeed: 5
   shootingSpeed: 0
   sightDistance: 25
   attackDamage: 25
   difficulty: 1
+  Player: {fileID: 0}
 --- !u!50 &5405416691029662828
 Rigidbody2D:
   serializedVersion: 4

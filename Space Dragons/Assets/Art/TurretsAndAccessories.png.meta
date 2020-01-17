@@ -1,0 +1,1557 @@
+fileFormatVersion: 2
+guid: 2f51c2abe4ecd3e48a34cab4d3b6839f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5313162079129869480
+    second: TurretsAndAccessories_0
+  - first:
+      213: -1624059430497926533
+    second: TurretsAndAccessories_1
+  - first:
+      213: -43064866181220950
+    second: TurretsAndAccessories_2
+  - first:
+      213: -557647521810021405
+    second: TurretsAndAccessories_3
+  - first:
+      213: 8707681804326772231
+    second: TurretsAndAccessories_4
+  - first:
+      213: -5404471142943132744
+    second: TurretsAndAccessories_5
+  - first:
+      213: -8854849046494789707
+    second: TurretsAndAccessories_6
+  - first:
+      213: 958404922570400075
+    second: TurretsAndAccessories_7
+  - first:
+      213: 5161195997392135388
+    second: TurretsAndAccessories_8
+  - first:
+      213: -7328090111754691621
+    second: TurretsAndAccessories_9
+  - first:
+      213: -7931572574924838184
+    second: TurretsAndAccessories_10
+  - first:
+      213: 6138750917631527082
+    second: TurretsAndAccessories_11
+  - first:
+      213: 6761716525866257232
+    second: TurretsAndAccessories_12
+  - first:
+      213: -5416462084258677857
+    second: TurretsAndAccessories_13
+  - first:
+      213: 5447370022736960061
+    second: TurretsAndAccessories_14
+  - first:
+      213: 8047298575760327985
+    second: TurretsAndAccessories_15
+  - first:
+      213: 8300612877329278586
+    second: TurretsAndAccessories_16
+  - first:
+      213: -5217721117532310611
+    second: TurretsAndAccessories_17
+  - first:
+      213: 2563543896829995133
+    second: TurretsAndAccessories_18
+  - first:
+      213: 832323803795321331
+    second: TurretsAndAccessories_19
+  - first:
+      213: -8634490658950501182
+    second: TurretsAndAccessories_20
+  - first:
+      213: 7333859762244524510
+    second: TurretsAndAccessories_21
+  - first:
+      213: -3553157869281068383
+    second: TurretsAndAccessories_22
+  - first:
+      213: 1050340031227320164
+    second: TurretsAndAccessories_23
+  - first:
+      213: 5707600769341769522
+    second: TurretsAndAccessories_24
+  - first:
+      213: -343331454345762941
+    second: TurretsAndAccessories_25
+  - first:
+      213: -5282243854238256458
+    second: TurretsAndAccessories_26
+  - first:
+      213: 3461289476671707530
+    second: TurretsAndAccessories_27
+  - first:
+      213: 740215016672584076
+    second: TurretsAndAccessories_28
+  - first:
+      213: -7845906438981504651
+    second: TurretsAndAccessories_29
+  - first:
+      213: 6904634626053363959
+    second: TurretsAndAccessories_30
+  - first:
+      213: 5178743081839771403
+    second: TurretsAndAccessories_31
+  - first:
+      213: 4114825536520490351
+    second: TurretsAndAccessories_32
+  - first:
+      213: -2782527727701432275
+    second: TurretsAndAccessories_33
+  - first:
+      213: -2234735521546582415
+    second: TurretsAndAccessories_34
+  - first:
+      213: -7730884019192218497
+    second: TurretsAndAccessories_35
+  - first:
+      213: 3055005291325682083
+    second: TurretsAndAccessories_36
+  - first:
+      213: 6526695031653614388
+    second: TurretsAndAccessories_37
+  - first:
+      213: 3753646289555932408
+    second: TurretsAndAccessories_38
+  - first:
+      213: 1726677204352393042
+    second: TurretsAndAccessories_39
+  - first:
+      213: 7754908047576383641
+    second: TurretsAndAccessories_40
+  - first:
+      213: -1680657771302193288
+    second: TurretsAndAccessories_41
+  - first:
+      213: 8383599300786380144
+    second: TurretsAndAccessories_42
+  - first:
+      213: 6848195103148965463
+    second: TurretsAndAccessories_43
+  - first:
+      213: -2797920996262539669
+    second: TurretsAndAccessories_44
+  - first:
+      213: 7832337419034417517
+    second: TurretsAndAccessories_45
+  - first:
+      213: -5494413639465103573
+    second: TurretsAndAccessories_46
+  - first:
+      213: 2354684667368772846
+    second: TurretsAndAccessories_47
+  - first:
+      213: -8444322272880011978
+    second: TurretsAndAccessories_48
+  - first:
+      213: 354787221746269316
+    second: TurretsAndAccessories_49
+  - first:
+      213: -7075470765205608991
+    second: TurretsAndAccessories_50
+  - first:
+      213: 1561229392628261468
+    second: TurretsAndAccessories_51
+  - first:
+      213: -2914210542538712257
+    second: TurretsAndAccessories_52
+  - first:
+      213: 4387272381542138516
+    second: TurretsAndAccessories_53
+  - first:
+      213: -8650442193811092058
+    second: TurretsAndAccessories_54
+  - first:
+      213: 2348040737240289593
+    second: TurretsAndAccessories_55
+  - first:
+      213: -7848137845084936264
+    second: TurretsAndAccessories_56
+  - first:
+      213: -1511539337974814273
+    second: TurretsAndAccessories_57
+  - first:
+      213: 8472094544470323236
+    second: TurretsAndAccessories_58
+  - first:
+      213: -2243553248491103450
+    second: TurretsAndAccessories_59
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TurretsAndAccessories_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8360
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd79d4d0c7d81644cbf0dfa229c964b9
+      internalID: 5313162079129869480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_1
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 8360
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a344773372c2a974ca996121c1343ead
+      internalID: -1624059430497926533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_2
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 8360
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd7b50fc6354804eb214e5ccb76f2cf
+      internalID: -43064866181220950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_3
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 8360
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f2cc7f55ee8cb44ab086b1d80293fb
+      internalID: -557647521810021405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_4
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 8360
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8027bcbcf8ff246a0212a64e0f2ead
+      internalID: 8707681804326772231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7600
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd0185c543e5db48ba63832d4b7880e
+      internalID: -5404471142943132744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_6
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 7600
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375bdff9ba92362448f1c149ddacf790
+      internalID: -8854849046494789707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_7
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 7600
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5add6f9efb2531f4e9d69753c6486af2
+      internalID: 958404922570400075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_8
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 7600
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f78dee77509ef4eb59c4fe0442d832
+      internalID: 5161195997392135388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_9
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 7600
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c945a33e39a3c5409d4afa4f8cb174b
+      internalID: -7328090111754691621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6840
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921680894b9626d42b248037677ebcad
+      internalID: -7931572574924838184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_11
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 6840
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399d6d2b7ed47e940836d49b6e8f7a38
+      internalID: 6138750917631527082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_12
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 6840
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92132fa9af2464e4b8dc5145f924eb22
+      internalID: 6761716525866257232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_13
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 6840
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa50dd2213d05824b86619b13c3fe188
+      internalID: -5416462084258677857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_14
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 6840
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5d8660ce0b6da4fa6cd815f95c048f
+      internalID: 5447370022736960061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6080
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9063b02db12f0448ab67fdc03bebc1c
+      internalID: 8047298575760327985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_16
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 6080
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cacb8fb25180844b8226a682d365d7d
+      internalID: 8300612877329278586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_17
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 6080
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1638fb07cada4ff4b826a7d81f550ccd
+      internalID: -5217721117532310611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_18
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 6080
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e34726012db4245a132366af077cd1
+      internalID: 2563543896829995133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_19
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 6080
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59ce48db13929a4db32e4762d9dc155
+      internalID: 832323803795321331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5320
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e3539077c204640962cc05c23c87b5
+      internalID: -8634490658950501182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_21
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 5320
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e025d932c359c48b74b06245a2a538
+      internalID: 7333859762244524510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_22
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 5320
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78b0643b63cc684e91e9ea22766b4b3
+      internalID: -3553157869281068383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_23
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 5320
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50867902014f88d4682835fdcfd2cbc9
+      internalID: 1050340031227320164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_24
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 5320
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b08640832e5ccd4db063592bcb4dbe0
+      internalID: 5707600769341769522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4560
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7effd72f206d8541a5b5fbffb023a51
+      internalID: -343331454345762941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_26
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 4560
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1ab944f3764cd4384d36ef64723f0f
+      internalID: -5282243854238256458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_27
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 4560
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880026115439fd3488d90a9fc1c32bf3
+      internalID: 3461289476671707530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_28
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 4560
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d709c0bbf150b043be437bee4c22f18
+      internalID: 740215016672584076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_29
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 4560
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2588c98557195a408697a5024756fcd
+      internalID: -7845906438981504651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3800
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c063c7416e2904abfb93cc0de3b6c4
+      internalID: 6904634626053363959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_31
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 3800
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f2b994c57bfb904f9ef164a51e36e23
+      internalID: 5178743081839771403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_32
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 3800
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc735f53b06adb40be48d4c403d13a1
+      internalID: 4114825536520490351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_33
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 3800
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1b3563d33ef3a4285d085904c14633
+      internalID: -2782527727701432275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_34
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 3800
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f019d5d1d13e54dacf25155f501d78
+      internalID: -2234735521546582415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3040
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5179f1bf2b83e4fa449541aa3892d7
+      internalID: -7730884019192218497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_36
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 3040
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc756252c254dc45973ec6bcbc65616
+      internalID: 3055005291325682083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_37
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 3040
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7e5bf59f7b9a24cb308c6186ec94dd
+      internalID: 6526695031653614388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_38
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 3040
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de41c8a40c7d534bab120d276708e8e
+      internalID: 3753646289555932408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_39
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 3040
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580313d0831f81d4783ad0ed05175034
+      internalID: 1726677204352393042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2280
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63a2619dd8abb34189a10a022ab1d45
+      internalID: 7754908047576383641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_41
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 2280
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efdcf9f2a30d954d8aa0e6fab623432
+      internalID: -1680657771302193288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_42
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 2280
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c4f2dc86320d94ebc1beb5778053a1
+      internalID: 8383599300786380144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_43
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 2280
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6faf00060e0b86640b3daa334c7c531e
+      internalID: 6848195103148965463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_44
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 2280
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c380821df27f8e4dade1cad0238d673
+      internalID: -2797920996262539669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1520
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53aa58c75abdde41bd686c6c0badc0a
+      internalID: 7832337419034417517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_46
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 1520
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a4128b45072da4bb9defffb812bf74
+      internalID: -5494413639465103573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_47
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1520
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5395858b2675be4aa7bd62e210a0c00
+      internalID: 2354684667368772846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_48
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 1520
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6d0310033a52849ab9eaebdfb31eae
+      internalID: -8444322272880011978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_49
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 1520
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b16c842a77719e4b9532a28bf8d13ed
+      internalID: 354787221746269316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 760
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19713bfd53cbe3d47b7199c29d336223
+      internalID: -7075470765205608991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_51
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 760
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3c2eb3b1b63a649b2f1a56c53668f6
+      internalID: 1561229392628261468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_52
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 760
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c041eb87cba702b41bbadba890cf0834
+      internalID: -2914210542538712257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_53
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 760
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612cf055381030e49a6c42e1668902ec
+      internalID: 4387272381542138516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_54
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 760
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08eaa3751d0ede04391ee6f5eced75df
+      internalID: -8650442193811092058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bcd2c7e064f6a1478d1107f041c3c31
+      internalID: 2348040737240289593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_56
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 0
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc82da1f5f35d73489449de43dab7692
+      internalID: -7848137845084936264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_57
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 0
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02c34ddced2a7e4880160951dd70ec0
+      internalID: -1511539337974814273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_58
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 0
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1126d76fe23bbb04db5d3cd64c413666
+      internalID: 8472094544470323236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TurretsAndAccessories_59
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 0
+        width: 744
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc26ac920a34e447807fb4d259a1f05
+      internalID: -2243553248491103450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
