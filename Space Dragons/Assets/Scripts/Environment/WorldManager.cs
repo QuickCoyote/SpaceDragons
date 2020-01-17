@@ -24,7 +24,7 @@ public class WorldManager : MonoBehaviour
 
     public void SpawnRandomExplosion(Vector3 target)
     {
-        Instantiate(Explosions[Random.Range(0, Explosions.Count)], transform);
+        Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
     }
 
     private void FixedUpdate()

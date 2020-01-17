@@ -24,7 +24,7 @@ public class ExplodingEnemy : Enemy
         if (collidedHP)
         {
             collidedHP.DealDamage(attackDamage);
-            Destroy(gameObject);
+            hp.healthCount = 0;
         }
     }
 }
