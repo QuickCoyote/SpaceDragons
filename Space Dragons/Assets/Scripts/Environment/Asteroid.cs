@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer sr = null;
+    [SerializeField] List<Sprite> asteroidImages = null;
+
     public ItemObject itemPrefab = null;
     public GameObject asteroid = null;
 
@@ -11,6 +15,8 @@ public class Asteroid : MonoBehaviour
     Rigidbody2D rb;
     public void Start()
     {
+        sr.sprite = asteroidImages[Random.Range(0, asteroidImages.Count)];
+
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
         if (sizeAndWeight == 0) sizeAndWeight = Random.value + 0.2f;
@@ -59,6 +65,7 @@ public class Asteroid : MonoBehaviour
            g.image.sprite = g.itemData.itemImage;
         }
         GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
+        FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
         Destroy(gameObject);
     }
 }
