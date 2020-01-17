@@ -6,6 +6,7 @@ using TMPro;
 
 public class ShipyardController : MonoBehaviour
 {
+    public GameObject Shipyard;
     public Ship MotherShip;
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
@@ -20,17 +21,19 @@ public class ShipyardController : MonoBehaviour
     public GameObject ShopMenu;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
-    public GameObject FullOnShipsMessage;
+    public GameObject MaxShipWarning;
 
     int NumOfShips;
     float Timer = 0;
     float MaxTime = 300;
     int selectedPurchase = 0;
+    float dt = 0;
 
     public void Start()
     {
         ShipyardShipSetup();
         ShipyardShopSetup();
+        Shipyard.SetActive(false);
     }
 
     public void Update()
@@ -46,7 +49,7 @@ public class ShipyardController : MonoBehaviour
             int seconds = (int)Timer % 60;
             ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
             //ShopTimer.text = string.Format("{0d1:##}", ShopTimer.text);
-            Timer -= 1 * Time.deltaTime;
+            Timer -= 1 * Time.unscaledDeltaTime;
         }
         else if (Timer <= 0 )
         {
@@ -54,12 +57,28 @@ public class ShipyardController : MonoBehaviour
             ShipyardShopSetup();
         }
 
-        if (Input.GetKeyDown(KeyCode.F3
-            ))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             Timer = 5;
         }
-    
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            OpenShop();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseShop();
+        }
+
+        if(dt >= 0)
+        {
+            dt -= 1 * Time.unscaledDeltaTime;
+        }
+        else if(Shipyard.activeInHierarchy)
+        {
+            Time.timeScale = 0;
+        }
+
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
     }
 
@@ -201,11 +220,15 @@ public class ShipyardController : MonoBehaviour
     public void SelectionIncrement()
     {
         selectedPurchase++;
+        Time.timeScale = 1;
+        dt = 0.5f;
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
+        Time.timeScale = 1;
+        dt = 0.5f;
     }
 
     public void Purchase()
@@ -238,6 +261,7 @@ public class ShipyardController : MonoBehaviour
         else
         {
             //Maybe some kind of ERROR message to let the player know they're full on ships
+            MaxShipWarning.SetActive(true);
         }
     }
 
@@ -249,5 +273,24 @@ public class ShipyardController : MonoBehaviour
     public void Repair()
     {
         //IMPLEMENT MOTHERSHIP REPAIR
+    }
+
+    public void CloseMessage()
+    {
+        MaxShipWarning.SetActive(false);
+    }
+
+    public void OpenShop()
+    {
+        Shipyard.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void CloseShop()
+    {
+        Shipyard.SetActive(false);
+        ShipMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 }
