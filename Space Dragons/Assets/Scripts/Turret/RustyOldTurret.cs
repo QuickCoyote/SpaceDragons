@@ -20,6 +20,7 @@ public class RustyOldTurret : Turret
         {
             RotateTurret();
         }
+        CheckForDie();
     }
 
     public void RotateTurret()
@@ -29,7 +30,7 @@ public class RustyOldTurret : Turret
         {
             Vector3 direction = enemy.transform.position - spriteRenderer.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (angle < 5)
+            if (angle < 15)
             {
                 Attack();
             }
