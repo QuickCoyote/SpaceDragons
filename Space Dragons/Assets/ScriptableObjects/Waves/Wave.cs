@@ -6,7 +6,7 @@ using UnityEngine;
 public class Wave : ScriptableObject
 {
     [SerializeField] List<GameObject> myEnemies = new List<GameObject>();
-    [SerializeField] float minSpawnDistance = 25.0f;
+    [SerializeField] float minSpawnDistance = -50.0f;
     [SerializeField] float maxSpawnDistance = 50.0f;
 
     public void StartWave()

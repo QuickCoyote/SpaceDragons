@@ -10,6 +10,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] Sprite emptyItemImage;
     [SerializeField] GameObject inventoryDisplay = null;
     [SerializeField] GameObject closeInventory = null;
+    [SerializeField] GameObject itemInfoPanel = null;
+    [SerializeField] Image itemInfoPanelImage = null;
+    [SerializeField] TextMeshProUGUI itemInfoPanelName = null;
+    [SerializeField] TextMeshProUGUI itemInfoPanelDesc = null;
 
     List<ItemData> inventory = new List<ItemData>();
     Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
@@ -84,15 +88,18 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < inventoryDisplay.transform.childCount; i++)
         {
+            Transform child = inventoryDisplay.transform.GetChild(i);
             if (i < inventory.Count)
             {
-                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<Image>().sprite = inventory[i].itemImage;
-                inventoryDisplay.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "x" + items[inventory[i]];
+                child.GetComponent<ItemObject>().itemData = inventory[i];
+                child.GetComponentInChildren<Image>().sprite = inventory[i].itemImage;
+                child.GetComponentInChildren<TextMeshProUGUI>().text = "x" + items[inventory[i]];
             }
             else
             {
-                inventoryDisplay.transform.GetChild(i).gameObject.GetComponentInChildren<Image>().sprite = emptyItemImage;
-                inventoryDisplay.transform.GetChild(i).gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                child.GetComponent<ItemObject>().itemData = null;
+                child.GetComponentInChildren<Image>().sprite = emptyItemImage;
+                child.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
@@ -107,7 +114,25 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            ToggleItemInfo(false);
             Time.timeScale = 1.0f;
+        }
+    }
+
+    public void ToggleItemInfo(bool value)
+    {
+        itemInfoPanel.SetActive(value);
+    }
+
+    public void UpdateItemInfoPanel(ItemObject dataHolder)
+    {
+        if(dataHolder.itemData != null)
+        {
+            ItemData data = dataHolder.itemData;
+
+            itemInfoPanelImage.sprite = data.itemImage;
+            itemInfoPanelName.text = "Item Name: " + data.itemName;
+            itemInfoPanelDesc.text = "Item Description: " + data.description;
         }
     }
 }
