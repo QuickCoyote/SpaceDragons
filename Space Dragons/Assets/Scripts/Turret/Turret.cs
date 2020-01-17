@@ -56,4 +56,12 @@ public abstract class Turret : MonoBehaviour
         range *= rarityModifier;
         attackSpeed *= rarityModifier;
     }
+
+    public void Die()   
+    {
+        if(GetComponent<Health>().healthCount <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
