@@ -76,7 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: f371059b6123e764fa95f98b58ca3ae6, type: 3}
+  m_Sprite: {fileID: 2610820940064512960, guid: 62385b5d51569664d99f66d616d5e3c9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidImages:
-  - {fileID: 21300000, guid: f371059b6123e764fa95f98b58ca3ae6, type: 3}
+  - {fileID: 2610820940064512960, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
+  - {fileID: 7207317592713883248, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
+  - {fileID: -6565937354857456132, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
   asteroid: {fileID: 336725093998916287}

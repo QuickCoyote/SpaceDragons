@@ -66,6 +66,7 @@ public class Asteroid : MonoBehaviour
            g.image.sprite = g.itemData.itemImage;
         }
         GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
+        FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
         Destroy(gameObject);
     }
 }
