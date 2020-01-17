@@ -141,6 +141,7 @@ public class Ship : MonoBehaviour
             if (bodyPartObjects[i] == bodyPart)
             {
                 removeIndex = i;
+                Debug.Log(removeIndex);
             }
         }
 
@@ -148,15 +149,16 @@ public class Ship : MonoBehaviour
         {
             if (removeIndex != 0)
             {
-                int partCount = bodyPartObjects.Count - 1;
+                int partCount = bodyPartObjects.Count;
 
                 for (int j = partCount; j > removeIndex; j--)
                 {
-                    Destroy(bodyPartObjects[j]);
-                    bodyPartObjects.RemoveAt(j);
-                    bodyPartTransforms.RemoveAt(j);
+                    Destroy(bodyPartObjects[j-1]);
+                    bodyPartObjects.RemoveAt(j-1);
+                    bodyPartTransforms.RemoveAt(j-1);
                 }
             }
+            // return;
         }
         else
         {

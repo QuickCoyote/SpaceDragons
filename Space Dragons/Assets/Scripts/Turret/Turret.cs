@@ -57,11 +57,12 @@ public abstract class Turret : MonoBehaviour
         attackSpeed *= rarityModifier;
     }
 
-    public void Die()   
+    public void CheckForDie()
     {
         if(GetComponent<Health>().healthCount <= 0)
         {
-            Destroy(gameObject);
+            FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
+            FindObjectOfType<Ship>().RemoveBodyPart(gameObject, false);
         }
     }
 }
