@@ -5,6 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public GameObject MainMap;
+    public GameObject PlayerIcon;
 
     public void MapOpen()
     {
