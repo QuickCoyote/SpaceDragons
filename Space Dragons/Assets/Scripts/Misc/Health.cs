@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] Slider healthbar = null;
     public float healthMax = 1.0f;
     public float healthCount = 0.0f;
 
@@ -15,6 +17,7 @@ public class Health : MonoBehaviour
         an = GetComponent<Animator>();
         damageSFX = GetComponent<AudioSource>();
         healthCount = healthMax;
+        if (healthbar) healthbar.maxValue = healthMax;
     }
 
     public void ResetHealth()
@@ -28,5 +31,13 @@ public class Health : MonoBehaviour
         if (an) an.SetTrigger("Damage");
         if (damageSFX) damageSFX.Play();
 
+    }
+
+    public void Update()
+    {
+        if (healthbar) healthbar.value = healthCount;
+        if (healthbar) healthbar.transform.rotation = Quaternion.identity;
+
+        
     }
 }
