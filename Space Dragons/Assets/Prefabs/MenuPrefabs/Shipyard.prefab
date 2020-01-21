@@ -1896,7 +1896,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: SelectionDecrement
         m_Mode: 1
@@ -3417,7 +3417,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: Repair
         m_Mode: 1
@@ -4709,7 +4709,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: TradeIn
         m_Mode: 1
@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: Purchase
         m_Mode: 1
@@ -6462,6 +6462,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2806653248138247145}
+  - component: {fileID: 7851826457358961477}
+  - component: {fileID: 5206029195898786653}
+  - component: {fileID: 8359747624604023380}
+  - component: {fileID: 989211277239977756}
   m_Layer: 0
   m_Name: Shipyard
   m_TagString: Untagged
@@ -6481,10 +6485,93 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2806653248522468063}
-  - {fileID: 2806653248632616655}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7851826457358961477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806653248138247144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4a6c594edba7f48b8cef04960d9e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shipyard: {fileID: 2806653248522468035}
+  MotherShip: {fileID: 0}
+  Ships: []
+  ShopShips: []
+  CommonShips:
+  - {fileID: 11400000, guid: 55307f6383b91754c84955c85f44f23b, type: 2}
+  RareShips:
+  - {fileID: 0}
+  EpicShips:
+  - {fileID: 0}
+  ShopDifficulty: 0
+  ShipScrollContent: {fileID: 2806653247236071227}
+  ShopShipScrollContent: {fileID: 2806653249048712284}
+  ShipButtonPrefab: {fileID: 3664979313381687034, guid: 87d7560c35036e947800cf312cecc33f,
+    type: 3}
+  ShipMenu: {fileID: 2806653247369138515}
+  ShopMenu: {fileID: 2806653247011002752}
+  ShipCounter: {fileID: 2806653248643372753}
+  ShopTimer: {fileID: 2806653247180582501}
+  MaxShipWarning: {fileID: 4579392239185995577}
+--- !u!58 &5206029195898786653
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806653248138247144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 8
+--- !u!58 &8359747624604023380
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806653248138247144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 25
+--- !u!249 &989211277239977756
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806653248138247144}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 55
+  m_UseGlobalAngle: 1
+  m_ForceAngle: 0
+  m_ForceMagnitude: 10
+  m_ForceVariation: 0
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &2806653248185811387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6942,7 +7029,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: SelectionIncrement
         m_Mode: 1
@@ -8551,69 +8638,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1746, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2806653248632616653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2806653248632616655}
-  - component: {fileID: 2806653248632616654}
-  m_Layer: 0
-  m_Name: Shipyard Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2806653248632616655
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248632616653}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -640.63434, y: -501.5589, z: 96.62213}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2806653248138247145}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2806653248632616654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248632616653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4a6c594edba7f48b8cef04960d9e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shipyard: {fileID: 2806653248522468035}
-  MotherShip: {fileID: 0}
-  Ships: []
-  ShopShips: []
-  CommonShips:
-  - {fileID: 11400000, guid: 55307f6383b91754c84955c85f44f23b, type: 2}
-  RareShips:
-  - {fileID: 11400000, guid: 079ea2bb4996cce418cfddc79621b020, type: 2}
-  EpicShips:
-  - {fileID: 11400000, guid: 30c854549a9ca2547867c1c94396a78b, type: 2}
-  ShopDifficulty: 0
-  ShipScrollContent: {fileID: 2806653247236071227}
-  ShopShipScrollContent: {fileID: 2806653249048712284}
-  ShipButtonPrefab: {fileID: 3664979313381687034, guid: 87d7560c35036e947800cf312cecc33f,
-    type: 3}
-  ShipMenu: {fileID: 2806653247369138515}
-  ShopMenu: {fileID: 2806653247011002752}
-  ShipCounter: {fileID: 2806653248643372753}
-  ShopTimer: {fileID: 2806653247180582501}
-  MaxShipWarning: {fileID: 4579392239185995577}
 --- !u!1 &2806653248643372759
 GameObject:
   m_ObjectHideFlags: 0
@@ -10954,7 +10978,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2806653248632616654}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShipyardController, Assembly-CSharp
         m_MethodName: CloseMessage
         m_Mode: 1
@@ -11235,31 +11259,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712609559744971794, guid: 87d7560c35036e947800cf312cecc33f,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1401991929
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712609559744971794, guid: 87d7560c35036e947800cf312cecc33f,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712609559744971794, guid: 87d7560c35036e947800cf312cecc33f,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 32767
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712609559744971794, guid: 87d7560c35036e947800cf312cecc33f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 4712609559744971794, guid: 87d7560c35036e947800cf312cecc33f,
-        type: 3}
-      propertyPath: m_DrawMode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d7560c35036e947800cf312cecc33f, type: 3}
