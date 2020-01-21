@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public GameObject parentobj = null;
     public Vector3 goDirection = Vector3.zero;
     public Rigidbody2D rb = null;
+    AudioSource fireSFX;
 
     private void FixedUpdate()
     {
@@ -38,6 +39,9 @@ public class Projectile : MonoBehaviour
 
     public void Fire()
     {
+        fireSFX = GetComponent<AudioSource>();
+        fireSFX.pitch = fireSFX.pitch + Random.Range(-.25f,.25f);
+        if (fireSFX) fireSFX.Play();
         goDirection = parentobj.transform.up;
         transform.rotation = parentobj.transform.rotation;
     }
