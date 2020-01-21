@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidManager : MonoBehaviour
+public class AsteroidManager : AsteroidManager
 {
     [SerializeField] AsteroidCluster asteroidClusterPrefab = null;
     public int ClusterMinimum = 500;
