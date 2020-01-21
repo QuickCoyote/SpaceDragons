@@ -182,10 +182,30 @@ public class ShipyardController : MonoBehaviour
             {
                 Turret turret = ShopShips[i].GetComponent<Turret>();
 
-                button.transform.GetChild(3).GetComponent<Image>().sprite = turret.spriteRendererWings.sprite;
-                button.transform.GetChild(1).GetComponent<Image>().sprite = turret.spriteRendererBase.sprite;
-                button.transform.GetChild(4).GetComponent<Image>().sprite = turret.spriteRendererBadge.sprite;
-                button.transform.GetChild(2).GetComponent<Image>().sprite = turret.spriteRendererTurret.sprite;
+                for (int j = 1; j < 5; j++)
+                {
+                    Image buttonChildImage = button.transform.GetChild(j).GetComponent<Image>();
+
+                    switch (j)
+                    {
+                        case 1:
+                            buttonChildImage.sprite = turret.spriteRendererWings.sprite;
+                            break;
+                        case 2:
+                            buttonChildImage.sprite = turret.spriteRendererBase.sprite;
+                            break;
+                        case 3:
+                            buttonChildImage.sprite = turret.spriteRendererBadge.sprite;
+                            break;
+                        case 4:
+                            buttonChildImage.sprite = turret.spriteRendererTurret.sprite;
+                            break;
+                    }
+                    if(buttonChildImage.sprite != null)
+                    {
+                        buttonChildImage.color = new Color(buttonChildImage.color.r, buttonChildImage.color.g, buttonChildImage.color.b, 1);
+                    }
+                }
             }
             obj.transform.SetParent(ShopShipScrollContent.transform);
         }
@@ -233,10 +253,30 @@ public class ShipyardController : MonoBehaviour
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
 
-        ShipTurret.spriteRendererBase.sprite = data.spriteBase;
-        ShipTurret.spriteRendererTurret.sprite = data.spriteTurret;
-        ShipTurret.spriteRendererWings.sprite = data.spriteWings;
-        ShipTurret.spriteRendererBadge.sprite = data.spriteBadge;
+        int randBase = Random.Range(0, data.spriteBases.Length);
+        int randTurret = Random.Range(0, 4);
+        int randWings = Random.Range(0, 4);
+
+        int randBadgeCommon = Random.Range(0, 4);
+        int randBadgeRare = Random.Range(0, 4);
+        int randBadgeEpic = Random.Range(0, 4);
+
+        ShipTurret.spriteRendererBase.sprite = data.spriteBases[randBase];
+        ShipTurret.spriteRendererTurret.sprite = data.spriteTurrets[randTurret];
+        ShipTurret.spriteRendererWings.sprite = data.spriteWings[randWings];
+        switch(data.rarity)
+        {
+            case ShipData.eTurretRarity.COMMON:
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[randBadgeCommon];
+                break;
+            case ShipData.eTurretRarity.RARE:
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesRare[randBadgeRare];
+                break;
+            case ShipData.eTurretRarity.EPIC:
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesEpic[randBadgeEpic];
+                break;
+        }
+
 
         ShipTurret.price = data.price;
         ShipTurret.turretRarity = data.rarity;
@@ -309,9 +349,12 @@ public class ShipyardController : MonoBehaviour
 
     public void OpenShop()
     {
+        ShipyardShipSetup();
         Shipyard.SetActive(true);
         Time.timeScale = 0;
     }
+
+    
 
     public void CloseShop()
     {
