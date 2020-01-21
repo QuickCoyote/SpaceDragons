@@ -5,7 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="ShipData", menuName ="ScriptableObjects/ShipScriptableObject", order = 2)]
 public class ShipData : ScriptableObject
 {
-    public Sprite sprite;
+    public Sprite spriteBase;
+    public Sprite spriteTurret;
+    public Sprite spriteWings;
+    public Sprite spriteBadge;
     public float price;
     public GameObject prefab;
     public Color color;
