@@ -5,13 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="ShipData", menuName ="ScriptableObjects/ShipScriptableObject", order = 2)]
 public class ShipData : ScriptableObject
 {
-    public Sprite spriteBase;
-    public Sprite spriteTurret;
-    public Sprite spriteWings;
-    public Sprite spriteBadge;
+    public Sprite[] spriteBases;
+    public Sprite[] spriteTurrets;
+    public Sprite[] spriteWings;
+    public Sprite[] spriteBadgesCommon;
+    public Sprite[] spriteBadgesRare;
+    public Sprite[] spriteBadgesEpic;
     public float price;
     public GameObject prefab;
-    public Color color;
     public eTurretRarity rarity;
     public enum eTurretRarity
     {
