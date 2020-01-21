@@ -22,8 +22,8 @@ public class ShipSelector : MonoBehaviour
             {
                 if(child.tag == "ShipyardShip")
                 {
-                    child.GetComponent<Image>().sprite = SelectedShip.GetComponent<SpriteRenderer>().sprite;
-                    child.GetComponent<Image>().color = SelectedShip.GetComponent<SpriteRenderer>().color;
+                    child.GetComponent<Image>().sprite = SelectedShip.GetComponent<Image>().sprite;
+                    child.GetComponent<Image>().color = SelectedShip.GetComponent<Image>().color;
                 }
                 if(child.tag == "SellButton")
                 {

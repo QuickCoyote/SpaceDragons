@@ -8,10 +8,12 @@ public class Health : MonoBehaviour
     public float healthCount = 0.0f;
 
     Animator an = null;
+    AudioSource damageSFX;
 
     public void Start()
     {
         an = GetComponent<Animator>();
+        damageSFX = GetComponent<AudioSource>();
         healthCount = healthMax;
     }
 
@@ -23,9 +25,8 @@ public class Health : MonoBehaviour
     public void DealDamage(float dmg)
     {
         healthCount -= dmg;
-        if (an)
-        {
-            an.SetTrigger("Damage");
-        }
+        if (an) an.SetTrigger("Damage");
+        if (damageSFX) damageSFX.Play();
+
     }
 }

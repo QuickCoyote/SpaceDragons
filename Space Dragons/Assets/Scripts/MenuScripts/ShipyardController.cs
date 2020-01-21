@@ -38,7 +38,7 @@ public class ShipyardController : MonoBehaviour
 
     public void Update()
     {
-        if(Ships[0] == null)
+        if (Ships[0] == null)
         {
             Start();
         }
@@ -51,7 +51,7 @@ public class ShipyardController : MonoBehaviour
             //ShopTimer.text = string.Format("{0d1:##}", ShopTimer.text);
             Timer -= 1 * Time.unscaledDeltaTime;
         }
-        else if (Timer <= 0 )
+        else if (Timer <= 0)
         {
             ShopShips = new List<GameObject>();
             ShipyardShopSetup();
@@ -61,20 +61,20 @@ public class ShipyardController : MonoBehaviour
         {
             Timer = 5;
         }
-        if(Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             OpenShop();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             CloseShop();
         }
 
-        if(dt >= 0)
+        if (dt >= 0)
         {
             dt -= 1 * Time.unscaledDeltaTime;
         }
-        else if(Shipyard.activeInHierarchy)
+        else if (Shipyard.activeInHierarchy)
         {
             Time.timeScale = 0;
         }
@@ -86,9 +86,9 @@ public class ShipyardController : MonoBehaviour
     {
         int size = MotherShip.maxShipsAllowed;
         Ships = new List<GameObject>(size);
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
         {
-            if(i + 1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
+            if (i + 1 < MotherShip.bodyPartObjects.Count && MotherShip.bodyPartObjects[i + 1] != null)
             {
                 MotherShip.bodyPartObjects[i + 1].SetActive(true);
                 Ships.Add(MotherShip.bodyPartObjects[i + 1]);
@@ -119,8 +119,28 @@ public class ShipyardController : MonoBehaviour
                 NumOfShips++;
                 Turret turret = Ships[i].GetComponent<Turret>();
 
-                button.image.sprite = turret.spriteRenderer.sprite;
-                button.image.color = turret.spriteRenderer.color;
+                for (int j = 1; j < 5; j++)
+                {
+                    Image buttonChildImage = button.transform.GetChild(j).GetComponent<Image>();
+
+                    switch (j)
+                    {
+                        case 1:
+                            buttonChildImage.sprite = turret.spriteRendererWings.sprite;
+                            break;
+                        case 2:
+                            buttonChildImage.sprite = turret.spriteRendererBase.sprite;
+                            break;
+                        case 3:
+                            buttonChildImage.sprite = turret.spriteRendererBadge.sprite;
+                            break;
+                        case 4:
+                            buttonChildImage.sprite = turret.spriteRendererTurret.sprite;
+                            break;
+                    }
+                    buttonChildImage.color = new Color(buttonChildImage.color.r, buttonChildImage.color.g, buttonChildImage.color.b, 1);
+                }
+
                 selector.IsSlotFilled = true;
                 selector.SelectedShip = Ships[i];
             }
@@ -139,11 +159,11 @@ public class ShipyardController : MonoBehaviour
 
         if (Timer <= 0)
         {
-            if(ShopDifficulty == 0)
+            if (ShopDifficulty == 0)
             {
                 GenerateShopInventory(80, 99);
             }
-            else if(ShopDifficulty == 1)
+            else if (ShopDifficulty == 1)
             {
                 GenerateShopInventory(40, 95);
             }
@@ -161,8 +181,11 @@ public class ShipyardController : MonoBehaviour
             if (ShopShips[i] != null)
             {
                 Turret turret = ShopShips[i].GetComponent<Turret>();
-                button.image.sprite = turret.spriteRenderer.sprite;
-                button.image.color = turret.spriteRenderer.color;
+
+                button.transform.GetChild(3).GetComponent<Image>().sprite = turret.spriteRendererWings.sprite;
+                button.transform.GetChild(1).GetComponent<Image>().sprite = turret.spriteRendererBase.sprite;
+                button.transform.GetChild(4).GetComponent<Image>().sprite = turret.spriteRendererBadge.sprite;
+                button.transform.GetChild(2).GetComponent<Image>().sprite = turret.spriteRendererTurret.sprite;
             }
             obj.transform.SetParent(ShopShipScrollContent.transform);
         }
@@ -174,7 +197,7 @@ public class ShipyardController : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             float randNum = Random.Range(0.0f, 100.0f);
-            if(randNum > EpicProbability)
+            if (randNum > EpicProbability)
             {
                 //Add Random Epic to Shop List
                 int rand = Random.Range(0, EpicShips.Count);
@@ -183,7 +206,7 @@ public class ShipyardController : MonoBehaviour
 
                 ShopShips.Add(Ship);
             }
-            else if(randNum > RareProbability)
+            else if (randNum > RareProbability)
             {
                 //Add Random Rare to Shop List
                 int rand = Random.Range(0, RareShips.Count);
@@ -209,9 +232,13 @@ public class ShipyardController : MonoBehaviour
         GameObject Ship = Instantiate(data.prefab);
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
-        ShipTurret.spriteRenderer.sprite = data.sprite;
+
+        ShipTurret.spriteRendererBase.sprite = data.spriteBase;
+        ShipTurret.spriteRendererTurret.sprite = data.spriteTurret;
+        ShipTurret.spriteRendererWings.sprite = data.spriteWings;
+        ShipTurret.spriteRendererBadge.sprite = data.spriteBadge;
+
         ShipTurret.price = data.price;
-        ShipTurret.spriteRenderer.color = data.color;
         ShipTurret.turretRarity = data.rarity;
 
         return Ship;
@@ -233,17 +260,17 @@ public class ShipyardController : MonoBehaviour
 
     public void Purchase()
     {
-        if(NumOfShips != Ships.Count)
+        if (NumOfShips != Ships.Count)
         {
             GameObject purchase = ShopShips[selectedPurchase];
             for (int i = 0; i < Ships.Count; i++)
             {
-                if(Ships[i] == null)
+                if (Ships[i] == null)
                 {
                     Ships[i] = purchase;
-                    if(i+1 < MotherShip.bodyPartObjects.Count)
+                    if (i + 1 < MotherShip.bodyPartObjects.Count)
                     {
-                        MotherShip.bodyPartObjects[i+1] = purchase;
+                        MotherShip.bodyPartObjects[i + 1] = purchase;
                         MotherShip.SortBody();
                     }
                     else
