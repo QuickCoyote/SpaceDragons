@@ -5,6 +5,7 @@ using UnityEngine;
 public class AsteroidManager : MonoBehaviour
 {
     [SerializeField] AsteroidCluster asteroidClusterPrefab = null;
+    [SerializeField] GameObject asteroidBreakupPrefab = null;
     public int ClusterMinimum = 500;
     public int ClusterMaximum = 800;
     public List<AsteroidCluster> asteroidClusters = new List<AsteroidCluster>();
@@ -20,9 +21,8 @@ public class AsteroidManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnAsteroidDestruction(Vector3 target)
     {
-
+        Instantiate(asteroidBreakupPrefab, target, Quaternion.identity, null);
     }
 }
