@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        Vector2 worldSize = FindObjectOfType<WorldManager>().WorldCorner.position;
+        Vector2 worldSize = WorldManager.Instance.WorldCorner.position;
 
         for (int i = 0; i < Random.Range(EnemiesMin, EnemiesMax); i++)
         {

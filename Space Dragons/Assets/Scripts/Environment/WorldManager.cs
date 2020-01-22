@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldManager : MonoBehaviour
+public class WorldManager : Singleton<WorldManager>
 {
     [SerializeField] public Transform WorldCorner = null;
     
@@ -10,11 +10,13 @@ public class WorldManager : MonoBehaviour
     [SerializeField] public List<GameObject> Explosions = null;
     [SerializeField] GameObject[] objectsToRender = null;
 
-    private GameObject player = null;
+    public GameObject Player = null;
+    public Ship Ship = null;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Ship = GameObject.FindObjectOfType<Ship>();
     }
 
     public ItemData GetRandomItemData()
@@ -31,7 +33,7 @@ public class WorldManager : MonoBehaviour
     {
         foreach (GameObject go in objectsToRender)
         {
-            if((go.transform.position - player.transform.position).magnitude > 1050)
+            if((go.transform.position - Player.transform.position).magnitude > 1050)
             {
                 go.SetActive(false);
             }
