@@ -8,15 +8,33 @@ public class LightningTurret : Turret
 
     List<Enemy> shockedBois = new List<Enemy>();
 
-    private void Update()
+    void FixedUpdate()
     {
-        attackTimer += Time.deltaTime;
-
-        if (attackTimer > attackSpeed)
+        if (enemies.Count > 0)
         {
-            Attack();
+            RotateTurret();
         }
         CheckForDie();
+    }
+
+    public void RotateTurret()
+    {
+        Enemy enemy = enemies.Peek();
+        if (enemy)
+        {
+            Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            if (angle < 15)
+            {
+                ShockNext(enemy);
+            }
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            enemies.Dequeue();
+        }
     }
 
     public override void Attack()
