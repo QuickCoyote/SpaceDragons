@@ -342,7 +342,7 @@ namespace UnityEngine.UI.Extensions
             {
                 UpdateScrollbar(false);
 
-                listContainerTransform.localPosition = Vector3.Lerp(listContainerTransform.localPosition, lerpTarget, 7.5f * Time.deltaTime);
+                listContainerTransform.localPosition = Vector3.Lerp(listContainerTransform.localPosition, lerpTarget, 7.5f * Time.unscaledDeltaTime);
 
                 if (Vector3.Distance(listContainerTransform.localPosition, lerpTarget) < 0.001f)
                 {
