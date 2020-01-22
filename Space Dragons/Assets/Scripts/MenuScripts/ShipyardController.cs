@@ -318,15 +318,15 @@ public class ShipyardController : MonoBehaviour
     public void SelectionIncrement()
     {
         selectedPurchase++;
-        Time.timeScale = 1;
-        dt = 0.5f;
+        //Time.timeScale = 1;
+        //dt = 0.5f;
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
-        Time.timeScale = 1;
-        dt = 0.5f;
+        //Time.timeScale = 1;
+        //dt = 0.5f;
     }
 
     public void Purchase()
