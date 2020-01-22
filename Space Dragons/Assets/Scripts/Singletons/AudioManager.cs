@@ -64,5 +64,7 @@ public class AudioManager : Singleton<AudioManager>
         currentTrack = defaultTrack;
         currentTrack.Play();
     }
+
+
     
 }

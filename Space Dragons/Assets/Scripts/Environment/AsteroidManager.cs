@@ -6,8 +6,8 @@ public class AsteroidManager : Singleton<AsteroidManager>
 {
     [SerializeField] AsteroidCluster asteroidClusterPrefab = null;
     [SerializeField] GameObject asteroidBreakupPrefab = null;
-    public int ClusterMinimum = 500;
-    public int ClusterMaximum = 800;
+    public int ClusterMinimum = 300;
+    public int ClusterMaximum = 500;
     public List<AsteroidCluster> asteroidClusters = new List<AsteroidCluster>();
 
     // Start is called before the first frame update
