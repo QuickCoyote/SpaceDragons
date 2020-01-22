@@ -23,7 +23,10 @@ public class LightningTurret : Turret
     {
         if (enemies.Count > 0)
         {
-            ShockNext(enemies.Peek());
+            if(enemies.Peek() != null)
+            {
+                ShockNext(enemies.Peek());
+            }
         }
     }
 
@@ -43,9 +46,9 @@ public class LightningTurret : Turret
                 else
                 {
                     shockedBois.Add(en);
-                    en.GetComponent<Health>().healthCount -= damage;
                     ShockNext(en);
                 }
+                en.GetComponent<Health>().healthCount -= damage;
             }
         }
     }

@@ -15329,6 +15329,7 @@ MonoBehaviour:
   bodyPartObjects: []
   bodyPartPrefabs:
   - {fileID: 4977157105735039448, guid: 51edef244fd707f40ab9f44d41c43cd9, type: 3}
+  - {fileID: 4977157105735039448, guid: 84ac47bd751de3a40a6994085b6d61df, type: 3}
   head: {fileID: 196209910265618382}
   ShipHeadSprites:
   - {fileID: 21300000, guid: 1e7400fa874a7d74092e8605559f035e, type: 3}
