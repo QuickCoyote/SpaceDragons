@@ -390,4 +390,19 @@ public class ShipyardController : MonoBehaviour
         ShopMenu.SetActive(false);
         Time.timeScale = 1;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            OpenShop();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            CloseShop();
+        }
+    }
 }
