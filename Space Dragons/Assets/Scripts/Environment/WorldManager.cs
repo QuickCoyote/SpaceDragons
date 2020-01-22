@@ -37,7 +37,7 @@ public class WorldManager : Singleton<WorldManager>
         ResetList();
         foreach (Rigidbody2D go in objectsToRender)
         {
-            if((go.transform.position - Player.transform.position).magnitude > 250)
+            if((go.transform.position - Player.transform.position).magnitude > 150)
             {
                 go.gameObject.SetActive(false);
             }

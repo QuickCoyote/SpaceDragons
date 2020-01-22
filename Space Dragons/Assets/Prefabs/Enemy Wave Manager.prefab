@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3603683583041895937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3603683583041895939}
+  - component: {fileID: 3603683583041895938}
+  m_Layer: 0
+  m_Name: Enemy Wave Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3603683583041895939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603683583041895937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3603683583041895938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603683583041895937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd6214b03ae5c4f849b25c95d4edda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 0
+  enemyPrefabs: []
+  waveSpawnTimer: 60
+  waves:
+  - {fileID: 11400000, guid: 56db1f46babcb5f44bf067366ec05e94, type: 2}
+  - {fileID: 11400000, guid: 0de6d74a85233e643937282ff363b80a, type: 2}
+  - {fileID: 11400000, guid: 4be0a8f3f94f5204db4b87261f36d0fc, type: 2}
+  - {fileID: 11400000, guid: 3692d2044ac98ed419c8560d49f811ec, type: 2}
+  - {fileID: 11400000, guid: 03b3b06bab0334446834026f767f4c85, type: 2}
+  - {fileID: 11400000, guid: fd7cb8d4e51050341b8498ccde7e8b37, type: 2}
+  - {fileID: 11400000, guid: 6cec5e187abf36846a2231cc766eb609, type: 2}
+  - {fileID: 11400000, guid: a658a1a639a64ea4380587d36c491451, type: 2}
+  - {fileID: 11400000, guid: 8d83a2cae69b7404cab977b6fe24e019, type: 2}
+  - {fileID: 11400000, guid: ad17269c886113c479026a09a4772be4, type: 2}
+  currentWave: 0
+  cycleCount: 0
+  Player: {fileID: 0}
