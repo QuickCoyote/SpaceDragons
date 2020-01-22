@@ -32,6 +32,9 @@ public class BasicEnemy : Enemy
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-        transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
+        if (Vector3.Distance(transform.position, target) > .25f) //Stop moving if player gets too close.
+        {
+            transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
+        }
     }
 }
