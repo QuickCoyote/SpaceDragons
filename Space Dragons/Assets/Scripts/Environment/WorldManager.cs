@@ -10,13 +10,12 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public List<GameObject> Explosions = null;
     [SerializeField] GameObject[] objectsToRender = null;
 
-    public GameObject Player = null;
-    public Ship Ship = null;
+    [SerializeField] public GameObject Player = null;
+    [SerializeField] public Ship Ship;
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        Ship = GameObject.FindObjectOfType<Ship>();
+
     }
 
     public ItemData GetRandomItemData()
