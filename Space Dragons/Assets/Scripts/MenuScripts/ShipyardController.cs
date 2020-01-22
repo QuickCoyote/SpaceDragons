@@ -334,35 +334,38 @@ public class ShipyardController : MonoBehaviour
 
     public void Purchase()
     {
-        if (NumOfShips != Ships.Count)
+        if(ShopShips[selectedPurchase] != null)
         {
-            GameObject purchase = ShopShips[selectedPurchase];
-            for (int i = 0; i < Ships.Count; i++)
+            if (NumOfShips != Ships.Count)
             {
-                if (Ships[i] == null)
+                GameObject purchase = ShopShips[selectedPurchase];
+                for (int i = 0; i < Ships.Count; i++)
                 {
-                    Ships[i] = purchase;
-                    if (i + 1 < MotherShip.bodyPartObjects.Count)
+                    if (Ships[i] == null)
                     {
-                        MotherShip.bodyPartObjects[i + 1] = purchase;
-                        MotherShip.SortBody();
+                        Ships[i] = purchase;
+                        if (i + 1 < MotherShip.bodyPartObjects.Count)
+                        {
+                            MotherShip.bodyPartObjects[i + 1] = purchase;
+                            MotherShip.SortBody();
+                        }
+                        else
+                        {
+                            MotherShip.AddBodyPart(purchase);
+                            MotherShip.SortBody();
+                        }
+                        break;
                     }
-                    else
-                    {
-                        MotherShip.AddBodyPart(purchase);
-                        MotherShip.SortBody();
-                    }
-                    break;
                 }
+                ShopShips[selectedPurchase] = null;
+                ShipyardShipSetup();
+                ShipyardShopSetup();
             }
-            ShopShips[selectedPurchase] = null;
-            ShipyardShipSetup();
-            ShipyardShopSetup();
-        }
-        else
-        {
-            //Maybe some kind of ERROR message to let the player know they're full on ships
-            MaxShipWarning.SetActive(true);
+            else
+            {
+                //Maybe some kind of ERROR message to let the player know they're full on ships
+                MaxShipWarning.SetActive(true);
+            }
         }
     }
 
