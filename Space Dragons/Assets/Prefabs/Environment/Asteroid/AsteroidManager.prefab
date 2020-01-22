@@ -43,10 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520c7511f2c787d4ba65dc6f0af11279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidClusterPrefab: {fileID: 3165330668577441390, guid: eb8e4b59b7edd7a4a9005b8ab66d024d,
-    type: 3}
+  isPersistant: 0
   asteroidBreakupPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
     type: 3}
   ClusterMinimum: 300
   ClusterMaximum: 500
-  asteroidClusters: []
+  asteroidPrefab: {fileID: 336725093998916286, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4,
+    type: 3}
+  asteroids: []
+  AsteroidMinimum: 4
+  AsteroidMaximum: 10

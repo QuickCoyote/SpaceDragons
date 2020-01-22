@@ -54,7 +54,7 @@ public class Asteroid : MonoBehaviour
                 if (child)
                 {
                     child.sizeAndWeight = (sizeAndWeight - 0.45f);
-                    GetComponentInParent<AsteroidCluster>().asteroids.Add(child);
+                    AsteroidManager.Instance.asteroids.Add(child);
                 }
             }
         }
@@ -64,8 +64,8 @@ public class Asteroid : MonoBehaviour
            g.itemData = WorldManager.Instance.GetRandomItemData();
            g.image.sprite = g.itemData.itemImage;
         }
-        GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
-    //    AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
+        AsteroidManager.Instance.asteroids.Remove(this);
+        AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
         Destroy(gameObject);
     }
 }
