@@ -30,6 +30,7 @@ public class WorldManager : Singleton<WorldManager>
 
     private void FixedUpdate()
     {
+
         foreach (GameObject go in objectsToRender)
         {
             if((go.transform.position - Player.transform.position).magnitude > 1050)
