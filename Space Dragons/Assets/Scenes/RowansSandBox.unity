@@ -1804,6 +1804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shipyard
       objectReference: {fileID: 0}
+    - target: {fileID: 2806653248138247144, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2806653248138247145, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_LocalPosition.x
