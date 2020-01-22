@@ -21,7 +21,10 @@ public class LightningTurret : Turret
 
     public override void Attack()
     {
-        ShockNext(enemies.Peek());
+        if (enemies.Count > 0)
+        {
+            ShockNext(enemies.Peek());
+        }
     }
 
     public void ShockNext(Enemy enemy)
@@ -40,6 +43,7 @@ public class LightningTurret : Turret
                 else
                 {
                     shockedBois.Add(en);
+                    en.GetComponent<Health>().healthCount -= damage;
                     ShockNext(en);
                 }
             }

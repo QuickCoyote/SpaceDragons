@@ -123,7 +123,7 @@ public class Ship : MonoBehaviour
 
         foreach (GameObject bodyPart in bodyPartPrefabs)
         {
-            if (bodyPart.name.Equals("DefaultTurret"))
+            if (bodyPart.name.Equals("ShockPrefab"))
             {
                 bPart = bodyPart;
                 break;
