@@ -249,31 +249,62 @@ public class ShipyardController : MonoBehaviour
 
     public GameObject CreateShipFromData(ShipData data)
     {
+        if(data == null)
+        {
+            return null;
+        }
         GameObject Ship = Instantiate(data.prefab);
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
 
-        int randBase = Random.Range(0, data.spriteBases.Length);
-        int randTurret = Random.Range(0, 4);
-        int randWings = Random.Range(0, 4);
+        int randBaseColor = Random.Range(0, 5);
 
-        int randBadgeCommon = Random.Range(0, 4);
-        int randBadgeRare = Random.Range(0, 4);
-        int randBadgeEpic = Random.Range(0, 4);
+        Sprite randBase = null;
+        Sprite randTurret = null;
+        Sprite randWings = null;
 
-        ShipTurret.spriteRendererBase.sprite = data.spriteBases[randBase];
-        ShipTurret.spriteRendererTurret.sprite = data.spriteTurrets[randTurret];
-        ShipTurret.spriteRendererWings.sprite = data.spriteWings[randWings];
+        switch (randBaseColor)
+        {
+            case 0:
+                randBase = data.spriteBasesRed[Random.Range(0, data.spriteBasesRed.Length)];
+                randTurret = data.spriteTurretsRed[Random.Range(0, data.spriteTurretsRed.Length)];
+                randWings = data.spriteWingsRed[Random.Range(0, data.spriteWingsRed.Length)];
+                break;
+            case 1:
+                randBase = data.spriteBasesGreen[Random.Range(0, data.spriteBasesGreen.Length)];
+                randTurret = data.spriteTurretsGreen[Random.Range(0, data.spriteTurretsGreen.Length)];
+                randWings = data.spriteWingsGreen[Random.Range(0, data.spriteWingsGreen.Length)];
+                break;
+            case 2:
+                randBase = data.spriteBasesBlue[Random.Range(0, data.spriteBasesBlue.Length)];
+                randTurret = data.spriteTurretsBlue[Random.Range(0, data.spriteTurretsBlue.Length)];
+                randWings = data.spriteWingsBlue[Random.Range(0, data.spriteWingsBlue.Length)];
+                break;
+            case 3:
+                randBase = data.spriteBasesOrange[Random.Range(0, data.spriteBasesOrange.Length)];
+                randTurret = data.spriteTurretsOrange[Random.Range(0, data.spriteTurretsOrange.Length)];
+                randWings = data.spriteWingsOrange[Random.Range(0, data.spriteWingsOrange.Length)];
+                break;
+            case 4:
+                randBase = data.spriteBasesPurple[Random.Range(0, data.spriteBasesPurple.Length)];
+                randTurret = data.spriteTurretsPurple[Random.Range(0, data.spriteTurretsPurple.Length)];
+                randWings = data.spriteWingsPurple[Random.Range(0, data.spriteWingsPurple.Length)];
+                break;
+        }
+
+        ShipTurret.spriteRendererBase.sprite = randBase;
+        ShipTurret.spriteRendererTurret.sprite = randTurret;
+        ShipTurret.spriteRendererWings.sprite = randWings;
         switch(data.rarity)
         {
             case ShipData.eTurretRarity.COMMON:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[randBadgeCommon];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[randBaseColor];
                 break;
             case ShipData.eTurretRarity.RARE:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesRare[randBadgeRare];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesRare[randBaseColor];
                 break;
             case ShipData.eTurretRarity.EPIC:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesEpic[randBadgeEpic];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesEpic[randBaseColor];
                 break;
         }
 
@@ -362,5 +393,20 @@ public class ShipyardController : MonoBehaviour
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            OpenShop();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            CloseShop();
+        }
     }
 }

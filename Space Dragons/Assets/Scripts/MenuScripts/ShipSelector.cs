@@ -22,8 +22,51 @@ public class ShipSelector : MonoBehaviour
             {
                 if(child.tag == "ShipyardShip")
                 {
-                    child.GetComponent<Image>().sprite = SelectedShip.GetComponent<Image>().sprite;
-                    child.GetComponent<Image>().color = SelectedShip.GetComponent<Image>().color;
+                    for(int i = 0; i < child.transform.childCount; i++)
+                    {
+                        Sprite childImage = child.GetChild(i).GetComponent<Image>().sprite;
+
+                        Sprite baseSprite = null;
+                        Sprite turretSprite = null;
+                        Sprite wingsSprite = null;
+                        Sprite badgeSprite = null;
+
+                        for (int j = 0; j < SelectedShip.transform.childCount; j++)
+                        {
+                            Sprite childSprite = SelectedShip.transform.GetChild(j).GetComponentInChildren<SpriteRenderer>().sprite;
+                            switch (j)
+                            {
+                                case 0:
+                                    baseSprite = childSprite;
+                                    break;
+                                case 1:
+                                    turretSprite = childSprite;
+                                    break;
+                                case 2:
+                                    wingsSprite = childSprite;
+                                    break;
+                                case 3:
+                                    badgeSprite = childSprite;
+                                    break;
+                            }
+                        }
+
+                        switch(i)
+                        {
+                            case 0:
+                                childImage = baseSprite;
+                                break;
+                            case 1:
+                                childImage = turretSprite;
+                                break;
+                            case 2:
+                                childImage = wingsSprite;
+                                break;
+                            case 3:
+                                childImage = badgeSprite;
+                                break;
+                        }
+                    }
                 }
                 if(child.tag == "SellButton")
                 {
