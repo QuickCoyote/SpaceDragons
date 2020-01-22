@@ -249,6 +249,10 @@ public class ShipyardController : MonoBehaviour
 
     public GameObject CreateShipFromData(ShipData data)
     {
+        if(data == null)
+        {
+            return null;
+        }
         GameObject Ship = Instantiate(data.prefab);
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
