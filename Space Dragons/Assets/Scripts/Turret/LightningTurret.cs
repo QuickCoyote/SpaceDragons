@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightningTurret : Turret
 {
     public float chainDistance = 15.0f;
+    public float rotationSpeed = 15.0f;
 
     List<Enemy> shockedBois = new List<Enemy>();
 
