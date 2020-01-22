@@ -15120,7 +15120,7 @@ GameObject:
   - component: {fileID: 196209910265618379}
   - component: {fileID: 6490000148594582185}
   m_Layer: 8
-  m_Name: Head
+  m_Name: Player Head
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

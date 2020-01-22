@@ -12,11 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d6807f0cb38874eaf47296930cb626, type: 3}
   m_Name: RareShock
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  damage: 0
-  range: 0
-  attackSpeed: 0
+  spriteBasesRed:
+  - {fileID: 8047298575760327985, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -8634490658950501182, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -343331454345762941, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBasesGreen:
+  - {fileID: 8300612877329278586, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 7333859762244524510, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -5282243854238256458, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBasesBlue:
+  - {fileID: -5217721117532310611, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -3553157869281068383, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 3461289476671707530, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBasesOrange:
+  - {fileID: 2563543896829995133, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 1050340031227320164, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 740215016672584076, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBasesPurple:
+  - {fileID: 832323803795321331, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 5707600769341769522, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -7845906438981504651, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteTurretsRed:
+  - {fileID: 6904634626053363959, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -7730884019192218497, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 7754908047576383641, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 7832337419034417517, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteTurretsGreen:
+  - {fileID: 5178743081839771403, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 3055005291325682083, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -1680657771302193288, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -5494413639465103573, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteTurretsBlue:
+  - {fileID: 4114825536520490351, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 6526695031653614388, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 8383599300786380144, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 2354684667368772846, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteTurretsOrange:
+  - {fileID: -2782527727701432275, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 3753646289555932408, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 6848195103148965463, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -8444322272880011978, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteTurretsPurple:
+  - {fileID: -2234735521546582415, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 1726677204352393042, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -2797920996262539669, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 354787221746269316, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteWingsRed:
+  - {fileID: -7075470765205608991, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 2348040737240289593, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteWingsGreen:
+  - {fileID: 1561229392628261468, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -7848137845084936264, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteWingsBlue:
+  - {fileID: -2914210542538712257, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -1511539337974814273, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteWingsOrange:
+  - {fileID: 4387272381542138516, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 8472094544470323236, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteWingsPurple:
+  - {fileID: -8650442193811092058, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -2243553248491103450, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBadgesCommon:
+  - {fileID: -7931572574924838184, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 6138750917631527082, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 6761716525866257232, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -5416462084258677857, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 5447370022736960061, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBadgesRare:
+  - {fileID: 5313162079129869480, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -1624059430497926533, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -43064866181220950, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -557647521810021405, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 8707681804326772231, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  spriteBadgesEpic:
+  - {fileID: -5404471142943132744, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -8854849046494789707, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 958404922570400075, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: 5161195997392135388, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
+  - {fileID: -7328090111754691621, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   price: 0
-  prefab: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  rarity: 0
+  prefab: {fileID: 4977157105735039448, guid: 51edef244fd707f40ab9f44d41c43cd9, type: 3}
+  rarity: 1
