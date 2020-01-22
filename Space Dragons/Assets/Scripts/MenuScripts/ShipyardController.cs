@@ -147,6 +147,7 @@ public class ShipyardController : MonoBehaviour
             }
             button.onClick.AddListener(delegate { selector.OpenMenu(); });
             obj.transform.SetParent(ShipScrollContent.transform);
+            obj.gameObject.transform.localScale = new Vector3(1, 1);
 
         }
     }
@@ -209,6 +210,7 @@ public class ShipyardController : MonoBehaviour
                 }
             }
             obj.transform.SetParent(ShopShipScrollContent.transform);
+            obj.gameObject.transform.localScale = new Vector3(1, 1);
         }
 
     }
