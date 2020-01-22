@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6111596496924924786}
   - component: {fileID: 8445181093077309316}
   m_Layer: 8
-  m_Name: DefaultTurret
+  m_Name: RustyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  range: 25
+  range: 50
   attackSpeed: 0.25
   price: 0
   rotateBoi: {fileID: 2013710388852829490}
