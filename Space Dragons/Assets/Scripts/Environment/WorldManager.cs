@@ -15,7 +15,7 @@ public class WorldManager : Singleton<WorldManager>
 
     private void Start()
     {
-
+        ResetList();
     }
 
     public ItemData GetRandomItemData()
@@ -41,6 +41,11 @@ public class WorldManager : Singleton<WorldManager>
                 go.SetActive(true);
             }
         }
+    }
+
+    public void ResetList()
+    {
+        objectsToRender = FindObjectsOfType<GameObject>();
     }
 }
 
