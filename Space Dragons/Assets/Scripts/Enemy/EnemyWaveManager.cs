@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyWaveManager : MonoBehaviour
+public class EnemyWaveManager : Singleton<EnemyWaveManager>
 {
     [SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
 
@@ -19,7 +19,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = WorldManager.Instance.Player;
     }
 
     void FixedUpdate()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidManager : MonoBehaviour
+public class AsteroidManager : Singleton<AsteroidManager>
 {
     [SerializeField] AsteroidCluster asteroidClusterPrefab = null;
     [SerializeField] GameObject asteroidBreakupPrefab = null;
@@ -13,7 +13,7 @@ public class AsteroidManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 worldSize = FindObjectOfType<WorldManager>().WorldCorner.position;
+        Vector2 worldSize = WorldManager.Instance.WorldCorner.position;
         for (int i = 0; i < Random.Range(ClusterMinimum, ClusterMaximum); i++)
         {
             Vector2 location = new Vector2(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y)); //select spot for cluster

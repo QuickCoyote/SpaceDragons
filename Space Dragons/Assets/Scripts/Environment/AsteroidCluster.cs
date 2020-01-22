@@ -33,7 +33,7 @@ public class AsteroidCluster : MonoBehaviour
     {
         if (asteroids.Count == 0)
         {
-            GetComponentInParent<AsteroidManager>().asteroidClusters.Remove(this);
+            AsteroidManager.Instance.asteroidClusters.Remove(this);
         }
         driftTimer -= Time.deltaTime;
         if (driftTimer < 0.0f)

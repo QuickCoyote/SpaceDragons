@@ -6,12 +6,13 @@ using UnityEngine;
 public class CameraZoom : MonoBehaviour
 {
 
-    [SerializeField] Ship player;
+    Ship player;
     CinemachineTargetGroup targetGroup;
     SpriteRenderer spr = null;
 
     void Start()
     {
+        player = WorldManager.Instance.Ship;
         targetGroup = GetComponent<CinemachineTargetGroup>();
     }
 

@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24e64c7ca5152846819398c9a60206c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPersistant: 0
   WorldCorner: {fileID: 4229753923452401460}
   Items:
   - {fileID: 11400000, guid: 221da0f1a7f193b4aa1591eb48889353, type: 2}
@@ -435,6 +436,8 @@ MonoBehaviour:
   - {fileID: 3625080498115814520, guid: 4792332e7c6b4954e929752fbf9bb6f0, type: 3}
   - {fileID: 756791437917144548, guid: 7523bfa12921a664c9d5807c7aac87d7, type: 3}
   objectsToRender: []
+  Player: {fileID: 0}
+  Ship: {fileID: 0}
 --- !u!1 &4229753922998177941
 GameObject:
   m_ObjectHideFlags: 0
