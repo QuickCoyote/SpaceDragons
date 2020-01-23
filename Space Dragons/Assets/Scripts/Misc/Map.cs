@@ -12,10 +12,52 @@ public class Map : Singleton<Map>
     public TextMeshProUGUI shortestdistanceReadout = null;
     public FollowTarget MiniMapFollow = null;
 
-    ShipyardController[] Shipyards;
+    public bool TrackNearest = true;
+
+    MapTargets[] targets;
+    int TargetIndex = 0;
+    public Vector3 TargetBeingTracked = Vector3.zero;
+
     List<LineRenderer> linerenderers = new List<LineRenderer>();
     GameObject player;
-    public Vector3 nearestShipyard = Vector3.zero;
+    public Vector3 nearestTarget = Vector3.zero;
+
+
+    private void Start()
+    {
+        targets = FindObjectsOfType<MapTargets>();
+        foreach (MapTargets g in targets)
+        {
+            linerenderers.Add(Instantiate(linerendererprefab, transform));
+        }
+        player = WorldManager.Instance.Player;
+        MiniMapFollow.Target = player;
+
+        TargetBeingTracked = targets[0].transform.position;
+    }
+
+    private void Update()
+    {
+        //Check for distances.
+        float shortestDistance = 50000;
+        for (int i = 0; i < linerenderers.Count; i++)
+        {
+            linerenderers[i].positionCount = 2;
+            linerenderers[i].SetPosition(0, targets[i].transform.position - Vector3.forward);
+            linerenderers[i].SetPosition(1, player.transform.position - Vector3.forward);
+            if (Vector3.Distance(player.transform.position, targets[i].transform.position) < shortestDistance)
+            {
+                shortestDistance = Vector3.Distance(player.transform.position, targets[i].transform.position);
+                nearestTarget = targets[i].transform.position;
+            }
+        }
+        shortestdistanceReadout.text = shortestDistance.ToString("000km");
+
+        //Check where to rotate minimap tracker
+        Vector3 direction = (TrackNearest) ? nearestTarget - player.transform.position : TargetBeingTracked - player.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        TargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+    }
 
     public void MapOpen()
     {
@@ -29,35 +71,45 @@ public class Map : Singleton<Map>
         Time.timeScale = 1f;
     }
 
-    private void Start()
-    {
-        Shipyards = FindObjectsOfType<ShipyardController>();
-        foreach (ShipyardController g in Shipyards)
-        {
-            linerenderers.Add(Instantiate(linerendererprefab, transform));
-        }
-        player = WorldManager.Instance.Player;
-        MiniMapFollow.Target = player;
 
+    //UI stuffs
+    public void SetTrackNearest(bool trck)
+    {
+        TrackNearest = trck;
+        if (trck)
+        {
+            targets[TargetIndex].IsSelected = true;
+        }
+        else
+        {
+            resetTrackers();
+        }
     }
 
-    private void Update()
+    public void IncrementTrackIndex()
     {
-        float shortestDistance = 50000;
-        for (int i = 0; i < linerenderers.Count; i++)
+        TargetIndex++;
+        if (TargetIndex >= targets.Length) TargetIndex = 0;
+        TargetBeingTracked = targets[TargetIndex].transform.position;
+        resetTrackers();
+        targets[TargetIndex].SelectTarget(true);
+        TargetBeingTracked = targets[TargetIndex].transform.position;
+
+    }
+    public void DecrimentTrackIndex()
+    {
+        TargetIndex--;
+        if (TargetIndex < 0) TargetIndex = targets.Length-1;
+        resetTrackers();
+        targets[TargetIndex].SelectTarget(true);
+        TargetBeingTracked = targets[TargetIndex].transform.position;
+    }
+
+    public void resetTrackers()
+    {
+        foreach(MapTargets t in targets)
         {
-            linerenderers[i].positionCount = 2;
-            linerenderers[i].SetPosition(0, Shipyards[i].transform.position - Vector3.forward);
-            linerenderers[i].SetPosition(1, player.transform.position - Vector3.forward);
-            if (Vector3.Distance(player.transform.position, Shipyards[i].transform.position) < shortestDistance)
-            {
-                shortestDistance = Vector3.Distance(player.transform.position, Shipyards[i].transform.position);
-                nearestShipyard = Shipyards[i].transform.position;
-            }
+            t.SelectTarget(false);
         }
-        shortestdistanceReadout.text = shortestDistance.ToString("000km");
-        Vector3 direction = nearestShipyard - player.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        TargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
     }
 }
