@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldManager : MonoBehaviour
+public class WorldManager : Singleton<WorldManager>
 {
     [SerializeField] public Transform WorldCorner = null;
     
     [SerializeField] public List<ItemData> Items = null;
     [SerializeField] public List<GameObject> Explosions = null;
-    [SerializeField] GameObject[] objectsToRender = null;
+    [SerializeField] Rigidbody2D[] objectsToRender = null;
 
-    private GameObject player = null;
+    [SerializeField] public GameObject Player = null;
+    [SerializeField] public Ship Ship;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        ResetList();
+        if(Player == null)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     public ItemData GetRandomItemData()
@@ -29,17 +34,23 @@ public class WorldManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (GameObject go in objectsToRender)
+        ResetList();
+        foreach (Rigidbody2D go in objectsToRender)
         {
-            if((go.transform.position - player.transform.position).magnitude > 1050)
+            if((go.transform.position - Player.transform.position).magnitude > 150)
             {
-                go.SetActive(false);
+                go.gameObject.SetActive(false);
             }
             else
             {
-                go.SetActive(true);
+                go.gameObject.SetActive(true);
             }
         }
+    }
+
+    public void ResetList()
+    {
+        objectsToRender = FindObjectsOfType<Rigidbody2D>();
     }
 }
 

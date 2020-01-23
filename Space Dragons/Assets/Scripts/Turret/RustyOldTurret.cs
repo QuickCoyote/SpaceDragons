@@ -9,17 +9,13 @@ public class RustyOldTurret : Turret
     [SerializeField] float rotationSpeed = 45f;
     [SerializeField] float bulletOffsetY = 1f;
 
-    private new void Awake()
-    {
-        base.Awake();
-    }
-
     void FixedUpdate()
     {
         if (enemies.Count > 0)
         {
             RotateTurret();
         }
+        CheckForDie();
     }
 
     public void RotateTurret()
@@ -27,14 +23,14 @@ public class RustyOldTurret : Turret
         Enemy enemy = enemies.Peek();
         if (enemy)
         {
-            Vector3 direction = enemy.transform.position - spriteRenderer.gameObject.transform.position;
+            Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (angle < 5)
+            if (angle < 15)
             {
                 Attack();
             }
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            spriteRenderer.gameObject.transform.rotation = Quaternion.Slerp(spriteRenderer.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
         else
         {
@@ -50,9 +46,9 @@ public class RustyOldTurret : Turret
 
         if (attackTimer > attackSpeed)
         {
-            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), Quaternion.identity, transform) as GameObject);
+            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), rotateBoi.transform.rotation, transform) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
-            projectile.parentobj = gameObject;
+            projectile.parentobj = rotateBoi;
             projectile.Fire();
 
             attackTimer = 0;

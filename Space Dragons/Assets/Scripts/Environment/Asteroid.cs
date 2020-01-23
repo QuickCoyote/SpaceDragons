@@ -25,7 +25,6 @@ public class Asteroid : MonoBehaviour
 
         Vector2 randomForce = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f)); // Sends them in any random direction
         rb.AddForce(randomForce, ForceMode2D.Force);
-
     }
 
     public void setSizeAndWeight(float sizeweight)
@@ -55,17 +54,18 @@ public class Asteroid : MonoBehaviour
                 if (child)
                 {
                     child.sizeAndWeight = (sizeAndWeight - 0.45f);
-                    GetComponentInParent<AsteroidCluster>().asteroids.Add(child);
+                    AsteroidManager.Instance.asteroids.Add(child);
                 }
             }
         }
         if (itemPrefab)
         {
            ItemObject g =  Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-           g.itemData = FindObjectOfType<WorldManager>().GetRandomItemData();
+           g.itemData = WorldManager.Instance.GetRandomItemData();
            g.image.sprite = g.itemData.itemImage;
         }
-        GetComponentInParent<AsteroidCluster>().asteroids.Remove(this);
+        AsteroidManager.Instance.asteroids.Remove(this);
+        AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
         Destroy(gameObject);
     }
 }

@@ -12,6 +12,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] public float sightDistance;
     [SerializeField] public float attackDamage;
     [SerializeField] public EnemyDifficutlty difficulty;
+    [SerializeField] protected GameObject DamageParticles = null;
 
     public enum EnemyDifficutlty
     {
@@ -31,9 +32,10 @@ public abstract class Enemy : MonoBehaviour
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = WorldManager.Instance.Player;
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
+        DamageParticles.SetActive(false);
     }
 
     void FixedUpdate()
@@ -43,8 +45,11 @@ public abstract class Enemy : MonoBehaviour
 
         if (hp.healthCount <= 0.0f)
         {
-            FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
+            WorldManager.Instance.SpawnRandomExplosion(transform.position);
             Destroy(gameObject);
+        } else if (hp.healthCount < hp.healthMax/2 && !DamageParticles.activeSelf)
+        {
+            DamageParticles.SetActive(true);
         }
     }
 

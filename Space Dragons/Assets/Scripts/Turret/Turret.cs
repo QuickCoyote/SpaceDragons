@@ -8,7 +8,11 @@ public abstract class Turret : MonoBehaviour
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
     public float price = 10.0f;
-    public SpriteRenderer spriteRenderer = null;
+    public GameObject rotateBoi = null;
+    public SpriteRenderer spriteRendererBase = null;
+    public SpriteRenderer spriteRendererTurret = null;
+    public SpriteRenderer spriteRendererWings = null;
+    public SpriteRenderer spriteRendererBadge = null;
     public ShipData.eTurretRarity turretRarity = ShipData.eTurretRarity.COMMON;
 
     private float rarityModifier = 1.0f;
@@ -20,7 +24,6 @@ public abstract class Turret : MonoBehaviour
     protected void Awake()
     {
         GetComponent<CircleCollider2D>().radius = range;
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         switch (turretRarity)
         {
@@ -57,11 +60,12 @@ public abstract class Turret : MonoBehaviour
         attackSpeed *= rarityModifier;
     }
 
-    public void Die()   
+    public void CheckForDie()
     {
         if(GetComponent<Health>().healthCount <= 0)
         {
-            Destroy(gameObject);
+            FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
+            FindObjectOfType<Ship>().RemoveBodyPart(gameObject, false);
         }
     }
 }
