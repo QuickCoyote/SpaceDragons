@@ -49,10 +49,15 @@ public class Map : Singleton<Map>
             linerenderers[i].positionCount = 2;
             linerenderers[i].SetPosition(0, Shipyards[i].transform.position - Vector3.forward);
             linerenderers[i].SetPosition(1, player.transform.position - Vector3.forward);
-            if (Vector3.Distance(player.transform.position, Shipyards[i].transform.position) < shortestDistance) shortestDistance = Vector3.Distance(player.transform.position, Shipyards[i].transform.position);
-            nearestShipyard = Shipyards[i].transform.position;
+            if (Vector3.Distance(player.transform.position, Shipyards[i].transform.position) < shortestDistance)
+            {
+                shortestDistance = Vector3.Distance(player.transform.position, Shipyards[i].transform.position);
+                nearestShipyard = Shipyards[i].transform.position;
+            }
         }
         shortestdistanceReadout.text = shortestDistance.ToString("000km");
-        //TargetIcon.transform.rotation =  Quaternion.LookRotation(WorldManager.Instance.Player.transform.position - Map.Instance.nearestShipyard, -Vector3.forward);
+        Vector3 direction = nearestShipyard - player.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        TargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
     }
 }
