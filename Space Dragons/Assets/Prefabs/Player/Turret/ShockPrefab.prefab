@@ -379,6 +379,8 @@ MonoBehaviour:
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
   chainDistance: 15
+  rotationSpeed: 15
+  lightningMat: {fileID: 2100000, guid: 35c24991d1ed52e4aa94aa51dda4bcf3, type: 2}
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0

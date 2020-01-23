@@ -40,7 +40,6 @@ public class RustyOldTurret : Turret
 
     public override void Attack()
     {
-        // Find closest enemy... BLAST'EM
         Enemy targetEnemy = enemies.Peek();
         attackTimer += Time.deltaTime;
 
