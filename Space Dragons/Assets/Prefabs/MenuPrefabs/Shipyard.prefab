@@ -6987,7 +6987,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 4
 --- !u!1 &2806653248185811387
 GameObject:
   m_ObjectHideFlags: 0
@@ -11573,6 +11573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpacePort01
       objectReference: {fileID: 0}
+    - target: {fileID: 5803532433578657099, guid: d51fd91d7bcb3d840aa766d28a1d6461,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5803532433578657102, guid: d51fd91d7bcb3d840aa766d28a1d6461,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11781,7 +11786,7 @@ PrefabInstance:
     - target: {fileID: 1193850147849131026, guid: 84afc52e1bb4812428dc85acf134fe0c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1193850147849131116, guid: 84afc52e1bb4812428dc85acf134fe0c,
         type: 3}
