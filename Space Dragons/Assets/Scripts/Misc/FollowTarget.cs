@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     [SerializeField] Vector3 offset = new Vector3(0.0f, 0.0f, -10.0f);
-    [SerializeField] GameObject Target = null;
+    [SerializeField] public  GameObject Target = null;
 
     Ship targetS = null;
 
