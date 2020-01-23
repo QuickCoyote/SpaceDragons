@@ -53,6 +53,6 @@ public class Map : Singleton<Map>
             nearestShipyard = Shipyards[i].transform.position;
         }
         shortestdistanceReadout.text = shortestDistance.ToString("000km");
-        TargetIcon.transform.rotation =  Quaternion.LookRotation(WorldManager.Instance.Player.transform.position - Map.Instance.nearestShipyard, -Vector3.forward);
+        //TargetIcon.transform.rotation =  Quaternion.LookRotation(WorldManager.Instance.Player.transform.position - Map.Instance.nearestShipyard, -Vector3.forward);
     }
 }
