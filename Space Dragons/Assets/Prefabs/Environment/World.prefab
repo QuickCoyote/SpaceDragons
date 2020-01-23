@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522381372699110261}
   - component: {fileID: 4904428374227850415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4229753921430546565}
   - component: {fileID: 4229753921430546564}
   - component: {fileID: 4229753921430546567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BorderRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4229753921581959414}
   - component: {fileID: 4229753921581959417}
   - component: {fileID: 4229753921581959416}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BorderDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4229753921854191401}
   - component: {fileID: 4229753921854191400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 4229753922998177936}
   - component: {fileID: 4229753922998177939}
   - component: {fileID: 4229753922998177938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BorderTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 4229753923389277080}
   - component: {fileID: 4229753923389277083}
   - component: {fileID: 4229753923389277082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BorderLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229753923452401460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 1462499794744394757}
   - component: {fileID: 4978919542847671424}
   - component: {fileID: 1589829571958389049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,10 +898,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid_Background
       objectReference: {fileID: 0}
+    - target: {fileID: 5000891562269584963, guid: 84db163076bab664fa8a5722948eb182,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000891563014941173, guid: 84db163076bab664fa8a5722948eb182,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5000891563014941179, guid: 84db163076bab664fa8a5722948eb182,
         type: 3}
       propertyPath: m_SortingOrder
-      value: -5
+      value: -30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84db163076bab664fa8a5722948eb182, type: 3}

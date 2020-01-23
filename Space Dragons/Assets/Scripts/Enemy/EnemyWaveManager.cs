@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class EnemyWaveManager : Singleton<EnemyWaveManager>
 {
-    [SerializeField] List<GameObject> enemyPrefabs = new List<GameObject>();
-
     [SerializeField] float waveSpawnTimer = 25.0f;
 
     [SerializeField] List<Wave> waves = new List<Wave>();

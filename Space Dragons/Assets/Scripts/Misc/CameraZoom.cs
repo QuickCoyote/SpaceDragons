@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-
     Ship player;
     CinemachineTargetGroup targetGroup;
     SpriteRenderer spr = null;
