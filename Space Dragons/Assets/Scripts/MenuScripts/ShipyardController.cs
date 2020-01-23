@@ -260,38 +260,43 @@ public class ShipyardController : MonoBehaviour
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
 
-        int randBaseColor = Random.Range(0, 5);
+        int badgeColor = 0;
 
         Sprite randBase = null;
         Sprite randTurret = null;
         Sprite randWings = null;
 
-        switch (randBaseColor)
+        switch (data.type)
         {
-            case 0:
+            case ShipData.eTurretType.FLAME:
                 randBase = data.spriteBasesRed[Random.Range(0, data.spriteBasesRed.Length)];
                 randTurret = data.spriteTurretsRed[Random.Range(0, data.spriteTurretsRed.Length)];
                 randWings = data.spriteWingsRed[Random.Range(0, data.spriteWingsRed.Length)];
+                badgeColor = 0;
                 break;
-            case 1:
+            case ShipData.eTurretType.HEALING:
                 randBase = data.spriteBasesGreen[Random.Range(0, data.spriteBasesGreen.Length)];
                 randTurret = data.spriteTurretsGreen[Random.Range(0, data.spriteTurretsGreen.Length)];
                 randWings = data.spriteWingsGreen[Random.Range(0, data.spriteWingsGreen.Length)];
+                badgeColor = 1;
                 break;
-            case 2:
+            case ShipData.eTurretType.LIGHTNING:
                 randBase = data.spriteBasesBlue[Random.Range(0, data.spriteBasesBlue.Length)];
                 randTurret = data.spriteTurretsBlue[Random.Range(0, data.spriteTurretsBlue.Length)];
                 randWings = data.spriteWingsBlue[Random.Range(0, data.spriteWingsBlue.Length)];
+                badgeColor = 2;
                 break;
-            case 3:
+            case ShipData.eTurretType.RUSTY:
                 randBase = data.spriteBasesOrange[Random.Range(0, data.spriteBasesOrange.Length)];
                 randTurret = data.spriteTurretsOrange[Random.Range(0, data.spriteTurretsOrange.Length)];
                 randWings = data.spriteWingsOrange[Random.Range(0, data.spriteWingsOrange.Length)];
+                badgeColor = 3;
                 break;
-            case 4:
+            case ShipData.eTurretType.ATTACK_DRONE:
                 randBase = data.spriteBasesPurple[Random.Range(0, data.spriteBasesPurple.Length)];
                 randTurret = data.spriteTurretsPurple[Random.Range(0, data.spriteTurretsPurple.Length)];
                 randWings = data.spriteWingsPurple[Random.Range(0, data.spriteWingsPurple.Length)];
+                badgeColor = 4;
                 break;
         }
 
@@ -301,13 +306,13 @@ public class ShipyardController : MonoBehaviour
         switch(data.rarity)
         {
             case ShipData.eTurretRarity.COMMON:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[randBaseColor];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[badgeColor];
                 break;
             case ShipData.eTurretRarity.RARE:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesRare[randBaseColor];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesRare[badgeColor];
                 break;
             case ShipData.eTurretRarity.EPIC:
-                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesEpic[randBaseColor];
+                ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesEpic[badgeColor];
                 break;
         }
 

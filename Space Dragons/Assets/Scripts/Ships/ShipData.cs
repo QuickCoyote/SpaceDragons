@@ -8,10 +8,21 @@ public class ShipData : ShipDataParent
     public float price;
     public GameObject prefab;
     public eTurretRarity rarity;
+    public eTurretType type;
+
     public enum eTurretRarity
     {
         COMMON,
         RARE,
         EPIC
+    };
+
+    public enum eTurretType
+    {
+        RUSTY,
+        LIGHTNING,
+        FLAME,
+        HEALING,
+        ATTACK_DRONE
     };
 }
