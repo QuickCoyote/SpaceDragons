@@ -12,7 +12,6 @@ public class FollowTarget : MonoBehaviour
     public void Start()
     {
         Target.TryGetComponent(out targetS);
-        Target = WorldManager.Instance.Ship.gameObject;
     }
 
     public void FixedUpdate()
