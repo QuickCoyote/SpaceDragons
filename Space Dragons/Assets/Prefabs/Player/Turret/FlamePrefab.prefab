@@ -368,6 +368,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec997aabe9545f844ae96d606eb0381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
+  range: 1
+  attackSpeed: 0.25
+  price: 10
+  rotateBoi: {fileID: 2013710388852829490}
+  spriteRendererBase: {fileID: 754460446724932777}
+  spriteRendererTurret: {fileID: 6893461471801671079}
+  spriteRendererWings: {fileID: 2604695303973877405}
+  spriteRendererBadge: {fileID: 4604111021239675149}
+  turretRarity: 0
+  burnDamage: 5
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
