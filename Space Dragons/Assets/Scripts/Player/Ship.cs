@@ -34,7 +34,7 @@ public class Ship : MonoBehaviour
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
-        AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
+        AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
     }
 
     private void FixedUpdate()
@@ -43,7 +43,7 @@ public class Ship : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            AddBodyPart(FindBodyPartFromPrefabs("DefaultTurret"));
+            AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -123,7 +123,7 @@ public class Ship : MonoBehaviour
 
         foreach (GameObject bodyPart in bodyPartPrefabs)
         {
-            if (bodyPart.name.Equals("ShockPrefab"))
+            if (bodyPart.name.Equals(partName))
             {
                 bPart = bodyPart;
                 break;

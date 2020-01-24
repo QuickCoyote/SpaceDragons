@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FlameTurret : Turret
 {
     [SerializeField] float burnDamage = 10.0f;
+    [SerializeField] GameObject flames = null;
 
-    Queue<Enemy> enemiesToBurn = new Queue<Enemy>();
+    public Queue<Enemy> enemiesToBurn = new Queue<Enemy>();
     float rotationSpeed = 15.0f;
-    void Start()
-    {
-        
-    }
 
     void FixedUpdate()
     {
+        if (enemiesToBurn.Count > 0)
+        {
+            foreach (Enemy enemy in enemiesToBurn)
+            {
+                if(enemy != null)
+                {
+                    enemy.GetComponent<Health>().healthCount -= burnDamage * Time.deltaTime;
+                }
+                else
+                {
+                    enemiesToBurn.ToList().Remove(enemy);
+                    enemiesToBurn = new Queue<Enemy>(enemiesToBurn);
+                }
+            }
+        }
         if (enemies.Count > 0)
         {
             RotateTurret();
@@ -24,7 +37,10 @@ public class FlameTurret : Turret
 
     public void RotateTurret()
     {
-        Enemy enemy = enemies.Peek();
+        Enemy enemy = null;
+
+        enemy = enemies.Peek();
+
         if (enemy)
         {
             Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
@@ -44,16 +60,39 @@ public class FlameTurret : Turret
 
     public void Burn()
     {
-        // Need to create a particle system on me, then they need to have collisions, and they need to tell me to enqueue anything with health into enemies to burn.
-
-        foreach(Enemy enemy in enemiesToBurn)
-        {
-            enemy.GetComponent<Health>().healthCount -= burnDamage;
-        }
+        GameObject proj = (Instantiate(flames, transform.position, Quaternion.identity, null) as GameObject);
+        Flame flame = proj.GetComponent<Flame>();
+        flame.parentobj = rotateBoi;
+        flame.Fire();
     }
 
     public override void Attack()
     {
         Burn();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Enemy enemy = null;
+
+        collision.gameObject.TryGetComponent(out enemy);
+
+        if (enemy)
+        {
+            enemies.Enqueue(enemy);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Enemy enemy = null;
+
+        collision.gameObject.TryGetComponent(out enemy);
+
+        if (enemy)
+        {
+            enemies.ToList().Remove(enemy);
+            enemies = new Queue<Enemy>(enemies);
+        }
     }
 }

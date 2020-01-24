@@ -9,9 +9,7 @@ public class Explosion : MonoBehaviour
 
     public void Start()
     {
-        explosionSFX = GetComponent<AudioSource>();
-        if (explosionSFX) explosionSFX.Play();
-
+        AudioManager.Instance.Play("Explosion01");
     }
 
     public float damage = 1.0f;

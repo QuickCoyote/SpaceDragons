@@ -30,7 +30,6 @@ public class LightningTurret : Turret
             {
                 enemiesShocked = 1;
                 ShockNext(enemy);
-                enemiesShocked = 1;
             }
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
@@ -55,13 +54,13 @@ public class LightningTurret : Turret
     public void ShockNext(Enemy enemy)
     {
         Lightning myLightning = null;
-        TryGetComponent<Lightning>(out myLightning);
+        TryGetComponent(out myLightning);
 
         if (enemiesShocked == 1)
         {
             gameObject.AddComponent<Lightning>().target = enemy.transform;
         }
-        else if (myLightning != null)
+        else
         {
             myLightning.RemoveLightning();
             Destroy(myLightning);
@@ -71,6 +70,7 @@ public class LightningTurret : Turret
         {
             Enemy en = null;
             col.TryGetComponent(out en);
+
             if (en != null)
             {
                 if (shockedBois.Contains(en))
