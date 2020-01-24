@@ -141,7 +141,6 @@ public class Ship : MonoBehaviour
             if (bodyPartObjects[i] == bodyPart)
             {
                 removeIndex = i;
-                Debug.Log(removeIndex);
             }
         }
 

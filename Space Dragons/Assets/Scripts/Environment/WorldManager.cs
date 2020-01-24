@@ -13,6 +13,8 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public GameObject Player = null;
     [SerializeField] public Ship Ship;
 
+    [SerializeField] public Material lightningMat = null;
+
     private void Start()
     {
         ResetList();
