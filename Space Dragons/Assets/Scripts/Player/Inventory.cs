@@ -15,8 +15,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemInfoPanelName = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelDesc = null;
 
-    List<ItemData> inventory = new List<ItemData>();
-    Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
+    public List<ItemData> inventory = new List<ItemData>();
+    public Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
 
     public void AddItem(ItemData item, int num)
     {
@@ -34,6 +34,7 @@ public class Inventory : MonoBehaviour
         else
         {
             items.Add(item, num);
+
         }
     }
 
@@ -72,6 +73,18 @@ public class Inventory : MonoBehaviour
             }
         }
         UpdateDisplay();
+    }
+
+    public void UpdateInventory()
+    {
+        inventory = new List<ItemData>();
+        for (int i = 0; i < items.Keys.Count; i++)
+        {
+            if (items[items.Keys.ElementAt(i)] > 0)
+            {
+                inventory.Add(items.Keys.ElementAt(i));
+            }
+        }
     }
 
     public void UpdateDisplay()
