@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     public GameObject parentobj = null;
     public Vector3 goDirection = Vector3.zero;
     public Rigidbody2D rb = null;
-    AudioSource fireSFX;
+    protected AudioSource fireSFX;
 
     private void FixedUpdate()
     {
@@ -48,7 +48,6 @@ public class Projectile : MonoBehaviour
 
     public void Move()
     {
-
         transform.position += (goDirection * bulletSpeed * Time.smoothDeltaTime);
     }
 }

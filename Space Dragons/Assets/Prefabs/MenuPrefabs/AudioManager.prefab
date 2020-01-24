@@ -675,7 +675,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7556955695529148649}
-  - component: {fileID: 1554789685}
   - component: {fileID: 1554789684}
   m_Layer: 5
   m_Name: AudioManager
@@ -704,103 +703,6 @@ RectTransform:
   m_AnchoredPosition: {x: 320, y: 240}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1554789685
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7556955695529148654}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 21df777acc2cbe244ac485c814deda83, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1554789684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,13 +715,133 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e539ff9da3c133443826f1de178d38c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SFX_Slider: {fileID: 7556955695853558157}
-  Music_Slider: {fileID: 7556955695974203536}
+  isPersistant: 1
+  m_sounds:
+  - name: Fire01
+    audioClip: {fileID: 8300000, guid: 70f9ea961732cc6449147915f3832cd6, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Fire02
+    audioClip: {fileID: 8300000, guid: 97b2def5bb01b3f4ebcd1fede8b3d7e3, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Explosion01
+    audioClip: {fileID: 8300000, guid: af6e3d75da237f94eb0e4c51725ea6af, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Pickup01
+    audioClip: {fileID: 8300000, guid: 86a3fdb0a3d985a4ea5562cdaa2d0b1a, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: Pickup02
+    audioClip: {fileID: 8300000, guid: ac09010ff4e3b554d99b28e85f7a4132, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Battle Music: Billy''s Sacrifice'
+    audioClip: {fileID: 8300000, guid: ac8263dd90e0650468f45f8a3909dd75, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Shop Music: Checking Manifest'
+    audioClip: {fileID: 8300000, guid: fe5c4791d0cd799468d14669a9b8ca1f, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Battle Music: Crash Landing'
+    audioClip: {fileID: 8300000, guid: 2403e9dc9a8f026449475e5028e95aa7, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Battle Music: City Stomper - DOS-88'
+    audioClip: {fileID: 8300000, guid: e4db0f4752997c8498919bdb161434ba, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Shop Music: Far Away - DOS-88'
+    audioClip: {fileID: 8300000, guid: c43c5dcca2ceb0d4dbd3d34fe867b4b1, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Battle Music: Parabola'
+    audioClip: {fileID: 8300000, guid: 21df777acc2cbe244ac485c814deda83, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Battle Music: Race to Mars'
+    audioClip: {fileID: 8300000, guid: 351a4d80a7f89b64a83f97e102243139, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: 'Menu Music: Smooth Sailing'
+    audioClip: {fileID: 8300000, guid: 310bc1d0ebadc1b4c8dca47c127f0065, type: 3}
+    audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  m_music: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+    type: 2}
+  m_sfx: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423, type: 2}
+  musicSlider: {fileID: 7556955695974203536}
+  sfxSlider: {fileID: 7556955695853558157}
   Music_Readout: {fileID: 7556955695722630481}
   SFX_Readout: {fileID: 7556955696244259441}
-  AudioMixer: {fileID: 24100000, guid: 5346a7e46dc8cf049b9a36f91e6b8423, type: 2}
   UIDisplay: {fileID: 7556955696616140765}
-  defaultTrack: {fileID: 1554789685}
 --- !u!1 &7556955695722630487
 GameObject:
   m_ObjectHideFlags: 0

@@ -314,7 +314,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 35
 --- !u!61 &3526563778569352880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec997aabe9545f844ae96d606eb0381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  range: 1
+  damage: 0
+  range: 35
   attackSpeed: 0.25
   price: 10
   rotateBoi: {fileID: 2013710388852829490}
@@ -378,7 +378,8 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  burnDamage: 5
+  burnDamage: 0.5
+  flames: {fileID: 1163105452601627565, guid: 7d63a71bb76513843a4db7844315c9e6, type: 3}
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0

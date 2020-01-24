@@ -314,7 +314,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 35
 --- !u!61 &3526563778569352880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 75
-  range: 25
+  range: 35
   attackSpeed: 2
   price: 10
   rotateBoi: {fileID: 2013710388852829490}
@@ -378,9 +378,8 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  chainDistance: 15
+  chainDistance: 20
   rotationSpeed: 15
-  lightningMat: {fileID: 2100000, guid: 35c24991d1ed52e4aa94aa51dda4bcf3, type: 2}
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
