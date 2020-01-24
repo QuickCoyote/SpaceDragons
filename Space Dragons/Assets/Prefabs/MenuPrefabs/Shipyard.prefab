@@ -6961,10 +6961,16 @@ MonoBehaviour:
   ShopShips: []
   CommonShips:
   - {fileID: 11400000, guid: 55307f6383b91754c84955c85f44f23b, type: 2}
+  - {fileID: 11400000, guid: c29bdb004a5424945ba58536cb4d16e6, type: 2}
+  - {fileID: 11400000, guid: 65578f5eab0facf45afd75853811ef11, type: 2}
   RareShips:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0c01a55359302c74aa62a5932e755db0, type: 2}
+  - {fileID: 11400000, guid: 7fb41d360b260e149a22105a6af0ea02, type: 2}
+  - {fileID: 11400000, guid: f30d97a6a20f1834a8501a3781010d38, type: 2}
   EpicShips:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d54ecbd9a9576e446b2e4fb1c5b1923b, type: 2}
+  - {fileID: 11400000, guid: 3469bfe446e3f2b46b9f1d1f72d3f53b, type: 2}
+  - {fileID: 11400000, guid: eaa40f8dcbbfffd4f80dc33e8624e224, type: 2}
   ShopDifficulty: 0
   ShipScrollContent: {fileID: 2806653247236071227}
   ShopShipScrollContent: {fileID: 2806653249048712284}
