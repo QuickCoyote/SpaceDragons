@@ -39,9 +39,7 @@ public class Projectile : MonoBehaviour
 
     public void Fire()
     {
-        fireSFX = GetComponent<AudioSource>();
-        if (fireSFX) fireSFX.pitch = fireSFX.pitch + Random.Range(-.25f,.25f);
-        if (fireSFX) fireSFX.Play();
+        AudioManager.Instance.Play("Fire01");
         goDirection = parentobj.transform.up;
         transform.rotation = parentobj.transform.rotation;
     }

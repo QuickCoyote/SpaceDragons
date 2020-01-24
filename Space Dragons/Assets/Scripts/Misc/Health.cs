@@ -15,7 +15,6 @@ public class Health : MonoBehaviour
     public void Start()
     {
         an = GetComponent<Animator>();
-        damageSFX = GetComponent<AudioSource>();
         healthCount = healthMax;
         if (healthbar) healthbar.maxValue = healthMax;
     }
@@ -29,7 +28,7 @@ public class Health : MonoBehaviour
     {
         healthCount -= dmg;
         if (an) an.SetTrigger("Damage");
-        if (damageSFX) damageSFX.Play();
+//        AudioManager.Instance.Play("");
 
     }
 

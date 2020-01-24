@@ -270,11 +270,11 @@ public class AudioManager : Singleton<AudioManager>
     public void SetSFXVolume(float volume)
     {
         m_sfx.audioMixer.SetFloat("SFXVolume", Mathf.Log(volume) * 20);
-        SFX_Readout.text = (volume * 100).ToString("00%");
+        SFX_Readout.text = (volume).ToString("00%");
     }
     public void SetMusicVolume(float volume)
     {
         m_music.audioMixer.SetFloat("MusicVolume", Mathf.Log(volume) * 20);
-        Music_Readout.text = (volume * 100).ToString("00%");
+        Music_Readout.text = (volume).ToString("00%");
     }
 }
