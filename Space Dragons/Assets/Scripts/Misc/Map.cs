@@ -13,6 +13,7 @@ public class Map : Singleton<Map>
     public FollowTarget MiniMapFollow = null;
 
     public bool TrackNearest = true;
+    public GameObject TrackButtons;
 
     MapTargets[] targets;
     int TargetIndex = 0;
@@ -76,12 +77,15 @@ public class Map : Singleton<Map>
     public void SetTrackNearest(bool trck)
     {
         TrackNearest = trck;
-        if (trck)
+        if (!trck)
         {
-            targets[TargetIndex].IsSelected = true;
+            IncrementTrackIndex();
+            TrackButtons.SetActive(true);
+
         }
         else
         {
+            TrackButtons.SetActive(false);
             resetTrackers();
         }
     }
@@ -90,7 +94,6 @@ public class Map : Singleton<Map>
     {
         TargetIndex++;
         if (TargetIndex >= targets.Length) TargetIndex = 0;
-        TargetBeingTracked = targets[TargetIndex].transform.position;
         resetTrackers();
         targets[TargetIndex].SelectTarget(true);
         TargetBeingTracked = targets[TargetIndex].transform.position;
