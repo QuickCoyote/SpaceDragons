@@ -2246,8 +2246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: -21.700012}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: -60, y: -21.700012}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2806653247298774767
 CanvasRenderer:
@@ -7366,8 +7366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.00002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: -23.400024}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: 60, y: -23.400024}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2806653248304348082
 CanvasRenderer:
@@ -11864,11 +11864,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpacePort02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193850147849131026, guid: 84afc52e1bb4812428dc85acf134fe0c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1193850147849131116, guid: 84afc52e1bb4812428dc85acf134fe0c,
         type: 3}
