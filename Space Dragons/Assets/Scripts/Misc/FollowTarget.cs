@@ -9,14 +9,16 @@ public class FollowTarget : MonoBehaviour
 
     Ship targetS = null;
 
-    private void Start()
+    public void Start()
     {
         Target.TryGetComponent(out targetS);
+        Target = WorldManager.Instance.Ship.gameObject;
     }
 
-    void FixedUpdate()
-    {
-        if(targetS)
+    public void FixedUpdate()
+    {        
+
+        if (targetS)
         {
             transform.Translate(targetS.bodyPartTransforms[0].up * targetS.speed * Time.smoothDeltaTime);
         }

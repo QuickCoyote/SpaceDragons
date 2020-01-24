@@ -89,16 +89,19 @@ public class ShipSelector : MonoBehaviour
 
     void Sell(int sellPrice)
     {
-        IsSlotFilled = false;
-        ShipMenu.SetActive(false);
-        controller.Ships.Remove(SelectedShip);
-        controller.Ships.Add(null);
-        controller.MotherShip.RemoveBodyPart(SelectedShip, true);
-        controller.MotherShip.bodyPartObjects.Add(null);
-        controller.MotherShip.bodyPartTransforms.Add(null);
-        controller.MotherShip.SortBody();
-        controller.ShipyardShipSetup();
-        //PLACE MONEY ADDING HERE
+        if (controller.MotherShip.bodyPartObjects.Count > 2 && controller.MotherShip.bodyPartObjects[2] != null)
+        {
+            IsSlotFilled = false;
+            ShipMenu.SetActive(false);
+            controller.Ships.Remove(SelectedShip);
+            controller.Ships.Add(null);
+            controller.MotherShip.RemoveBodyPart(SelectedShip, true);
+            controller.MotherShip.bodyPartObjects.Add(null);
+            controller.MotherShip.bodyPartTransforms.Add(null);
+            controller.MotherShip.SortBody();
+            controller.ShipyardShipSetup();
+            //PLACE MONEY ADDING HERE
+        }
     }
 
     void Repair()
