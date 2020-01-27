@@ -37,10 +37,26 @@ public class OutpostController : MonoBehaviour
         {
             CloseOutpost();
         }
+        else if(Input.GetKeyDown(KeyCode.F12))
+        {
+            OutpostShopSetup();
+        }
+
+        if(ShoppingPanel.activeInHierarchy)
+        {
+            Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
+            ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Slider Text").FirstOrDefault().text = (int)slider.value + " - " + "$" + 20;
+
+        }
     }
 
     public void OutpostShopSetup()
     {
+        foreach (Transform child in OutpostContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        outpostInventory = new Inventory();
         numsGenerated = new List<int>();
         for (int i = 0; i < 16; i++)
         {
@@ -51,7 +67,7 @@ public class OutpostController : MonoBehaviour
             bool isNumBad = true;
 
             int randItem = Random.Range(0, Items.Count);
-            int randNum = Random.Range(0, 100);
+            int randNum = Random.Range(1, 100);
             itemCount.text = "x" + randNum;
             do
             {
@@ -65,7 +81,6 @@ public class OutpostController : MonoBehaviour
                     randItem = Random.Range(0, Items.Count);
                 }
             } while (isNumBad);
-
             outpostInventory.AddItem(Items[randItem], randNum);
             buttonImage.sprite = Items[randItem].itemImage;
             outpostInventory.UpdateInventory();
@@ -112,6 +127,9 @@ public class OutpostController : MonoBehaviour
         ShoppingPanel.GetComponentsInChildren<Image>().Where(o => o.name == "Item Image").FirstOrDefault().sprite = item.itemImage;
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Count").FirstOrDefault().text = "x"+ numOfItem;
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Description").FirstOrDefault().text = item.description;
+        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "ItemName").FirstOrDefault().text = item.itemName;
+        ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault().maxValue = numOfItem;
+
 
     }
 
