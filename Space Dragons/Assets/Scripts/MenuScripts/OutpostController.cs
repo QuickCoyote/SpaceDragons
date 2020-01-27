@@ -167,6 +167,7 @@ public class OutpostController : MonoBehaviour
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "ItemName").FirstOrDefault().text = item.itemName;
         Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
         slider.maxValue = numOfItem;
+        slider.minValue = 1;
         slider.value = 0;
         Button button = ShoppingPanel.GetComponentsInChildren<Button>().Where(o => o.name == "SaleButton").FirstOrDefault();
         button.onClick.RemoveAllListeners();
