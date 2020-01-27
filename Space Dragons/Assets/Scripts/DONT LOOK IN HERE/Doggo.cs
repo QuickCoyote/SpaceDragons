@@ -13,26 +13,26 @@ public class Doggo : MonoBehaviour
 
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        GetComponent<Rigidbody2D>().AddForce(direction * speed * Time.deltaTime);
 
-        if(transform.position.x > 1530)
+        if(transform.position.x > Screen.width)
         {
-            transform.position = new Vector3(0, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-1529, transform.position.y, 0);
         }
 
-        if (transform.position.y > 770)
+        if (transform.position.y > Screen.height)
         {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -769, 0);
         }
 
-        if (transform.position.x < -1530)
+        if (transform.position.x < -Screen.width)
         {
-            transform.position = new Vector3(1920, transform.position.y, transform.position.z);
+            transform.position = new Vector3(1529, transform.position.y, 0);
         }
 
-        if (transform.position.y < -770)
+        if (transform.position.y < -Screen.height)
         {
-            transform.position = new Vector3(transform.position.x, 1080, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 769, 0);
         }
     }
 }

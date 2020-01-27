@@ -22,12 +22,12 @@ public class Inventory : MonoBehaviour
     {
         if (items.ContainsKey(item))
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < items.Keys.Count; i++)
             {
                 if (items.Keys.ElementAt(i) == item)
                 {
                     items[item] += num;
-                    break;
+                    return;
                 }
             }
         }
@@ -35,7 +35,6 @@ public class Inventory : MonoBehaviour
         {
             items.Add(item, num);
         }
-        UpdateInventory();
     }
 
     public void RemoveItem(ItemData item, int num)
