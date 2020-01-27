@@ -68,7 +68,7 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         StopAll();
-        PlayRandomMusic("Battle");
+        PlayRandomMusic("Battle ");
     }
 
     public void NextSong()
@@ -180,11 +180,9 @@ public class AudioManager : Singleton<AudioManager>
     void PlayRandomMusic(string contains)
     {
         StopAll();
-        if (contains != "")
+        if (!contains.Equals(""))
         {
-            Dictionary<string, Sound>.KeyCollection ss = music.Keys;
-
-            foreach (string key in ss)
+            foreach (string key in music.Keys)
             {
                 if (key.Contains(contains))
                 {
@@ -193,21 +191,6 @@ public class AudioManager : Singleton<AudioManager>
                 }
             }
         }
-
-
-        Dictionary<string, Sound>.KeyCollection stuffs = music.Keys;
-
-        List<string> keys = new List<string>();
-
-        foreach (string key in stuffs)
-        {
-            keys.Add(key);
-        }
-
-        int randNum;
-        randNum = UnityEngine.Random.Range(0, keys.Count);
-
-        Play(keys[randNum]);
     }
 
     public void StopAll()

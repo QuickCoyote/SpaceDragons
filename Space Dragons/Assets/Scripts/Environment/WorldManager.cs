@@ -8,6 +8,7 @@ public class WorldManager : Singleton<WorldManager>
     
     [SerializeField] public List<ItemData> Items = null;
     [SerializeField] public List<GameObject> Explosions = null;
+    [SerializeField] public GameObject Warphole = null;
     [SerializeField] Rigidbody2D[] objectsToRender = null;
 
     [SerializeField] public GameObject Player = null;
@@ -33,6 +34,13 @@ public class WorldManager : Singleton<WorldManager>
     {
         Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
     }
+
+
+    public void SpawnWarpHole(Vector3 target)
+    {
+        Instantiate(Warphole, target, Quaternion.identity, null);
+    }
+
 
     private void FixedUpdate()
     {
