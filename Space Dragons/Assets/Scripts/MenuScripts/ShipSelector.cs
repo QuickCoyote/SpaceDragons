@@ -7,9 +7,13 @@ public class ShipSelector : MonoBehaviour
 {
     public GameObject ShipMenu;
     public GameObject ShopMenu;
-    public GameObject SelectedShip;
+    public GameObject SelectedShip; 
     public ShipyardController controller;
     public bool IsSlotFilled = false;
+    public Sprite baseSprite = null;
+    public Sprite turretSprite = null;
+    public Sprite wingsSprite = null;
+    public Sprite badgeSprite = null;
 
     public void OpenMenu()
     {
@@ -24,48 +28,7 @@ public class ShipSelector : MonoBehaviour
                 {
                     for(int i = 0; i < child.transform.childCount; i++)
                     {
-                        Sprite childImage = child.GetChild(i).GetComponent<Image>().sprite;
-
-                        Sprite baseSprite = null;
-                        Sprite turretSprite = null;
-                        Sprite wingsSprite = null;
-                        Sprite badgeSprite = null;
-
-                        for (int j = 0; j < SelectedShip.transform.childCount; j++)
-                        {
-                            Sprite childSprite = SelectedShip.transform.GetChild(j).GetComponentInChildren<SpriteRenderer>().sprite;
-                            switch (j)
-                            {
-                                case 0:
-                                    baseSprite = childSprite;
-                                    break;
-                                case 1:
-                                    turretSprite = childSprite;
-                                    break;
-                                case 2:
-                                    wingsSprite = childSprite;
-                                    break;
-                                case 3:
-                                    badgeSprite = childSprite;
-                                    break;
-                            }
-                        }
-
-                        switch(i)
-                        {
-                            case 0:
-                                childImage = baseSprite;
-                                break;
-                            case 1:
-                                childImage = turretSprite;
-                                break;
-                            case 2:
-                                childImage = wingsSprite;
-                                break;
-                            case 3:
-                                childImage = badgeSprite;
-                                break;
-                        }
+                        child.GetChild(i).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(i).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                     }
                 }
                 if(child.tag == "SellButton")
@@ -77,7 +40,6 @@ public class ShipSelector : MonoBehaviour
                     button.onClick.AddListener(delegate { Upgrade(); });
                 }
             }
-            
         }
         else
         {
@@ -107,12 +69,25 @@ public class ShipSelector : MonoBehaviour
     void Repair()
     {
         //SET SHIP HEALTH TO MAXIMUM
+        SelectedShip.GetComponent<Health>().healthCount = SelectedShip.GetComponent<Health>().healthMax;
         controller.ShipyardShipSetup();
     }
 
     void Upgrade()
     {
         //UPGRADE SHIP SOMEHOW?
+        Turret curTurret = SelectedShip.GetComponent<Turret>();
+
+        switch(curTurret.turretRarity)
+        {
+            case ShipData.eTurretRarity.COMMON:
+                curTurret.turretRarity = ShipData.eTurretRarity.RARE;
+                break;
+            case ShipData.eTurretRarity.RARE:
+                curTurret.turretRarity = ShipData.eTurretRarity.EPIC;
+                break;
+        }
+
         controller.ShipyardShipSetup();
     }
 
