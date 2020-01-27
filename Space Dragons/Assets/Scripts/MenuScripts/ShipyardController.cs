@@ -34,6 +34,8 @@ public class ShipyardController : MonoBehaviour
         MotherShip = WorldManager.Instance.Ship;
         ShipyardShipSetup();
         ShipyardShopSetup();
+        ShipMenu.SetActive(false);
+        ShopMenu.SetActive(false);
         Shipyard.SetActive(false);
     }
 
