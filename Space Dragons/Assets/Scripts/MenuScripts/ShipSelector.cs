@@ -26,7 +26,6 @@ public class ShipSelector : MonoBehaviour
             {
                 if(child.tag == "ShipyardShip")
                 {
-                    Debug.Log(child.name);
                     for(int i = 0; i < child.transform.childCount; i++)
                     {
                         child.GetChild(i).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(i).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;

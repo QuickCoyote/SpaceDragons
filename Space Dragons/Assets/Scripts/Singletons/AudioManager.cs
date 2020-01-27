@@ -68,7 +68,7 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         StopAll();
-        PlayRandomMusic("Battle");
+        PlayRandomMusic("Battle ");
     }
 
     public void NextSong()
