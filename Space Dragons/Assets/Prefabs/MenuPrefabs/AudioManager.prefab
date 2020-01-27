@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &203747069
 CanvasRenderer:
@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 130, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &957323129
 CanvasRenderer:
@@ -216,7 +216,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: efa2b855c0dd3c14dbc116888e7db5fd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -559,7 +559,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 130, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1702997717
 CanvasRenderer:
@@ -590,7 +590,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2d016316100bce94aac58e160df5e1e6, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1575,6 +1575,15 @@ MonoBehaviour:
   - name: 'Menu Music: Smooth Sailing'
     audioClip: {fileID: 8300000, guid: 310bc1d0ebadc1b4c8dca47c127f0065, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
+      type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    image: {fileID: 0}
+    audioSource: {fileID: 0}
+  - name: ShopEntrance
+    audioClip: {fileID: 8300000, guid: 3c33800b40e08ac4ea401a72926748a7, type: 3}
+    audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
     volume: 1
     pitch: 1

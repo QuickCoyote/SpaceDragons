@@ -34,8 +34,8 @@ public class Inventory : MonoBehaviour
         else
         {
             items.Add(item, num);
-
         }
+        UpdateInventory();
     }
 
     public void RemoveItem(ItemData item, int num)

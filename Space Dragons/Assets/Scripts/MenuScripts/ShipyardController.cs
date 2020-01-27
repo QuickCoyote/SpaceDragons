@@ -391,6 +391,7 @@ public class ShipyardController : MonoBehaviour
 
     public void OpenShop()
     {
+        AudioManager.Instance.PlayRandomMusic("Shop Music");
         ShipyardShipSetup();
         Shipyard.SetActive(true);
         Time.timeScale = 0;
@@ -400,6 +401,7 @@ public class ShipyardController : MonoBehaviour
 
     public void CloseShop()
     {
+        AudioManager.Instance.PlayRandomMusic("Battle Music");
         Shipyard.SetActive(false);
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);

@@ -4,6 +4,7 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -68,28 +69,7 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         StopAll();
-        PlayRandomMusic("Battle ");
-    }
-
-    public void NextSong()
-    {
-        StopAll();
-        curSongLoc++;
-        if (curSongLoc > m_sounds.Length - 1)
-        {
-            curSongLoc = 0;
-        }
-        PlayThrough();
-    }
-    public void PrevSong()
-    {
-        StopAll();
-        curSongLoc--;
-        if (curSongLoc < 0)
-        {
-            curSongLoc = m_sounds.Length - 1;
-        }
-        PlayThrough();
+        PlayRandomMusic("Battle");
     }
 
     public void Play(string name)
@@ -101,31 +81,6 @@ public class AudioManager : Singleton<AudioManager>
             {
                 sound.audioSource.Play();
             }
-        }
-    }
-
-    public void PlayThrough()
-    {
-        StopAll();
-        if (isPaused)
-        {
-            Resume();
-        }
-        else
-        {
-            Sound sound = m_sounds[curSongLoc];
-            if (sound != null)
-            {
-                if (sound.name.Contains("Music"))
-                {
-                    sound.audioSource.Play();
-                }
-            }
-            //curMusicImage.sprite = sound.image;
-            //musicSlider.maxValue = m_sounds[curSongLoc].audioClip.length;
-            //string minSec = string.Format("{0}:{1:00}", (int)musicSlider.maxValue / 60, (int)musicSlider.maxValue % 60);
-            //musicMaxTimeText.text = minSec;
-            //musicNameText.text = m_sounds[curSongLoc].audioClip.name;
         }
     }
     public void Pause()
@@ -149,48 +104,21 @@ public class AudioManager : Singleton<AudioManager>
         isPaused = false;
     }
 
-    private void Update()
-    {
-
-        if (curSongLoc > m_sounds.Length - 1)
-        {
-            curSongLoc = 0;
-        }
-        if (curSongLoc < 0)
-        {
-            curSongLoc = m_sounds.Length - 1;
-        }
-        if (!isPaused)
-        {
-            if (!m_sounds[curSongLoc].audioSource.isPlaying)
-            {
-                curSongLoc++;
-                if (curSongLoc > m_sounds.Length - 1)
-                {
-                    curSongLoc = 0;
-                }
-                PlayThrough();
-            }
-            //musicSlider.value = m_sounds[curSongLoc].audioSource.time;
-            //string minSec = string.Format("{0}:{1:00}", (int)musicSlider.value / 60, (int)musicSlider.value % 60);
-            //musicTimeText.text = minSec;
-        }
-    }
-
-    void PlayRandomMusic(string contains)
+    public void PlayRandomMusic(string contains)
     {
         StopAll();
-        if (!contains.Equals(""))
+        List<string> battleMusic = new List<string>();
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            foreach (string key in music.Keys)
+            if (m_sounds[i].name.Contains(contains))
             {
-                if (key.Contains(contains))
-                {
-                    Play(key);
-                    return;
-                }
+                battleMusic.Add(m_sounds[i].name);   
             }
         }
+
+        int num = UnityEngine.Random.Range(0, battleMusic.Count);
+
+        Play(battleMusic[num]);
     }
 
     public void StopAll()
