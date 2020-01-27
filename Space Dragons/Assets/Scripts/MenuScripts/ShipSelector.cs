@@ -36,7 +36,17 @@ public class ShipSelector : MonoBehaviour
                     Button button = child.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(delegate { Sell(10); });
+                }
+                else if(child.tag == "RepairButton")
+                {
+                    Button button = child.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(delegate { Repair(); });
+                }
+                else if (child.tag == "UpgradeButton")
+                {
+                    Button button = child.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(delegate { Upgrade(); });
                 }
             }

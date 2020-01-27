@@ -17,6 +17,7 @@ public class OutpostController : MonoBehaviour
 
     Inventory outpostInventory = new Inventory();
     List<int> numsGenerated = new List<int>();
+    int sliderValue;
 
     public void Start()
     {
@@ -45,8 +46,9 @@ public class OutpostController : MonoBehaviour
         if(ShoppingPanel.activeInHierarchy)
         {
             Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
-            ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Slider Text").FirstOrDefault().text = (int)slider.value + " - " + "$" + 20;
-
+            ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Slider Text").FirstOrDefault().text = ((int)slider.value).ToString();
+            ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$" + ((int)slider.value*2).ToString();
+            sliderValue = (int)slider.value;
         }
     }
 
@@ -94,6 +96,32 @@ public class OutpostController : MonoBehaviour
 
     }
 
+    public void OutpostShopRefresh()
+    {
+        foreach (Transform child in OutpostContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < outpostInventory.inventory.Count; i++)
+        {
+            GameObject obj = Instantiate(ItemLayoutPrefab);
+            Button button = obj.GetComponentInChildren<Button>();
+            Image buttonImage = button.GetComponent<Image>();
+            TextMeshProUGUI itemCount = button.GetComponentInChildren<TextMeshProUGUI>();
+
+            buttonImage.sprite = outpostInventory.inventory[i].itemImage;
+            itemCount.text = "x" + outpostInventory.items[outpostInventory.inventory[i]];
+            outpostInventory.UpdateInventory();
+            ItemData item = outpostInventory.inventory[i];
+            int numOfItem = outpostInventory.items[item];
+
+            button.onClick.AddListener(delegate { OpenShoppingMenu(false, item, numOfItem); });
+            obj.transform.SetParent(OutpostContent.transform);
+            obj.gameObject.transform.localScale = new Vector3(1, 1);
+        }
+    }
+
     public void PlayerShopSetup()
     {
         foreach (Transform child in PlayerContent.transform)
@@ -120,6 +148,15 @@ public class OutpostController : MonoBehaviour
         }
     }
 
+    public void Refresh()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            OutpostShopRefresh();
+            PlayerShopSetup();
+        }
+    }
+
     public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
     {
         ShoppingPanel.SetActive(true);
@@ -128,9 +165,36 @@ public class OutpostController : MonoBehaviour
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Count").FirstOrDefault().text = "x"+ numOfItem;
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Description").FirstOrDefault().text = item.description;
         ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "ItemName").FirstOrDefault().text = item.itemName;
-        ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault().maxValue = numOfItem;
+        Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
+        slider.maxValue = numOfItem;
+        slider.value = 0;
+        Button button = ShoppingPanel.GetComponentsInChildren<Button>().Where(o => o.name == "SaleButton").FirstOrDefault();
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { CompleteSale(isSelling, item); });
+        button.GetComponentInChildren<TextMeshProUGUI>().text = isSelling ? "SELL" : "BUY";
 
+    }
 
+    public void CompleteSale (bool isSelling, ItemData item)
+    {
+        if(isSelling)
+        {
+            outpostInventory.AddItem(item, sliderValue);
+            outpostInventory.UpdateInventory();
+            PlayerInventory.RemoveItem(item, sliderValue);
+            PlayerInventory.UpdateInventory();
+            ShoppingPanel.SetActive(false);
+            Refresh();
+        }
+        else
+        {
+            outpostInventory.RemoveItem(item, sliderValue);
+            outpostInventory.UpdateInventory();
+            PlayerInventory.AddItem(item, sliderValue);
+            PlayerInventory.UpdateInventory();
+            ShoppingPanel.SetActive(false);
+            Refresh();
+        }
     }
 
     public void OpenOutpost()
