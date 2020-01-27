@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TutorialPrompts : MonoBehaviour
+public class TutorialPrompts : Singleton<TutorialPrompts>
 {
     [SerializeField] TextMeshProUGUI tipPrompt = null;
     [SerializeField] GameObject tipUI = null;
@@ -60,7 +60,10 @@ public class TutorialPrompts : MonoBehaviour
             countdowntips = false;
             tipUI.SetActive(false);
         }
-        tipPrompt.text = prompts[tipIndex];
+        else
+        {
+            tipPrompt.text = prompts[tipIndex];
+        }
     }
     public void ResetTips()
     {
