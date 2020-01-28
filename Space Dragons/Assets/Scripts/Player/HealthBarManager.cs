@@ -28,7 +28,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
     public void RemoveHealthBar()
     {
         numBars--;
-        Destroy(layout.transform.GetChild(numBars - 2).gameObject);
+        Destroy(layout.transform.GetChild(numBars - 1).gameObject);
     }
 
     public void checkForUpdateSizing()
