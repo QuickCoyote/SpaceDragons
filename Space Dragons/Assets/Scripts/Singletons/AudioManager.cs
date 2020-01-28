@@ -4,19 +4,13 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField] Sound[] m_sounds = null;
     [SerializeField] AudioMixerGroup m_music = null;
     [SerializeField] AudioMixerGroup m_sfx = null;
-
-    [SerializeField] Slider musicSlider = null;
-    [SerializeField] Slider sfxSlider = null;
-
-    [SerializeField] TextMeshProUGUI Music_Readout = null;
-    [SerializeField] TextMeshProUGUI SFX_Readout = null;
-    [SerializeField] GameObject UIDisplay = null;
 
     Dictionary<String, Sound> music = new Dictionary<String, Sound>();
     Dictionary<String, Sound> sfx = new Dictionary<String, Sound>();
@@ -44,17 +38,6 @@ public class AudioManager : Singleton<AudioManager>
         m_music.audioMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
         m_sfx.audioMixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
 
-        if (sfxSlider)
-        {
-            sfxSlider.minValue = .0001f;
-            sfxSlider.maxValue = 1f;
-        }
-        if (musicSlider)
-        {
-            musicSlider.minValue = .0001f;
-            musicSlider.maxValue = 1f;
-        }
-
         foreach (Sound sound in m_sounds)
         {
             if (sound.name.Contains("Music "))
@@ -71,27 +54,6 @@ public class AudioManager : Singleton<AudioManager>
         PlayRandomMusic("Battle");
     }
 
-    public void NextSong()
-    {
-        StopAll();
-        curSongLoc++;
-        if (curSongLoc > m_sounds.Length - 1)
-        {
-            curSongLoc = 0;
-        }
-        PlayThrough();
-    }
-    public void PrevSong()
-    {
-        StopAll();
-        curSongLoc--;
-        if (curSongLoc < 0)
-        {
-            curSongLoc = m_sounds.Length - 1;
-        }
-        PlayThrough();
-    }
-
     public void Play(string name)
     {
         Sound sound = Array.Find(m_sounds, s => s.name == name);
@@ -101,31 +63,6 @@ public class AudioManager : Singleton<AudioManager>
             {
                 sound.audioSource.Play();
             }
-        }
-    }
-
-    public void PlayThrough()
-    {
-        StopAll();
-        if (isPaused)
-        {
-            Resume();
-        }
-        else
-        {
-            Sound sound = m_sounds[curSongLoc];
-            if (sound != null)
-            {
-                if (sound.name.Contains("Music"))
-                {
-                    sound.audioSource.Play();
-                }
-            }
-            //curMusicImage.sprite = sound.image;
-            //musicSlider.maxValue = m_sounds[curSongLoc].audioClip.length;
-            //string minSec = string.Format("{0}:{1:00}", (int)musicSlider.maxValue / 60, (int)musicSlider.maxValue % 60);
-            //musicMaxTimeText.text = minSec;
-            //musicNameText.text = m_sounds[curSongLoc].audioClip.name;
         }
     }
     public void Pause()
@@ -149,70 +86,21 @@ public class AudioManager : Singleton<AudioManager>
         isPaused = false;
     }
 
-    private void Update()
-    {
-
-        if (curSongLoc > m_sounds.Length - 1)
-        {
-            curSongLoc = 0;
-        }
-        if (curSongLoc < 0)
-        {
-            curSongLoc = m_sounds.Length - 1;
-        }
-        if (!isPaused)
-        {
-            if (!m_sounds[curSongLoc].audioSource.isPlaying)
-            {
-                curSongLoc++;
-                if (curSongLoc > m_sounds.Length - 1)
-                {
-                    curSongLoc = 0;
-                }
-                PlayThrough();
-            }
-            //musicSlider.value = m_sounds[curSongLoc].audioSource.time;
-            //string minSec = string.Format("{0}:{1:00}", (int)musicSlider.value / 60, (int)musicSlider.value % 60);
-            //musicTimeText.text = minSec;
-        }
-    }
-
-    void PlayRandomMusic(string contains)
+    public void PlayRandomMusic(string contains)
     {
         StopAll();
-
-        bool containSuccess = false;
-        if (contains != "")
+        List<string> battleMusic = new List<string>();
+        for (int i = 0; i < m_sounds.Length; i++)
         {
-            Dictionary<string, Sound>.KeyCollection stuffs = music.Keys;
-
-            List<string> keys = new List<string>();
-
-            foreach (string key in stuffs)
+            if (m_sounds[i].name.Contains(contains))
             {
-                if (key.Contains(contains))
-                {
-                    Play(key);
-                    return;
-                }
+                battleMusic.Add(m_sounds[i].name);   
             }
         }
 
-        if (!containSuccess)
-        {
-            int randNum = 1;
-            randNum = UnityEngine.Random.Range(1, music.Keys.Count);
+        int num = UnityEngine.Random.Range(0, battleMusic.Count);
 
-            Dictionary<string, Sound>.KeyCollection stuffs = music.Keys;
-
-            List<string> keys = new List<string>();
-
-            foreach (string key in stuffs)
-            {
-                keys.Add(key);
-            }
-            Play(keys[randNum]);
-        }
+        Play(battleMusic[num]);
     }
 
     public void StopAll()
@@ -262,19 +150,12 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void ToggleUIDisplay()
-    {
-        UIDisplay.SetActive(!UIDisplay.activeSelf);
-    }
-
     public void SetSFXVolume(float volume)
     {
         m_sfx.audioMixer.SetFloat("SFXVolume", Mathf.Log(volume) * 20);
-        SFX_Readout.text = (volume).ToString("00%");
     }
     public void SetMusicVolume(float volume)
     {
         m_music.audioMixer.SetFloat("MusicVolume", Mathf.Log(volume) * 20);
-        Music_Readout.text = (volume).ToString("00%");
     }
 }

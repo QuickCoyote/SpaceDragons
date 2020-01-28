@@ -22,19 +22,18 @@ public class Inventory : MonoBehaviour
     {
         if (items.ContainsKey(item))
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < items.Keys.Count; i++)
             {
                 if (items.Keys.ElementAt(i) == item)
                 {
                     items[item] += num;
-                    break;
+                    return;
                 }
             }
         }
         else
         {
             items.Add(item, num);
-
         }
     }
 

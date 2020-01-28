@@ -34,6 +34,8 @@ public class ShipyardController : MonoBehaviour
         MotherShip = WorldManager.Instance.Ship;
         ShipyardShipSetup();
         ShipyardShopSetup();
+        ShipMenu.SetActive(false);
+        ShopMenu.SetActive(false);
         Shipyard.SetActive(false);
     }
 
@@ -224,7 +226,7 @@ public class ShipyardController : MonoBehaviour
             {
                 //Add Random Epic to Shop List
                 int rand = Random.Range(0, EpicShips.Count);
-                ShipData EpicShip = EpicShips[(int)rand];
+                ShipData EpicShip = EpicShips[rand];
                 GameObject Ship = CreateShipFromData(EpicShip);
 
                 ShopShips.Add(Ship);
@@ -233,7 +235,7 @@ public class ShipyardController : MonoBehaviour
             {
                 //Add Random Rare to Shop List
                 int rand = Random.Range(0, RareShips.Count);
-                ShipData RareShip = RareShips[(int)rand];
+                ShipData RareShip = RareShips[rand];
                 GameObject Ship = CreateShipFromData(RareShip);
 
                 ShopShips.Add(Ship);
@@ -242,7 +244,7 @@ public class ShipyardController : MonoBehaviour
             {
                 //Add Random Common to Shop List
                 int rand = Random.Range(0, CommonShips.Count);
-                ShipData CommonShip = CommonShips[(int)rand];
+                ShipData CommonShip = CommonShips[rand];
                 GameObject Ship = CreateShipFromData(CommonShip);
 
                 ShopShips.Add(Ship);
@@ -391,6 +393,7 @@ public class ShipyardController : MonoBehaviour
 
     public void OpenShop()
     {
+        AudioManager.Instance.PlayRandomMusic("Shop Music");
         ShipyardShipSetup();
         Shipyard.SetActive(true);
         Time.timeScale = 0;
@@ -400,6 +403,7 @@ public class ShipyardController : MonoBehaviour
 
     public void CloseShop()
     {
+        AudioManager.Instance.PlayRandomMusic("Battle Music");
         Shipyard.SetActive(false);
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
