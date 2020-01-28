@@ -115,6 +115,8 @@ public class Ship : MonoBehaviour
         newPart.SetParent(transform);
         bodyPartTransforms.Add(newPart);
         bodyPartObjects.Add(newPart.gameObject);
+
+        HealthBarManager.Instance.AddHealthBar();
     }
 
     public GameObject FindBodyPartFromPrefabs(string partName)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarManager : MonoBehaviour
+public class HealthBarManager : Singleton<HealthBarManager>
 {
     [SerializeField] GridLayoutGroup layout = null;
     [SerializeField] GameObject healthBarPrefab = null;
@@ -14,11 +14,23 @@ public class HealthBarManager : MonoBehaviour
     void Start()
     {
         numBars = WorldManager.Instance.Ship.bodyPartTransforms.Count-1;
-
-        GenerateStartingHealthBars();
-        Debug.Log("Generated Health Bars");
     }
-    void Update()
+
+    public void AddHealthBar()
+    {
+        numBars++;
+        Instantiate(healthBarPrefab, layout.transform);
+        WorldManager.Instance.Ship.bodyPartObjects[numBars-1].GetComponent<Health>().healthbarObj = layout.transform.GetChild(numBars-1).gameObject;
+        checkForUpdateSizing();
+    }
+
+    public void RemoveHealthBar()
+    {
+        numBars--;
+        Destroy(layout.transform.GetChild(numBars - 2).gameObject);
+    }
+
+    public void checkForUpdateSizing()
     {
         if (numBars <= 5)
         {
@@ -38,19 +50,5 @@ public class HealthBarManager : MonoBehaviour
 
         layout.cellSize = new Vector3(cellWidth, layout.cellSize.y);
         layout.spacing = new Vector3(spacingX, layout.spacing.y);
-    }
-
-    public void GenerateStartingHealthBars()
-    {
-        for (int i = 1; i <= numBars; i++)
-        {
-            WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = Instantiate(healthBarPrefab, gameObject.transform);
-        }
-    }
-
-    public void AddHealthBar()
-    {
-        numBars++;
-        WorldManager.Instance.Ship.bodyPartObjects[numBars].GetComponent<Health>().healthbarObj = Instantiate(healthBarPrefab, gameObject.transform);// Instantiate HealthBarPrefab, connect
     }
 }
