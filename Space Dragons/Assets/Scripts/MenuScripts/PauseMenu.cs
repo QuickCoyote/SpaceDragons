@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
     [SerializeField] GameObject pauseUI = null;
+    [SerializeField] GameObject optionsUI = null;
 
     public void ToggleOptions()
     {
-        AudioManager.Instance.ToggleUIDisplay();
+        optionsUI.SetActive(!optionsUI.activeSelf);
     }
 
     public void ReturnToMenu()

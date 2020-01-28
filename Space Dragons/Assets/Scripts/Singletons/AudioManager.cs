@@ -12,13 +12,6 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioMixerGroup m_music = null;
     [SerializeField] AudioMixerGroup m_sfx = null;
 
-    [SerializeField] Slider musicSlider = null;
-    [SerializeField] Slider sfxSlider = null;
-
-    [SerializeField] TextMeshProUGUI Music_Readout = null;
-    [SerializeField] TextMeshProUGUI SFX_Readout = null;
-    [SerializeField] GameObject UIDisplay = null;
-
     Dictionary<String, Sound> music = new Dictionary<String, Sound>();
     Dictionary<String, Sound> sfx = new Dictionary<String, Sound>();
 
@@ -44,17 +37,6 @@ public class AudioManager : Singleton<AudioManager>
     {
         m_music.audioMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
         m_sfx.audioMixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
-
-        if (sfxSlider)
-        {
-            sfxSlider.minValue = .0001f;
-            sfxSlider.maxValue = 1f;
-        }
-        if (musicSlider)
-        {
-            musicSlider.minValue = .0001f;
-            musicSlider.maxValue = 1f;
-        }
 
         foreach (Sound sound in m_sounds)
         {
@@ -168,19 +150,12 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void ToggleUIDisplay()
-    {
-        UIDisplay.SetActive(!UIDisplay.activeSelf);
-    }
-
     public void SetSFXVolume(float volume)
     {
         m_sfx.audioMixer.SetFloat("SFXVolume", Mathf.Log(volume) * 20);
-        SFX_Readout.text = (volume).ToString("00%");
     }
     public void SetMusicVolume(float volume)
     {
         m_music.audioMixer.SetFloat("MusicVolume", Mathf.Log(volume) * 20);
-        Music_Readout.text = (volume).ToString("00%");
     }
 }
