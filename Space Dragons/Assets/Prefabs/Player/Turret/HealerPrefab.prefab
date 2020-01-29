@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 1592342478345459623}
   - component: {fileID: 3526563778569352880}
   - component: {fileID: 6111596496924924786}
-  - component: {fileID: 5518216971948190161}
+  - component: {fileID: 3550365470619791874}
   m_Layer: 8
   m_Name: HealerPrefab
   m_TagString: Untagged
@@ -353,10 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 0}
+  healthbarObj: {fileID: 0}
   healthMax: 75
   healthCount: 75
---- !u!114 &5518216971948190161
+--- !u!114 &3550365470619791874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,21 +365,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4977157105735039448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f64233b71229747b6d888897987b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: e90ec602aa160f54b84a71fd00936c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 75
-  range: 35
-  attackSpeed: 2
+  damage: 5
+  range: 1
+  attackSpeed: 0.25
   price: 10
-  rotateBoi: {fileID: 2013710388852829490}
+  rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  chainDistance: 20
-  rotationSpeed: 15
+  healTimer: 0.25
+  healAmount: 1
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
