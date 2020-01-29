@@ -14,10 +14,15 @@ public class OutpostController : MonoBehaviour
     public Inventory PlayerInventory;
     public List<ItemData> Items;
     public GameObject ItemLayoutPrefab;
+    public TextMeshProUGUI ShopTimer;
+    [Range(0, 2)] public int ShopDifficulty;
+
 
     Inventory outpostInventory = new Inventory();
     List<int> numsGenerated = new List<int>();
     int sliderValue;
+    float Timer = 0;
+    float MaxTime = 300;
 
     public void Start()
     {
@@ -25,11 +30,13 @@ public class OutpostController : MonoBehaviour
         
         OutpostShopSetup();
         PlayerShopSetup();
+        ShoppingPanel.SetActive(false);
         Outpost.SetActive(false);
     }
 
     public void Update()
     {
+        #region Dev Debug Controls
         if(Input.GetKeyDown(KeyCode.F2))
         {
             OpenOutpost();
@@ -42,8 +49,21 @@ public class OutpostController : MonoBehaviour
         {
             OutpostShopSetup();
         }
+        #endregion
 
-        if(ShoppingPanel.activeInHierarchy)
+        if (Timer > 0)
+        {
+            int minutes = (int)Timer / 60;
+            int seconds = (int)Timer % 60;
+            ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+            Timer -= 1 * Time.unscaledDeltaTime;
+        }
+        else if (Timer <= 0)
+        {
+            OutpostShopSetup();
+        }
+
+        if (ShoppingPanel.activeInHierarchy)
         {
             Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
             ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Slider Text").FirstOrDefault().text = ((int)slider.value).ToString();
@@ -60,7 +80,29 @@ public class OutpostController : MonoBehaviour
         }
         outpostInventory = new Inventory();
         numsGenerated = new List<int>();
-        for (int i = 0; i < 16; i++)
+
+        int numOfItems = 1;
+        int amountOfEachItem = 1;
+
+        switch (ShopDifficulty)
+        {
+            case 0:
+                numOfItems = Random.Range(4, 14);
+                amountOfEachItem = Random.Range(1, 34);
+                break;
+            case 1:
+                numOfItems = Random.Range(16, 25);
+                amountOfEachItem = Random.Range(1, 67);
+                break;
+            case 2:
+                numOfItems = Random.Range(28, 37);
+                amountOfEachItem = Random.Range(1, 100);
+                break;
+            default:
+                break;
+        }
+
+        for (int i = 0; i < numOfItems; i++)
         {
             GameObject obj = Instantiate(ItemLayoutPrefab);
             Button button = obj.GetComponentInChildren<Button>();
@@ -69,7 +111,7 @@ public class OutpostController : MonoBehaviour
             bool isNumBad = true;
 
             int randItem = Random.Range(0, Items.Count);
-            int randNum = Random.Range(1, 100);
+            int randNum = Random.Range(1, amountOfEachItem);
             itemCount.text = "x" + randNum;
             do
             {
@@ -93,7 +135,7 @@ public class OutpostController : MonoBehaviour
             obj.transform.SetParent(OutpostContent.transform);
             obj.gameObject.transform.localScale = new Vector3(1, 1);
         }
-
+        Timer = MaxTime;
     }
 
     public void OutpostShopRefresh()
@@ -211,4 +253,18 @@ public class OutpostController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            OpenOutpost();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            CloseOutpost();
+        }
+    }
 }

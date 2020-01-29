@@ -27,7 +27,6 @@ public class ShipyardController : MonoBehaviour
     float Timer = 0;
     float MaxTime = 300;
     int selectedPurchase = 0;
-    float dt = 0;
 
     public void Start()
     {
@@ -41,25 +40,7 @@ public class ShipyardController : MonoBehaviour
 
     public void Update()
     {
-        if (Ships[0] == null)
-        {
-            Start();
-        }
-
-        if (Timer > 0)
-        {
-            int minutes = (int)Timer / 60;
-            int seconds = (int)Timer % 60;
-            ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
-            //ShopTimer.text = string.Format("{0d1:##}", ShopTimer.text);
-            Timer -= 1 * Time.unscaledDeltaTime;
-        }
-        else if (Timer <= 0)
-        {
-            ShopShips = new List<GameObject>();
-            ShipyardShopSetup();
-        }
-
+        #region Dev Debug Controls
         if (Input.GetKeyDown(KeyCode.F3))
         {
             Timer = 5;
@@ -72,14 +53,24 @@ public class ShipyardController : MonoBehaviour
         {
             CloseShop();
         }
+        #endregion
 
-        if (dt >= 0)
+        if (Ships[0] == null)
         {
-            dt -= 1 * Time.unscaledDeltaTime;
+            Start();
         }
-        else if (Shipyard.activeInHierarchy)
+
+        if (Timer > 0)
         {
-            Time.timeScale = 0;
+            int minutes = (int)Timer / 60;
+            int seconds = (int)Timer % 60;
+            ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+            Timer -= 1 * Time.unscaledDeltaTime;
+        }
+        else if (Timer <= 0)
+        {
+            ShopShips = new List<GameObject>();
+            ShipyardShopSetup();
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
