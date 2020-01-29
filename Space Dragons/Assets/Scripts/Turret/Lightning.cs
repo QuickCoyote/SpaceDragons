@@ -6,12 +6,13 @@ public class Lightning : MonoBehaviour
 {
     public Transform target = null;
 
+    bool doneBefore = false;
 
     float lifetime = 0.25f;
     float dt = 0;
     LineRenderer lr = null;
 
-    void Start()
+    private void Start()
     {
         gameObject.AddComponent<LineRenderer>();
         lr = GetComponent<LineRenderer>();
@@ -32,15 +33,15 @@ public class Lightning : MonoBehaviour
         Segments[9] = target.transform.position;
         for (int i = 1; i < 9; i++)
         {
-            Vector3 normalized = TotalVector/10;
+            Vector3 normalized = TotalVector / 10;
             float rand = Random.Range(-1.0f, 1.0f);
-            Segments[i] = normalized * (i+1) + (new Vector3(normalized.y, normalized.x, 0) * rand) + transform.position;
+            Segments[i] = normalized * (i + 1) + (new Vector3(normalized.y, normalized.x, 0) * rand) + transform.position;
             Segments[i] = new Vector3(Segments[i].x, Segments[i].y, -1);
-            Debug.Log(Segments[i]);
         }
 
         lr.SetPositions(Segments);
         lr.enabled = true;
+        doneBefore = true;
     }
 
     void Update()

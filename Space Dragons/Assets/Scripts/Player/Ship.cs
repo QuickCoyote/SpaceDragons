@@ -25,6 +25,17 @@ public class Ship : MonoBehaviour
     public float rotationSpeed = 50.0f;
     public int maxShipsAllowed = 4;
 
+    public enum eShipToTest
+    {
+        RUSTY,
+        LIGHTNING,
+        FLAME,
+        HEALER,
+        ATTACK_DRONE,
+    }
+
+    public eShipToTest shipToTest = eShipToTest.RUSTY;
+
     private float dst = 1.0f;
     private Transform curBodyPart = null;
     private Transform prevBodyPart = null;
@@ -37,7 +48,24 @@ public class Ship : MonoBehaviour
         PlayerPrefs.SetInt("PlayerHead", 0);
         SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
-        AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
+        switch(shipToTest)
+        {
+            case eShipToTest.RUSTY:
+                AddBodyPart(FindBodyPartFromPrefabs("RustyPrefab"));
+                break;
+            case eShipToTest.LIGHTNING:
+                AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
+                break;
+            case eShipToTest.FLAME:
+                AddBodyPart(FindBodyPartFromPrefabs("FlamePrefab"));
+                break;
+            case eShipToTest.HEALER:
+                AddBodyPart(FindBodyPartFromPrefabs("HealerPrefab"));
+                break;
+            case eShipToTest.ATTACK_DRONE:
+                AddBodyPart(FindBodyPartFromPrefabs("AttackDronePrefab"));
+                break;
+        }
     }
 
     private void FixedUpdate()
