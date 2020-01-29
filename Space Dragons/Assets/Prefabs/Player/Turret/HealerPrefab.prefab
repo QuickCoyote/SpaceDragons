@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -2782527727701432275, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: -5494413639465103573, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5416462084258677857, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 6138750917631527082, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -252,9 +252,9 @@ GameObject:
   - component: {fileID: 1592342478345459623}
   - component: {fileID: 3526563778569352880}
   - component: {fileID: 6111596496924924786}
-  - component: {fileID: 8445181093077309316}
+  - component: {fileID: 5518216971948190161}
   m_Layer: 8
-  m_Name: RustyPrefab
+  m_Name: HealerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   healthMax: 75
   healthCount: 75
---- !u!114 &8445181093077309316
+--- !u!114 &5518216971948190161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,22 +365,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4977157105735039448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464ff57fb9fc4864da98124e399eccc6, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f64233b71229747b6d888897987b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 75
   range: 35
-  attackSpeed: 0.25
-  price: 0
+  attackSpeed: 2
+  price: 10
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  bullet: {fileID: 2532223516486878601, guid: 51c78af39cab59a4789cf13c55af15d3, type: 3}
-  rotationSpeed: 45
-  bulletOffsetY: 1
+  chainDistance: 20
+  rotationSpeed: 15
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +600,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4387272381542138516, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: -7848137845084936264, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -758,7 +757,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1050340031227320164, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: -5282243854238256458, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

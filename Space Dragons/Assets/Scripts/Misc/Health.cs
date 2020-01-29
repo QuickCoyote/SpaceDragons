@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] Slider healthbar = null;
+    [SerializeField] public GameObject healthbarObj = null;
+    Slider healthbar = null;
     public float healthMax = 1.0f;
     public float healthCount = 0.0f;
 
@@ -15,8 +16,15 @@ public class Health : MonoBehaviour
     public void Start()
     {
         an = GetComponent<Animator>();
+        if (healthbarObj)
+        {
+            healthbar = healthbarObj.GetComponent<Slider>();
+        }
         healthCount = healthMax;
-        if (healthbar) healthbar.maxValue = healthMax;
+        if (healthbar)
+        {
+            healthbar.maxValue = healthMax;
+        }
     }
 
     public void ResetHealth()
@@ -28,15 +36,24 @@ public class Health : MonoBehaviour
     {
         healthCount -= dmg;
         if (an) an.SetTrigger("Damage");
-//        AudioManager.Instance.Play("");
+        //        AudioManager.Instance.Play("");
 
     }
 
     public void Update()
     {
-        if (healthbar) healthbar.value = healthCount;
-        if (healthbar) healthbar.transform.rotation = Quaternion.identity;
+        if (healthbar)
+        {
+            healthbar.value = healthCount;
+        }
+        if (healthbar)
+        {
+            healthbar.transform.rotation = Quaternion.identity;
+        }
 
-        
+        if (healthCount > healthMax)
+        {
+            healthCount = healthMax;
+        }
     }
 }
