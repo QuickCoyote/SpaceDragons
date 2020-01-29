@@ -23,6 +23,7 @@ public class TutorialPrompts : Singleton<TutorialPrompts>
         "If you find an ASTEROID, you can fire at it to collect MATERIALS, which you can sell at a SPACEPORT.",
         "Follow the TRACKER arrow on your MINIMAP to find the nearest SPACEPORT.",
         "Certain SPACEPORTS will offer more currency for certain MATERIALS.",
+        "Thats all. Happy flying, DRAGON pilot!",
     };
 
     void Start()
@@ -41,12 +42,14 @@ public class TutorialPrompts : Singleton<TutorialPrompts>
             {
                 tiptimer = tipMax;
                 tipIndex++;
-                tipPrompt.text = prompts[tipIndex];
 
                 if (tipIndex == prompts.Length)
                 {
                     countdowntips = false;
                     tipUI.SetActive(false);
+                } else
+                {
+                    tipPrompt.text = prompts[tipIndex];
                 }
             }
         }
@@ -75,7 +78,7 @@ public class TutorialPrompts : Singleton<TutorialPrompts>
     {
         countdowntips = true;
         tiptimer = tipMax;
-        tipIndex = 1;
+        tipIndex = 2;
         tipPrompt.text = prompts[tipIndex];
 
     }
