@@ -765,7 +765,7 @@ Transform:
   m_Children:
   - {fileID: 2107063290}
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &130418215
 MonoBehaviour:
@@ -2410,7 +2410,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &380349358
 MonoBehaviour:
@@ -7905,7 +7905,7 @@ RectTransform:
   - {fileID: 1096590807}
   - {fileID: 3711066603568970956}
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14655,7 +14655,7 @@ RectTransform:
   - {fileID: 1704398932}
   - {fileID: 417303762}
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15494,7 +15494,7 @@ Transform:
   m_Children:
   - {fileID: 196209910334023938}
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!50 &196209910265618380
 Rigidbody2D:
@@ -15529,7 +15529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 1096590806}
+  healthbarObj: {fileID: 0}
   healthMax: 100
   healthCount: 100
 --- !u!58 &6490000148594582185
@@ -15659,14 +15659,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2055110191}
+  - {fileID: 1149885872}
   - {fileID: 196209910265618381}
   - {fileID: 196209911218918716}
-  - {fileID: 2055110191}
   - {fileID: 5207558213721873368}
   - {fileID: 7218177877420677255}
   - {fileID: 130418216}
   - {fileID: 380349359}
-  - {fileID: 1149885872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15771,7 +15771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &196209911218918717
 Camera:
@@ -15944,6 +15944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41571e826d204f641984a264ce5fede0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPersistant: 0
   layout: {fileID: 5311042384386535780}
   healthBarPrefab: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
     type: 3}
@@ -15977,7 +15978,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7439358440271263580
 SpriteRenderer:
@@ -16073,7 +16074,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 196209910753800036}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &860875693911695645
 SpriteRenderer:
@@ -16268,18 +16269,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
---- !u!114 &1096590806 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4586212023677243826, guid: 451f84625bbe42746be9eb106db9f406,
-    type: 3}
-  m_PrefabInstance: {fileID: 4586212022583358564}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1096590807 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     #region Variables
+
+    public Camera cam = null;
+
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
@@ -66,18 +69,20 @@ public class Ship : MonoBehaviour
     public void Move()
     {
         float curSpeed = speed;
-
         if (Input.touchCount > 0)
         {
             // This is just getting touch
             Touch touch = Input.GetTouch(0);
-            Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
-            targetPos.z = 0;
-            // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+            if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+            {
+                Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
+                targetPos.z = 0;
+                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+                Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+                float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+                bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+            }
         }
 
         bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);

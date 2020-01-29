@@ -11,12 +11,14 @@ public class FollowTarget : MonoBehaviour
 
     public void Start()
     {
-        Target.TryGetComponent(out targetS);
+        if(Target)
+        {
+            Target.TryGetComponent(out targetS);
+        }
     }
 
     public void FixedUpdate()
-    {        
-
+    {
         if (targetS)
         {
             transform.Translate(targetS.bodyPartTransforms[0].up * targetS.speed * Time.smoothDeltaTime);
