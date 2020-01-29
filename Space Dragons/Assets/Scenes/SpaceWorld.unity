@@ -2009,7 +2009,7 @@ PrefabInstance:
     - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: shipToTest
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
