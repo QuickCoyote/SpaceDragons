@@ -40,7 +40,10 @@ public class Projectile : MonoBehaviour
     public void Fire()
     {
         AudioManager.Instance.Play("Fire01");
-        goDirection = parentobj.transform.up;
+        if(goDirection == Vector3.zero)
+        {
+            goDirection = parentobj.transform.up;
+        }
         transform.rotation = parentobj.transform.rotation;
     }
 

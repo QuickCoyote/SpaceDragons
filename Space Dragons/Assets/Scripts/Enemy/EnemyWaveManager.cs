@@ -8,10 +8,12 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] float waveSpawnTimer = 25.0f;
 
     [SerializeField] List<Wave> waves = new List<Wave>();
-  
+
     public int currentWave = 0;
     public int cycleCount = 0;
     public GameObject Player = null;
+
+    public int aliveEnemies = 0;
 
     float dt = 0.0f;
 
@@ -24,17 +26,20 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     {
         dt += Time.deltaTime;
 
-        if(dt >= waveSpawnTimer)
+        if (aliveEnemies == 0)
         {
-            for(int i = 0; i <= cycleCount; i++)
+            if (dt >= waveSpawnTimer)
             {
-                waves[currentWave].StartWave();
+                for (int i = 0; i <= cycleCount; i++)
+                {
+                    waves[currentWave].StartWave();
+                }
+                dt = 0.0f;
+                currentWave++;
             }
-            dt = 0.0f;
-            currentWave++;
         }
 
-        if(currentWave == 10)
+        if (currentWave == 10)
         {
             currentWave = 0;
             cycleCount++;
@@ -43,7 +48,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
 
     public void ReduceCycleCount(int amount)
     {
-        if(cycleCount - amount > 0)
+        if (cycleCount - amount > 0)
         {
             cycleCount -= amount;
         }
@@ -52,7 +57,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
             cycleCount = 0;
         }
     }
-    
+
     public void IncreaseCycleCount(int amount)
     {
         cycleCount += amount;

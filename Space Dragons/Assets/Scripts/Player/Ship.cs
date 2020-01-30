@@ -4,6 +4,25 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    public enum eShipToTest
+    {
+        RUSTY,
+        LIGHTNING,
+        FLAME,
+        HEALER,
+        ATTACK_DRONE,
+    }
+
+    public enum eMotherShip
+    {
+        BASIC,
+        FLAMETHROWER,
+        LIGHTNING,
+        HEALING,
+        GUARD_DRONE,
+        LASER
+    }
+
     #region Variables
 
     public Camera cam = null;
@@ -25,15 +44,7 @@ public class Ship : MonoBehaviour
     public float rotationSpeed = 50.0f;
     public int maxShipsAllowed = 4;
 
-    public enum eShipToTest
-    {
-        RUSTY,
-        LIGHTNING,
-        FLAME,
-        HEALER,
-        ATTACK_DRONE,
-    }
-
+    public eMotherShip motherShip = eMotherShip.BASIC;
     public eShipToTest shipToTest = eShipToTest.RUSTY;
 
     private float dst = 1.0f;
@@ -45,10 +56,30 @@ public class Ship : MonoBehaviour
     private void Start()
     {
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
-        PlayerPrefs.SetInt("PlayerHead", 0);
-        SetShipHeadSprite(PlayerPrefs.GetInt("PlayerHead"));
+        
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
-        switch(shipToTest)
+
+        switch (motherShip)
+        {
+            case eMotherShip.BASIC:
+                SetShipHead(0);
+                break;
+            case eMotherShip.FLAMETHROWER:
+                SetShipHead(1);
+                break;
+            case eMotherShip.LIGHTNING:
+                SetShipHead(2);
+                break;
+            case eMotherShip.HEALING:
+                SetShipHead(3);
+                break;
+            case eMotherShip.GUARD_DRONE:
+                SetShipHead(4);
+                break;
+        }
+
+
+        switch (shipToTest)
         {
             case eShipToTest.RUSTY:
                 AddBodyPart(FindBodyPartFromPrefabs("RustyPrefab"));
@@ -202,8 +233,11 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public void SetShipHeadSprite(int val)
+    public void SetShipHead(int val)
     {
+        PlayerController playerController = GetComponent<PlayerController>();
+        playerController.SwitchFireMode(motherShip);
+        playerController.headBullet = playerController.headBullets[val];
         ShipHeadSprite.sprite = ShipHeadSprites[val];
     }
 
@@ -217,7 +251,6 @@ public class Ship : MonoBehaviour
                 bodyPartObjects[i] = null;
             }
         }
-
         for (int i = 0; i < bodyPartObjects.Count; i++)
         {
             if (bodyPartObjects[i] != null)
