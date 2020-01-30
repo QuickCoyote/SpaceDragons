@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 6747295391345297766}
   - component: {fileID: 2521101341150211016}
   m_Layer: 5
-  m_Name: ItemName
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9330,7 +9330,7 @@ MonoBehaviour:
     type: 3}
   ShipMenu: {fileID: 2806653247369138515}
   ShopMenu: {fileID: 2806653247011002752}
-  SelectionDisplay: {fileID: 0}
+  SelectionDisplay: {fileID: 4077250320056811717}
   ShipCounter: {fileID: 2806653248643372753}
   ShopTimer: {fileID: 2806653247180582501}
   MaxShipWarning: {fileID: 4579392239185995577}
@@ -11518,7 +11518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5/8
+  m_text: '#/#'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 154f53d80311e3d45ac0c199085d1ef2, type: 2}
   m_sharedMaterial: {fileID: 7176376339001244906, guid: 154f53d80311e3d45ac0c199085d1ef2,
@@ -11596,7 +11596,7 @@ MonoBehaviour:
     characterCount: 3
     spriteCount: 0
     spaceCount: 0
-    wordCount: 2
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -15352,7 +15352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rarity
+  m_text: 'Rarity:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 154f53d80311e3d45ac0c199085d1ef2, type: 2}
   m_sharedMaterial: {fileID: 7176376339001244906, guid: 154f53d80311e3d45ac0c199085d1ef2,
@@ -15427,7 +15427,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4504966487765126978}
-    characterCount: 6
+    characterCount: 7
     spriteCount: 0
     spaceCount: 0
     wordCount: 1

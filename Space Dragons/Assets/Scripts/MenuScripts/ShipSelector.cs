@@ -7,6 +7,7 @@ public class ShipSelector : MonoBehaviour
 {
     public GameObject ShipMenu;
     public GameObject ShopMenu;
+    public GameObject SelecionDisplay;
     public GameObject SelectedShip; 
     public ShipyardController controller;
     public bool IsSlotFilled = false;
@@ -21,6 +22,7 @@ public class ShipSelector : MonoBehaviour
         {
             ShipMenu.SetActive(true);
             ShopMenu.SetActive(false);
+            SelecionDisplay.SetActive(false);
 
             foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
             {
@@ -55,6 +57,8 @@ public class ShipSelector : MonoBehaviour
         {
             ShopMenu.SetActive(true);
             ShipMenu.SetActive(false);
+            controller.GetSelectionInfo();
+            SelecionDisplay.SetActive(true);
         }
 
     }

@@ -14,6 +14,7 @@ public abstract class Turret : MonoBehaviour
     public SpriteRenderer spriteRendererWings = null;
     public SpriteRenderer spriteRendererBadge = null;
     public ShipData.eTurretRarity turretRarity = ShipData.eTurretRarity.COMMON;
+    public ShipData data = null;    
 
     private float rarityModifier = 1.0f;
     protected float attackTimer = 0.0f;
