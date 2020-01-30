@@ -19,6 +19,7 @@ public class ShipyardController : MonoBehaviour
     public GameObject ShipButtonPrefab;
     public GameObject ShipMenu;
     public GameObject ShopMenu;
+    public GameObject SelectionDisplay;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
     public GameObject MaxShipWarning;
@@ -35,6 +36,7 @@ public class ShipyardController : MonoBehaviour
         ShipyardShopSetup();
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
+        SelectionDisplay.SetActive(false);
         Shipyard.SetActive(false);
     }
 

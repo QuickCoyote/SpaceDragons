@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 3478054502161386498}
+  healthbarObj: {fileID: 3478054502161386500}
   healthMax: 25
   healthCount: 25
 --- !u!58 &5187557918588629459
@@ -5355,15 +5355,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3282168754938800331}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3478054502161386498 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2145986335121630409, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!1 &3478054502161386500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 3282168754938800331}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

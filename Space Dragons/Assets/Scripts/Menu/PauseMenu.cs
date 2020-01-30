@@ -17,7 +17,7 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
     }
 
     public void RestartTutorial()
