@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 0}
+  healthbarObj: {fileID: 0}
   healthMax: 75
   healthCount: 75
 --- !u!114 &5518216971948190161
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 75
-  range: 35
+  range: 55
   attackSpeed: 2
   price: 10
   rotateBoi: {fileID: 2013710388852829490}

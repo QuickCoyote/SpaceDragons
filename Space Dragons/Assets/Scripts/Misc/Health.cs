@@ -37,7 +37,6 @@ public class Health : MonoBehaviour
         healthCount -= dmg;
         if (an) an.SetTrigger("Damage");
         //        AudioManager.Instance.Play("");
-
     }
 
     public void Update()

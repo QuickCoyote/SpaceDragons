@@ -46,6 +46,7 @@ public abstract class Enemy : MonoBehaviour
         if (hp.healthCount <= 0.0f)
         {
             WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            EnemyWaveManager.Instance.aliveEnemies--;
             Destroy(gameObject);
         } else if (hp.healthCount < hp.healthMax/2 && !DamageParticles.activeSelf)
         {

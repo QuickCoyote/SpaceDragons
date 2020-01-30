@@ -35,8 +35,14 @@ public class Flame : Projectile
     {
         fireSFX = GetComponent<AudioSource>();
         fireSFX.pitch = fireSFX.pitch + Random.Range(-.25f, .25f);
-        if (fireSFX) fireSFX.Play();
-        goDirection = parentobj.transform.up;
+        if (fireSFX)
+        {
+            fireSFX.Play();
+        }
+        if(goDirection == null)
+        {
+            goDirection = parentobj.transform.up;
+        }
     }
 
     public void Move()

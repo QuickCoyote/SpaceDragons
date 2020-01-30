@@ -20,6 +20,7 @@ public class Wave : ScriptableObject
             Vector3 spawnPosition = new Vector3(player.transform.position.x + randX, player.transform.position.y + randY, 0.0f);
 
             Instantiate(myEnemies[i], spawnPosition, Quaternion.identity, null).GetComponent<Enemy>().Player = player;
+            EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
 }
