@@ -9,6 +9,8 @@ public class ShipData : ShipDataParent
     public GameObject prefab;
     public eTurretRarity rarity;
     public eTurretType type;
+    public string description;
+    public string name;
 
     public enum eTurretRarity
     {

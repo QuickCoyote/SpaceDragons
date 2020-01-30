@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 target;
     protected Health hp;
 
-    void Start()
+    protected void Start()
     {
         Player = WorldManager.Instance.Player;
         rb = GetComponent<Rigidbody2D>();
@@ -46,6 +46,7 @@ public abstract class Enemy : MonoBehaviour
         if (hp.healthCount <= 0.0f)
         {
             WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            EnemyWaveManager.Instance.aliveEnemies--;
             Destroy(gameObject);
         } else if (hp.healthCount < hp.healthMax/2 && !DamageParticles.activeSelf)
         {

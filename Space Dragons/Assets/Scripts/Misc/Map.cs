@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 
 public class Map : Singleton<Map>
@@ -15,7 +16,7 @@ public class Map : Singleton<Map>
     public bool TrackNearest = true;
     public GameObject TrackButtons;
 
-    MapTargets[] targets;
+    List<MapTargets> targets = new List<MapTargets>();
     int TargetIndex = 0;
     public Vector3 TargetBeingTracked = Vector3.zero;
 
@@ -26,7 +27,7 @@ public class Map : Singleton<Map>
 
     private void Start()
     {
-        targets = FindObjectsOfType<MapTargets>();
+        targets = FindObjectsOfType<MapTargets>().ToList();
         foreach (MapTargets g in targets)
         {
             linerenderers.Add(Instantiate(linerendererprefab, transform));
@@ -37,19 +38,32 @@ public class Map : Singleton<Map>
         TargetBeingTracked = targets[0].transform.position;
     }
 
+    public void AddTarget(MapTargets target)
+    {
+        targets.Add(target);
+        linerenderers.Add(Instantiate(linerendererprefab, transform));
+    }
+    public void RemoveTarget(MapTargets target)
+    {
+        linerenderers.RemoveAt(targets.IndexOf(target));
+        targets.Remove(target);
+    }
     private void Update()
     {
         //Check for distances.
         float shortestDistance = 50000;
         for (int i = 0; i < linerenderers.Count; i++)
         {
-            linerenderers[i].positionCount = 2;
-            linerenderers[i].SetPosition(0, targets[i].transform.position - Vector3.forward);
-            linerenderers[i].SetPosition(1, player.transform.position - Vector3.forward);
-            if (Vector3.Distance(player.transform.position, targets[i].transform.position) < shortestDistance)
+            if (linerenderers[i] && targets[i])
             {
-                shortestDistance = Vector3.Distance(player.transform.position, targets[i].transform.position);
-                nearestTarget = targets[i].transform.position;
+                linerenderers[i].positionCount = 2;
+                linerenderers[i].SetPosition(0,  new Vector3(targets[i].transform.position.x, targets[i].transform.position.y, -4));
+                linerenderers[i].SetPosition(1, new Vector3(player.transform.position.x, player.transform.position.y, -4));
+                if (Vector3.Distance(player.transform.position, targets[i].transform.position) < shortestDistance)
+                {
+                    shortestDistance = Vector3.Distance(player.transform.position, targets[i].transform.position);
+                    nearestTarget = targets[i].transform.position;
+                }
             }
         }
 
@@ -95,7 +109,7 @@ public class Map : Singleton<Map>
     public void IncrementTrackIndex()
     {
         TargetIndex++;
-        if (TargetIndex >= targets.Length) TargetIndex = 0;
+        if (TargetIndex >= targets.Count) TargetIndex = 0;
         resetTrackers();
         targets[TargetIndex].SelectTarget(true);
         TargetBeingTracked = targets[TargetIndex].transform.position;
@@ -104,7 +118,7 @@ public class Map : Singleton<Map>
     public void DecrimentTrackIndex()
     {
         TargetIndex--;
-        if (TargetIndex < 0) TargetIndex = targets.Length-1;
+        if (TargetIndex < 0) TargetIndex = targets.Count - 1;
         resetTrackers();
         targets[TargetIndex].SelectTarget(true);
         TargetBeingTracked = targets[TargetIndex].transform.position;
@@ -114,7 +128,9 @@ public class Map : Singleton<Map>
     {
         foreach(MapTargets t in targets)
         {
-            t.SelectTarget(false);
+
+                t.SelectTarget(false);
+            
         }
     }
 

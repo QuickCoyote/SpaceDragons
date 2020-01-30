@@ -58,12 +58,21 @@ public class LightningTurret : Turret
 
         if (enemiesShocked == 1)
         {
+            Debug.Log("ADDED MY LIGHTNING");
             gameObject.AddComponent<Lightning>().target = enemy.transform;
         }
         else
         {
-            myLightning.RemoveLightning();
-            Destroy(myLightning);
+            foreach (Component comp in GetComponents<Component>())
+            {
+                Lightning lightning = null;
+                TryGetComponent(out lightning);
+
+                if (lightning)
+                {
+                    lightning.RemoveLightning();
+                }
+            }
         }
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(enemy.transform.position, chainDistance);
         foreach (Collider2D col in enemyColliders)
@@ -79,10 +88,14 @@ public class LightningTurret : Turret
                 }
                 else
                 {
-                    shockedBois.Add(en);
-                    enemy.gameObject.AddComponent<Lightning>().target = en.transform;
-                    enemiesShocked++;
-                    ShockNext(en);
+                    if(en != enemy)
+                    {
+                        shockedBois.Add(en);
+                        enemy.gameObject.AddComponent<Lightning>().target = en.transform;
+                        enemiesShocked++;
+                        Debug.Log("Shocked enemies: " + enemiesShocked);
+                        ShockNext(en);
+                    }
                 }
                 en.GetComponent<Health>().healthCount -= damage;
             }
