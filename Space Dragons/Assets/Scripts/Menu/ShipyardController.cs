@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ShipyardController : MonoBehaviour
 {
@@ -109,6 +110,7 @@ public class ShipyardController : MonoBehaviour
             ShipSelector selector = button.GetComponent<ShipSelector>();
             selector.ShipMenu = ShipMenu;
             selector.ShopMenu = ShopMenu;
+            selector.SelecionDisplay = SelectionDisplay;
             selector.controller = this;
             if (Ships[i] != null)
             {
@@ -255,6 +257,7 @@ public class ShipyardController : MonoBehaviour
         Ship.SetActive(false);
         Turret ShipTurret = Ship.GetComponent<Turret>();
 
+        ShipTurret.data = data;
         int badgeColor = 0;
 
         Sprite randBase = null;
@@ -318,18 +321,30 @@ public class ShipyardController : MonoBehaviour
         return Ship;
     }
 
+    public void GetSelectionInfo()
+    {
+        ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
+
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "Type").FirstOrDefault().text = data.name;
+
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + data.rarity;
+
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
+    }
+
     public void SelectionIncrement()
     {
         selectedPurchase++;
-        //Time.timeScale = 1;
-        //dt = 0.5f;
+        GetSelectionInfo();
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
-        //Time.timeScale = 1;
-        //dt = 0.5f;
+        GetSelectionInfo();
     }
 
     public void Purchase()

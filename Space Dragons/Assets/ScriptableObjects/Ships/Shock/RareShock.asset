@@ -94,3 +94,5 @@ MonoBehaviour:
   prefab: {fileID: 4977157105735039448, guid: 84ac47bd751de3a40a6994085b6d61df, type: 3}
   rarity: 1
   type: 1
+  description: Blue Boy made of Blue Ore
+  name: Lightning Turret
