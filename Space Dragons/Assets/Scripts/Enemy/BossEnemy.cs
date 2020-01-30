@@ -5,6 +5,15 @@ public class BossEnemy : Enemy
     [SerializeField] GameObject Turret1 = null;
     [SerializeField] GameObject Turret2 = null;
     [SerializeField] GameObject gunNozzle2 = null;
+
+    [SerializeField] MapTargets maptarget = null;
+
+    private void Start()
+    {
+        base.Start();
+        Map.Instance.AddTarget(maptarget);
+    }
+
     public float shootingTimer2 = 0.5f;
 
     protected override void Attack()
@@ -40,7 +49,6 @@ public class BossEnemy : Enemy
             }
         }
     }
-
     protected override void Move()
     {
         target = Player.transform.position;
@@ -61,5 +69,8 @@ public class BossEnemy : Enemy
         Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
         Turret2.transform.rotation = Quaternion.Slerp(Turret2.transform.rotation, rotation2, rotationSpeed * 2 * Time.deltaTime);
     }
-
+    private void OnDestroy()
+    {
+        Map.Instance.RemoveTarget(maptarget);
+    }
 }

@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 target;
     protected Health hp;
 
-    void Start()
+    protected void Start()
     {
         Player = WorldManager.Instance.Player;
         rb = GetComponent<Rigidbody2D>();
