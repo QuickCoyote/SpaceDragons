@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430583706782635214}
   - component: {fileID: 6893461471801671079}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3691268937218093931}
   - component: {fileID: 7482263248710154004}
   - component: {fileID: 5521819008076974581}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Gun Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378885072918271336}
   - component: {fileID: 4604111021239675149}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Badge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3526563778569352880}
   - component: {fileID: 6111596496924924786}
   - component: {fileID: 8445181093077309316}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: RustyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 2193062007289221175}
   - component: {fileID: 3598942958644046603}
   - component: {fileID: 7802105048809631779}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Base Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 4708951422693929464}
   - component: {fileID: 5207629768914091432}
   - component: {fileID: 935034254445406949}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Badge Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4449898998835988191}
   - component: {fileID: 2604695303973877405}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 2830193390771789823}
   - component: {fileID: 1037682809494328176}
   - component: {fileID: 6973834224950296838}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Wings Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6312760664145467864}
   - component: {fileID: 754460446724932777}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
