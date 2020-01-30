@@ -12,11 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d6807f0cb38874eaf47296930cb626, type: 3}
   m_Name: RareHealer
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  damage: 0
-  range: 0
-  attackSpeed: 0
+  spriteBasesRed: []
+  spriteBasesGreen: []
+  spriteBasesBlue: []
+  spriteBasesOrange: []
+  spriteBasesPurple: []
+  spriteTurretsRed: []
+  spriteTurretsGreen: []
+  spriteTurretsBlue: []
+  spriteTurretsOrange: []
+  spriteTurretsPurple: []
+  spriteWingsRed: []
+  spriteWingsGreen: []
+  spriteWingsBlue: []
+  spriteWingsOrange: []
+  spriteWingsPurple: []
+  spriteBadgesCommon: []
+  spriteBadgesRare: []
+  spriteBadgesEpic: []
   price: 0
   prefab: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
   rarity: 0
+  type: 0
+  description: 
+  name: Healer Turret

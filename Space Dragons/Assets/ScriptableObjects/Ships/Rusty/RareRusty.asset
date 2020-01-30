@@ -93,3 +93,6 @@ MonoBehaviour:
   price: 0
   prefab: {fileID: 4977157105735039448, guid: 51edef244fd707f40ab9f44d41c43cd9, type: 3}
   rarity: 1
+  type: 0
+  description: Orange Boy made of Orange Ore
+  name: Rusty Turret
