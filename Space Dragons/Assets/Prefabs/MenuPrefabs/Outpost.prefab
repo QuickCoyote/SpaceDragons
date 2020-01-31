@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233097029}
   - component: {fileID: 233097030}
+  - component: {fileID: 2486687127675086912}
   m_Layer: 0
   m_Name: BluePlanet
   m_TagString: Untagged
@@ -162,6 +163,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &2486687127675086912
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233097028}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &273620056
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,13 +473,14 @@ GameObject:
   m_Component:
   - component: {fileID: 407945756}
   - component: {fileID: 407945757}
+  - component: {fileID: 6128143393725312538}
   m_Layer: 0
   m_Name: RedPlanet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &407945756
 Transform:
   m_ObjectHideFlags: 0
@@ -527,6 +545,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &6128143393725312538
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407945755}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &490165393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777504354}
   - component: {fileID: 777504355}
+  - component: {fileID: 5012344091451733774}
   m_Layer: 0
   m_Name: GreenPlanet
   m_TagString: Untagged
@@ -1148,6 +1183,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &5012344091451733774
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777504353}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1111408607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581514906}
   - component: {fileID: 1581514907}
+  - component: {fileID: 8805503625927933096}
   m_Layer: 0
   m_Name: YellowPlanet
   m_TagString: Untagged
@@ -1383,6 +1435,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &8805503625927933096
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581514905}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bb8c7b9fd5eb0c44b4bbdafcabac934, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1949955910
 GameObject:
   m_ObjectHideFlags: 0
