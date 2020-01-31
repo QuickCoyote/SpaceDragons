@@ -19,7 +19,7 @@ public class Healer : Turret
     {
         dt += Time.deltaTime;
 
-        if(turretImHealing == null)
+        if (turretImHealing == null)
         {
             turretImHealing = FindTurretToHeal();
         }
@@ -35,12 +35,15 @@ public class Healer : Turret
 
     public void Heal()
     {
-        if (turretImHealing.healthCount == turretImHealing.healthMax)
+        if (Time.timeScale != 0)
         {
-            turretImHealing = FindTurretToHeal();
-        }
+            if (turretImHealing.healthCount == turretImHealing.healthMax)
+            {
+                turretImHealing = FindTurretToHeal();
+            }
 
-        turretImHealing.healthCount += healAmount;
+            turretImHealing.healthCount += healAmount;
+        }
     }
 
     public Health FindTurretToHeal()
@@ -50,13 +53,23 @@ public class Healer : Turret
 
         foreach (GameObject obj in turretobjs)
         {
-            if (turretToHeal == null)
+            Health health;
+            if(obj == null)
             {
-                turretToHeal = obj.GetComponent<Health>();
+                return GetComponent<Health>();
             }
-            else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+            obj.TryGetComponent(out health);
+
+            if (health != null)
             {
-                turretToHeal = obj.GetComponent<Health>();
+                if (turretToHeal == null)
+                {
+                    turretToHeal = obj.GetComponent<Health>();
+                }
+                else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+                {
+                    turretToHeal = obj.GetComponent<Health>();
+                }
             }
         }
 

@@ -229,6 +229,7 @@ public class Ship : MonoBehaviour
                     Destroy(bodyPartObjects[j - 1]);
                     bodyPartObjects.RemoveAt(j - 1);
                     bodyPartTransforms.RemoveAt(j - 1);
+                    HealthBarManager.Instance.RemoveHealthBar();
                 }
             }
             // return;
@@ -238,11 +239,30 @@ public class Ship : MonoBehaviour
             Destroy(bodyPartObjects[removeIndex]);
             bodyPartObjects.RemoveAt(removeIndex);
             bodyPartTransforms.RemoveAt(removeIndex);
+            HealthBarManager.Instance.RemoveHealthBar();
         }
     }
 
     public void SetShipHead(int val)
     {
+        switch (val)
+        {
+            case 0:
+                motherShip = eMotherShip.BASIC;
+                break;
+            case 1:
+                motherShip = eMotherShip.FLAMETHROWER;
+                break;
+            case 2:
+                motherShip = eMotherShip.LIGHTNING;
+                break;
+            case 3:
+                motherShip = eMotherShip.HEALING;
+                break;
+            case 4:
+                motherShip = eMotherShip.GUARD_DRONE;
+                break;
+        }
         PlayerController playerController = GetComponent<PlayerController>();
         playerController.SwitchFireMode(motherShip);
         playerController.headBullet = playerController.headBullets[val];
