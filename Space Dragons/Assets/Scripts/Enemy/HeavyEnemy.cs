@@ -16,9 +16,7 @@ public class HeavyEnemy : Enemy
                 {
                     GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
                     Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.parentobj = gunNozzle;
-                    p.damage = attackDamage;
-                    p.Fire();
+                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
                 }
             }
         }

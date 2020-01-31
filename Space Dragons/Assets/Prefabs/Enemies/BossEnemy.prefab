@@ -5380,8 +5380,11 @@ MonoBehaviour:
   Turret1: {fileID: 7946891062008195090}
   Turret2: {fileID: 306476785492582055}
   gunNozzle2: {fileID: 2081467892011155251}
+  itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
+    type: 3}
   maptarget: {fileID: 5011723611923302788}
   shootingTimer2: 0.1
+  lootnum: 5
 --- !u!50 &2911718110754155112
 Rigidbody2D:
   serializedVersion: 4

@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
    
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject != parentobj) // make sure its not hitting itself
         {
             Health collidedHP = collision.gameObject.GetComponent<Health>();
@@ -37,10 +38,22 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void Fire(Transform firepoint, float Ownerdmg, GameObject owner)
+    {
+        parentobj = owner;
+        damage = Ownerdmg;
+        AudioManager.Instance.Play("Fire01");
+        if(goDirection == Vector3.zero)
+        {
+            goDirection = firepoint.transform.up;
+        }
+        transform.rotation = firepoint.transform.rotation;
+    }
+
     public void Fire()
     {
         AudioManager.Instance.Play("Fire01");
-        if(goDirection == Vector3.zero)
+        if (goDirection == Vector3.zero)
         {
             goDirection = parentobj.transform.up;
         }
