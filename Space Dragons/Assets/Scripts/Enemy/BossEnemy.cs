@@ -5,7 +5,7 @@ public class BossEnemy : Enemy
     [SerializeField] GameObject Turret1 = null;
     [SerializeField] GameObject Turret2 = null;
     [SerializeField] GameObject gunNozzle2 = null;
-
+    [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] MapTargets maptarget = null;
 
     private void Start()
@@ -15,6 +15,7 @@ public class BossEnemy : Enemy
     }
 
     public float shootingTimer2 = 0.5f;
+    public float lootnum = 5.0f;
 
     protected override void Attack()
     {
@@ -70,5 +71,11 @@ public class BossEnemy : Enemy
     private void OnDestroy()
     {
         Map.Instance.RemoveTarget(maptarget);
+        for (int i = 0; i < lootnum; i++)
+        {
+            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
+            g.itemData = WorldManager.Instance.GetRandomItemData();
+            g.image.sprite = g.itemData.itemImage;
+        }
     }
 }
