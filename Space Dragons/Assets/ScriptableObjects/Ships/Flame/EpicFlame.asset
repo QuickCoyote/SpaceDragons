@@ -94,5 +94,5 @@ MonoBehaviour:
   prefab: {fileID: 4977157105735039448, guid: fe6ec7d7a1671654aa9b1eb504d486e4, type: 3}
   rarity: 2
   type: 2
-  description: 
+  description: Red Boy made of Red Ore
   name: Flame Turret

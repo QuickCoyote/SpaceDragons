@@ -323,16 +323,48 @@ public class ShipyardController : MonoBehaviour
 
     public void GetSelectionInfo()
     {
-        ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
+        if(ShopShips[selectedPurchase] != null)
+        {
+            ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
+            GameObject ship = ShopShips[selectedPurchase];
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Type").FirstOrDefault().text = data.shipName;
 
-        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-            (o => o.name == "Type").FirstOrDefault().text = data.name;
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + data.rarity;
 
-        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-            (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + data.rarity;
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
 
-        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-            (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
+            GameObject turret = null;
+            foreach (Transform child in SelectionDisplay.transform)
+            {
+                if(child.name == "ShipDisplay")
+                {
+                    turret = child.gameObject;
+                }
+            }
+            for (int i = 0, j = turret.transform.childCount - 1; i < turret.transform.childCount; i++, j--)
+            {
+                switch (i)
+                {
+                    case 0:
+                        turret.transform.GetChild(1).GetComponent<Image>().sprite = ship.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 1:
+                        turret.transform.GetChild(3).GetComponent<Image>().sprite = ship.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 2:
+                        turret.transform.GetChild(0).GetComponent<Image>().sprite = ship.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 3:
+                        turret.transform.GetChild(2).GetComponent<Image>().sprite = ship.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                }
+            }
+        }
+
+
     }
 
     public void SelectionIncrement()

@@ -28,9 +28,23 @@ public class ShipSelector : MonoBehaviour
             {
                 if(child.tag == "ShipyardShip")
                 {
-                    for(int i = 0; i < child.transform.childCount; i++)
+                    for(int i = 0, j = child.transform.childCount-1; i < child.transform.childCount; i++, j--)
                     {
-                        child.GetChild(i).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(i).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        switch(i)
+                        {
+                            case 0:
+                                child.GetChild(1).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                                break;
+                            case 1:
+                                child.GetChild(3).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                                break;
+                            case 2:
+                                child.GetChild(0).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                                break;
+                            case 3:
+                                child.GetChild(2).GetComponent<Image>().sprite = SelectedShip.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                                break;
+                        }
                     }
                 }
                 if(child.tag == "SellButton")
