@@ -15323,7 +15323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarObj: {fileID: 0}
+  healthbarObj: {fileID: 1096590805}
   healthMax: 100
   healthCount: 100
 --- !u!58 &6490000148594582185
@@ -16328,6 +16328,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4586212023479636831, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
@@ -16455,6 +16465,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
+--- !u!1 &1096590805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
+    type: 3}
+  m_PrefabInstance: {fileID: 4586212022583358564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1096590807 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
