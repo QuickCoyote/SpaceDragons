@@ -10,7 +10,9 @@ public class AsteroidManager : Singleton<AsteroidManager>
     [SerializeField] Asteroid asteroidPrefab;
     public List<Asteroid> asteroids = new List<Asteroid>();
     public int AsteroidMinimum = 4;
-    public int AsteroidMaximum = 10;
+    public int AsteroidMaximum = 8;
+
+    public int AsteroidsDestroyed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,19 @@ public class AsteroidManager : Singleton<AsteroidManager>
             {
                 asteroids.Add(Instantiate(asteroidPrefab, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (AsteroidsDestroyed > 8)
+        {
+            Vector3 location = WorldManager.Instance.Player.transform.position + new Vector3(100, 100, 0); //select spot for cluster
+            for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
+            {
+                asteroids.Add(Instantiate(asteroidPrefab, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
+            }
+            AsteroidsDestroyed = 0;
         }
     }
 

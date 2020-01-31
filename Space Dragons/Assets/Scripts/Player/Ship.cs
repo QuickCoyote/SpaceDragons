@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    #region Enums
     public enum eShipToTest
     {
         RUSTY,
@@ -22,28 +23,33 @@ public class Ship : MonoBehaviour
         GUARD_DRONE,
         LASER
     }
+    #endregion
 
     #region Variables
 
     public Camera cam = null;
+    public GameObject DeathPanel = null;
 
+    [Header("Pre-Play Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
 
+    [Header("Head Info")]
     public GameObject head = null;
-
     public Sprite[] ShipHeadSprites;
     public SpriteRenderer ShipHeadSprite = null;
 
+    [Header("Snake Info")]
     public float minDst = 1.0f;
-
     public int startSize = 2;
-
-    public float speed = 1.0f;
-    public float rotationSpeed = 50.0f;
     public int maxShipsAllowed = 4;
 
+    [Header("Movement Info")]
+    public float speed = 1.0f;
+    public float rotationSpeed = 50.0f;
+
+    [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
     public eShipToTest shipToTest = eShipToTest.RUSTY;
 
@@ -52,7 +58,7 @@ public class Ship : MonoBehaviour
     private Transform prevBodyPart = null;
 
     #endregion
-
+    
     private void Start()
     {
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
@@ -102,6 +108,8 @@ public class Ship : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+
+        CheckForDie();
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -257,6 +265,15 @@ public class Ship : MonoBehaviour
             {
                 bodyPartTransforms[i] = bodyPartObjects[i].transform;
             }
+        }
+    }
+
+    public void CheckForDie()
+    {
+        if (GetComponent<Health>().healthCount <= 0)
+        {
+            Time.timeScale = 0;
+            DeathPanel.SetActive(true);
         }
     }
 }
