@@ -57,8 +57,8 @@ public class Map : Singleton<Map>
             if (linerenderers[i] && targets[i])
             {
                 linerenderers[i].positionCount = 2;
-                linerenderers[i].SetPosition(0, targets[i].transform.position - Vector3.forward);
-                linerenderers[i].SetPosition(1, player.transform.position - Vector3.forward);
+                linerenderers[i].SetPosition(0,  new Vector3(targets[i].transform.position.x, targets[i].transform.position.y, -4));
+                linerenderers[i].SetPosition(1, new Vector3(player.transform.position.x, player.transform.position.y, -4));
                 if (Vector3.Distance(player.transform.position, targets[i].transform.position) < shortestDistance)
                 {
                     shortestDistance = Vector3.Distance(player.transform.position, targets[i].transform.position);

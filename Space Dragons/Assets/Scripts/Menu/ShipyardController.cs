@@ -364,7 +364,6 @@ public class ShipyardController : MonoBehaviour
             }
         }
 
-
     }
 
     public void SelectionIncrement()

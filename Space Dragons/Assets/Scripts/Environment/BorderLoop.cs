@@ -15,6 +15,8 @@ public class BorderLoop : MonoBehaviour
 
         if (collision.transform.tag == "Player")
         {
+            WorldManager.Instance.SpawnWarpHole(collision.transform.position);
+
             //Debug.Log("Collided at:" + collision.transform.position);
             //  collision.transform.position = pos;
             //   Debug.Log("Sent to:" + collision.transform.position);
@@ -42,6 +44,7 @@ public class BorderLoop : MonoBehaviour
         {
             WorldManager.Instance.SpawnWarpHole(pos);
             //  Debug.Log("Collided at:" + collision.transform.position);
+            WorldManager.Instance.SpawnWarpHole(collision.transform.position);
             collision.transform.position = pos;
           //  Debug.Log("Sent to:" + collision.transform.position);
         }

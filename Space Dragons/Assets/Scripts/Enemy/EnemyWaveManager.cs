@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] float waveSpawnTimer = 25.0f;
 
     [SerializeField] List<Wave> waves = new List<Wave>();
+    [SerializeField] TextMeshProUGUI WaveText = null;
+    [SerializeField] TextMeshProUGUI EnemiesText = null;
 
     public int currentWave = 0;
     public int cycleCount = 0;
@@ -44,6 +47,9 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
             currentWave = 0;
             cycleCount++;
         }
+
+        WaveText.text = "Wave: " + (currentWave + (cycleCount * 10));
+        EnemiesText.text = "Enemies Alive: " + aliveEnemies;
     }
 
     public void ReduceCycleCount(int amount)
