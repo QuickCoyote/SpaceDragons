@@ -57,7 +57,7 @@ public class Asteroid : MonoBehaviour
                     AsteroidManager.Instance.asteroids.Add(child);
                 }
             }
-        }
+        } 
         if (itemPrefab)
         {
            ItemObject g =  Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
@@ -66,6 +66,7 @@ public class Asteroid : MonoBehaviour
         }
         AsteroidManager.Instance.asteroids.Remove(this);
         AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
+        AsteroidManager.Instance.AsteroidsDestroyed++;
         Destroy(gameObject);
     }
 }
