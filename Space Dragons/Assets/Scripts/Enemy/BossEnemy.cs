@@ -28,9 +28,8 @@ public class BossEnemy : Enemy
                 {
                     GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
                     Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.parentobj = gunNozzle;
-                    p.damage = attackDamage;
-                    p.Fire();
+                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
+
                 }
             }
 
@@ -42,9 +41,8 @@ public class BossEnemy : Enemy
                 {
                     GameObject projectileGO = (Instantiate(projectile, gunNozzle2.transform.position, gunNozzle2.transform.rotation, null) as GameObject);
                     Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.parentobj = gunNozzle2;
-                    p.damage = attackDamage;
-                    p.Fire();
+                    p.Fire(gunNozzle2.transform, attackDamage, gameObject);
+
                 }
             }
         }
