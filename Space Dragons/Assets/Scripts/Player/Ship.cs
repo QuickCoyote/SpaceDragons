@@ -270,7 +270,7 @@ public class Ship : MonoBehaviour
 
     public void CheckForDie()
     {
-        if (GetComponent<Health>().healthCount <= 0)
+        if (head.GetComponent<Health>().healthCount <= 0)
         {
             Time.timeScale = 0;
             DeathPanel.SetActive(true);
