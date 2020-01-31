@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
         projectile.bulletSpeed = flameSpeed;
         float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
         projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        projectile.sound = "null";
         projectile.Fire();
     }
 

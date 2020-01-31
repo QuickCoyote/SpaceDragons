@@ -30,6 +30,8 @@ public class ShipyardController : MonoBehaviour
     float MaxTime = 300;
     int selectedPurchase = 0;
 
+    int num = 0;
+
     public void Start()
     {
         MotherShip = WorldManager.Instance.Ship;
@@ -418,11 +420,24 @@ public class ShipyardController : MonoBehaviour
     public void TradeIn()
     {
         //TRADE IN MOTHERSHIP FOR SHIPYARD'S SHIP
+        if(num == 1)
+        {
+            MotherShip.SetShipHead(0);
+            num = 0;
+        }
+        else
+        {
+            MotherShip.SetShipHead(1);
+            num = 1;
+        }
     }
 
     public void Repair()
     {
-        //IMPLEMENT MOTHERSHIP REPAIR
+        for(int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
+        {
+            MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount = MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax;
+        }
     }
 
     public void CloseMessage()
