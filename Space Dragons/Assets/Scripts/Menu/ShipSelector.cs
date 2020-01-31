@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ShipSelector : MonoBehaviour
 {
@@ -23,6 +24,27 @@ public class ShipSelector : MonoBehaviour
             ShipMenu.SetActive(true);
             ShopMenu.SetActive(false);
             SelecionDisplay.SetActive(false);
+            Health shipHealth = SelectedShip.GetComponent<Health>();
+
+            if(controller.MotherShip.bodyPartObjects.Count > 2 && controller.MotherShip.bodyPartObjects[2] != null)
+            {
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Sell").FirstOrDefault().interactable = true;
+            }
+            else
+            {
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Sell").FirstOrDefault().interactable = false;
+            }
+
+            ShipMenu.GetComponentsInChildren<Button>().Where
+                (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
+
+            if(shipHealth.healthCount == shipHealth.healthMax)
+            {
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Repair").FirstOrDefault().interactable = false;
+            }
 
             foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
             {

@@ -15496,8 +15496,8 @@ MonoBehaviour:
   maxShipsAllowed: 4
   speed: 5
   rotationSpeed: 50
-  motherShip: 0
-  shipToTest: 0
+  motherShip: 1
+  shipToTest: 3
 --- !u!114 &1753379421
 MonoBehaviour:
   m_ObjectHideFlags: 0

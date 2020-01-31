@@ -166,6 +166,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: DeathPanel
+      value: 
+      objectReference: {fileID: 755810739}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -302,6 +307,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &755810739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2834476428458363138, guid: c2f8d59a55dcf4946860651730973ccd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1579005585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1069360482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1451,11 @@ PrefabInstance:
     - target: {fileID: 2834476427856179287, guid: c2f8d59a55dcf4946860651730973ccd,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834476428458363138, guid: c2f8d59a55dcf4946860651730973ccd,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2834476428553129378, guid: c2f8d59a55dcf4946860651730973ccd,
