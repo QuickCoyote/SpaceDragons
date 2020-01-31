@@ -15477,6 +15477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 196209911218918717}
+  DeathPanel: {fileID: 0}
   bodyPartTransforms:
   - {fileID: 196209910265618381}
   bodyPartObjects: []
@@ -15492,11 +15493,11 @@ MonoBehaviour:
   ShipHeadSprite: {fileID: 196209910334023937}
   minDst: 2
   startSize: 2
+  maxShipsAllowed: 4
   speed: 5
   rotationSpeed: 50
-  maxShipsAllowed: 4
-  motherShip: 1
-  shipToTest: 3
+  motherShip: 0
+  shipToTest: 0
 --- !u!114 &1753379421
 MonoBehaviour:
   m_ObjectHideFlags: 0
