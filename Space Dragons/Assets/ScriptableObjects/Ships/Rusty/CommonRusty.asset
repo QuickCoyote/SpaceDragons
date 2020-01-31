@@ -94,5 +94,5 @@ MonoBehaviour:
   prefab: {fileID: 4977157105735039448, guid: 51edef244fd707f40ab9f44d41c43cd9, type: 3}
   rarity: 0
   type: 0
-  description: Rusty turret that shoots one projectile at a time.
-  name: Rusty Turret
+  description: Orange Boy made of Orange Ore
+  shipName: Rusty Turret
