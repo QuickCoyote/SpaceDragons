@@ -1406,14 +1406,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
-      propertyPath: motherShip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: shipToTest
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: DeathPanel
+      value: 
+      objectReference: {fileID: 1691872790}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1473,6 +1468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 196209910753800038, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
