@@ -378,8 +378,9 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
+  data: {fileID: 0}
   chainDistance: 20
-  rotationSpeed: 15
+  rotationSpeed: 3
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0

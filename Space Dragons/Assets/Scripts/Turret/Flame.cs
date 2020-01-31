@@ -24,21 +24,24 @@ public class Flame : Projectile
             Enemy enemy = null;
             collision.gameObject.TryGetComponent(out enemy);
 
+            FlameTurret turret = parentobj.transform.parent.GetComponent<FlameTurret>();
+
             if (enemy)
             {
-                parentobj.transform.parent.GetComponent<FlameTurret>().enemiesToBurn.Enqueue(enemy);
+                if(turret.enemiesToBurn.Contains(enemy))
+                {
+                    return;
+                }
+                else
+                {
+                    turret.enemiesToBurn.Enqueue(enemy);
+                }
             }
         }
     }
 
-    public void Fire()
+    public new void Fire()
     {
-        fireSFX = GetComponent<AudioSource>();
-        fireSFX.pitch = fireSFX.pitch + Random.Range(-.25f, .25f);
-        if (fireSFX)
-        {
-            fireSFX.Play();
-        }
         if(goDirection == null)
         {
             goDirection = parentobj.transform.up;

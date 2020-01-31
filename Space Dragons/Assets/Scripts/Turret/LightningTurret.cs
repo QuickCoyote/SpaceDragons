@@ -26,7 +26,7 @@ public class LightningTurret : Turret
         {
             Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (angle < 15 && angle > -15)
+            if (Vector3.Angle(rotateBoi.transform.up, direction) < 15)
             {
                 enemiesShocked = 1;
                 ShockNext(enemy);

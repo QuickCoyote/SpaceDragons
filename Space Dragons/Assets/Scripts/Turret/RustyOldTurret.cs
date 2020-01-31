@@ -25,7 +25,7 @@ public class RustyOldTurret : Turret
         {
             Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (angle < 5 && angle > -5)
+            if (Vector3.Angle(rotateBoi.transform.up, direction) < 15)
             {
                 Attack();
             }
@@ -45,12 +45,12 @@ public class RustyOldTurret : Turret
 
         if (attackTimer > attackSpeed)
         {
-            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * transform.up), rotateBoi.transform.rotation, transform) as GameObject);
+            attackTimer = 0;
+            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * rotateBoi.transform.up), rotateBoi.transform.rotation, transform) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = rotateBoi;
             projectile.Fire();
 
-            attackTimer = 0;
         }
     }
 

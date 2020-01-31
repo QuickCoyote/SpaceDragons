@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     public Vector3 goDirection = Vector3.zero;
     public Rigidbody2D rb = null;
     public string sound = "";
-    protected AudioSource fireSFX;
 
     private void FixedUpdate()
     {
