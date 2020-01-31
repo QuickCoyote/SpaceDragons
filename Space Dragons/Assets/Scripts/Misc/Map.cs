@@ -8,6 +8,7 @@ public class Map : Singleton<Map>
 {
     public GameObject MainMap;
     public Image TargetIcon;
+    public Image EnemyIcon;
 
     public LineRenderer linerendererprefab;
     public TextMeshProUGUI shortestdistanceReadout = null;
@@ -74,6 +75,22 @@ public class Map : Singleton<Map>
         Vector3 direction = (TrackNearest) ? nearestTarget - player.transform.position : TargetBeingTracked - player.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         TargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        TargetIcon.enabled=(direction.magnitude > 10.0f);
+
+        //Check where to rotate enemy tracker
+        float closestEnemy = 50000;
+        Vector3 enemydirection = Vector3.zero;
+        foreach(Enemy e in FindObjectsOfType<Enemy>())
+        {
+            if (Vector3.Distance(e.transform.position, player.transform.position) < closestEnemy)
+            {
+                enemydirection = e.transform.position - player.transform.position;
+            }
+        }
+        float enemyangle = Mathf.Atan2(enemydirection.y, enemydirection.x) * Mathf.Rad2Deg;
+        EnemyIcon.transform.rotation = Quaternion.AngleAxis(enemyangle + 90, Vector3.forward);
+        EnemyIcon.enabled = (enemydirection.magnitude > 10.0f);
+
     }
 
     public void MapOpen()

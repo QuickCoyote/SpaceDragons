@@ -5,12 +5,12 @@ using UnityEngine;
 public class AsteroidManager : Singleton<AsteroidManager>
 {
     [SerializeField] GameObject asteroidBreakupPrefab = null;
-    public int ClusterMinimum = 300;
-    public int ClusterMaximum = 500;
+    int ClusterMinimum = 500;
+    int ClusterMaximum = 600;
     [SerializeField] Asteroid asteroidPrefab;
     public List<Asteroid> asteroids = new List<Asteroid>();
-    public int AsteroidMinimum = 4;
-    public int AsteroidMaximum = 8;
+    int AsteroidMinimum = 4;
+    int AsteroidMaximum = 8;
 
     public int AsteroidsDestroyed = 0;
 
