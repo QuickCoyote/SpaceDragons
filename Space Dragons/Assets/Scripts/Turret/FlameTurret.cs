@@ -6,10 +6,14 @@ using UnityEngine;
 public class FlameTurret : Turret
 {
     [SerializeField] float burnDamage = 10.0f;
+    [SerializeField] float rotationSpeed = 45f;
     [SerializeField] GameObject flames = null;
 
     public Queue<Enemy> enemiesToBurn = new Queue<Enemy>();
-    float rotationSpeed = 15.0f;
+    public int flameAttackangle;
+    public int bulletOffsetY;
+    public float flameLifeSpan;
+    public float flameSpeed;
 
     void FixedUpdate()
     {
@@ -45,7 +49,7 @@ public class FlameTurret : Turret
         {
             Vector3 direction = enemy.transform.position - rotateBoi.gameObject.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (angle < 15 && angle > -15)
+            if (Vector3.Angle(rotateBoi.transform.up, direction) < 15)
             {
                 Attack();
             }
@@ -60,10 +64,18 @@ public class FlameTurret : Turret
 
     public void Burn()
     {
-        GameObject proj = (Instantiate(flames, transform.position, Quaternion.identity, null) as GameObject);
-        Flame flame = proj.GetComponent<Flame>();
-        flame.parentobj = rotateBoi;
-        flame.Fire();
+        Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
+        Vector3 projectileDirection = rotAngle * rotateBoi.transform.up;
+
+        GameObject projectileGO = (Instantiate(flames, transform.position + (bulletOffsetY * rotateBoi.transform.up), Quaternion.identity, null) as GameObject);
+        Projectile projectile = projectileGO.GetComponent<Projectile>();
+        projectile.parentobj = gameObject;
+        projectile.damage = 0.25f;
+        projectile.goDirection = projectileDirection;
+        projectile.lifetime = flameLifeSpan;
+        projectile.bulletSpeed = flameSpeed;
+        projectile.sound = "null";
+        projectile.Fire();
     }
 
     public override void Attack()

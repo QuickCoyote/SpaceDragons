@@ -378,8 +378,14 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  burnDamage: 0.5
-  flames: {fileID: 1163105452601627565, guid: 7d63a71bb76513843a4db7844315c9e6, type: 3}
+  data: {fileID: 0}
+  burnDamage: 50
+  rotationSpeed: 3
+  flames: {fileID: 2532223516486878601, guid: 746de27fffc96444eb717d99e8e40060, type: 3}
+  flameAttackangle: 15
+  bulletOffsetY: 1
+  flameLifeSpan: 1.25
+  flameSpeed: 8
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0

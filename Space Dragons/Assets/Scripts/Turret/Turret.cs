@@ -57,8 +57,7 @@ public abstract class Turret : MonoBehaviour
     public void ApplyRarity()
     {
         damage *= rarityModifier;
-        range *= rarityModifier;
-        attackSpeed *= rarityModifier;
+        attackSpeed /= rarityModifier;
     }
 
     public void CheckForDie()

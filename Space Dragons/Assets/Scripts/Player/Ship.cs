@@ -292,7 +292,6 @@ public class Ship : MonoBehaviour
     {
         if (head.GetComponent<Health>().healthCount <= 0)
         {
-            Time.timeScale = 0;
             DeathPanel.SetActive(true);
         }
     }
