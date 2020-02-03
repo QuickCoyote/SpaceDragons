@@ -20,6 +20,7 @@ public class ShipyardController : MonoBehaviour
     public GameObject ShipButtonPrefab;
     public GameObject ShipMenu;
     public GameObject ShopMenu;
+    public GameObject MothershipMenu;
     public GameObject SelectionDisplay;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
@@ -37,6 +38,7 @@ public class ShipyardController : MonoBehaviour
         MotherShip = WorldManager.Instance.Ship;
         ShipyardShipSetup();
         ShipyardShopSetup();
+        ShipyardMotherSetup();
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
@@ -79,6 +81,12 @@ public class ShipyardController : MonoBehaviour
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
+    }
+
+    public void ShipyardMotherSetup()
+    {
+        MothershipMenu.GetComponentsInChildren<Image>().Where
+            (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
     }
 
     public void ShipyardShipSetup()
@@ -216,7 +224,7 @@ public class ShipyardController : MonoBehaviour
 
     private void GenerateShopInventory(int RareProbability, int EpicProbability)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
             float randNum = Random.Range(0.0f, 100.0f);
             if (randNum > EpicProbability)
