@@ -436,7 +436,10 @@ public class ShipyardController : MonoBehaviour
     {
         for(int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
         {
-            MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount = MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax;
+            if (MotherShip.bodyPartObjects[i] != null)
+            {
+                MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount = MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax;
+            }
         }
     }
 
@@ -452,8 +455,6 @@ public class ShipyardController : MonoBehaviour
         Shipyard.SetActive(true);
         Time.timeScale = 0;
     }
-
-    
 
     public void CloseShop()
     {

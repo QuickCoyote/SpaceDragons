@@ -131,6 +131,8 @@ public class Ship : MonoBehaviour
         {
             SortBody();
         }
+
+        HealthBarManager.Instance.UpdateHealthBars();
     }
 
     public void Move()
@@ -188,7 +190,7 @@ public class Ship : MonoBehaviour
         bodyPartTransforms.Add(newPart);
         bodyPartObjects.Add(newPart.gameObject);
 
-        HealthBarManager.Instance.AddHealthBar();
+        HealthBarManager.Instance.UpdateHealthBars();
     }
 
     public GameObject FindBodyPartFromPrefabs(string partName)
@@ -229,18 +231,17 @@ public class Ship : MonoBehaviour
                     Destroy(bodyPartObjects[j - 1]);
                     bodyPartObjects.RemoveAt(j - 1);
                     bodyPartTransforms.RemoveAt(j - 1);
-                    HealthBarManager.Instance.RemoveHealthBar();
                 }
             }
-            // return;
         }
         else
         {
             Destroy(bodyPartObjects[removeIndex]);
             bodyPartObjects.RemoveAt(removeIndex);
             bodyPartTransforms.RemoveAt(removeIndex);
-            HealthBarManager.Instance.RemoveHealthBar();
         }
+
+        HealthBarManager.Instance.UpdateHealthBars();
     }
 
     public void SetShipHead(int val)
@@ -286,6 +287,8 @@ public class Ship : MonoBehaviour
                 bodyPartTransforms[i] = bodyPartObjects[i].transform;
             }
         }
+
+        HealthBarManager.Instance.UpdateHealthBars();
     }
 
     public void CheckForDie()

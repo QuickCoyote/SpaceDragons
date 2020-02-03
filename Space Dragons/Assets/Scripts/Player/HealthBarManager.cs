@@ -8,27 +8,12 @@ public class HealthBarManager : Singleton<HealthBarManager>
     [SerializeField] GridLayoutGroup layout = null;
     [SerializeField] GameObject healthBarPrefab = null;
     GameObject[] healthBars;
-    int numBars = 1;
+    int numBars = 0;
     int cellWidth = 35;
     int spacingX = 150;
     void Start()
     {
-        numBars = WorldManager.Instance.Ship.bodyPartTransforms.Count-1;
-    }
-
-    public void AddHealthBar()
-    {
-        numBars++;
-        Instantiate(healthBarPrefab, layout.transform);
-        GameObject healthBarOBJ = layout.transform.GetChild(numBars-1).gameObject;
-        WorldManager.Instance.Ship.bodyPartObjects[numBars].GetComponent<Health>().healthbarObj = healthBarOBJ;
-        checkForUpdateSizing();
-    }
-
-    public void RemoveHealthBar()
-    {
-        numBars--;
-        Destroy(layout.transform.GetChild(numBars - 1).gameObject);
+        UpdateHealthBars();
     }
 
     public void checkForUpdateSizing()
@@ -51,5 +36,27 @@ public class HealthBarManager : Singleton<HealthBarManager>
 
         layout.cellSize = new Vector3(cellWidth, layout.cellSize.y);
         layout.spacing = new Vector3(spacingX, layout.spacing.y);
+    }
+
+    public void UpdateHealthBars()
+    {
+        numBars = WorldManager.Instance.Ship.bodyPartObjects.Count;
+
+        // Destroy every HP Bar
+        for (int i = 0; i < layout.transform.childCount; i++)
+        {
+            Destroy(layout.transform.GetChild(i).gameObject);
+        }
+
+        // go through each of the bodyPartObjects inside the player and create a hp bar
+        for (int i = 1; i < numBars; i++)
+        {
+            if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
+            {
+                GameObject healthBarOBJ = (Instantiate(healthBarPrefab, layout.transform) as GameObject);
+                WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = healthBarOBJ;
+                checkForUpdateSizing();
+            }
+        }
     }
 }
