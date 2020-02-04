@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float laserAttackSpeed = 0f;
     [SerializeField] float laserAttackDamage = 0f;
 
+    private bool firing = false;
+
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -50,9 +53,22 @@ public class PlayerController : MonoBehaviour
         inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
     }
 
+
+
+    public void onPress()
+    {
+        firing = (true);
+    }
+
+    public void onRelease()
+    {
+        firing = (false);
+    }
+
+
     void FixedUpdate()
     {
-        if (Input.touchCount > 0)
+        if (firing)
         {
             attackTimer += Time.deltaTime;
 
