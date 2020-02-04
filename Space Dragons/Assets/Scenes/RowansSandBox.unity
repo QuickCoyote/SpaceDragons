@@ -3454,6 +3454,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Object
       objectReference: {fileID: 0}
+    - target: {fileID: 3689232475197465016, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689232475197465016, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838794062213926086, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838794062213926086, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838794062213926086, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838794062213926086, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
 --- !u!114 &1070767785 stripped
@@ -5249,6 +5279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 334377013, guid: 68e7dd18623347344ae65330d6ad5a72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4861765451366725816, guid: 68e7dd18623347344ae65330d6ad5a72,
         type: 3}
       propertyPath: m_Name

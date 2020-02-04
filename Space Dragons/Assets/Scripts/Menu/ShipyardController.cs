@@ -224,7 +224,7 @@ public class ShipyardController : MonoBehaviour
                             buttonChildImage.sprite = turret.spriteRendererTurret.sprite;
                             break;
                     }
-                    if(buttonChildImage.sprite != null)
+                    if (buttonChildImage.sprite != null)
                     {
                         buttonChildImage.color = new Color(buttonChildImage.color.r, buttonChildImage.color.g, buttonChildImage.color.b, 1);
                     }
@@ -273,7 +273,7 @@ public class ShipyardController : MonoBehaviour
 
     public GameObject CreateShipFromData(ShipData data)
     {
-        if(data == null)
+        if (data == null)
         {
             return null;
         }
@@ -325,7 +325,7 @@ public class ShipyardController : MonoBehaviour
         ShipTurret.spriteRendererBase.sprite = randBase;
         ShipTurret.spriteRendererTurret.sprite = randTurret;
         ShipTurret.spriteRendererWings.sprite = randWings;
-        switch(data.rarity)
+        switch (data.rarity)
         {
             case ShipData.eTurretRarity.COMMON:
                 ShipTurret.spriteRendererBadge.sprite = data.spriteBadgesCommon[badgeColor];
@@ -345,12 +345,12 @@ public class ShipyardController : MonoBehaviour
         return Ship;
     }
 
-    public void GetSelectionInfo( bool isBuying, GameObject selectedShip)
+    public void GetSelectionInfo(bool isBuying, GameObject selectedShip)
     {
-        if(ShopShips[selectedPurchase] != null && isBuying)
+        if (ShopShips[selectedPurchase] != null && isBuying)
         {
             ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
-            
+
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
                 (o => o.name == "Type").FirstOrDefault().text = data.shipName;
 
@@ -367,7 +367,7 @@ public class ShipyardController : MonoBehaviour
             GameObject turret = null;
             foreach (Transform child in SelectionDisplay.transform)
             {
-                if(child.name == "ShipDisplay")
+                if (child.name == "ShipDisplay")
                 {
                     turret = child.gameObject;
                 }
@@ -393,13 +393,13 @@ public class ShipyardController : MonoBehaviour
             GetSelectionStats(selectedShip);
 
         }
-        else if(!isBuying)
+        else if (!isBuying)
         {
             ShipData data = null;
 
             foreach (GameObject obj in Ships)
             {
-                if(obj == selectedShip)
+                if (obj == selectedShip)
                 {
                     data = obj.GetComponent<Turret>().data;
                 }
@@ -524,7 +524,7 @@ public class ShipyardController : MonoBehaviour
 
     public void Purchase()
     {
-        if(ShopShips[selectedPurchase] != null)
+        if (ShopShips[selectedPurchase] != null)
         {
             if (NumOfShips != Ships.Count)
             {
@@ -534,16 +534,24 @@ public class ShipyardController : MonoBehaviour
                     if (Ships[i] == null)
                     {
                         Ships[i] = purchase;
-                        if (i + 1 < MotherShip.bodyPartObjects.Count)
+                        if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.price))
                         {
-                            MotherShip.bodyPartObjects[i + 1] = purchase;
-                            MotherShip.SortBody();
+                            if (i + 1 < MotherShip.bodyPartObjects.Count)
+                            {
+                                MotherShip.bodyPartObjects[i + 1] = purchase;
+                                MotherShip.SortBody();
+                            }
+                            else
+                            {
+                                MotherShip.AddBodyPart(purchase);
+                                MotherShip.SortBody();
+                            }
                         }
                         else
                         {
-                            MotherShip.AddBodyPart(purchase);
-                            MotherShip.SortBody();
+                            // YOU DON'T HAVE ENOUGH MONEY >:C
                         }
+
                         break;
                     }
                 }
@@ -579,15 +587,14 @@ public class ShipyardController : MonoBehaviour
         bool added = false;
         for (int i = 0; i < ShopShips.Count; i++)
         {
-            if(ShopShips[i] == null)
+            if (ShopShips[i] == null)
             {
                 ShopShips[i] = newShip;
                 added = true;
                 break;
             }
         }
-        
-        if(!added)
+        if (!added)
         {
             ShopShips.Add(newShip);
         }
@@ -598,22 +605,44 @@ public class ShipyardController : MonoBehaviour
 
     public void TradeIn()
     {
-        Ship.eMotherShip temp = MotherShip.motherShip;
+        int tradeInValue = 300;
+        if (WorldManager.Instance.PlayerController.RemoveMoney(tradeInValue))
+        {
+            Ship.eMotherShip temp = MotherShip.motherShip;
 
-        MotherShip.SetShipHead((int)TradeInMothership);
+            MotherShip.SetShipHead((int)TradeInMothership);
 
-        TradeInMothership = temp;
+            TradeInMothership = temp;
 
-        ShipyardMotherSetup();
+            ShipyardMotherSetup();
+        }
+        else
+        {
+            // You don't have enough money >:C
+        }
     }
 
     public void Repair()
     {
-        for(int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
+        float repairCostPerHP = 1f;
+        float hpToRestore = 0f;
+        for (int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
         {
             if (MotherShip.bodyPartObjects[i] != null)
             {
-                MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount = MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax;
+                hpToRestore += MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax - MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount;
+            }
+        }
+
+        if (WorldManager.Instance.PlayerController.money - (hpToRestore * repairCostPerHP) > 0)
+        {
+            WorldManager.Instance.PlayerController.money -= (int)(hpToRestore * repairCostPerHP);
+            for (int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
+            {
+                if (MotherShip.bodyPartObjects[i] != null)
+                {
+                    MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount = MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax;
+                }
             }
         }
     }
@@ -648,5 +677,5 @@ public class ShipyardController : MonoBehaviour
             OpenShop();
         }
     }
-    
+
 }

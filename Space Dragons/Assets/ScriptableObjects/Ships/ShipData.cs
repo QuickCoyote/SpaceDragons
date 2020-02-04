@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ShipData : ShipDataParent
 {
-    public float price;
+    public int price;
     public GameObject prefab;
     public eTurretRarity rarity;
     public eTurretType type;
