@@ -12,6 +12,7 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] Rigidbody2D[] objectsToRender = null;
 
     [SerializeField] public GameObject Player = null;
+    [SerializeField] public PlayerController PlayerController = null;
     [SerializeField] public Ship Ship;
 
     [SerializeField] public Material lightningMat = null;

@@ -66,7 +66,14 @@ public class PlayerController : MonoBehaviour
 
     public void AddMoney(int amount)
     {
-        money += amount;
+        if(money + amount < int.MaxValue)
+        {
+            money += amount;
+        }
+        else if((long)(money + amount) > int.MaxValue)
+        {
+            money = int.MaxValue-1;
+        }
     }
 
     public bool RemoveMoney(int amount)

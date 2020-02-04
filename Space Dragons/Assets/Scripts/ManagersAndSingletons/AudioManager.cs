@@ -88,7 +88,6 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayRandomMusic(string contains)
     {
-        StopAll();
         List<string> battleMusic = new List<string>();
         for (int i = 0; i < m_sounds.Length; i++)
         {
