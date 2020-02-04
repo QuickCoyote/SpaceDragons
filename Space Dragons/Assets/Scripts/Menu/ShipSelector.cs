@@ -113,7 +113,9 @@ public class ShipSelector : MonoBehaviour
             controller.MotherShip.bodyPartObjects.Add(null);
             controller.MotherShip.bodyPartTransforms.Add(null);
             controller.MotherShip.SortBody();
+            controller.AddToShop(SelectedShip);
             controller.ShipyardShipSetup();
+            controller.ShipyardShopSetup();
             SelecionDisplay.SetActive(false);
 
             //PLACE MONEY ADDING HERE

@@ -555,6 +555,27 @@ public class ShipyardController : MonoBehaviour
         }
     }
 
+    public void AddToShop(GameObject ship)
+    {
+        GameObject newShip = Instantiate<GameObject>(ship);
+        bool added = false;
+        for (int i = 0; i < ShopShips.Count; i++)
+        {
+            if(ShopShips[i] == null)
+            {
+                ShopShips[i] = newShip;
+                added = true;
+                break;
+            }
+        }
+        
+        if(!added)
+        {
+            ShopShips.Add(newShip);
+        }
+
+    }
+
     public void TradeIn()
     {
         Ship.eMotherShip temp = MotherShip.motherShip;
