@@ -13,7 +13,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             if (Instance == null)
             {
                 Instance = this as T;
-                transform.parent = null;
+                transform.SetParent(null);  
                 DontDestroyOnLoad(gameObject);
             }
             else
