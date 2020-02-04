@@ -16,12 +16,12 @@ public class Ship : MonoBehaviour
 
     public enum eMotherShip
     {
-        BASIC,
-        FLAMETHROWER,
-        LIGHTNING,
-        HEALING,
-        GUARD_DRONE,
-        LASER
+        BASIC = 0,
+        FLAMETHROWER = 1,
+        LIGHTNING = 2,
+        HEALING = 3,
+        GUARD_DRONE = 4,
+        LASER = 5
     }
     #endregion
 

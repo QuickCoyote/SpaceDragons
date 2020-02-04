@@ -1646,11 +1646,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 232229048831811394, guid: 5f4cf970ff9ecc042bd224115fa14acd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2513217026096829826, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1714,6 +1709,11 @@ PrefabInstance:
     - target: {fileID: 2806653247236071220, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247236071220, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2806653247476031287, guid: 5f4cf970ff9ecc042bd224115fa14acd,
@@ -1855,6 +1855,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478093, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478093, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478093, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478093, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478094, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478195, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_Name
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806653247962478195, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2806653248040009114, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -1971,11 +2006,34 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7247311341314086614, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -32
+      propertyPath: Motherships.Array.size
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: TradeInMothership
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: Motherships.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0916d398540b6024a909d7f66660123d,
+        type: 2}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: Motherships.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
+        type: 2}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: EmptySlot
+      value: 
+      objectReference: {fileID: 21300000, guid: 26c9b61da37200944a7565aecdf14025,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
 --- !u!1001 &1579005585

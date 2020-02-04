@@ -378,7 +378,7 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 55307f6383b91754c84955c85f44f23b, type: 2}
   bullet: {fileID: 2532223516486878601, guid: 51c78af39cab59a4789cf13c55af15d3, type: 3}
   rotationSpeed: 3
   bulletOffsetY: 1

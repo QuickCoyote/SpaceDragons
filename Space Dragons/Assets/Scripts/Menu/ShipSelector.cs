@@ -23,7 +23,9 @@ public class ShipSelector : MonoBehaviour
         {
             ShipMenu.SetActive(true);
             ShopMenu.SetActive(false);
-            SelecionDisplay.SetActive(false);
+            SelecionDisplay.SetActive(true);
+            controller.GetSelectionInfo(false, SelectedShip);
+
             Health shipHealth = SelectedShip.GetComponent<Health>();
 
             if(controller.MotherShip.bodyPartObjects.Count > 2 && controller.MotherShip.bodyPartObjects[2] != null)
@@ -93,7 +95,7 @@ public class ShipSelector : MonoBehaviour
         {
             ShopMenu.SetActive(true);
             ShipMenu.SetActive(false);
-            controller.GetSelectionInfo();
+            controller.GetSelectionInfo(true, controller.ShopShips[controller.selectedPurchase]);
             SelecionDisplay.SetActive(true);
         }
 
@@ -112,6 +114,8 @@ public class ShipSelector : MonoBehaviour
             controller.MotherShip.bodyPartTransforms.Add(null);
             controller.MotherShip.SortBody();
             controller.ShipyardShipSetup();
+            SelecionDisplay.SetActive(false);
+
             //PLACE MONEY ADDING HERE
         }
     }

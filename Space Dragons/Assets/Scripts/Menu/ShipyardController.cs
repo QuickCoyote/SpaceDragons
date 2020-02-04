@@ -14,6 +14,7 @@ public class ShipyardController : MonoBehaviour
     public List<ShipData> CommonShips;
     public List<ShipData> RareShips;
     public List<ShipData> EpicShips;
+    public List<MothershipData> Motherships;
     [Range(0, 2)] public int ShopDifficulty;
     public GameObject ShipScrollContent;
     public GameObject ShopShipScrollContent;
@@ -22,14 +23,18 @@ public class ShipyardController : MonoBehaviour
     public GameObject ShopMenu;
     public GameObject MothershipMenu;
     public GameObject SelectionDisplay;
+    public GameObject MothershipDisplay;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
     public GameObject MaxShipWarning;
+    public Ship.eMotherShip TradeInMothership;
+    public Sprite EmptySlot;
 
+    public int selectedPurchase = 0;
     int NumOfShips;
     float Timer = 0;
     float MaxTime = 300;
-    int selectedPurchase = 0;
+    Button buyButton = null;
 
     int num = 0;
 
@@ -42,7 +47,10 @@ public class ShipyardController : MonoBehaviour
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
+        buyButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
+                (o => o.name == "Buy").FirstOrDefault();
         Shipyard.SetActive(false);
+
     }
 
     public void Update()
@@ -78,6 +86,7 @@ public class ShipyardController : MonoBehaviour
         {
             ShopShips = new List<GameObject>();
             ShipyardShopSetup();
+            GetSelectionInfo(true, ShopShips[selectedPurchase]);
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
@@ -87,6 +96,15 @@ public class ShipyardController : MonoBehaviour
     {
         MothershipMenu.GetComponentsInChildren<Image>().Where
             (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
+
+        MothershipDisplay.GetComponentsInChildren<Image>().Where
+            (o => o.name == "DisplayMothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprites[(int)TradeInMothership];
+
+        MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "Type").FirstOrDefault().text = Motherships[(int)TradeInMothership].Title;
+
+        MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "Description").FirstOrDefault().text = Motherships[(int)TradeInMothership].Description;
     }
 
     public void ShipyardShipSetup()
@@ -331,12 +349,12 @@ public class ShipyardController : MonoBehaviour
         return Ship;
     }
 
-    public void GetSelectionInfo()
+    public void GetSelectionInfo( bool isBuying, GameObject selectedShip)
     {
-        if(ShopShips[selectedPurchase] != null)
+        if(ShopShips[selectedPurchase] != null && isBuying)
         {
             ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
-            GameObject ship = ShopShips[selectedPurchase];
+            
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
                 (o => o.name == "Type").FirstOrDefault().text = data.shipName;
 
@@ -345,6 +363,10 @@ public class ShipyardController : MonoBehaviour
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
                 (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
+
+            buyButton.gameObject.SetActive(true);
+
+            buyButton.interactable = true;
 
             GameObject turret = null;
             foreach (Transform child in SelectionDisplay.transform)
@@ -359,19 +381,112 @@ public class ShipyardController : MonoBehaviour
                 switch (i)
                 {
                     case 0:
-                        turret.transform.GetChild(1).GetComponent<Image>().sprite = ship.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        turret.transform.GetChild(1).GetComponent<Image>().sprite = selectedShip.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                         break;
                     case 1:
-                        turret.transform.GetChild(3).GetComponent<Image>().sprite = ship.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        turret.transform.GetChild(3).GetComponent<Image>().sprite = selectedShip.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                         break;
                     case 2:
-                        turret.transform.GetChild(0).GetComponent<Image>().sprite = ship.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        turret.transform.GetChild(0).GetComponent<Image>().sprite = selectedShip.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                         break;
                     case 3:
-                        turret.transform.GetChild(2).GetComponent<Image>().sprite = ship.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        turret.transform.GetChild(2).GetComponent<Image>().sprite = selectedShip.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
                         break;
                 }
             }
+        }
+        else if(!isBuying)
+        {
+            ShipData data = null;
+
+            foreach (GameObject obj in Ships)
+            {
+                if(obj == selectedShip)
+                {
+                    data = obj.GetComponent<Turret>().data;
+                }
+            }
+
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Type").FirstOrDefault().text = data.shipName;
+
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + data.rarity;
+
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
+
+            buyButton.gameObject.SetActive(false);
+
+            GameObject turret = null;
+            foreach (Transform child in SelectionDisplay.transform)
+            {
+                if (child.name == "ShipDisplay")
+                {
+                    turret = child.gameObject;
+                }
+            }
+            for (int i = 0, j = turret.transform.childCount - 1; i < turret.transform.childCount; i++, j--)
+            {
+                switch (i)
+                {
+                    case 0:
+                        turret.transform.GetChild(1).GetComponent<Image>().sprite = selectedShip.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 1:
+                        turret.transform.GetChild(3).GetComponent<Image>().sprite = selectedShip.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 2:
+                        turret.transform.GetChild(0).GetComponent<Image>().sprite = selectedShip.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                    case 3:
+                        turret.transform.GetChild(2).GetComponent<Image>().sprite = selectedShip.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                        break;
+                }
+            }
+        }
+        else
+        {
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Type").FirstOrDefault().text = "EMPTY";
+
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + "EMPTY";
+
+            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+                (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + "EMPTY";
+
+            buyButton.gameObject.SetActive(true);
+
+            buyButton.interactable = false;
+
+            GameObject turret = null;
+            foreach (Transform child in SelectionDisplay.transform)
+            {
+                if (child.name == "ShipDisplay")
+                {
+                    turret = child.gameObject;
+                }
+            }
+            for (int i = 0, j = turret.transform.childCount - 1; i < turret.transform.childCount; i++, j--)
+            {
+                switch (i)
+                {
+                    case 0:
+                        turret.transform.GetChild(1).GetComponent<Image>().sprite = EmptySlot;
+                        break;
+                    case 1:
+                        turret.transform.GetChild(3).GetComponent<Image>().sprite = EmptySlot;
+                        break;
+                    case 2:
+                        turret.transform.GetChild(0).GetComponent<Image>().sprite = EmptySlot;
+                        break;
+                    case 3:
+                        turret.transform.GetChild(2).GetComponent<Image>().sprite = EmptySlot;
+                        break;
+                }
+            }
+
         }
 
     }
@@ -379,13 +494,13 @@ public class ShipyardController : MonoBehaviour
     public void SelectionIncrement()
     {
         selectedPurchase++;
-        GetSelectionInfo();
+        GetSelectionInfo(true, ShopShips[selectedPurchase]);
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
-        GetSelectionInfo();
+        GetSelectionInfo(true, ShopShips[selectedPurchase]);
     }
 
     public void Purchase()
@@ -414,6 +529,8 @@ public class ShipyardController : MonoBehaviour
                     }
                 }
                 ShopShips[selectedPurchase] = null;
+                SortShips();
+                GetSelectionInfo(true, ShopShips[selectedPurchase]);
                 ShipyardShipSetup();
                 ShipyardShopSetup();
             }
@@ -425,19 +542,27 @@ public class ShipyardController : MonoBehaviour
         }
     }
 
+    public void SortShips()
+    {
+        for (int i = 1; i < ShopShips.Count; i++)
+        {
+            if (ShopShips[i - 1] == null)
+            {
+                ShopShips[i - 1] = ShopShips[i];
+                ShopShips[i] = null;
+            }
+        }
+    }
+
     public void TradeIn()
     {
-        //TRADE IN MOTHERSHIP FOR SHIPYARD'S SHIP
-        if(num == 1)
-        {
-            MotherShip.SetShipHead(0);
-            num = 0;
-        }
-        else
-        {
-            MotherShip.SetShipHead(1);
-            num = 1;
-        }
+        Ship.eMotherShip temp = MotherShip.motherShip;
+
+        MotherShip.SetShipHead((int)TradeInMothership);
+
+        TradeInMothership = temp;
+
+        ShipyardMotherSetup();
     }
 
     public void Repair()
@@ -461,14 +586,13 @@ public class ShipyardController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    
-
     public void CloseShop()
     {
         AudioManager.Instance.PlayRandomMusic("Battle Music");
         Shipyard.SetActive(false);
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
+        SelectionDisplay.SetActive(false);
         Time.timeScale = 1;
     }
 
