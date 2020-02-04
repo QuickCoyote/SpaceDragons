@@ -30,6 +30,15 @@ public class WorldManager : Singleton<WorldManager>
         return Items[Random.Range(0, Items.Count)];
     }
 
+    public ItemData GetItemById(string Id)
+    {
+        foreach(ItemData i in Items)
+        {
+            if (i.itemID == Id) return i;
+        }
+        return null;
+    }
+
     public void SpawnRandomExplosion(Vector3 target)
     {
         Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);

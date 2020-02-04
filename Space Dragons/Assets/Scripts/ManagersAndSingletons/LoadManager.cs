@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 
 //C:\Users\Rowan Remy\AppData\LocalLow\Neumont Game Studio\Space Dragons
@@ -43,22 +42,19 @@ public class LoadManager : Singleton<LoadManager>
             saveData.motherShipType = FindObjectOfType<Ship>().motherShip;
 
             //Convert dictionary to a pair array
-            List<ItemPair> items = new List<ItemPair>();
-            foreach (KeyValuePair<ItemData, int> pair in FindObjectOfType<Inventory>().items)
-            {
-                items.Add(new ItemPair(pair.Key.itemID, pair.Value));
-            }
-            saveData.items = items.ToArray();
+            saveData.setItemsFromDictionary(FindObjectOfType<Inventory>().items);
 
-            //Convert ships to a optimized array
+            //Convert ships to a serializable array
             List<ShipDataSavable> ships = new List<ShipDataSavable>();
-            foreach (GameObject s in FindObjectOfType<Ship>().bodyPartPrefabs)
+            foreach (GameObject s in FindObjectOfType<Ship>().bodyPartObjects)
             {
-                ships.Add(new ShipDataSavable(s.GetComponent<Turret>().data));
+                if (s.GetComponent<Turret>() && s.GetComponent<Health>())
+                {
+                    ShipDataSavable sav = new ShipDataSavable(s.GetComponent<Turret>().data, s.GetComponent<Health>().healthCount);
+                    ships.Add(sav);
+                }
             }
             saveData.Ships = ships.ToArray();
-
-            saveData.ShipsHealth = null;
             saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
             saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
         }
@@ -82,17 +78,22 @@ public class LoadManager : Singleton<LoadManager>
             try
             {
                 FileStream file = File.Open(filePath, FileMode.Open);
-                SaveData loaded = (SaveData)bf.Deserialize(file);
-                saveData = loaded;
-                file.Close();
+            SaveData loaded = (SaveData)bf.Deserialize(file);
+            saveData = loaded;
+            file.Close();
             }
             catch (Exception e)
             {
                 Debug.Log("Error in Loading:" + e.Message);
             }
         }
-
+        else
+        {
+            saveData = new SaveData();
+        }
     }
+
+
 
     #region Serializable Objects
 
@@ -100,11 +101,10 @@ public class LoadManager : Singleton<LoadManager>
     public class SaveData
     {
         public float PlayerHealth;
-        public float PlayerMoney;
+        public int PlayerMoney;
         public Ship.eMotherShip motherShipType;
         public ItemPair[] items;
         public ShipDataSavable[] Ships;
-        public float[] ShipsHealth;
         public int CurrentWave;
         public Vec3 PlayerPosition;
         public SaveData()
@@ -114,61 +114,63 @@ public class LoadManager : Singleton<LoadManager>
             motherShipType = Ship.eMotherShip.BASIC;
             items = null;
             Ships = null;
-            ShipsHealth = null;
             CurrentWave = 0;
-            PlayerPosition = null;
+            PlayerPosition = new Vec3();
+        }
+
+        public void setItemsFromDictionary(Dictionary<ItemData, int> itemsDict)
+        {
+            List<ItemPair> itemsList = new List<ItemPair>();
+            foreach (KeyValuePair<ItemData, int> pair in itemsDict)
+            {
+                itemsList.Add(new ItemPair(pair.Key.itemID, pair.Value));
+            }
+            items = itemsList.ToArray();
+        }
+
+        public Dictionary<ItemData, int> GetItemsAsDictionary()
+        {
+            Dictionary<ItemData, int> itemReturnable = new Dictionary<ItemData, int>();
+            if (items != null)
+            {
+
+                foreach (ItemPair i in items)
+                {
+                    itemReturnable.Add(WorldManager.Instance.GetItemById(i.itemID), i.num);
+                }
+            }
+
+            return itemReturnable;
+
         }
     }
 
     [System.Serializable]
     public class ShipDataSavable
     {
-        public float price;
         public string prefabName;
         public ShipData.eTurretRarity rarity;
-        public ShipData.eTurretType type;
-        public string description;
-        public string shipName;
+        public float shipHealth;
         public ShipDataSavable()
         {
-            price = 0;
             prefabName = null;
             rarity = ShipData.eTurretRarity.COMMON;
-            type = ShipData.eTurretType.RUSTY;
-            description = null;
-            shipName = null;
+            shipHealth = 0;
         }
-        public ShipDataSavable(ShipData dat)
+        public ShipDataSavable(ShipData dat, float hp)
         {
             if (dat)
             {
-                price = dat.price;
-                prefabName = PrefabUtility.GetCorrespondingObjectFromSource(dat.prefab).name;
+                prefabName = (dat.prefab).name;
                 rarity = dat.rarity;
-                type = dat.type;
-                description = dat.description;
-                shipName = dat.name;
+                shipHealth = hp;
             }
             else
             {
-                price = 0;
                 prefabName = null;
                 rarity = ShipData.eTurretRarity.COMMON;
-                type = ShipData.eTurretType.RUSTY;
-                description = null;
-                shipName = null;
+                shipHealth = 0;
             }
-        }
-        public ShipData ShipSavableToShipData()
-        {
-            ShipData ship = new ShipData();
-            ship.price = price;
-            ship.prefab = Resources.Load("Prefabs/" + prefabName) as GameObject;
-            ship.rarity = rarity;
-            ship.type = type;
-            ship.description = description;
-            ship.shipName = shipName;
-            return ship;
         }
     }
 
@@ -190,6 +192,12 @@ public class LoadManager : Singleton<LoadManager>
         public float x;
         public float y;
         public float z;
+        public Vec3()
+        {
+            x = 0;
+            y = 0;
+            z = 0;
+        }
         public Vec3(Vector3 pos)
         {
             x = pos.x;

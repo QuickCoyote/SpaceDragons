@@ -62,8 +62,8 @@ public class Ship : MonoBehaviour
     private void Start()
     {
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
-        
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
+        LoadData();
 
         switch (motherShip)
         {
@@ -85,24 +85,47 @@ public class Ship : MonoBehaviour
         }
 
 
-        switch (shipToTest)
+        //switch (shipToTest)
+        //{
+        //    case eShipToTest.RUSTY:
+        //        AddBodyPart(FindBodyPartFromPrefabs("RustyPrefab"));
+        //        break;
+        //    case eShipToTest.LIGHTNING:
+        //        AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
+        //        break;
+        //    case eShipToTest.FLAME:
+        //        AddBodyPart(FindBodyPartFromPrefabs("FlamePrefab"));
+        //        break;
+        //    case eShipToTest.HEALER:
+        //        AddBodyPart(FindBodyPartFromPrefabs("HealerPrefab"));
+        //        break;
+        //    case eShipToTest.ATTACK_DRONE:
+        //        AddBodyPart(FindBodyPartFromPrefabs("AttackDronePrefab"));
+        //        break;
+        //}
+
+    }
+
+    private void LoadData()
+    {
+        motherShip = LoadManager.Instance.saveData.motherShipType;
+
+        LoadManager.ShipDataSavable[] ships = LoadManager.Instance.saveData.Ships;
+        if (ships != null)
         {
-            case eShipToTest.RUSTY:
-                AddBodyPart(FindBodyPartFromPrefabs("RustyPrefab"));
-                break;
-            case eShipToTest.LIGHTNING:
-                AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
-                break;
-            case eShipToTest.FLAME:
-                AddBodyPart(FindBodyPartFromPrefabs("FlamePrefab"));
-                break;
-            case eShipToTest.HEALER:
-                AddBodyPart(FindBodyPartFromPrefabs("HealerPrefab"));
-                break;
-            case eShipToTest.ATTACK_DRONE:
-                AddBodyPart(FindBodyPartFromPrefabs("AttackDronePrefab"));
-                break;
+            for (int i = 0; i < ships.Length; i++)
+            {
+                if (ships[i].prefabName != null)
+                {
+                    GameObject ship = FindBodyPartFromPrefabs(ships[i].prefabName);
+                    ship.GetComponent<Turret>().turretRarity = ships[i].rarity;
+                    ship.GetComponent<Health>().healthCount = ships[i].shipHealth;
+                    AddBodyPart(ship);
+                }
+            }
         }
+        bodyPartTransforms[0].position = LoadManager.Instance.saveData.PlayerPosition.ToVector();
+
     }
 
     private void FixedUpdate()
