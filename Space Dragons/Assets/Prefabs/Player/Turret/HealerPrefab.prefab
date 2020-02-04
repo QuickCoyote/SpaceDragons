@@ -378,6 +378,7 @@ MonoBehaviour:
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
+  data: {fileID: 11400000, guid: 8766fd0860127474e9b943b8e7b714fd, type: 2}
   healTimer: 0.25
   healAmount: 1
 --- !u!1 &5907399425726392834

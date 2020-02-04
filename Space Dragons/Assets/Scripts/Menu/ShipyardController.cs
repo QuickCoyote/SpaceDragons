@@ -105,6 +105,7 @@ public class ShipyardController : MonoBehaviour
 
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "Description").FirstOrDefault().text = Motherships[(int)TradeInMothership].Description;
+
     }
 
     public void ShipyardShipSetup()
