@@ -41,6 +41,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inventory = GetComponent<Inventory>();
+        LoadData();
+
+    }
+    void LoadData()
+    {
+        money = LoadManager.Instance.saveData.PlayerMoney;
+        inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
     }
 
     void FixedUpdate()

@@ -23,6 +23,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     void Start()
     {
         Player = WorldManager.Instance.Player;
+        currentWave = LoadManager.Instance.saveData.CurrentWave;
     }
 
     void FixedUpdate()
