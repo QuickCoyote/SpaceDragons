@@ -110,6 +110,7 @@ public class Map : Singleton<Map>
             if (trackingType == eTrackingType.TAP_TRACKING)
             {
                 CheckTrackedByTouch();
+                TrackButtons.SetActive(false);
             }
             if (trackingType == eTrackingType.TRACK_NEAREST)
             {
