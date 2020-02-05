@@ -1,15 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
     [SerializeField] GameObject pauseUI = null;
     [SerializeField] GameObject optionsUI = null;
+    public bool JoystickControls;
 
+    public void Start()
+    {
+        JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 1);
+    }
+
+    public void ToggleJoystickControls(bool toggled)
+    {
+        JoystickControls = toggled;
+        PlayerPrefs.SetInt("JoystickControls", (JoystickControls) ? 1 : 0);
+
+    }
     public void ToggleOptions()
     {
         optionsUI.SetActive(!optionsUI.activeSelf);

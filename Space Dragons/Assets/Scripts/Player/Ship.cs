@@ -48,6 +48,8 @@ public class Ship : MonoBehaviour
     [Header("Movement Info")]
     public float speed = 1.0f;
     public float rotationSpeed = 50.0f;
+    private bool joystickdragging = false;
+    [SerializeField] RectTransform joystick;
 
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
@@ -56,6 +58,9 @@ public class Ship : MonoBehaviour
     private float dst = 1.0f;
     private Transform curBodyPart = null;
     private Transform prevBodyPart = null;
+
+
+
 
     #endregion
     
@@ -128,10 +133,40 @@ public class Ship : MonoBehaviour
 
     }
 
+    public void onPressJoystick()
+    {
+        joystickdragging = (true);
+    }
+
+    public void onReleaseJoystick()
+    {
+        joystickdragging = (false);
+    }
+    public void AdjustJoystick()
+    {
+        if (joystickdragging)
+        {
+            joystick.anchoredPosition += Input.touches[0].deltaPosition / joystick.GetComponentInParent<Canvas>().scaleFactor;
+            joystick.anchoredPosition = Vector2.ClampMagnitude(joystick.anchoredPosition, 150.0f);
+        }
+        else
+        {
+            joystick.anchoredPosition = Vector2.Lerp(joystick.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
+        }
+    }
+
+
     private void FixedUpdate()
     {
-        Move();
+        if (PauseMenu.Instance.JoystickControls)
+        {
+            AdjustJoystick();
+            MoveWithJoystick();
+        } else
+        {
+           Move();
 
+        }
         CheckForDie();
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -158,6 +193,49 @@ public class Ship : MonoBehaviour
         HealthBarManager.Instance.UpdateHealthBars();
     }
 
+    public void MoveWithJoystick()
+    {
+        float curSpeed = speed;
+        if (joystickdragging)
+        {
+
+                Vector3 targetPos = joystick.anchoredPosition;
+                targetPos.z = 0;
+                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+                Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+                float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+                bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+            
+        }
+
+        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
+
+        for (int i = 1; i < bodyPartTransforms.Count; i++)
+        {
+            if (bodyPartTransforms[i] != null)
+            {
+
+                curBodyPart = bodyPartTransforms[i];
+                prevBodyPart = bodyPartTransforms[i - 1];
+
+                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                Vector3 newPos = prevBodyPart.position;
+                newPos.z = bodyPartTransforms[0].position.z;
+
+                float t = Time.deltaTime * dst / minDst * curSpeed;
+
+                if (t > .5f)
+                {
+                    t = 0.5f;
+                }
+
+                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+            }
+        }
+    }
 
 public void Move()
     {

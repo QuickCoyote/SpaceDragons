@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject JoystickControls = null;
+    [SerializeField] GameObject TouchControls = null;
+
     public float attackSpeed = 0.25f;
     public float attackTimer = 0.0f;
 
@@ -38,14 +38,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float laserAttackSpeed = 0f;
     [SerializeField] float laserAttackDamage = 0f;
 
-    private bool firing = false;
 
+    //Controls
+    private bool firing = false;
 
     void Start()
     {
         inventory = GetComponent<Inventory>();
         LoadData();
-
+        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
+        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
     void LoadData()
     {
@@ -53,42 +55,63 @@ public class PlayerController : MonoBehaviour
         inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
     }
 
-
-
-    public void onPress()
+    public void onPressFire()
     {
         firing = (true);
     }
 
-    public void onRelease()
+    public void onReleaseFire()
     {
         firing = (false);
     }
 
+    private void Update()
+    {
+        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
+        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
+    }
 
     void FixedUpdate()
     {
-        if (firing)
+        if (PauseMenu.Instance.JoystickControls)
         {
-            attackTimer += Time.deltaTime;
-
-            if (attackTimer > attackSpeed)
+            if (firing)
             {
-                Fire();
-                attackTimer = 0;
+                attackTimer += Time.deltaTime;
+
+                if (attackTimer > attackSpeed)
+                {
+                    Fire();
+                    attackTimer = 0;
+                }
+            }
+        }
+        else
+        {
+            if (Input.touchCount > 0)
+            {
+                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                {
+                    attackTimer += Time.deltaTime;
+                    if (attackTimer > attackSpeed)
+                    {
+                        Fire();
+                        attackTimer = 0;
+                    }
+                }
             }
         }
     }
 
     public void AddMoney(int amount)
     {
-        if(money + amount < int.MaxValue)
+        if (money + amount < int.MaxValue)
         {
             money += amount;
         }
-        else if((long)(money + amount) > int.MaxValue)
+        else if ((long)(money + amount) > int.MaxValue)
         {
-            money = int.MaxValue-1;
+            money = int.MaxValue - 1;
         }
     }
 
@@ -117,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchFireMode(Ship.eMotherShip eMotherShipType)
     {
-        switch(eMotherShipType)
+        switch (eMotherShipType)
         {
             case Ship.eMotherShip.BASIC:
                 fireType = eFireType.BASIC;
@@ -189,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShieldingFire()
     {
-        if(guardDroneCount < 2)
+        if (guardDroneCount < 2)
         {
             // Spawn a guard drone
         }
