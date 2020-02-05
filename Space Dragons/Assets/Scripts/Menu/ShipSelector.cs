@@ -24,6 +24,7 @@ public class ShipSelector : MonoBehaviour
             ShipMenu.SetActive(true);
             ShopMenu.SetActive(false);
             SelecionDisplay.SetActive(true);
+            controller.OpenSelectedPanel(0);
             controller.GetSelectionInfo(false, SelectedShip);
 
             Health shipHealth = SelectedShip.GetComponent<Health>();
@@ -97,6 +98,7 @@ public class ShipSelector : MonoBehaviour
             ShipMenu.SetActive(false);
             controller.GetSelectionInfo(true, controller.ShopShips[controller.selectedPurchase]);
             SelecionDisplay.SetActive(true);
+            controller.OpenSelectedPanel(0);
         }
 
     }

@@ -59,6 +59,8 @@ public class OutpostController : MonoBehaviour
         }
         #endregion
 
+        Debug.Log("Players Money: " + WorldManager.Instance.PlayerController.money);
+
         if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
@@ -238,16 +240,15 @@ public class OutpostController : MonoBehaviour
         button.onClick.AddListener(delegate { CompleteSale(isSelling, item); });
         button.GetComponentInChildren<TextMeshProUGUI>().text = isSelling ? "SELL" : "BUY";
         selectedItem = item;
+        selling = isSelling;
 
     }
 
     public void CompleteSale(bool isSelling, ItemData item)
     {
-        int price = 0;
-
         if (isSelling)
         {
-            WorldManager.Instance.PlayerController.AddMoney(price);
+            WorldManager.Instance.PlayerController.AddMoney(CalculateSellPrice(item));
             outpostInventory.AddItem(item, sliderValue);
             outpostInventory.UpdateInventory();
             PlayerInventory.RemoveItem(item, sliderValue);
@@ -258,7 +259,7 @@ public class OutpostController : MonoBehaviour
         }
         else
         {
-            if (WorldManager.Instance.PlayerController.RemoveMoney(price))
+            if (WorldManager.Instance.PlayerController.RemoveMoney(CalculateSellPrice(item)))
             {
                 outpostInventory.RemoveItem(item, sliderValue);
                 outpostInventory.UpdateInventory();
@@ -269,7 +270,7 @@ public class OutpostController : MonoBehaviour
             }
             else
             {
-                // YOU'RE BROKE >:C STOP TRYING TO BUY THIS
+                Debug.Log("YOU'RE BROKE >:C STOP TRYING TO BUY THIS");
             }
         }
     }
@@ -294,35 +295,43 @@ public class OutpostController : MonoBehaviour
             OpenOutpost();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            CloseOutpost();
-        }
-    }
 
     public int CheckForAmount(ItemData item)
     {
-        return outpostInventory.items[item];
+        if(outpostInventory.items.ContainsKey(item))
+        {
+            return outpostInventory.items[item];
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public int CalculateSellPrice(ItemData item)
     {
-        price = 0;
+        float tempPrice = 0;
 
         for (int i = 0; i < sliderValue; i++)
         {
-            //price += ((ShopDifficulty * itemBaseCost) + (int)(Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1));
-            price += (int)(ItemRarityCurve.Evaluate((float)((int)item.rarity/5)) * DemandCurve.Evaluate(CheckForAmount(item)/1000));
+            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1));
         }
-        
+
+        price = Mathf.FloorToInt(tempPrice * 100);
+            
         return price;
     }
 
     public int CalculateBuyPrice(ItemData item)
     {
-        price = 0;
+        float tempPrice = 0;
+
+        for (int i = 0; i < sliderValue; i++)
+        {
+            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) + i + 1));
+        }
+
+        price = Mathf.FloorToInt(tempPrice * 220);
 
         return price;
     }
