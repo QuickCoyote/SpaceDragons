@@ -22,11 +22,12 @@ public class ShipyardController : MonoBehaviour
     public GameObject ShipMenu;
     public GameObject ShopMenu;
     public GameObject MothershipMenu;
-    public GameObject SelectionDisplay;
     public GameObject MothershipDisplay;
+    public GameObject SelectionDisplay;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
     public GameObject MaxShipWarning;
+    public List<GameObject> SelectionInfoPanels;
     public Ship.eMotherShip TradeInMothership;
     public Sprite EmptySlot;
 
@@ -81,7 +82,19 @@ public class ShipyardController : MonoBehaviour
         {
             ShopShips = new List<GameObject>();
             ShipyardShopSetup();
+            int num = 0;
+            for (int i = 0; i < SelectionInfoPanels.Count; i++)
+            {
+                if (SelectionInfoPanels[i].activeInHierarchy)
+                {
+                    num = i;
+                    break;
+                }
+            }
+
+            OpenSelectedPanel(0);
             GetSelectionInfo(true, ShopShips[selectedPurchase]);
+            OpenSelectedPanel(num);
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
@@ -345,6 +358,21 @@ public class ShipyardController : MonoBehaviour
         return Ship;
     }
 
+    public void OpenSelectedPanel(int num)
+    {
+        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        {
+            if(i == num)
+            {
+                SelectionInfoPanels[i].SetActive(true);
+            }
+            else
+            {
+                SelectionInfoPanels[i].SetActive(false);
+            }
+        }
+    }
+
     public void GetSelectionInfo(bool isBuying, GameObject selectedShip)
     {
         if (ShopShips[selectedPurchase] != null && isBuying)
@@ -390,7 +418,9 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
+            OpenSelectedPanel(1);
             GetSelectionStats(selectedShip);
+            OpenSelectedPanel(0);
 
         }
         else if (!isBuying)
@@ -442,8 +472,9 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
+            OpenSelectedPanel(1);
             GetSelectionStats(selectedShip);
-
+            OpenSelectedPanel(0);
         }
         else
         {
@@ -505,21 +536,37 @@ public class ShipyardController : MonoBehaviour
     public void SelectionIncrement()
     {
         selectedPurchase++;
+        int num = 0;
+        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        {
+            if(SelectionInfoPanels[i].activeInHierarchy)
+            {
+                num = i;
+                break;
+            }
+        }
 
-        SelectionDisplay.GetComponentsInChildren<Button>().Where
-            (o => o.name == "DetailsButton").FirstOrDefault().onClick.Invoke();
-
+        OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[selectedPurchase]);
+        OpenSelectedPanel(num);
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
+        int num = 0;
+        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        {
+            if (SelectionInfoPanels[i].activeInHierarchy)
+            {
+                num = i;
+                break;
+            }
+        }
 
-        SelectionDisplay.GetComponentsInChildren<Button>().Where
-            (o => o.name == "DetailsButton").FirstOrDefault().onClick.Invoke();
-
+        OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[selectedPurchase]);
+        OpenSelectedPanel(num);
     }
 
     public void Purchase()
