@@ -6549,8 +6549,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -6560,7 +6560,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   DemandCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0000015255064
+      value: 1.0026855
+      inSlope: 0.08325121
+      outSlope: 0.08325121
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11625941
+    - serializedVersion: 3
+      time: 0.595961
+      value: 0.6555334
+      inSlope: -1.4297462
+      outSlope: -1.4297462
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.000011444092
+      inSlope: -0.49313393
+      outSlope: -0.49313393
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14273992
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
