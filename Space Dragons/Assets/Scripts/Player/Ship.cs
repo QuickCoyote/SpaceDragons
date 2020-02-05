@@ -158,7 +158,8 @@ public class Ship : MonoBehaviour
         HealthBarManager.Instance.UpdateHealthBars();
     }
 
-    public void Move()
+
+public void Move()
     {
         float curSpeed = speed;
         if (Input.touchCount > 0)

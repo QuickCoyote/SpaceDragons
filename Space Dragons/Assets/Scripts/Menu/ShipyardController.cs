@@ -70,11 +70,6 @@ public class ShipyardController : MonoBehaviour
         }
         #endregion
 
-        if (Ships[0] == null)
-        {
-            Start();
-        }
-
         if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
@@ -395,6 +390,8 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
+            GetSelectionStats(selectedShip);
+
         }
         else if (!isBuying)
         {
@@ -445,6 +442,8 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
+            GetSelectionStats(selectedShip);
+
         }
         else
         {
@@ -489,18 +488,37 @@ public class ShipyardController : MonoBehaviour
             }
 
         }
+    }
 
+    public void GetSelectionStats(GameObject selectedShip)
+    {
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "FireRateNum").FirstOrDefault().text = (selectedShip.GetComponent<Turret>().attackSpeed).ToString();
+
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "DamageNum").FirstOrDefault().text = (selectedShip.GetComponent<Turret>().damage).ToString();
+
+        SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "RangeNum").FirstOrDefault().text = (selectedShip.GetComponent<Turret>().range).ToString();
     }
 
     public void SelectionIncrement()
     {
         selectedPurchase++;
+
+        SelectionDisplay.GetComponentsInChildren<Button>().Where
+            (o => o.name == "DetailsButton").FirstOrDefault().onClick.Invoke();
+
         GetSelectionInfo(true, ShopShips[selectedPurchase]);
     }
 
     public void SelectionDecrement()
     {
         selectedPurchase--;
+
+        SelectionDisplay.GetComponentsInChildren<Button>().Where
+            (o => o.name == "DetailsButton").FirstOrDefault().onClick.Invoke();
+
         GetSelectionInfo(true, ShopShips[selectedPurchase]);
     }
 
@@ -580,6 +598,9 @@ public class ShipyardController : MonoBehaviour
         {
             ShopShips.Add(newShip);
         }
+
+        newShip.SetActive(false);
+
     }
 
     public void TradeIn()
