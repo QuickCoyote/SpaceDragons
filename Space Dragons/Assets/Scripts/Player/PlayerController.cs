@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
                 attackTimer = 0;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            money += 1000;
+        }
     }
 
     public void AddMoney(int amount)
@@ -197,12 +202,12 @@ public class PlayerController : MonoBehaviour
 
     private void HealthyFire()
     {
-
+        //do a heal boi
     }
 
     private void FireLightning()
     {
-
+        // do a lightning boi
     }
 
     private void FlameFire()

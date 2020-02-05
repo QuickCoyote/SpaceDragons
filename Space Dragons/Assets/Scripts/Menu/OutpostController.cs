@@ -318,7 +318,7 @@ public class OutpostController : MonoBehaviour
         }
 
         price = Mathf.FloorToInt(tempPrice * 100);
-        
+            
         return price;
     }
 

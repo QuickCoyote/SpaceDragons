@@ -596,7 +596,8 @@ public class ShipyardController : MonoBehaviour
                         }
                         else
                         {
-                            // YOU DON'T HAVE ENOUGH MONEY >:C
+                            Debug.Log("You're poor");
+                            return;// YOU DON'T HAVE ENOUGH MONEY >:C
                         }
 
                         break;
