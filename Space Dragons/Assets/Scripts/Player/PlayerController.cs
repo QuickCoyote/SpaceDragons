@@ -2,9 +2,11 @@
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Control UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
 
+    [Header("Attacks")]
     public float attackSpeed = 0.25f;
     public float attackTimer = 0.0f;
 
@@ -21,22 +23,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float basicAttackSpeed = 0f;
     [SerializeField] float basicAttackDamage = 0f;
 
+    [Header("Flame Attacks")]
     [SerializeField] float flameSpeed = 0f;
     [SerializeField] float flameLifeSpan = 0f;
     [SerializeField] float flameAttackangle = 0f;
     [SerializeField] float flameAttackSpeed = 0f;
     [SerializeField] float flameAttackDamage = 0f;
 
+    [Header("Lightning Attacks")]
     [SerializeField] float lightningAttackSpeed = 0f;
     [SerializeField] float lightningAttackDamage = 0f;
 
+    [Header("Healing Attacks")]
     [SerializeField] float healingAttackSpeed = 0f;
     [SerializeField] float healingAttackDamage = 0f;
 
+    [Header("Guard Drones")]
     [SerializeField] int guardDroneCount = 0;
 
+    [Header("Laser Attacks")]
     [SerializeField] float laserAttackSpeed = 0f;
     [SerializeField] float laserAttackDamage = 0f;
+
 
 
     //Controls
@@ -70,6 +78,8 @@ public class PlayerController : MonoBehaviour
         JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
+
+   
 
     void FixedUpdate()
     {

@@ -49,6 +49,8 @@ public class Ship : MonoBehaviour
     public float speed = 1.0f;
     public float rotationSpeed = 50.0f;
     private bool joystickdragging = false;
+
+    [Header("Control UI")]
     [SerializeField] RectTransform joystick;
 
     [Header("Enum Info")]
@@ -59,17 +61,28 @@ public class Ship : MonoBehaviour
     private Transform curBodyPart = null;
     private Transform prevBodyPart = null;
 
-
+    [Header("Boost Info")]
+    [SerializeField] float boostSpeed = 0f;
+    [SerializeField] float returnSpeed = 0f;
+    [SerializeField] float boostrotateSpeed = 0f;
+    [SerializeField] float returnrotateSpeed = 0f;
+    [SerializeField] bool boosting = false;
+    [SerializeField] int boostFuel = 0;
+    [SerializeField] int boostFuelMAX = 4;
+    [SerializeField] GameObject boostParticles = null;
+    [SerializeField] float boostCooldownReset = 0f;
+    [SerializeField] float boostCooldownTimer = 0f;
 
 
     #endregion
-    
+
     private void Start()
     {
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
-
+        returnSpeed = speed;
+        returnrotateSpeed = rotationSpeed;
         switch (motherShip)
         {
             case eMotherShip.BASIC:
@@ -146,7 +159,8 @@ public class Ship : MonoBehaviour
     {
         if (joystickdragging)
         {
-            joystick.anchoredPosition += Input.touches[0].deltaPosition / joystick.GetComponentInParent<Canvas>().scaleFactor;
+
+            joystick.anchoredPosition = Vector2.Lerp(joystick.anchoredPosition, joystick.anchoredPosition + Input.touches[0].deltaPosition / joystick.GetComponentInParent<Canvas>().scaleFactor, .25f);
             joystick.anchoredPosition = Vector2.ClampMagnitude(joystick.anchoredPosition, 150.0f);
         }
         else
@@ -155,6 +169,39 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public void Boost()
+    {
+        if (boostFuel > 0 && !boosting)
+        {
+            boostFuel -= 1;
+            boostCooldownTimer = boostCooldownReset;
+            rotationSpeed = boostrotateSpeed;
+            speed = boostSpeed;
+            boosting = true;
+            boostParticles.SetActive(true);
+        }
+    }
+    public void RefillBoost()
+    {
+        boostFuel = boostFuelMAX;
+    }
+
+    public void Update()
+    {
+        if (boosting)
+        {
+            boostCooldownTimer -= Time.deltaTime;
+
+            if (boostCooldownTimer < 0.0f)
+            {
+                boostParticles.SetActive(false);
+                speed = returnSpeed;
+                rotationSpeed = returnrotateSpeed;
+                boosting = false;
+            }
+
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -192,6 +239,8 @@ public class Ship : MonoBehaviour
 
         HealthBarManager.Instance.UpdateHealthBars();
     }
+
+
 
     public void MoveWithJoystick()
     {
