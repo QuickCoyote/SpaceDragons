@@ -9,13 +9,13 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void Start()
     {
-        JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 1);
+        JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 0);
     }
 
     public void ToggleJoystickControls(bool toggled)
     {
         JoystickControls = toggled;
-        PlayerPrefs.SetInt("JoystickControls", (JoystickControls) ? 1 : 0);
+        PlayerPrefs.SetInt("JoystickControls", (JoystickControls) ? 0 : 1);
 
     }
     public void ToggleOptions()
