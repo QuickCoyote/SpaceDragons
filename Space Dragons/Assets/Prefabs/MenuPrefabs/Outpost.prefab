@@ -3700,7 +3700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 32.1}
+  m_AnchoredPosition: {x: 0, y: 32.100098}
   m_SizeDelta: {x: 32, y: 2189.03}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8717131723758536039
@@ -6471,7 +6471,7 @@ Transform:
   - {fileID: 1581514906}
   - {fileID: 407945756}
   - {fileID: 233097029}
-  - {fileID: 6515047666261849863}
+  - {fileID: 4756806320981330115}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6534,6 +6534,36 @@ MonoBehaviour:
     type: 3}
   ShopTimer: {fileID: 5747822052825033558}
   ShopDifficulty: 0
+  ItemRarityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DemandCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &4787816599233614745
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6597,7 +6627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -32.1}
+  m_AnchoredPosition: {x: 0, y: -32.100098}
   m_SizeDelta: {x: 32, y: 2104}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8717131724718255120
@@ -9668,6 +9698,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8717131724683363522}
     m_Modifications:
+    - target: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6768678382184082618, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9730,9 +9765,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
---- !u!4 &6515047666261849863 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6768678382184082618, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+--- !u!224 &4756806320981330115 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
     type: 3}
   m_PrefabInstance: {fileID: 541897011489987517}
   m_PrefabAsset: {fileID: 0}

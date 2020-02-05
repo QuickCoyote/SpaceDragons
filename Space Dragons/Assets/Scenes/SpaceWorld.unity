@@ -1131,6 +1131,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
+--- !u!114 &716196382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1753379421, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 716196381}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b14fc1ae4402b49839a5b2dd838c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!213 &739836999
 Sprite:
   m_ObjectHideFlags: 0
@@ -2967,6 +2979,11 @@ PrefabInstance:
       propertyPath: Ship
       value: 
       objectReference: {fileID: 1379538170}
+    - target: {fileID: 4229753921854191400, guid: c03491f4a3e540f418e56991ec4cd7be,
+        type: 3}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 716196382}
     - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
       propertyPath: m_LocalPosition.x

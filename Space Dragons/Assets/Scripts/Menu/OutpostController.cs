@@ -17,6 +17,9 @@ public class OutpostController : MonoBehaviour
     public TextMeshProUGUI ShopTimer;
     [Range(0, 2)] public int ShopDifficulty;
 
+    public AnimationCurve ItemRarityCurve;
+    public AnimationCurve DemandCurve;
+
     ItemData selectedItem;
 
     Inventory outpostInventory = new Inventory();
@@ -27,6 +30,7 @@ public class OutpostController : MonoBehaviour
 
     int itemBaseCost = 10;
     int price = 0;
+    bool selling = false;
 
     public void Start()
     {
@@ -73,7 +77,14 @@ public class OutpostController : MonoBehaviour
             ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Slider Text").FirstOrDefault().text = ((int)slider.value).ToString();
             if(selectedItem)
             {
-                ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$" + (CalculatePrice(selectedItem)).ToString();
+                if(selling)
+                {
+                    ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$" + (CalculateSellPrice(selectedItem)).ToString();
+                }
+                else
+                {
+                    ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$" + (CalculateBuyPrice(selectedItem)).ToString();
+                }
             }
             else
             {
@@ -302,7 +313,8 @@ public class OutpostController : MonoBehaviour
 
         for (int i = 0; i < sliderValue; i++)
         {
-            price += ((ShopDifficulty * itemBaseCost) + (int)(Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1));
+            //price += ((ShopDifficulty * itemBaseCost) + (int)(Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1));
+            price += (int)(ItemRarityCurve.Evaluate((float)((int)item.rarity/5)) * DemandCurve.Evaluate(CheckForAmount(item)/1000));
         }
         
         return price;
