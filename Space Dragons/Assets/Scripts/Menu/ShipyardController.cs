@@ -613,9 +613,8 @@ public class ShipyardController : MonoBehaviour
             }
         }
 
-        if (WorldManager.Instance.PlayerController.money - (hpToRestore * repairCostPerHP) > 0)
+        if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
         {
-            WorldManager.Instance.PlayerController.money -= (int)(hpToRestore * repairCostPerHP);
             for (int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
             {
                 if (MotherShip.bodyPartObjects[i] != null)
