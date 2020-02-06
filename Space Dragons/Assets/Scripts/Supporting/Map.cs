@@ -31,7 +31,17 @@ public class Map : Singleton<Map>
     public eTrackingType trackingType = eTrackingType.TRACK_NEAREST;
     int trackType = 0;
 
+    float mapX = 1000f;
+    float mapY = 1000f;
+
+    private float minX;
+    private float maxX;
+    private float minY;
+    private float maxY;
+
     public TextMeshProUGUI trackingTypeText;
+
+    Vector3 panStart;
 
     public enum eTrackingType
     {
@@ -83,7 +93,7 @@ public class Map : Singleton<Map>
             }
         }
 
-        shortestdistanceReadout.text = Vector3.Distance((TrackNearest) ? nearestTarget : TargetBeingTracked, player.transform.position).ToString("000m");
+        shortestdistanceReadout.text = Vector3.Distance((TrackNearest) ? nearestTarget : TargetBeingTracked, player.transform.position).ToString("000au");
 
         //Check where to rotate minimap tracker
         Vector3 direction = (TrackNearest) ? nearestTarget - player.transform.position : TargetBeingTracked - player.transform.position;
@@ -124,6 +134,85 @@ public class Map : Singleton<Map>
                 TrackButtons.SetActive(true);
             }
         }
+
+        // This is panning/zooming on the map
+
+        if (MainMap.activeSelf)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                panStart = mainMapCam.ScreenToWorldPoint(Input.mousePosition);
+            }
+            if (Input.touchCount == 2)
+            {
+                Touch touchOne = Input.GetTouch(0);
+                Touch touchTwo = Input.GetTouch(1);
+
+                Vector2 mod = Vector2.zero;
+
+                mod.x -= Screen.width / 2;
+                mod.x += (Screen.width * 0.1469594595f);
+
+                mod.y -= Screen.height / 2;
+                mod.y += (Screen.height * 0.0034722222f);
+
+                touchOne.position -= mod;
+                touchTwo.position -= mod;
+                
+                touchOne.position *= 0.825f;
+                touchTwo.position *= 0.825f;
+
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+                Vector2 touchTwoPrevPos = touchTwo.position - touchTwo.deltaPosition;
+
+                float prevMagnitude = (touchOnePrevPos - touchTwoPrevPos).magnitude;
+                float curMagnitude = (touchOne.position - touchTwo.position).magnitude;
+
+                float difference = curMagnitude - prevMagnitude;
+
+                Zoom(difference * 0.125f);
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                Vector3 panDirection = panStart - mainMapCam.ScreenToWorldPoint(Input.mousePosition);
+                mainMapCam.transform.position += panDirection;
+            }
+
+            if(maxX < minX)
+            {
+                maxX *= -1;
+                minX *= -1;
+            }
+            if (maxY < minY)
+            {
+                maxY *= -1;
+                minY *= -1;
+            }
+            var v3 = mainMapCam.transform.position;
+            v3.x = Mathf.Clamp(v3.x, minX, maxX);
+            v3.y = Mathf.Clamp(v3.y, minY, maxY);
+            mainMapCam.transform.position = v3;
+        }
+    }
+
+    public void Zoom(float increment)
+    {
+        mainMapCam.orthographicSize = Mathf.Clamp(mainMapCam.orthographicSize - increment, 5, 510);
+        GenerateBounds();
+        if(mainMapCam.orthographicSize > 507)
+        {
+            mainMapCam.orthographicSize = 510;
+            mainMapCam.transform.position = new Vector3(5, 5, mainMapCam.transform.position.z);
+        }
+    }
+
+    public void GenerateBounds()
+    {
+        var vertExtent = mainMapCam.orthographicSize;
+        minX = vertExtent - mapX / 2.0f;
+        maxX = mapX / 2.0f - vertExtent;
+        minY = vertExtent - mapY / 2.0f;
+        maxY = mapY / 2.0f - vertExtent;
     }
 
     public void MapOpen()
@@ -159,11 +248,11 @@ public class Map : Singleton<Map>
     public void NextTrackingType()
     {
         trackType++;
-        if(trackType >= 3)
+        if (trackType >= 3)
         {
             trackType = 0;
         }
-        switch(trackType)
+        switch (trackType)
         {
             case 0:
                 trackingType = eTrackingType.TRACK_NEAREST;
@@ -215,8 +304,8 @@ public class Map : Singleton<Map>
             mousePos.x -= Screen.width / 2;
             mousePos.y -= Screen.height / 2;
 
-            mousePos.x += 435;
-            mousePos.y += 5;
+            mousePos.x += (Screen.width*0.1469594595f);
+            mousePos.y += (Screen.height*0.0034722222f);
             mousePos *= 0.825f;
 
             Vector3 newMousePos = new Vector3(0, 0, -200);
@@ -252,7 +341,7 @@ public class Map : Singleton<Map>
     {
         foreach (MapTargets t in targets)
         {
-            if(t.transform.position == nearestTarget)
+            if (t.transform.position == nearestTarget)
             {
                 t.SelectTarget(true);
             }

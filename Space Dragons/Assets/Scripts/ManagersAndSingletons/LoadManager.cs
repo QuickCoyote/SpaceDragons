@@ -14,6 +14,7 @@ public class LoadManager : Singleton<LoadManager>
     private void Start()
     {
         Load();
+        Save();
     }
 
     public void Save()
