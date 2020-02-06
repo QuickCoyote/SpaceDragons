@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ship : MonoBehaviour
 {
@@ -70,6 +71,8 @@ public class Ship : MonoBehaviour
     [SerializeField] int boostFuel = 0;
     [SerializeField] int boostFuelMAX = 4;
     [SerializeField] GameObject boostParticles = null;
+    [SerializeField] Slider boostSliderJoystick = null;
+    [SerializeField] Slider boostSliderTouch = null;
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
 
@@ -173,7 +176,7 @@ public class Ship : MonoBehaviour
     {
         if (boostFuel > 0 && !boosting)
         {
-            boostFuel -= 1;
+            boostFuel--;
             boostCooldownTimer = boostCooldownReset;
             rotationSpeed = boostrotateSpeed;
             speed = boostSpeed;
@@ -184,6 +187,18 @@ public class Ship : MonoBehaviour
     public void RefillBoost()
     {
         boostFuel = boostFuelMAX;
+    }
+
+    private void UpdateFeulGauge()
+    {
+        float min = 23;
+        float max = 60;
+        float scale = max - min;
+        float gauge = scale * ((float)boostFuel/(float)boostFuelMAX);
+        boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
+
+        boostSliderTouch.maxValue = boostFuelMAX;
+        boostSliderTouch.value = Mathf.Lerp(boostSliderTouch.value, boostFuel, 1.5f * Time.deltaTime);
     }
 
     public void Update()
@@ -201,6 +216,7 @@ public class Ship : MonoBehaviour
             }
 
         }
+        UpdateFeulGauge();
     }
 
     private void FixedUpdate()

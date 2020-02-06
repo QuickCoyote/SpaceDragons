@@ -486,7 +486,6 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
-
         }
     }
 

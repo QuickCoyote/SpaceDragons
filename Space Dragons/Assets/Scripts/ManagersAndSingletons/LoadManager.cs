@@ -14,6 +14,7 @@ public class LoadManager : Singleton<LoadManager>
     private void Start()
     {
         Load();
+
     }
 
     public void Save()
@@ -56,6 +57,7 @@ public class LoadManager : Singleton<LoadManager>
             }
             saveData.Ships = ships.ToArray();
             saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
+            saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
             saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
         }
         catch (Exception e)
@@ -67,6 +69,19 @@ public class LoadManager : Singleton<LoadManager>
     public void ResetSaveData()
     {
         saveData = new SaveData();
+        Debug.Log(saveData);
+        try
+        {
+            string filePath = Application.persistentDataPath + "/" + dataFile;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+            bf.Serialize(file, saveData);
+            file.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error in Saving:" + e.Message);
+        }
     }
 
     public void Load()
@@ -78,9 +93,14 @@ public class LoadManager : Singleton<LoadManager>
             try
             {
                 FileStream file = File.Open(filePath, FileMode.Open);
-            SaveData loaded = (SaveData)bf.Deserialize(file);
-            saveData = loaded;
-            file.Close();
+                SaveData loaded = (SaveData)bf.Deserialize(file);
+                saveData = loaded;
+                file.Close();
+
+                if (saveData == null)
+                {
+                    saveData = new SaveData();
+                }
             }
             catch (Exception e)
             {
@@ -106,15 +126,17 @@ public class LoadManager : Singleton<LoadManager>
         public ItemPair[] items;
         public ShipDataSavable[] Ships;
         public int CurrentWave;
+        public int CurrentCycle;
         public Vec3 PlayerPosition;
         public SaveData()
         {
             PlayerHealth = 100;
             PlayerMoney = 0;
             motherShipType = Ship.eMotherShip.BASIC;
-            items = null;
-            Ships = null;
+            items = new ItemPair[0];
+            Ships = new ShipDataSavable[0];
             CurrentWave = 0;
+            CurrentCycle = 0;
             PlayerPosition = new Vec3();
         }
 

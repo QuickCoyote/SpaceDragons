@@ -73,6 +73,8 @@ public class FlameTurret : Turret
         projectile.damage = 0.25f;
         projectile.goDirection = projectileDirection;
         projectile.lifetime = flameLifeSpan;
+        float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         projectile.bulletSpeed = flameSpeed;
         projectile.sound = "null";
         projectile.Fire();

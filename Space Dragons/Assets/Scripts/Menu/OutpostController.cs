@@ -59,8 +59,6 @@ public class OutpostController : MonoBehaviour
         }
         #endregion
 
-        Debug.Log("Players Money: " + WorldManager.Instance.PlayerController.money);
-
         if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
