@@ -29,17 +29,6 @@ public class ShipSelector : MonoBehaviour
 
             Health shipHealth = SelectedShip.GetComponent<Health>();
 
-            if(controller.MotherShip.bodyPartObjects.Count > 2 && controller.MotherShip.bodyPartObjects[2] != null)
-            {
-                ShipMenu.GetComponentsInChildren<Button>().Where
-                    (o => o.name == "Sell").FirstOrDefault().interactable = true;
-            }
-            else
-            {
-                ShipMenu.GetComponentsInChildren<Button>().Where
-                    (o => o.name == "Sell").FirstOrDefault().interactable = false;
-            }
-
             ShipMenu.GetComponentsInChildren<Button>().Where
                 (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
 
@@ -72,13 +61,15 @@ public class ShipSelector : MonoBehaviour
                         }
                     }
                 }
-                if(child.tag == "SellButton")
-                {
-                    Button button = child.GetComponent<Button>();
-                    button.onClick.RemoveAllListeners();
-                    button.onClick.AddListener(delegate { Sell(10); });
-                }
-                else if(child.tag == "RepairButton")
+                //if(child.tag == "SellButton")
+                //{
+                Button sellButton = controller.SelectionDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Sell").FirstOrDefault();
+
+                sellButton.onClick.RemoveAllListeners();
+                sellButton.onClick.AddListener(delegate { Sell(10); });
+                //}
+                if (child.tag == "RepairButton")
                 {
                     Button button = child.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
@@ -90,14 +81,20 @@ public class ShipSelector : MonoBehaviour
                     button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(delegate { Upgrade(); });
                 }
+
+                RectTransform healthbar = ShipMenu.GetComponentsInChildren<RectTransform>().Where
+                    (o => o.name == "HealthBar").FirstOrDefault();
+                Slider healthSlider = healthbar.GetComponentInChildren<Slider>();
+
+                healthSlider.value = shipHealth.healthCount;
             }
         }
         else
         {
             ShopMenu.SetActive(true);
             ShipMenu.SetActive(false);
-            controller.GetSelectionInfo(true, controller.ShopShips[controller.selectedPurchase]);
             SelecionDisplay.SetActive(true);
+            controller.GetSelectionInfo(true, controller.ShopShips[controller.scrollSnap.CurrentPage()]);
             controller.OpenSelectedPanel(0);
         }
 
@@ -105,29 +102,36 @@ public class ShipSelector : MonoBehaviour
 
     void Sell(int sellPrice)
     {
-        if (controller.MotherShip.bodyPartObjects.Count > 2 && controller.MotherShip.bodyPartObjects[2] != null)
-        {
-            IsSlotFilled = false;
-            ShipMenu.SetActive(false);
-            controller.Ships.Remove(SelectedShip);
-            controller.Ships.Add(null);
-            controller.MotherShip.RemoveBodyPart(SelectedShip, true);
-            controller.MotherShip.bodyPartObjects.Add(null);
-            controller.MotherShip.bodyPartTransforms.Add(null);
-            controller.MotherShip.SortBody();
-            controller.AddToShop(SelectedShip);
-            controller.ShipyardShipSetup();
-            controller.ShipyardShopSetup();
-            SelecionDisplay.SetActive(false);
+        IsSlotFilled = false;
 
-            //PLACE MONEY ADDING HERE
-        }
+        ShipMenu.SetActive(false);
+        SelecionDisplay.SetActive(false);
+
+        controller.Ships.Remove(SelectedShip);
+        controller.Ships.Add(null);
+        controller.MotherShip.RemoveBodyPart(SelectedShip, true);
+        controller.MotherShip.bodyPartObjects.Add(null);
+        controller.MotherShip.bodyPartTransforms.Add(null);
+        controller.MotherShip.SortBody();
+        controller.AddToShop(SelectedShip);
+        controller.ShipyardShipSetup();
+        controller.ShipyardShopSetup();
+
+        //PLACE MONEY ADDING HERE
+        WorldManager.Instance.PlayerController.AddMoney(sellPrice);
     }
 
     void Repair()
     {
         //SET SHIP HEALTH TO MAXIMUM
         SelectedShip.GetComponent<Health>().healthCount = SelectedShip.GetComponent<Health>().healthMax;
+
+        Health shipHealth = SelectedShip.GetComponent<Health>();
+        Slider healthbar = ShipMenu.GetComponentsInChildren<Slider>().Where
+                    (o => o.name == "HealthBar").FirstOrDefault();
+
+        healthbar.value = shipHealth.healthCount;
+
         controller.ShipyardShipSetup();
     }
 
