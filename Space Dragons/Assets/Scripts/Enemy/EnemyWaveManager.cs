@@ -24,6 +24,15 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     {
         Player = WorldManager.Instance.Player;
         currentWave = LoadManager.Instance.saveData.CurrentWave;
+        cycleCount = LoadManager.Instance.saveData.CurrentCycle;
+        if (currentWave != 0)
+        {
+            for (int i = 0; i <= cycleCount; i++)
+            {
+                waves[currentWave].StartWave();
+            }
+            dt = 0.0f;
+        }
     }
 
     void FixedUpdate()
