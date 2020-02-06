@@ -14,6 +14,10 @@ public class LoadManager : Singleton<LoadManager>
     private void Start()
     {
         Load();
+        if (saveData == null)
+        {
+            saveData = new SaveData();
+        }
     }
 
     public void Save()
@@ -92,9 +96,9 @@ public class LoadManager : Singleton<LoadManager>
             try
             {
                 FileStream file = File.Open(filePath, FileMode.Open);
-            SaveData loaded = (SaveData)bf.Deserialize(file);
-            saveData = loaded;
-            file.Close();
+                SaveData loaded = (SaveData)bf.Deserialize(file);
+                saveData = loaded;
+                file.Close();
             }
             catch (Exception e)
             {
@@ -127,8 +131,8 @@ public class LoadManager : Singleton<LoadManager>
             PlayerHealth = 100;
             PlayerMoney = 0;
             motherShipType = Ship.eMotherShip.BASIC;
-            items = null;
-            Ships = null;
+            items = new ItemPair[0];
+            Ships = new ShipDataSavable[0];
             CurrentWave = 0;
             CurrentCycle = 0;
             PlayerPosition = new Vec3();
