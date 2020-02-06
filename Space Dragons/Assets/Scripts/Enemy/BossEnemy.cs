@@ -71,10 +71,11 @@ public class BossEnemy : Enemy
     private void OnDestroy()
     {
         Map.Instance.RemoveTarget(maptarget);
+
         for (int i = 0; i < lootnum; i++)
         {
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemData();
+            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
             g.image.sprite = g.itemData.itemImage;
         }
     }
