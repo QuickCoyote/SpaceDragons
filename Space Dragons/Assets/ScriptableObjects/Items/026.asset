@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Leaf Shaped Ore
   description: A group of these is called a salad. Not Organic.
   itemImage: {fileID: 21300000, guid: 8e18c8cd7948b7b49a5bebe84494408d, type: 3}
+  rarity: 4

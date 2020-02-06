@@ -17,3 +17,4 @@ MonoBehaviour:
   description: 'It''s only called magma because of it''s appearance. It''s actually
     cool to the touch. '
   itemImage: {fileID: 21300000, guid: b13050b1c1fd5b14e8001dd85972ae31, type: 3}
+  rarity: 3

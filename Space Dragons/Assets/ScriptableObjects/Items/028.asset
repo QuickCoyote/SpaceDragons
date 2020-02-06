@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Purple Ore
   description: 'Used for making purple ships. '
   itemImage: {fileID: 21300000, guid: 92176b63393ed924fa84eb87d363acaa, type: 3}
+  rarity: 2

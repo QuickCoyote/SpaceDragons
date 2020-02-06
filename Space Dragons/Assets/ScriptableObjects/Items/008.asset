@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Geodite
   description: Known for it's beautiful pink crystalization.
   itemImage: {fileID: 21300000, guid: 3b34ac1e057b63143b6b7e6dbacef376, type: 3}
+  rarity: 3

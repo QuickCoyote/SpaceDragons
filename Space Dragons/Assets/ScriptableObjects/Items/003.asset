@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Silver
   description: Shiny metal bar that is found on earth as well.
   itemImage: {fileID: 21300000, guid: 4e49f0483ccecab4597ddb73f675ea2f, type: 3}
+  rarity: 2

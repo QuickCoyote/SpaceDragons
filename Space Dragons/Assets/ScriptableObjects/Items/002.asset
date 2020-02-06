@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: CoralStone
   description: A weird, wave-like pattern covers the top of this red stone.
   itemImage: {fileID: 21300000, guid: 3a29908ee6108214d9f91b66e2575f82, type: 3}
+  rarity: 3

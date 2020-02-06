@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Blue Crystal Spear
   description: Careful, its sharp.
   itemImage: {fileID: 21300000, guid: 2c1404ed9c213d9429096437538ef00e, type: 3}
+  rarity: 4

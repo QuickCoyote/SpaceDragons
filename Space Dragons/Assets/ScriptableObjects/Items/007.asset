@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Honey Ore
   description: Dont Eat it.
   itemImage: {fileID: 21300000, guid: 14fc12aeca5d8754fba7896b43fc63b6, type: 3}
+  rarity: 2

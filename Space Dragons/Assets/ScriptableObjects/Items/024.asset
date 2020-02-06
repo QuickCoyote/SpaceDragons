@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Square Rock
   description: 'Who carved it this way? Aliens. '
   itemImage: {fileID: 21300000, guid: d5ba9f671b2969a4aa69179d35f50cab, type: 3}
+  rarity: 5

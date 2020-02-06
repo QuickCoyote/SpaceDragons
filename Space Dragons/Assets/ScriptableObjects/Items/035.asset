@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Weird Looking Ore
   description: Is it a helmet? a rabbit? a fish?
   itemImage: {fileID: 21300000, guid: cace8b0929a635e42a9b8438966e892b, type: 3}
+  rarity: 5

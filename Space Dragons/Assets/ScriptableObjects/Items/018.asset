@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Orange Ore
   description: Its used for making orange ships.
   itemImage: {fileID: 21300000, guid: c29567f5dce08a941b192704a9910eaa, type: 3}
+  rarity: 2

@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Crytal Cluster
   description: Probably better than a single crystal
   itemImage: {fileID: 21300000, guid: 917927ad68e4c4844b79a98bbdafd13c, type: 3}
+  rarity: 3

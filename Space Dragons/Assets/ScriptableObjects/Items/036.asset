@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Pink Stones
   description: A strange mineral gives this rock it's color
   itemImage: {fileID: 21300000, guid: e54e92034d6776f49b5a93ade64ea779, type: 3}
+  rarity: 2

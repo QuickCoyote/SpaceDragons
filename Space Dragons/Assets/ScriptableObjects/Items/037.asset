@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Purple Rock-like Crystal
   description: Opaque, not Transluscent
   itemImage: {fileID: 21300000, guid: 0702ce6fbf19ab34b980d75b91d73c4b, type: 3}
+  rarity: 2

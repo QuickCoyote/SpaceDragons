@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Dark Ore
   description: A solid heavy metal
   itemImage: {fileID: 21300000, guid: fac8114b97790014e8fbc90486cfc5f7, type: 3}
+  rarity: 3
