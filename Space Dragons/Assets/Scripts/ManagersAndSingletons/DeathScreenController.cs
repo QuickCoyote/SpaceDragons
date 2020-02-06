@@ -17,6 +17,7 @@ public class DeathScreenController : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        LoadManager.Instance.ResetSaveData();
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
     }
 }
