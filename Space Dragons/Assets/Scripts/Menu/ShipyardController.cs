@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI.Extensions;
 
 public class ShipyardController : MonoBehaviour
 {
@@ -29,13 +30,15 @@ public class ShipyardController : MonoBehaviour
     public GameObject MaxShipWarning;
     public List<GameObject> SelectionInfoPanels;
     public Ship.eMotherShip TradeInMothership;
+    public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
 
-    public int selectedPurchase = 0;
+    //public int selectedPurchase = 0;
     int NumOfShips;
     float Timer = 0;
     float MaxTime = 300;
     Button buyButton = null;
+    Button sellButton = null;
 
     int num = 0;
 
@@ -49,7 +52,9 @@ public class ShipyardController : MonoBehaviour
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
         buyButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
-                (o => o.name == "Buy").FirstOrDefault();
+            (o => o.name == "Buy").FirstOrDefault();
+        sellButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
+            (o => o.name == "Sell").FirstOrDefault();
         Shipyard.SetActive(false);
 
     }
@@ -92,9 +97,12 @@ public class ShipyardController : MonoBehaviour
                 }
             }
 
-            OpenSelectedPanel(0);
-            GetSelectionInfo(true, ShopShips[selectedPurchase]);
-            OpenSelectedPanel(num);
+            if(ShopMenu.activeInHierarchy)
+            {
+                OpenSelectedPanel(0);
+                GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
+                OpenSelectedPanel(num);
+            }
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
@@ -375,9 +383,9 @@ public class ShipyardController : MonoBehaviour
 
     public void GetSelectionInfo(bool isBuying, GameObject selectedShip)
     {
-        if (ShopShips[selectedPurchase] != null && isBuying)
+        if (selectedShip != null)
         {
-            ShipData data = ShopShips[selectedPurchase].GetComponent<Turret>().data;
+            ShipData data = selectedShip.GetComponent<Turret>().data;
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
                 (o => o.name == "Type").FirstOrDefault().text = data.shipName;
@@ -387,10 +395,6 @@ public class ShipyardController : MonoBehaviour
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
                 (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
-
-            buyButton.gameObject.SetActive(true);
-
-            buyButton.interactable = true;
 
             GameObject turret = null;
             foreach (Transform child in SelectionDisplay.transform)
@@ -418,60 +422,25 @@ public class ShipyardController : MonoBehaviour
                         break;
                 }
             }
-            OpenSelectedPanel(1);
-            GetSelectionStats(selectedShip);
-            OpenSelectedPanel(0);
 
-        }
-        else if (!isBuying)
-        {
-            ShipData data = null;
-
-            foreach (GameObject obj in Ships)
+            if(isBuying)
             {
-                if (obj == selectedShip)
-                {
-                    data = obj.GetComponent<Turret>().data;
-                }
+                buyButton.gameObject.SetActive(true);
+
+                buyButton.interactable = true;
+
+                sellButton.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                sellButton.gameObject.SetActive(true);
+
+                sellButton.interactable = true;
+
+                buyButton.gameObject.SetActive(false);
             }
 
-            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-                (o => o.name == "Type").FirstOrDefault().text = data.shipName;
-
-            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + data.rarity;
-
-            SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-                (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + data.description;
-
-            buyButton.gameObject.SetActive(false);
-
-            GameObject turret = null;
-            foreach (Transform child in SelectionDisplay.transform)
-            {
-                if (child.name == "ShipDisplay")
-                {
-                    turret = child.gameObject;
-                }
-            }
-            for (int i = 0, j = turret.transform.childCount - 1; i < turret.transform.childCount; i++, j--)
-            {
-                switch (i)
-                {
-                    case 0:
-                        turret.transform.GetChild(1).GetComponent<Image>().sprite = selectedShip.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-                        break;
-                    case 1:
-                        turret.transform.GetChild(3).GetComponent<Image>().sprite = selectedShip.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-                        break;
-                    case 2:
-                        turret.transform.GetChild(0).GetComponent<Image>().sprite = selectedShip.transform.GetChild(2).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-                        break;
-                    case 3:
-                        turret.transform.GetChild(2).GetComponent<Image>().sprite = selectedShip.transform.GetChild(3).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-                        break;
-                }
-            }
             OpenSelectedPanel(1);
             GetSelectionStats(selectedShip);
             OpenSelectedPanel(0);
@@ -534,52 +503,59 @@ public class ShipyardController : MonoBehaviour
 
     public void SelectionIncrement()
     {
-        selectedPurchase++;
-        int num = 0;
-        for (int i = 0; i < SelectionInfoPanels.Count; i++)
-        {
-            if(SelectionInfoPanels[i].activeInHierarchy)
+        //if(buttonCooldown <= 0)
+        //{
+            //selectedPurchase++;
+            int num = 0;
+            for (int i = 0; i < SelectionInfoPanels.Count; i++)
             {
-                num = i;
-                break;
+                if(SelectionInfoPanels[i].activeInHierarchy)
+                {
+                    num = i;
+                    break;
+                }
             }
-        }
 
-        OpenSelectedPanel(0);
-        GetSelectionInfo(true, ShopShips[selectedPurchase]);
-        OpenSelectedPanel(num);
+            OpenSelectedPanel(0);
+        Debug.Log(scrollSnap.CurrentPage());
+        GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() + 1]);
+        Debug.Log(scrollSnap.CurrentPage());
+            OpenSelectedPanel(num);
+        //}
     }
 
     public void SelectionDecrement()
     {
-        selectedPurchase--;
-        int num = 0;
-        for (int i = 0; i < SelectionInfoPanels.Count; i++)
-        {
-            if (SelectionInfoPanels[i].activeInHierarchy)
+        //if (buttonCooldown <= 0)
+        //{
+            //selectedPurchase--;
+            int num = 0;
+            for (int i = 0; i < SelectionInfoPanels.Count; i++)
             {
-                num = i;
-                break;
+                if (SelectionInfoPanels[i].activeInHierarchy)
+                {
+                    num = i;
+                    break;
+                }
             }
-        }
 
-        OpenSelectedPanel(0);
-        GetSelectionInfo(true, ShopShips[selectedPurchase]);
-        OpenSelectedPanel(num);
+            OpenSelectedPanel(0);
+            GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
+            OpenSelectedPanel(num);
+        //}
     }
 
     public void Purchase()
     {
-        if (ShopShips[selectedPurchase] != null)
+        if (ShopShips[scrollSnap.CurrentPage()] != null)
         {
             if (NumOfShips != Ships.Count)
             {
-                GameObject purchase = ShopShips[selectedPurchase];
+                GameObject purchase = ShopShips[scrollSnap.CurrentPage()];
                 for (int i = 0; i < Ships.Count; i++)
                 {
                     if (Ships[i] == null)
                     {
-                        Ships[i] = purchase;
                         if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.price))
                         {
                             if (i + 1 < MotherShip.bodyPartObjects.Count)
@@ -598,13 +574,14 @@ public class ShipyardController : MonoBehaviour
                             Debug.Log("You're poor");
                             return;// YOU DON'T HAVE ENOUGH MONEY >:C
                         }
+                        Ships[i] = purchase;
 
                         break;
                     }
                 }
-                ShopShips[selectedPurchase] = null;
+                ShopShips[scrollSnap.CurrentPage()] = null;
                 SortShips();
-                GetSelectionInfo(true, ShopShips[selectedPurchase]);
+                GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
                 ShipyardShipSetup();
                 ShipyardShopSetup();
             }
@@ -647,7 +624,6 @@ public class ShipyardController : MonoBehaviour
         }
 
         newShip.SetActive(false);
-
     }
 
     public void TradeIn()
