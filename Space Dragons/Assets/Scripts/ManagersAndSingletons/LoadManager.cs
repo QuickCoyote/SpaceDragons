@@ -14,10 +14,7 @@ public class LoadManager : Singleton<LoadManager>
     private void Start()
     {
         Load();
-        if (saveData == null)
-        {
-            saveData = new SaveData();
-        }
+
     }
 
     public void Save()
@@ -99,6 +96,11 @@ public class LoadManager : Singleton<LoadManager>
                 SaveData loaded = (SaveData)bf.Deserialize(file);
                 saveData = loaded;
                 file.Close();
+
+                if (saveData == null)
+                {
+                    saveData = new SaveData();
+                }
             }
             catch (Exception e)
             {

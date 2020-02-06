@@ -108,6 +108,7 @@ public class Map : Singleton<Map>
         {
             if (Vector3.Distance(e.transform.position, player.transform.position) < closestEnemy)
             {
+                closestEnemy = Vector3.Distance(e.transform.position, player.transform.position);
                 enemydirection = e.transform.position - player.transform.position;
             }
         }
