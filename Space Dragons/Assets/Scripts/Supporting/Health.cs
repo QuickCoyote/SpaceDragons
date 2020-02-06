@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         an = GetComponent<Animator>();
         if (healthbarObj)
         {
-            healthbar = healthbarObj.GetComponent<Slider>();
+            healthbar = healthbarObj.GetComponentInChildren<Slider>();
         }
         healthCount = healthMax;
         if (healthbar)
@@ -44,6 +44,10 @@ public class Health : MonoBehaviour
         if (healthbar)
         {
             healthbar.value = healthCount;
+        }
+        else
+        {
+            healthbar = healthbarObj.GetComponentInChildren<Slider>();
         }
         if (healthbar)
         {
