@@ -27,9 +27,12 @@ public class ShipyardController : MonoBehaviour
     public GameObject SelectionDisplay;
     public TextMeshProUGUI ShipCounter;
     public TextMeshProUGUI ShopTimer;
+    public TextMeshProUGUI MoneyNum;
     public GameObject MaxShipWarning;
     public List<GameObject> SelectionInfoPanels;
     public Ship.eMotherShip TradeInMothership;
+    public Ship.eMotherShip CurrentMothership;
+    public GameObject TradeInButton;
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
 
@@ -47,7 +50,8 @@ public class ShipyardController : MonoBehaviour
         MotherShip = WorldManager.Instance.Ship;
         ShipyardShipSetup();
         ShipyardShopSetup();
-        ShipyardMotherSetup();
+        MothershipPanelSwap(true);
+        ShipyardMotherSetup((int)CurrentMothership, false);
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
@@ -106,30 +110,57 @@ public class ShipyardController : MonoBehaviour
         }
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
+
+            
     }
 
-    public void ShipyardMotherSetup()
+    public void ShipyardMotherSetup(int MotherToDisplay, bool isPanelSwap)
     {
-        MothershipMenu.GetComponentsInChildren<Image>().Where
-            (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
+        if(!isPanelSwap)
+        {
+            MothershipMenu.GetComponentsInChildren<Image>().Where
+                (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
+            Slider MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
+            (o => o.name == "HealthBar").FirstOrDefault();
+            Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+
+            MotherHealthBar.minValue = 0;
+            MotherHealthBar.maxValue = MotherHealth.healthMax;
+            MotherHealthBar.value = MotherHealth.healthCount;
+        }
 
         MothershipDisplay.GetComponentsInChildren<Image>().Where
-            (o => o.name == "DisplayMothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprites[(int)TradeInMothership];
+            (o => o.name == "DisplayMothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprites[MotherToDisplay];
 
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-            (o => o.name == "Type").FirstOrDefault().text = Motherships[(int)TradeInMothership].Title;
+            (o => o.name == "Type").FirstOrDefault().text = Motherships[MotherToDisplay].Title;
 
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-            (o => o.name == "Description").FirstOrDefault().text = Motherships[(int)TradeInMothership].Description;
+            (o => o.name == "Description").FirstOrDefault().text = Motherships[MotherToDisplay].Description;
+    }
 
-        Slider MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
-            (o => o.name == "HealthBar").FirstOrDefault();
-        Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+    public void MothershipPanelSwap(bool DisplayCurrent)
+    {
+        if(DisplayCurrent)
+        {
+            ShipyardMotherSetup((int)CurrentMothership, true);
+            MothershipDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "CurrentMotherButton").FirstOrDefault().interactable = false;
+            MothershipDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = true;
+            TradeInButton.SetActive(false);
 
-        MotherHealthBar.minValue = 0;
-        MotherHealthBar.maxValue = MotherHealth.healthMax;
-        MotherHealthBar.value = MotherHealth.healthCount;
+        }
+        else
+        {
+            ShipyardMotherSetup((int)TradeInMothership, true);
+            MothershipDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "CurrentMotherButton").FirstOrDefault().interactable = true;
+            MothershipDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = false;
+            TradeInButton.SetActive(true);
 
+        }
     }
 
     public void ShipyardShipSetup()
@@ -638,9 +669,12 @@ public class ShipyardController : MonoBehaviour
 
             MotherShip.SetShipHead((int)TradeInMothership);
 
+            CurrentMothership = TradeInMothership;
             TradeInMothership = temp;
 
-            ShipyardMotherSetup();
+
+            ShipyardMotherSetup((int)TradeInMothership, false);
+            MothershipPanelSwap(true);
         }
         else
         {
@@ -694,7 +728,7 @@ public class ShipyardController : MonoBehaviour
     {
         AudioManager.Instance.PlayRandomMusic("Shop Music");
         ShipyardShipSetup();
-        ShipyardMotherSetup();
+        ShipyardMotherSetup((int)CurrentMothership, false);
         Shipyard.SetActive(true);
         Time.timeScale = 0;
     }
