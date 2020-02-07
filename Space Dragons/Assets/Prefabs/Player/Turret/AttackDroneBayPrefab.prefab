@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907886232745900671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.58, y: 2.89, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3691268937218093931}
   m_RootOrder: 0
@@ -70,8 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 6904634626053363959, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
-    type: 3}
+  m_Sprite: {fileID: 354787221746269316, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -227,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7931572574924838184, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 5447370022736960061, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -239,6 +238,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3352535155502853512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5665009518640163647}
+  m_Layer: 11
+  m_Name: Drone Spawn Pos 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5665009518640163647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352535155502853512}
+  m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268343}
+  m_LocalPosition: {x: 3.29, y: -2.1800003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1452305381226109643}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!1 &4110986821206042908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5128541019205800547}
+  m_Layer: 11
+  m_Name: Drone Spawn Pos 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5128541019205800547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4110986821206042908}
+  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.38268343}
+  m_LocalPosition: {x: -3.29, y: -2.1800003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1452305381226109643}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!1 &4977157105735039448
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,11 +309,11 @@ GameObject:
   - component: {fileID: 1452305381226109643}
   - component: {fileID: 2305416005044761106}
   - component: {fileID: 1592342478345459623}
-  - component: {fileID: 262960887675654531}
+  - component: {fileID: 1032821475181110371}
   - component: {fileID: 6111596496924924786}
-  - component: {fileID: 5130344070863362225}
+  - component: {fileID: -9089636261077495847}
   m_Layer: 11
-  m_Name: FlamePrefab
+  m_Name: AttackDroneBayPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,6 +334,8 @@ Transform:
   - {fileID: 3691268937218093931}
   - {fileID: 2830193390771789823}
   - {fileID: 4708951422693929464}
+  - {fileID: 5128541019205800547}
+  - {fileID: 5665009518640163647}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,7 +376,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 35
---- !u!60 &262960887675654531
+--- !u!60 &1032821475181110371
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +422,7 @@ MonoBehaviour:
   healthMax: 75
   healthCount: 75
   objectIndex: 0
---- !u!114 &5130344070863362225
+--- !u!114 &-9089636261077495847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,28 +431,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4977157105735039448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec997aabe9545f844ae96d606eb0381f, type: 3}
+  m_Script: {fileID: 11500000, guid: 052a01513a22533479a465f8c0ad1ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
   range: 55
-  attackSpeed: 0.25
-  price: 10
-  rotateBoi: {fileID: 2013710388852829490}
+  attackSpeed: 0
+  price: 100
+  rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
   turretRarity: 0
-  data: {fileID: 11400000, guid: 65578f5eab0facf45afd75853811ef11, type: 2}
+  data: {fileID: 11400000, guid: 368034b0997b65643a07eeaeb3cc1474, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
-  burnDamage: 50
-  rotationSpeed: 3
-  flames: {fileID: 2532223516486878601, guid: 746de27fffc96444eb717d99e8e40060, type: 3}
-  flameAttackangle: 15
-  bulletOffsetY: 1
-  flameLifeSpan: 1.25
-  flameSpeed: 8
+  droneSpawnPos1: {fileID: 5128541019205800547}
+  droneSpawnPos2: {fileID: 5665009518640163647}
+  attackDronePrefab: {fileID: 4073881857116389269, guid: 5d051bf613cf072498c53cdbc862113c,
+    type: 3}
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.11, y: -0.32}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5207629768914091432
@@ -612,8 +670,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7075470765205608991, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -621,7 +678,7 @@ SpriteRenderer:
   m_Size: {x: 7.44, y: 7.6010776}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8765184479964236820
@@ -769,8 +826,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8047298575760327985, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
-    type: 3}
+  m_Sprite: {fileID: 832323803795321331, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

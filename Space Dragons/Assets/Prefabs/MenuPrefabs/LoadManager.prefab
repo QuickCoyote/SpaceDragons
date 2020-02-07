@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334377017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -777,11 +777,12 @@ MonoBehaviour:
   isPersistant: 1
   saveData:
     PlayerHealth: 100
-    PlayerMoney: 0
+    PlayerMoney: 100
     motherShipType: 0
     items: []
     Ships: []
     CurrentWave: 0
+    CurrentCycle: 0
     PlayerPosition:
       x: 0
       y: 0
