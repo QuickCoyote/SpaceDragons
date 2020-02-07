@@ -14345,6 +14345,7 @@ MonoBehaviour:
   healthbarObj: {fileID: 1096590805}
   healthMax: 100
   healthCount: 100
+  objectIndex: 0
 --- !u!58 &6490000148594582185
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15436,16 +15437,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 196209910753800036}
     m_Modifications:
-    - target: {fileID: 328108817427507708, guid: 03c6b99601d0e274d996300a684bd79b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 328108817427507708, guid: 03c6b99601d0e274d996300a684bd79b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3728026570362288966, guid: 03c6b99601d0e274d996300a684bd79b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15585,16 +15576,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755508300874384802, guid: 03c6b99601d0e274d996300a684bd79b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755508300874384802, guid: 03c6b99601d0e274d996300a684bd79b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8339141107968966676, guid: 03c6b99601d0e274d996300a684bd79b,
         type: 3}

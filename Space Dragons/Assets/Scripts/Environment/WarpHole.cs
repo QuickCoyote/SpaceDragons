@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WarpHole : MonoBehaviour
 {
-    float m_lifetime = 3.0f;
+   public float m_lifetime = 3.0f;
 
     private void Update()
     {
