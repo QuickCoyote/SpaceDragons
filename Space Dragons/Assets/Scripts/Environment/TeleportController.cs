@@ -14,6 +14,7 @@ public class TeleportController : MonoBehaviour
     [SerializeField] TextMeshProUGUI costReadout = null;
     [SerializeField] TextMeshProUGUI messageReadout = null;
     [SerializeField] GameObject TeleportPrefab = null;
+    [SerializeField] Animator TeleportTransition = null;
 
     public string LocationName = null;
     public float costmultiplier = 0.05f;
@@ -112,8 +113,14 @@ public class TeleportController : MonoBehaviour
         UpdateUI();
         WorldManager.Instance.PlayerController.RemoveMoney(cost);
         WorldManager.Instance.SpawnWarpHole(transform.position);
-        Vector3 pos = visitedTeleports[index].transform.position + (Vector3.down * 2.0f); //add an offset
-        WorldManager.Instance.SpawnWarpHole(pos);
+        CloseUI();
+        TeleportTransition.SetTrigger("Warp");
+    }
+
+    public void MovePlayer()
+    {
+        Vector3 pos = visitedTeleports[index].transform.position + (WorldManager.Instance.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
+        WorldManager.Instance.SpawnWarpHole(visitedTeleports[index].transform.position);
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)
         {
             t.position = pos;

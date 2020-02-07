@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 225155000}
   - component: {fileID: 225155002}
   - component: {fileID: 225155001}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 926442504}
   - component: {fileID: 926442506}
   - component: {fileID: 926442505}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnemiesAliveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 2046976997}
   - component: {fileID: 2046976996}
   - component: {fileID: 2046976995}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 2700208611863860168}
   - component: {fileID: 1239430097105602681}
   - component: {fileID: 2916023382081018821}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 1208126950945050750}
   - component: {fileID: 1634469140822962835}
   - component: {fileID: 2804235307101889956}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 5843221288001876028}
   - component: {fileID: 1971915321782380952}
   - component: {fileID: 8275181007643233534}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
