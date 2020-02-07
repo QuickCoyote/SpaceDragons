@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackDroneBay : MonoBehaviour
+public class AttackDroneBay : Turret
 {
+    int droneCount = 0;
+    public override void Attack()
+    {
+        if(droneCount < 2)
+        {
+            SpawnDrone();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +23,10 @@ public class AttackDroneBay : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SpawnDrone()
+    {
+
     }
 }
