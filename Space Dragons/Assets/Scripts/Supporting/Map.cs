@@ -93,7 +93,7 @@ public class Map : Singleton<Map>
             }
         }
 
-        shortestdistanceReadout.text = Vector3.Distance((TrackNearest) ? nearestTarget : TargetBeingTracked, player.transform.position).ToString("000au");
+        shortestdistanceReadout.text = (Vector3.Distance((TrackNearest) ? nearestTarget : TargetBeingTracked, player.transform.position)/100).ToString("0.00au");
 
         //Check where to rotate minimap tracker
         Vector3 direction = (TrackNearest) ? nearestTarget - player.transform.position : TargetBeingTracked - player.transform.position;

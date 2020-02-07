@@ -11,6 +11,7 @@ public class AttackDroneBay : Turret
     public GameObject attackDronePrefab = null;
 
     public int droneCount = 0;
+    int side = 1;
 
     public override void Attack()
     {
@@ -20,12 +21,11 @@ public class AttackDroneBay : Turret
         }
     }
 
-    int side = 1;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Attack();
+        CheckForDie();
     }
 
     public void SpawnDrone()
@@ -42,9 +42,20 @@ public class AttackDroneBay : Turret
         }
         droneCount++;
 
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AttackDrone atk = null;
+            transform.GetChild(i).TryGetComponent(out atk);
+
+            if (atk)
+            {
+                atk.side = side;
+            }
+            side *= -1;
+        }
+
         if (enemies.Count > 0)
         {
-            bool doneBefore = false;
             for (int i = 0; i < transform.childCount; i++)
             {
                 AttackDrone atk = null;
@@ -52,15 +63,13 @@ public class AttackDroneBay : Turret
 
                 if (atk)
                 {
-                    atk.enemyToAttack = enemies.Peek().gameObject;
-                    if(!doneBefore)
+                    if(enemies.Peek())
                     {
-                    atk.side = side;
-                    doneBefore = true;
+                        atk.enemyToAttack = enemies.Peek().gameObject;
                     }
                     else
                     {
-                        atk.side = side * -1;
+                        atk.enemyToAttack = null;
                     }
                 }
             }

@@ -275,6 +275,8 @@ public class OutpostController : MonoBehaviour
 
     public void OpenOutpost()
     {
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Shop");
         Outpost.SetActive(true);
         Time.timeScale = 0;
         PlayerShopSetup();
@@ -282,6 +284,8 @@ public class OutpostController : MonoBehaviour
 
     public void CloseOutpost()
     {
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
         Outpost.SetActive(false);
         Time.timeScale = 1;
     }

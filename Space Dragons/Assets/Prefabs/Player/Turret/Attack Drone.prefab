@@ -382,12 +382,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69, type: 3}
-  damage: 5
+  damage: 3
   range: 25
-  attackSpeed: 2
-  followOffset: 0.125
-  moveSpeed: 15
-  myMoveSpeed: 15
+  attackSpeed: 0.5
+  followOffset: 1
+  moveSpeed: 10
+  myMoveSpeed: 10
   rotationSpeed: 6
   side: 1
   bulletSpawn: {fileID: 2634659005592548437}
