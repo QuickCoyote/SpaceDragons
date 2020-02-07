@@ -53,7 +53,8 @@ public class HealthBarManager : Singleton<HealthBarManager>
         {
             if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
             {
-                GameObject healthBarOBJ = (Instantiate(healthBarPrefab, layout.transform) as GameObject);
+                Instantiate(healthBarPrefab, layout.transform);
+                GameObject healthBarOBJ = layout.transform.GetChild(i - 1).gameObject;
                 WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = healthBarOBJ;
                 checkForUpdateSizing();
             }

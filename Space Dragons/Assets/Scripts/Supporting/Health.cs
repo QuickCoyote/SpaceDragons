@@ -11,7 +11,6 @@ public class Health : MonoBehaviour
     public float healthCount = 0.0f;
 
     Animator an = null;
-    AudioSource damageSFX;
 
     public void Start()
     {
@@ -36,7 +35,6 @@ public class Health : MonoBehaviour
     {
         healthCount -= dmg;
         if (an) an.SetTrigger("Damage");
-        //        AudioManager.Instance.Play("");
     }
 
     public void Update()
