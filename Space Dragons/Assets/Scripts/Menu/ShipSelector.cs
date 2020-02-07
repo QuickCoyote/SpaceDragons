@@ -17,6 +17,10 @@ public class ShipSelector : MonoBehaviour
     public Sprite wingsSprite = null;
     public Sprite badgeSprite = null;
 
+    Health shipHealth;
+    Slider healthSlider;
+    RectTransform healthbar;
+
     public void OpenMenu()
     {
         if(IsSlotFilled)
@@ -27,7 +31,7 @@ public class ShipSelector : MonoBehaviour
             controller.OpenSelectedPanel(0);
             controller.GetSelectionInfo(false, SelectedShip);
 
-            Health shipHealth = SelectedShip.GetComponent<Health>();
+            shipHealth = SelectedShip.GetComponent<Health>();
 
             ShipMenu.GetComponentsInChildren<Button>().Where
                 (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
@@ -36,6 +40,11 @@ public class ShipSelector : MonoBehaviour
             {
                 ShipMenu.GetComponentsInChildren<Button>().Where
                     (o => o.name == "Repair").FirstOrDefault().interactable = false;
+            }
+            else if(shipHealth.healthCount != shipHealth.healthMax)
+            {
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Repair").FirstOrDefault().interactable = true;
             }
 
             foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
@@ -82,10 +91,12 @@ public class ShipSelector : MonoBehaviour
                     button.onClick.AddListener(delegate { Upgrade(); });
                 }
 
-                RectTransform healthbar = ShipMenu.GetComponentsInChildren<RectTransform>().Where
+                healthbar = ShipMenu.GetComponentsInChildren<RectTransform>().Where
                     (o => o.name == "HealthBar").FirstOrDefault();
-                Slider healthSlider = healthbar.GetComponentInChildren<Slider>();
+                healthSlider = healthbar.GetComponentInChildren<Slider>();
 
+                healthSlider.minValue = 0;
+                healthSlider.maxValue = shipHealth.healthMax;
                 healthSlider.value = shipHealth.healthCount;
             }
         }
@@ -126,11 +137,10 @@ public class ShipSelector : MonoBehaviour
         //SET SHIP HEALTH TO MAXIMUM
         SelectedShip.GetComponent<Health>().healthCount = SelectedShip.GetComponent<Health>().healthMax;
 
-        Health shipHealth = SelectedShip.GetComponent<Health>();
-        Slider healthbar = ShipMenu.GetComponentsInChildren<Slider>().Where
-                    (o => o.name == "HealthBar").FirstOrDefault();
+        healthSlider.value = shipHealth.healthCount;
 
-        healthbar.value = shipHealth.healthCount;
+        ShipMenu.GetComponentsInChildren<Button>().Where
+            (o => o.name == "Repair").FirstOrDefault().interactable = false;
 
         controller.ShipyardShipSetup();
     }
