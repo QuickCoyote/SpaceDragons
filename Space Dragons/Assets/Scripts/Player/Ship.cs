@@ -343,6 +343,8 @@ public void Move()
                     t = 0.5f;
                 }
 
+                curBodyPart.gameObject.GetComponent<Turret>().travelDirection = (newPos - transform.position).normalized;
+
                 curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
                 curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
             }

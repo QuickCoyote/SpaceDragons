@@ -19,6 +19,8 @@ public abstract class Turret : MonoBehaviour
     private float rarityModifier = 1.0f;
     protected float attackTimer = 0.0f;
 
+    public Vector3 travelDirection = Vector3.zero;
+
     protected Queue<Enemy> enemies = new Queue<Enemy>();
     public abstract void Attack();
 
