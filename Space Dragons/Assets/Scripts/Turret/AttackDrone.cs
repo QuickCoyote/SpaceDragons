@@ -48,9 +48,9 @@ public class AttackDrone : MonoBehaviour
             targetPosition = ((transform.parent.position + (transform.parent.right * side * followOffset)) - transform.position).normalized;
         }
 
-        if((transform.position - targetPosition).magnitude < 1)
+        if((transform.position - targetPosition).magnitude < 3)
         {
-            moveSpeed = WorldManager.Instance.Ship.speed;
+            moveSpeed = 0;
         }
         else
         {
@@ -63,6 +63,8 @@ public class AttackDrone : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
         transform.position += targetPosition * moveSpeed * Time.deltaTime;
+
+        CheckForDie();
     }
 
     public void CheckForAttack()
@@ -70,6 +72,16 @@ public class AttackDrone : MonoBehaviour
         if ((enemyToAttack.transform.position - transform.position).magnitude < range)
         {
             Attack();
+        }
+    }
+
+    public void CheckForDie()
+    {
+        if(GetComponent<Health>().healthCount <= 0)
+        {
+            transform.parent.GetComponent<AttackDroneBay>().droneCount--;
+            WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            Destroy(gameObject);
         }
     }
 }

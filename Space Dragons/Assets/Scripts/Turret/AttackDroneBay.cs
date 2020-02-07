@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class AttackDroneBay : Turret
 {
-    int droneCount = 0;
-
     public Transform droneSpawnPos1;
     public Transform droneSpawnPos2;
 
     public GameObject attackDronePrefab = null;
+
+    public int droneCount = 0;
 
     public override void Attack()
     {
@@ -40,6 +40,7 @@ public class AttackDroneBay : Turret
                 Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, transform);
                 break;
         }
+        droneCount++;
 
         if (enemies.Count > 0)
         {

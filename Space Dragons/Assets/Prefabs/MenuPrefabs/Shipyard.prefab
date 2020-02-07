@@ -10922,16 +10922,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c29bdb004a5424945ba58536cb4d16e6, type: 2}
   - {fileID: 11400000, guid: 65578f5eab0facf45afd75853811ef11, type: 2}
   - {fileID: 11400000, guid: 8766fd0860127474e9b943b8e7b714fd, type: 2}
+  - {fileID: 11400000, guid: 368034b0997b65643a07eeaeb3cc1474, type: 2}
   RareShips:
   - {fileID: 11400000, guid: 0c01a55359302c74aa62a5932e755db0, type: 2}
   - {fileID: 11400000, guid: 7fb41d360b260e149a22105a6af0ea02, type: 2}
   - {fileID: 11400000, guid: f30d97a6a20f1834a8501a3781010d38, type: 2}
   - {fileID: 11400000, guid: 9a91e0c6599cf9f43bfa14cf08203d7f, type: 2}
+  - {fileID: 11400000, guid: cac7e85fdbc1f894c81506f16db6b595, type: 2}
   EpicShips:
   - {fileID: 11400000, guid: d54ecbd9a9576e446b2e4fb1c5b1923b, type: 2}
   - {fileID: 11400000, guid: 3469bfe446e3f2b46b9f1d1f72d3f53b, type: 2}
   - {fileID: 11400000, guid: eaa40f8dcbbfffd4f80dc33e8624e224, type: 2}
   - {fileID: 11400000, guid: 8bcc63d38e5faee4a8b8b1483ce0f187, type: 2}
+  - {fileID: 11400000, guid: 3bd617794d5357142a08377e9e9d0f31, type: 2}
   Motherships:
   - {fileID: 11400000, guid: 0916d398540b6024a909d7f66660123d, type: 2}
   - {fileID: 11400000, guid: 5960535cee58b744c89473474200730f, type: 2}
