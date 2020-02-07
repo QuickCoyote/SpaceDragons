@@ -122,6 +122,14 @@ public class ShipyardController : MonoBehaviour
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "Description").FirstOrDefault().text = Motherships[(int)TradeInMothership].Description;
 
+        Slider MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
+            (o => o.name == "HealthBar").FirstOrDefault();
+        Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+
+        MotherHealthBar.minValue = 0;
+        MotherHealthBar.maxValue = MotherHealth.healthMax;
+        MotherHealthBar.value = MotherHealth.healthCount;
+
     }
 
     public void ShipyardShipSetup()
@@ -373,10 +381,14 @@ public class ShipyardController : MonoBehaviour
             if(i == num)
             {
                 SelectionInfoPanels[i].SetActive(true);
+                SelectionDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == SelectionInfoPanels[i].name + "Button").FirstOrDefault().interactable = false;
             }
             else
             {
                 SelectionInfoPanels[i].SetActive(false);
+                SelectionDisplay.GetComponentsInChildren<Button>().Where
+                    (o => o.name == SelectionInfoPanels[i].name + "Button").FirstOrDefault().interactable = true;
             }
         }
     }
@@ -503,46 +515,37 @@ public class ShipyardController : MonoBehaviour
 
     public void SelectionIncrement()
     {
-        //if(buttonCooldown <= 0)
-        //{
-            //selectedPurchase++;
-            int num = 0;
-            for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        int num = 0;
+        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        {
+            if(SelectionInfoPanels[i].activeInHierarchy)
             {
-                if(SelectionInfoPanels[i].activeInHierarchy)
-                {
-                    num = i;
-                    break;
-                }
+                num = i;
+                break;
             }
+        }
 
-            OpenSelectedPanel(0);
-        Debug.Log(scrollSnap.CurrentPage());
+        OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() + 1]);
-        Debug.Log(scrollSnap.CurrentPage());
-            OpenSelectedPanel(num);
-        //}
+
+        OpenSelectedPanel(num);
     }
 
     public void SelectionDecrement()
     {
-        //if (buttonCooldown <= 0)
-        //{
-            //selectedPurchase--;
-            int num = 0;
-            for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        int num = 0;
+        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        {
+            if (SelectionInfoPanels[i].activeInHierarchy)
             {
-                if (SelectionInfoPanels[i].activeInHierarchy)
-                {
-                    num = i;
-                    break;
-                }
+                num = i;
+                break;
             }
+        }
 
-            OpenSelectedPanel(0);
-            GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
-            OpenSelectedPanel(num);
-        //}
+        OpenSelectedPanel(0);
+        GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
+        OpenSelectedPanel(num);
     }
 
     public void Purchase()
@@ -645,7 +648,7 @@ public class ShipyardController : MonoBehaviour
         }
     }
 
-    public void Repair()
+    public void RepairAll()
     {
         float repairCostPerHP = 1f;
         float hpToRestore = 0f;
@@ -669,6 +672,19 @@ public class ShipyardController : MonoBehaviour
         }
     }
 
+    public void RepairMother()
+    {
+        float repairCostPerHP = 1f;
+        float hpToRestore = 0f;
+        Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+        hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
+
+        if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
+        {
+            MotherHealth.healthCount = MotherHealth.healthMax;
+        }
+    }
+
     public void CloseMessage()
     {
         MaxShipWarning.SetActive(false);
@@ -678,6 +694,7 @@ public class ShipyardController : MonoBehaviour
     {
         AudioManager.Instance.PlayRandomMusic("Shop Music");
         ShipyardShipSetup();
+        ShipyardMotherSetup();
         Shipyard.SetActive(true);
         Time.timeScale = 0;
     }
