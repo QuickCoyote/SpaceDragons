@@ -131,7 +131,7 @@ public class LoadManager : Singleton<LoadManager>
         public SaveData()
         {
             PlayerHealth = 100;
-            PlayerMoney = 0;
+            PlayerMoney = 100;
             motherShipType = Ship.eMotherShip.BASIC;
             items = new ItemPair[0];
             Ships = new ShipDataSavable[0];
