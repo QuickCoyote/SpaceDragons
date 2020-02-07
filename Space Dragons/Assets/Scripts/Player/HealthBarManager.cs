@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class HealthBarManager : Singleton<HealthBarManager>
 {
-    [SerializeField] GridLayoutGroup layout = null;
+    [SerializeField] public GridLayoutGroup layout = null;
     [SerializeField] GameObject healthBarPrefab = null;
     GameObject[] healthBars;
     int numBars = 0;
+    int prevNumBars = 0;
     int cellWidth = 35;
     int spacingX = 150;
     void Start()
@@ -38,26 +39,27 @@ public class HealthBarManager : Singleton<HealthBarManager>
         layout.spacing = new Vector3(spacingX, layout.spacing.y);
     }
 
+    public void CreateHealthBar()
+    {
+        prevNumBars = numBars;
+        numBars++;
+
+        Instantiate(healthBarPrefab, layout.transform);
+        UpdateHealthBars();
+    }
+
+    public void RemoveHealthBar(int index)
+    {
+        prevNumBars = numBars;
+        numBars--;
+        Destroy(layout.transform.GetChild(index - 1));
+    }
+
     public void UpdateHealthBars()
     {
-        numBars = WorldManager.Instance.Ship.bodyPartObjects.Count;
-
-        // Destroy every HP Bar
-        for (int i = 0; i < layout.transform.childCount; i++)
+        for (int i = 0; i < numBars; i++)
         {
-            Destroy(layout.transform.GetChild(i).gameObject);
-        }
-
-        // go through each of the bodyPartObjects inside the player and create a hp bar
-        for (int i = 1; i < numBars; i++)
-        {
-            if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
-            {
-                Instantiate(healthBarPrefab, layout.transform);
-                GameObject healthBarOBJ = layout.transform.GetChild(i - 1).gameObject;
-                WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = healthBarOBJ;
-                checkForUpdateSizing();
-            }
+            WorldManager.Instance.Ship.bodyPartObjects[i+1].GetComponent<Health>().healthbarObj = layout.transform.GetChild(i).gameObject;
         }
     }
 }

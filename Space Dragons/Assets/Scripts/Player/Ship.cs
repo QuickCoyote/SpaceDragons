@@ -357,7 +357,8 @@ public void Move()
         bodyPartTransforms.Add(newPart);
         bodyPartObjects.Add(newPart.gameObject);
 
-        HealthBarManager.Instance.UpdateHealthBars();
+        HealthBarManager.Instance.CreateHealthBar();
+
     }
 
     public GameObject FindBodyPartFromPrefabs(string partName)
@@ -398,6 +399,7 @@ public void Move()
                     Destroy(bodyPartObjects[j - 1]);
                     bodyPartObjects.RemoveAt(j - 1);
                     bodyPartTransforms.RemoveAt(j - 1);
+                    HealthBarManager.Instance.RemoveHealthBar(j-1);
                 }
             }
         }
@@ -406,9 +408,10 @@ public void Move()
             Destroy(bodyPartObjects[removeIndex]);
             bodyPartObjects.RemoveAt(removeIndex);
             bodyPartTransforms.RemoveAt(removeIndex);
+            HealthBarManager.Instance.RemoveHealthBar(removeIndex);
         }
 
-        HealthBarManager.Instance.UpdateHealthBars();
+
     }
 
     public void SetShipHead(int val)

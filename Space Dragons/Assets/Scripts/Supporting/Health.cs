@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     public float healthMax = 1.0f;
     public float healthCount = 0.0f;
 
+    public int objectIndex = 0;
+
     Animator an = null;
 
     public void Start()
@@ -37,24 +39,24 @@ public class Health : MonoBehaviour
         if (an) an.SetTrigger("Damage");
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        if (healthbar)
+        if (healthbarObj)
         {
-            healthbar.value = healthCount;
-        }
-        else
-        {
-            healthbar = healthbarObj.GetComponentInChildren<Slider>();
-        }
-        if (healthbar)
-        {
-            healthbar.transform.rotation = Quaternion.identity;
-        }
-
-        if (healthCount > healthMax)
-        {
-            healthCount = healthMax;
+            if (healthbar)
+            {
+                healthbar.value = healthCount;
+                healthbar.transform.rotation = Quaternion.identity;
+            }
+            else
+            {
+                healthbar = healthbarObj.GetComponent<Slider>();
+                healthbar.value = healthCount;
+            }
+            if (healthCount > healthMax)
+            {
+                healthCount = healthMax;
+            }
         }
     }
 }
