@@ -52,7 +52,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
     {
         prevNumBars = numBars;
         numBars--;
-        Destroy(layout.transform.GetChild(index - 1));
+        Destroy(layout.transform.GetChild(index - 1).gameObject);
     }
 
     public void UpdateHealthBars()
