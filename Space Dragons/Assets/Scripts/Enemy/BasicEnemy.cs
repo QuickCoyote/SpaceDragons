@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicEnemy : Enemy
 {
+
     protected override void Attack()
     {
         if (IsPlayerInSight())
@@ -25,7 +26,8 @@ public class BasicEnemy : Enemy
 
     protected override void Move()
     {
-        target = Player.transform.position;
+
+        target = WorldManager.Instance.Ship.bodyPartObjects[WorldManager.Instance.Ship.bodyPartObjects.Count - 1].transform.position;
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);

@@ -22,7 +22,7 @@ public class OutpostController : MonoBehaviour
 
     ItemData selectedItem;
 
-    Inventory outpostInventory = new Inventory();
+    Inventory outpostInventory;
     List<int> numsGenerated = new List<int>();
     int sliderValue;
     float Timer = 0;
@@ -100,7 +100,9 @@ public class OutpostController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
         outpostInventory = new Inventory();
+
         numsGenerated = new List<int>();
 
         int numOfItems = 1;
