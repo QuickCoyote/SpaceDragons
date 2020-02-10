@@ -29,11 +29,6 @@ public class PauseMenu : Singleton<PauseMenu>
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
     }
 
-    public void RestartTutorial()
-    {
-        TutorialPrompts.Instance.ResetTips();
-    }
-
     public void PauseGame()
     {
         pauseUI.SetActive(true);

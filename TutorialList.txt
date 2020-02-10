@@ -1,0 +1,33 @@
+Welcome to SPACE DRAGONS! Here's a few TIPS to get you started.
+You can always press QUIT, and access the TUTORIAL later from the MAIN MENU.
+You're going to pilot your own certified DRAGON Spaceship.
+
+Use the JOYSTICK to turn your DRAGON.
+Hold FIRE to attack.
+Tap BOOST to make a quick getaway.
+
+Change the control layout in the OPTIONS menu.
+Tap or Drag to move your DRAGON.
+While your finger is down, your DRAGON's weapons will fire.
+
+ENEMIES come in many different RACES:
+ANIMAL: These ENEMIES are simple yet numerous. 
+FAIRY: These ENEMIES zip back and forth very quickly.
+ELF: These ENEMIES will dodge out of your DRAGON's line of fire
+ORC: These ENEMIES are strong, but slow.
+HUMAN: These ENEMIES will attempt to run into you, and explode.
+
+
+If you find an ASTEROID, you can fire at it to collect MATERIALS.
+Certain OUTPOSTS will offer more currency for certain MATERIALS.
+Try both BUYING and SELLING to maximize your profits.
+
+Follow the TRACKER arrow on your MINIMAP.
+RED is the nearest ENEMY.
+GREEN is defaulted to the nearest MAPTARGET.
+Tap on the MINIMAP to open the WORLD MAP for more configurations.
+
+SHIPYARDS will sell TURRET SHIPS.
+TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
+
+Thats all. Happy flying, DRAGON pilot!
