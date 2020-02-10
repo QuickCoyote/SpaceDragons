@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float basicAttackSpeed = 0f;
     [SerializeField] float basicAttackDamage = 0f;
 
+    #region Flame
+
     [Header("Flame Attacks")]
     [SerializeField] float flameSpeed = 0f;
     [SerializeField] float flameLifeSpan = 0f;
@@ -30,22 +33,149 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float flameAttackSpeed = 0f;
     [SerializeField] float flameAttackDamage = 0f;
 
+    #endregion
+
+    #region Lightning
+
     [Header("Lightning Attacks")]
     [SerializeField] float lightningAttackSpeed = 0f;
     [SerializeField] float lightningAttackDamage = 0f;
+    [SerializeField] float lightningMaxDistance = 0f;
+    [SerializeField] float lightningMinDistance = 0f;
+
+    int enemiesShocked = 0;
+
+    List<Health> objectsShocked = new List<Health>();
+    List<Health> objectsWithinRange = new List<Health>();
+
+    private void FireLightning()
+    {
+        float acceptableAngle = 30f;
+
+        Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, lightningMaxDistance);
+
+        foreach (Collider2D col in col2D)
+        {
+            Health hp = null;
+            col.TryGetComponent(out hp);
+            if (hp)
+            {
+                objectsWithinRange.Add(hp);
+            }
+        }
+
+        if(objectsWithinRange.Count > 0)
+        {
+            Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            if (Vector3.Angle(transform.up, direction) < acceptableAngle)
+            {
+                enemiesShocked = 1;
+                ShockNext(objectsWithinRange[0]);
+            }
+        }
+        else
+        {
+            Vector3 randomPointInFront = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * head.transform.up * Random.Range(lightningMinDistance, lightningMaxDistance);
+            Shock(randomPointInFront);
+        }
+    }
+
+    public void ShockNext(Health hp)
+    {
+        Lightning myLightning = null;
+        TryGetComponent(out myLightning);
+
+        if (enemiesShocked == 1)
+        {
+            Debug.Log("ADDED MY LIGHTNING");
+            gameObject.AddComponent<Lightning>().target = hp.transform;
+        }
+        else
+        {
+            foreach (Component comp in GetComponents<Component>())
+            {
+                Lightning lightning = null;
+                TryGetComponent(out lightning);
+
+                if (lightning)
+                {
+                    lightning.RemoveLightning();
+                }
+            }
+        }
+        Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(hp.transform.position, lightningMaxDistance);
+        foreach (Collider2D col in enemyColliders)
+        {
+            Health en = null;
+            col.TryGetComponent(out en);
+
+            if (en != null && !en.CompareTag("Turret") && !en.CompareTag("Player"))
+            {
+                if (objectsShocked.Contains(en))
+                {
+                    return;
+                }
+                else
+                {
+                    if (en != hp)
+                    {
+                        objectsShocked.Add(en);
+                        hp.gameObject.AddComponent<Lightning>().target = en.transform;
+                        enemiesShocked++;
+                        Debug.Log("Shocked enemies: " + enemiesShocked);
+                        ShockNext(en);
+                    }
+                }
+                en.healthCount -= lightningAttackDamage;
+            }
+        }
+    }
+
+    public void Shock(Vector3 shockPosition)
+    {
+        Lightning myLightning = null;
+        TryGetComponent(out myLightning);
+
+        if (enemiesShocked == 1)
+        {
+            Debug.Log("ADDED MY LIGHTNING");
+            GameObject obj = new GameObject();
+            obj.transform.position = shockPosition;
+            gameObject.AddComponent<Lightning>().target = obj.transform;
+        }
+        else
+        {
+            foreach (Component comp in GetComponents<Component>())
+            {
+                Lightning lightning = null;
+                TryGetComponent(out lightning);
+
+                if (lightning)
+                {
+                    lightning.RemoveLightning();
+                }
+            }
+        }
+    }
+
+
+    #endregion
+
+    #region Healing
 
     [Header("Healing Attacks")]
-    [SerializeField] float healingAttackSpeed = 0f;
-    [SerializeField] float healingAttackDamage = 0f;
+    [SerializeField] float healingSpeed = 0f;
+    [SerializeField] float healingAmount = 0f;
+
+    #endregion
+
+    #region Guard Drone
 
     [Header("Guard Drones")]
     [SerializeField] int guardDroneCount = 0;
 
-    [Header("Laser Attacks")]
-    [SerializeField] float laserAttackSpeed = 0f;
-    [SerializeField] float laserAttackDamage = 0f;
-
-
+    #endregion
 
     //Controls
     private bool firing = false;
@@ -57,6 +187,7 @@ public class PlayerController : MonoBehaviour
         JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
+
     void LoadData()
     {
         money = LoadManager.Instance.saveData.PlayerMoney;
@@ -147,8 +278,7 @@ public class PlayerController : MonoBehaviour
         FLAMETHROWER,
         LIGHTNING,
         HEALING,
-        GUARD_DRONE,
-        LASER
+        GUARD_DRONE
     }
 
     public eFireType fireType = eFireType.BASIC;
@@ -171,9 +301,6 @@ public class PlayerController : MonoBehaviour
                 break;
             case Ship.eMotherShip.GUARD_DRONE:
                 fireType = eFireType.GUARD_DRONE;
-                break;
-            case Ship.eMotherShip.LASER:
-                fireType = eFireType.LASER;
                 break;
         }
     }
@@ -202,27 +329,15 @@ public class PlayerController : MonoBehaviour
                 break;
             case eFireType.HEALING:
                 fireType = eFireType.HEALING;
-                attackSpeed = healingAttackSpeed;
-                attackDamage = healingAttackDamage;
+                attackSpeed = healingSpeed;
+                attackDamage = healingAmount;
                 HealthyFire();
                 break;
             case eFireType.GUARD_DRONE:
                 fireType = eFireType.GUARD_DRONE;
                 ShieldingFire();
                 break;
-            case eFireType.LASER:
-                fireType = eFireType.LASER;
-                attackSpeed = laserAttackSpeed;
-                attackDamage = laserAttackDamage;
-                LaserFire();
-                break;
         }
-    }
-
-
-    private void LaserFire()
-    {
-
     }
 
     private void ShieldingFire()
@@ -236,11 +351,6 @@ public class PlayerController : MonoBehaviour
     private void HealthyFire()
     {
         //do a heal boi
-    }
-
-    private void FireLightning()
-    {
-        // do a lightning boi
     }
 
     private void FlameFire()
