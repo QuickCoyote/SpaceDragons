@@ -12,6 +12,9 @@ public class ShipData : ShipDataParent
     public eTurretType type;
     public string description;
     public string shipName;
+    public bool isSpecial;
+    public string specialDesc;
+    public float specialStat;
 
     public enum eTurretRarity
     {

@@ -30,6 +30,7 @@ public class ShipyardController : MonoBehaviour
     public TextMeshProUGUI MoneyNum;
     public GameObject MaxShipWarning;
     public List<GameObject> SelectionInfoPanels;
+    public List<GameObject> SelectionInfoButtons;
     public Ship.eMotherShip TradeInMothership;
     public Ship.eMotherShip CurrentMothership;
     public GameObject TradeInButton;
@@ -107,6 +108,7 @@ public class ShipyardController : MonoBehaviour
             {
                 OpenSelectedPanel(0);
                 GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
+                CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() + 1]);
                 OpenSelectedPanel(num);
             }
         }
@@ -452,15 +454,36 @@ public class ShipyardController : MonoBehaviour
             if(i == num)
             {
                 SelectionInfoPanels[i].SetActive(true);
-                SelectionDisplay.GetComponentsInChildren<Button>().Where
-                    (o => o.name == SelectionInfoPanels[i].name + "Button").FirstOrDefault().interactable = false;
+                SelectionInfoButtons[i].GetComponent<Button>().interactable = false;
             }
             else
             {
                 SelectionInfoPanels[i].SetActive(false);
-                SelectionDisplay.GetComponentsInChildren<Button>().Where
-                    (o => o.name == SelectionInfoPanels[i].name + "Button").FirstOrDefault().interactable = true;
+                SelectionInfoButtons[i].GetComponent<Button>().interactable = true;
             }
+        }
+    }
+
+    public void CheckIfSpecial(GameObject selectedShip)
+    {
+        if(selectedShip.GetComponent<Turret>().data.isSpecial)
+        {
+            SelectionInfoButtons[2].SetActive(true);
+
+        }
+        else
+        {
+            int num = 0;
+            for (int i = 0; i < SelectionInfoPanels.Count; i++)
+            {
+                if (SelectionInfoPanels[i].activeInHierarchy)
+                {
+                    num = i;
+                    break;
+                }
+            }
+            if(num == 2) { OpenSelectedPanel(0); }
+            SelectionInfoButtons[2].SetActive(false);
         }
     }
 
@@ -598,6 +621,7 @@ public class ShipyardController : MonoBehaviour
 
         OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() + 1]);
+        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() + 1]);
 
         OpenSelectedPanel(num);
     }
@@ -616,6 +640,8 @@ public class ShipyardController : MonoBehaviour
 
         OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
+        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() - 1]);
+
         OpenSelectedPanel(num);
     }
 

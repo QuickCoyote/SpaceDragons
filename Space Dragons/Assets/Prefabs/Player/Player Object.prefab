@@ -14509,6 +14509,7 @@ MonoBehaviour:
   ShipHeadSprites:
   - {fileID: 21300000, guid: 1e7400fa874a7d74092e8605559f035e, type: 3}
   - {fileID: 21300000, guid: d354120170da70549a96e7018289b9c4, type: 3}
+  - {fileID: 21300000, guid: 5a489c837cdc1724893e6f53a3d63213, type: 3}
   ShipHeadSprite: {fileID: 196209910334023937}
   minDst: 2
   startSize: 2
@@ -14516,7 +14517,7 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 15
   joystick: {fileID: 1076237413}
-  motherShip: 0
+  motherShip: 2
   shipToTest: 2
   boostSpeed: 10
   returnSpeed: 0
@@ -14562,15 +14563,15 @@ MonoBehaviour:
   flameLifeSpan: 1.25
   flameAttackangle: 15
   flameAttackSpeed: 0.0125
-  flameAttackDamage: 0.5
-  lightningAttackSpeed: 0
-  lightningAttackDamage: 0
-  healingAttackSpeed: 0
-  healingAttackDamage: 0
+  flameAttackDamage: 2
+  lightningAttackSpeed: 1
+  lightningAttackDamage: 35
+  lightningMaxDistance: 55
+  lightningMinDistance: 1
+  healingSpeed: 0
+  healingAmount: 0
   guardDroneCount: 0
-  laserAttackSpeed: 0
-  laserAttackDamage: 0
-  fireType: 1
+  fireType: 2
 --- !u!114 &5215258217068158141
 MonoBehaviour:
   m_ObjectHideFlags: 0

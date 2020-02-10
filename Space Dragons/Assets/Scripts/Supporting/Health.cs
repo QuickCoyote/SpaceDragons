@@ -59,4 +59,9 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        Destroy(healthbarObj);
+    }
 }
