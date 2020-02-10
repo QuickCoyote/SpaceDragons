@@ -42,6 +42,7 @@ public class ShipyardController : MonoBehaviour
     float MaxTime = 300;
     Button buyButton = null;
     Button sellButton = null;
+    Slider MotherHealthBar;
 
     int num = 0;
 
@@ -58,7 +59,8 @@ public class ShipyardController : MonoBehaviour
         buyButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
             (o => o.name == "Buy").FirstOrDefault();
         sellButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
-            (o => o.name == "Sell").FirstOrDefault();
+            (o => o.name == "Sell").FirstOrDefault();        
+
         Shipyard.SetActive(false);
 
     }
@@ -111,7 +113,45 @@ public class ShipyardController : MonoBehaviour
 
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
 
-            
+        int money = MotherShip.GetComponent<PlayerController>().money;
+        int switchCase = 0;
+
+        switchCase = money < 10000 ? 0
+            : money >= 10000 && money < 100000 ? 1
+            : money >= 100000 && money < 1000000 ? 2
+            : money >= 1000000 && money < 1000000000 ? 3
+            : 4;
+
+        switch (switchCase)
+        {
+            case 0:
+                MoneyNum.text = money.ToString();
+                break;
+            case 1:
+                int thousands = money / 1000;
+                int hundreds = money % 1000;
+                char[] hundie = { '0' };
+                if (hundreds >= 100)
+                {
+                     hundie = hundreds.ToString().ToCharArray();
+                }
+                MoneyNum.text = thousands.ToString() + "." + hundie[0] + "k";
+                break;
+            case 2:
+                thousands = money / 1000;
+                MoneyNum.text = thousands.ToString() + "k";
+                break;
+            case 3:
+                int millions = money / 1000000;
+                MoneyNum.text = millions.ToString() + "m";
+                break;
+            case 4:
+                int billions = money / 1000000000;
+                MoneyNum.text = billions.ToString() + "b";
+                break;
+            default:
+                break;
+        }
     }
 
     public void ShipyardMotherSetup(int MotherToDisplay, bool isPanelSwap)
@@ -120,7 +160,7 @@ public class ShipyardController : MonoBehaviour
         {
             MothershipMenu.GetComponentsInChildren<Image>().Where
                 (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
-            Slider MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
+            MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
             (o => o.name == "HealthBar").FirstOrDefault();
             Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
 
@@ -716,6 +756,7 @@ public class ShipyardController : MonoBehaviour
         if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
         {
             MotherHealth.healthCount = MotherHealth.healthMax;
+            MotherHealthBar.value = MotherHealth.healthCount;
         }
     }
 
