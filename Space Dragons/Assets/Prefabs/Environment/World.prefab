@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65091140}
   - component: {fileID: 65091141}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MulticolorNebula3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474052296}
   - component: {fileID: 474052297}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpiralGalaxy3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491248409}
   - component: {fileID: 491248410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlueNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897482401}
   - component: {fileID: 897482402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PurpleBlueNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 949296601}
   - component: {fileID: 949296602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MulticolorNebula2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957401931}
   - component: {fileID: 957401932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpiralGalaxy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125923944}
   - component: {fileID: 1125923945}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PurpleYellowNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230659212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackgroundStuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1344102970}
   - component: {fileID: 1344102971}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlueGreenNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548461514}
   - component: {fileID: 1548461515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GreenNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629363026}
   - component: {fileID: 1629363027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RedYellowNebula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979677990}
   - component: {fileID: 1979677991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MulticolorNebula1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129957334}
   - component: {fileID: 2129957335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpiralGalaxy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1055,7 @@ GameObject:
   - component: {fileID: 9117979743792168093}
   - component: {fileID: 6510258481702246407}
   - component: {fileID: 1693253726547552173}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shooting Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}

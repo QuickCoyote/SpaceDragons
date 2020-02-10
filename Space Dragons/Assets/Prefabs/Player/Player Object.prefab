@@ -15322,7 +15322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc636bbd0ad09fe4592e357b8cb70042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: 0}
   Target: {fileID: 196209910265618382}
 --- !u!1 &8122148892155369891
 GameObject:
@@ -15437,6 +15437,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 196209910753800036}
     m_Modifications:
+    - target: {fileID: 328108817427507708, guid: 03c6b99601d0e274d996300a684bd79b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 328108817427507708, guid: 03c6b99601d0e274d996300a684bd79b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3728026570362288966, guid: 03c6b99601d0e274d996300a684bd79b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15576,6 +15586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755508300874384802, guid: 03c6b99601d0e274d996300a684bd79b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755508300874384802, guid: 03c6b99601d0e274d996300a684bd79b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8339141107968966676, guid: 03c6b99601d0e274d996300a684bd79b,
         type: 3}

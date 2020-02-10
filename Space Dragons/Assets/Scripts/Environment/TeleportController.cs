@@ -28,7 +28,6 @@ public class TeleportController : MonoBehaviour
     {
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
-        visited = true;
         visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
         UpdateUI();
     }

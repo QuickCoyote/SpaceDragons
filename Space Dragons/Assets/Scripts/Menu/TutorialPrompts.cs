@@ -14,6 +14,13 @@ public class TutorialPrompts : Singleton<TutorialPrompts>
     public float tiptimer = 8.0f;
     public int tipIndex = 0;
 
+    class TutorialLocation
+    {
+        string prompt = "";
+        Transform Location = null;
+        Transform ArrowLocation = null;
+    }
+
     string[] prompts = {
         "Welcome to SPACE DRAGONS! Here's a few TIPS to get you started.",
         "You can always press CLOSE, and access the TIPS later from the PAUSE MENU.",
