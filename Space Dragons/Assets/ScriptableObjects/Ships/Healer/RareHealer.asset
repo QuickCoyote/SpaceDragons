@@ -96,3 +96,6 @@ MonoBehaviour:
   type: 3
   description: Green Boy made of Green Ore
   shipName: Healing Turret
+  isSpecial: 1
+  specialDesc: Heals most damaged unit to full then switches target.
+  specialStat: 0

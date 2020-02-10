@@ -11419,6 +11419,10 @@ MonoBehaviour:
   - {fileID: 2801208292613230705}
   - {fileID: 7086877562216290698}
   - {fileID: 3637883730905806198}
+  SelectionInfoButtons:
+  - {fileID: 8399235835614950076}
+  - {fileID: 2313714733573257926}
+  - {fileID: 7421845979352151546}
   TradeInMothership: 1
   CurrentMothership: 0
   TradeInButton: {fileID: 2806653247908362718}
@@ -26052,6 +26056,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2145986336338120194, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_Layer
@@ -26498,6 +26512,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806653248721534960}
     m_Modifications:
+    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Name
