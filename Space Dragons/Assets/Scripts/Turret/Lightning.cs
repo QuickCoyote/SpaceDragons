@@ -14,13 +14,9 @@ public class Lightning : MonoBehaviour
 
     private void Start()
     {
-        LineRenderer objRenderer = null;
-        gameObject.TryGetComponent(out objRenderer);
-
-        if(objRenderer)
+        if(lr)
         {
-            Destroy(GetComponent<LineRenderer>());
-            gameObject.AddComponent<LineRenderer>();
+
         }
         else
         {
