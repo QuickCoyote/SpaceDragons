@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O6T1
   m_EditorClassIdentifier: 
   PromptText: If you find an ASTEROID, you can fire at it to collect MATERIALS.
-  UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 0, y: 0, z: 0}
-  ArrowRotationWaypoint: {x: 0, y: 0, z: 0}
+  UIWaypoint: {x: 445, y: 270, z: 0}
+  ArrowWaypoint: {x: 120, y: -312, z: 0}
+  ArrowRotationWaypoint: {x: 0, y: 0, z: -90}

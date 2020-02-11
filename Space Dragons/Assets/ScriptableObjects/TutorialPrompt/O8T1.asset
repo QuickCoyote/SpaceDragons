@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858e70a896f7e3e4aac494069d9bc02b, type: 3}
   m_Name: O8T1
   m_EditorClassIdentifier: 
-  PromptText: Follow the TRACKER arrow on your MINIMAP.
-  UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 0, y: 0, z: 0}
+  PromptText: Follow the TRACKER arrows on your MINIMAP.
+  UIWaypoint: {x: 450, y: 260, z: 0}
+  ArrowWaypoint: {x: -645, y: 270, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

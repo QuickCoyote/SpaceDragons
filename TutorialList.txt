@@ -21,13 +21,13 @@ ANIMAL: These ENEMIES are simple yet numerous.
 FAIRY: These ENEMIES zip back and forth very quickly.
 ELF: These ENEMIES will dodge out of your DRAGON's line of fire
 ORC: These ENEMIES are strong, but slow.
-HUMAN: These ENEMIES will attempt to run into you, and explode.
+HUMAN: These ENEMIES will attempt to run into you and explode.
 
 Order 6:
 If you find an ASTEROID, you can fire at it to collect MATERIALS.
 
 Order 7:
-Certain OUTPOSTS will offer more currency for certain MATERIALS.
+OUTPOSTS will offer currency for certain MATERIALS.
 Try both BUYING and SELLING to maximize your profits.
 
 Order 8:
@@ -41,7 +41,7 @@ TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
 
 Order 10:
 Find a SHIPYARD to buy and sell TURRET SHIPS.
-SHIPYARDS also allow you to trade in your DRAGON for other RACES
+SHIPYARDS also allow you to trade in your DRAGON for other RACES.
 
 Order 11:
 TELEPORTS will make travel faster for a price, but only to TELEPORTS you've already visited

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O11T2
   m_EditorClassIdentifier: 
   PromptText: Be cautious of WARP HOLES if you fly too far out.
-  UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 0, y: 0, z: 0}
+  UIWaypoint: {x: 325, y: 0, z: 0}
+  ArrowWaypoint: {x: -500, y: -125, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

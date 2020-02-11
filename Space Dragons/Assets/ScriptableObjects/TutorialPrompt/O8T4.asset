@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O8T4
   m_EditorClassIdentifier: 
   PromptText: Tap on the MINIMAP to open the WORLD MAP for more configurations.
-  UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 0, y: 0, z: 0}
+  UIWaypoint: {x: 450, y: 260, z: 0}
+  ArrowWaypoint: {x: -645, y: -225, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: 'HUMAN: These ENEMIES will attempt to run into you and explode.'
   UIWaypoint: {x: 0, y: -200, z: 0}
-  ArrowWaypoint: {x: 0, y: 0, z: 0}
-  ArrowRotationWaypoint: {x: 0, y: 0, z: 0}
+  ArrowWaypoint: {x: 750, y: -250, z: 0}
+  ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

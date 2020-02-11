@@ -25,6 +25,11 @@ public class MainMenu : MonoBehaviour
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("SpaceWorld"));
     }
 
+    public void ViewTutorial()
+    {
+        LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Tutorial"));
+    }
+
     public void ResetSave()
     {
         LoadManager.Instance.ResetSaveData();
