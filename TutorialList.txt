@@ -1,15 +1,21 @@
+Order 1:
 Welcome to SPACE DRAGONS! Here's a few TIPS to get you started.
 You can always press QUIT, and access the TUTORIAL later from the MAIN MENU.
-You're going to pilot your own certified DRAGON Spaceship.
 
+Order 2:
+By the end of the TUTORIAL, you'll be able to pilot your own certified DRAGON Spaceship.
+
+Order 3:
 Use the JOYSTICK to turn your DRAGON.
 Hold FIRE to attack.
 Tap BOOST to make a quick getaway.
 
+Order 4:
 Change the control layout in the OPTIONS menu.
 Tap or Drag to move your DRAGON.
 While your finger is down, your DRAGON's weapons will fire.
 
+Order 5:
 ENEMIES come in many different RACES:
 ANIMAL: These ENEMIES are simple yet numerous. 
 FAIRY: These ENEMIES zip back and forth very quickly.
@@ -17,17 +23,29 @@ ELF: These ENEMIES will dodge out of your DRAGON's line of fire
 ORC: These ENEMIES are strong, but slow.
 HUMAN: These ENEMIES will attempt to run into you, and explode.
 
-
+Order 6:
 If you find an ASTEROID, you can fire at it to collect MATERIALS.
+
+Order 7:
 Certain OUTPOSTS will offer more currency for certain MATERIALS.
 Try both BUYING and SELLING to maximize your profits.
 
+Order 8:
 Follow the TRACKER arrow on your MINIMAP.
 RED is the nearest ENEMY.
 GREEN is defaulted to the nearest MAPTARGET.
 Tap on the MINIMAP to open the WORLD MAP for more configurations.
 
-SHIPYARDS will sell TURRET SHIPS.
+Order 9:
 TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
 
+Order 10:
+Find a SHIPYARD to buy and sell TURRET SHIPS.
+SHIPYARDS also allow you to trade in your DRAGON for other RACES
+
+Order 11:
+TELEPORTS will make travel faster for a price, but only to TELEPORTS you've already visited
+Be cautious of WARP HOLES if you fly too far out.
+
+Order 12:
 Thats all. Happy flying, DRAGON pilot!

@@ -96,3 +96,7 @@ MonoBehaviour:
   type: 4
   description: Purple boi made of purple ore
   shipName: Attack Drone Bay
+  isSpecial: 1
+  specialDesc: Creates 2 turrets that follow the player, and will chase enemies in
+    range to kill them.
+  specialStat: 0

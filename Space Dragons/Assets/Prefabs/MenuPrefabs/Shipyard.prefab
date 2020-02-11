@@ -11420,6 +11420,10 @@ MonoBehaviour:
   - {fileID: 2801208292613230705}
   - {fileID: 7086877562216290698}
   - {fileID: 3637883730905806198}
+  SelectionInfoButtons:
+  - {fileID: 8399235835614950076}
+  - {fileID: 2313714733573257926}
+  - {fileID: 7421845979352151546}
   TradeInMothership: 1
   CurrentMothership: 0
   TradeInButton: {fileID: 2806653247908362718}

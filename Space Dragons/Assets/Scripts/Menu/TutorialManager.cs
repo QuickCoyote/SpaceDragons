@@ -19,14 +19,7 @@ public class TutorialManager : Singleton<TutorialManager>
     struct TutorialOrder
     {
         public GameObject FocusedScreen;
-        public List<TutorialPrompt> prompts;
-    }
-    [Serializable]
-    struct TutorialPrompt
-    {
-        public string prompt;
-        public Transform UIWaypoint;
-        public Transform ArrowWaypoint;
+        public List<TutorialPromptData> prompts;
     }
 
     void Start()
@@ -36,10 +29,10 @@ public class TutorialManager : Singleton<TutorialManager>
 
     private void Update()
     {
-        tipPrompt.text = Orders[orderIndex].prompts[tipIndex].prompt;
-        tipUI.transform.position = Vector3.Lerp(tipUI.transform.position, Orders[orderIndex].prompts[tipIndex].UIWaypoint.position, 5.0f * Time.deltaTime);
-        tipArrow.transform.position = Vector3.Lerp(tipArrow.transform.position, Orders[orderIndex].prompts[tipIndex].ArrowWaypoint.position, 5.0f * Time.deltaTime);
-        tipArrow.transform.rotation = Quaternion.Lerp(tipArrow.transform.rotation, Orders[orderIndex].prompts[tipIndex].ArrowWaypoint.rotation, 5.0f * Time.deltaTime);
+        tipPrompt.text = Orders[orderIndex].prompts[tipIndex].PromptText;
+        tipUI.transform.localPosition = Vector3.Lerp(tipUI.transform.localPosition, Orders[orderIndex].prompts[tipIndex].UIWaypoint, 5.0f * Time.deltaTime);
+        tipArrow.transform.localPosition = Vector3.Lerp(tipArrow.transform.localPosition, Orders[orderIndex].prompts[tipIndex].ArrowWaypoint, 5.0f * Time.deltaTime);
+        tipArrow.transform.rotation = Quaternion.Lerp(tipArrow.transform.rotation, Quaternion.Euler(Orders[orderIndex].prompts[tipIndex].ArrowRotationWaypoint.x, Orders[orderIndex].prompts[tipIndex].ArrowRotationWaypoint.y, Orders[orderIndex].prompts[tipIndex].ArrowRotationWaypoint.z), 5.0f * Time.deltaTime);
     }
 
     public void SkipTips()
@@ -59,6 +52,8 @@ public class TutorialManager : Singleton<TutorialManager>
             if (orderIndex >= Orders.Count)
             {
                 SkipTips();
+                orderIndex--;
+
             }
             else
             {

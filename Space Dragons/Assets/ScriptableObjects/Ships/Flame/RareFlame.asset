@@ -96,3 +96,6 @@ MonoBehaviour:
   type: 2
   description: Red Boy made of Red Ore
   shipName: Flame Turret
+  isSpecial: 1
+  specialDesc: Deals burn damage over time as it spits fire.
+  specialStat: 0
