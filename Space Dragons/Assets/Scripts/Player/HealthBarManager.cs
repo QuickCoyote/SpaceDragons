@@ -60,9 +60,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
     public void UpdateHealthBars()
     {
         RemoveAllHealthBars();
-        Debug.Log("Removed All");
         CreateAllHealthBars();
-        Debug.Log("Created: " + layout.transform.childCount);
 
         for (int i = 0; i < numBars; i++)
         {

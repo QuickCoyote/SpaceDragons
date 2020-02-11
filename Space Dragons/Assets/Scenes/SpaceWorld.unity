@@ -3843,6 +3843,11 @@ PrefabInstance:
       propertyPath: Ship
       value: 
       objectReference: {fileID: 1379538170}
+    - target: {fileID: 4229753921854191400, guid: c03491f4a3e540f418e56991ec4cd7be,
+        type: 3}
+      propertyPath: enemyWaveManager
+      value: 
+      objectReference: {fileID: 1107346901}
     - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
       propertyPath: m_LocalPosition.x

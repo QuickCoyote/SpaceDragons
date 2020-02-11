@@ -104,27 +104,6 @@ public class Ship : MonoBehaviour
                 SetShipHead(4);
                 break;
         }
-
-
-        //switch (shipToTest)
-        //{
-        //    case eShipToTest.RUSTY:
-        //        AddBodyPart(FindBodyPartFromPrefabs("RustyPrefab"));
-        //        break;
-        //    case eShipToTest.LIGHTNING:
-        //        AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
-        //        break;
-        //    case eShipToTest.FLAME:
-        //        AddBodyPart(FindBodyPartFromPrefabs("FlamePrefab"));
-        //        break;
-        //    case eShipToTest.HEALER:
-        //        AddBodyPart(FindBodyPartFromPrefabs("HealerPrefab"));
-        //        break;
-        //    case eShipToTest.ATTACK_DRONE:
-        //        AddBodyPart(FindBodyPartFromPrefabs("AttackDronePrefab"));
-        //        break;
-        //}
-
     }
 
     private void LoadData()
@@ -438,7 +417,17 @@ public void Move()
         }
         PlayerController playerController = GetComponent<PlayerController>();
         playerController.SwitchFireMode(motherShip);
-        playerController.headBullet = playerController.headBullets[val];
+        if(val < playerController.headBullets.Length)
+        {
+            if(playerController.headBullets[val])
+            {
+                playerController.headBullet = playerController.headBullets[val];
+            }
+        }
+        else
+        {
+            playerController.headBullet = null;
+        }
         ShipHeadSprite.sprite = ShipHeadSprites[val];
     }
 

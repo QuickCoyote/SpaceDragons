@@ -17,6 +17,8 @@ public class WorldManager : Singleton<WorldManager>
 
     [SerializeField] public Material lightningMat = null;
 
+    [SerializeField] public EnemyWaveManager enemyWaveManager = null;
+
     private void Start()
     {
         ResetList();
