@@ -26,8 +26,6 @@ public class LoadManager : Singleton<LoadManager>
             FileStream file = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
             bf.Serialize(file, saveData);
             file.Close();
-            Debug.Log("Save Successful");
-
         }
         catch (Exception e)
         {
@@ -62,8 +60,6 @@ public class LoadManager : Singleton<LoadManager>
                 saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
                 saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
                 saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
-                Debug.Log("Update Save Successful");
-
             }
         }
         catch (Exception e)
@@ -75,7 +71,6 @@ public class LoadManager : Singleton<LoadManager>
     public void ResetSaveData()
     {
         saveData = new SaveData();
-        Debug.Log("Resetting Save Data");
 
         try
         {

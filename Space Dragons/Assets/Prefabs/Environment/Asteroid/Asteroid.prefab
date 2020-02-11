@@ -158,9 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarObj: {fileID: 130314870035033133}
+  healthbarObj: {fileID: 130314869862556703}
   healthMax: 1
   healthCount: 0
+  objectIndex: 0
 --- !u!95 &7320261426538231230
 Animator:
   serializedVersion: 3
@@ -5184,15 +5185,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!224 &130314869862556699 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!1 &130314869862556703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2145986335355972861, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 2019560541334784226}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &130314870035033133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!224 &130314869862556699 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 2019560541334784226}
   m_PrefabAsset: {fileID: 0}

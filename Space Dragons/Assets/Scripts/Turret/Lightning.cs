@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lightning : MonoBehaviour
 {
-    public Transform target = null;
+    public Vector3 target = Vector3.zero;
 
     bool doneBefore = false;
 
@@ -14,7 +14,14 @@ public class Lightning : MonoBehaviour
 
     private void Start()
     {
-        gameObject.AddComponent<LineRenderer>();
+        if(lr)
+        {
+
+        }
+        else
+        {
+            gameObject.AddComponent<LineRenderer>();
+        }
         lr = GetComponent<LineRenderer>();
         lr.material = WorldManager.Instance.lightningMat;
         lr.startWidth = 2;
@@ -25,12 +32,12 @@ public class Lightning : MonoBehaviour
         lr.startColor = Color.cyan;
         lr.endColor = Color.cyan;
 
-        Vector3 TotalVector = target.position - transform.position;
+        Vector3 TotalVector = target - transform.position;
 
         Vector3[] Segments = new Vector3[10];
 
         Segments[0] = transform.position;
-        Segments[9] = target.transform.position;
+        Segments[9] = target;
         for (int i = 1; i < 9; i++)
         {
             Vector3 normalized = TotalVector / 10;
@@ -57,6 +64,6 @@ public class Lightning : MonoBehaviour
     public void RemoveLightning()
     {
         Destroy(lr);
-        Destroy(this);
+        Destroy(GetComponent<Lightning>());
     }
 }

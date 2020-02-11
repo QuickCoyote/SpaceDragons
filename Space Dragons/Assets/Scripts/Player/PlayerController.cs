@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Basic Variables
     [Header("Control UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float basicAttackSpeed = 0f;
     [SerializeField] float basicAttackDamage = 0f;
+
+    #endregion
 
     #region Flame
 
@@ -50,9 +53,11 @@ public class PlayerController : MonoBehaviour
 
     private void FireLightning()
     {
+        objectsShocked = new List<Health>();
+
         float acceptableAngle = 30f;
 
-        Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, lightningMaxDistance);
+        Collider2D[] col2D = Physics2D.OverlapCircleAll(head.transform.position, lightningMaxDistance);
 
         foreach (Collider2D col in col2D)
         {
@@ -64,7 +69,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(objectsWithinRange.Count > 0)
+        if (objectsWithinRange[0])
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
@@ -76,7 +81,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Vector3 randomPointInFront = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * head.transform.up * Random.Range(lightningMinDistance, lightningMaxDistance);
+            Vector3 direction = head.transform.eulerAngles + new Vector3(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
+            Vector3 randomPointInFront = (direction + head.transform.up) * Random.Range(lightningMinDistance, lightningMaxDistance);
             Shock(randomPointInFront);
         }
     }
@@ -86,23 +92,26 @@ public class PlayerController : MonoBehaviour
         Lightning myLightning = null;
         TryGetComponent(out myLightning);
 
-        if (enemiesShocked == 1)
+        if (myLightning)
         {
-            gameObject.AddComponent<Lightning>().target = hp.transform;
+            myLightning.RemoveLightning();
         }
         else
         {
-            foreach (Component comp in GetComponents<Component>())
-            {
-                Lightning lightning = null;
-                comp.TryGetComponent(out lightning);
-
-                if (lightning)
-                {
-                    lightning.RemoveLightning();
-                }
-            }
+            gameObject.AddComponent<Lightning>();
         }
+
+        if (hp != GetComponent<Health>())
+        {
+            gameObject.AddComponent<Lightning>().target = hp.transform.position;
+        }
+        else
+        {
+            return;
+        }
+
+
+
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(hp.transform.position, lightningMaxDistance);
         foreach (Collider2D col in enemyColliders)
         {
@@ -113,16 +122,15 @@ public class PlayerController : MonoBehaviour
             {
                 if (objectsShocked.Contains(en))
                 {
-                    return;
+                    continue;
                 }
                 else
                 {
                     if (en != hp)
                     {
                         objectsShocked.Add(en);
-                        hp.gameObject.AddComponent<Lightning>().target = en.transform;
+                        hp.gameObject.AddComponent<Lightning>().target = en.transform.position;
                         enemiesShocked++;
-                        Debug.Log("Shocked enemies: " + enemiesShocked);
                         ShockNext(en);
                     }
                 }
@@ -136,25 +144,22 @@ public class PlayerController : MonoBehaviour
         Lightning myLightning = null;
         TryGetComponent(out myLightning);
 
-        if (enemiesShocked == 1)
+        if (myLightning)
         {
-            Debug.Log("ADDED MY LIGHTNING");
-            GameObject obj = new GameObject();
-            obj.transform.position = shockPosition;
-            gameObject.AddComponent<Lightning>().target = obj.transform;
+            myLightning.RemoveLightning();
         }
         else
         {
-            foreach (Component comp in GetComponents<Component>())
-            {
-                Lightning lightning = null;
-                TryGetComponent(out lightning);
+            gameObject.AddComponent<Lightning>();
+        }
 
-                if (lightning)
-                {
-                    lightning.RemoveLightning();
-                }
-            }
+        if (shockPosition != head.transform.position)
+        {
+            gameObject.AddComponent<Lightning>().target = shockPosition;
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -210,7 +215,7 @@ public class PlayerController : MonoBehaviour
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
 
-   
+
 
     void FixedUpdate()
     {
