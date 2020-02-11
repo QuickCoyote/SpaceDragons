@@ -12,6 +12,15 @@ public class PauseMenu : Singleton<PauseMenu>
         JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 0);
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        LoadManager.Instance.Save();
+    }
+    private void OnApplicationQuit()
+    {
+        LoadManager.Instance.Save();
+    }
+
     public void ToggleJoystickControls(bool toggled)
     {
         JoystickControls = toggled;
