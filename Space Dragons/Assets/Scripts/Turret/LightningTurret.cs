@@ -58,7 +58,7 @@ public class LightningTurret : Turret
 
         if (enemiesShocked == 1)
         {
-            gameObject.AddComponent<Lightning>().target = enemy.transform;
+            gameObject.AddComponent<Lightning>().target = enemy.transform.position;
         }
         else
         {
@@ -90,7 +90,7 @@ public class LightningTurret : Turret
                     if(en != enemy)
                     {
                         shockedBois.Add(en);
-                        enemy.gameObject.AddComponent<Lightning>().target = en.transform;
+                        enemy.gameObject.AddComponent<Lightning>().target = en.transform.position;
                         enemiesShocked++;
                         Debug.Log("Shocked enemies: " + enemiesShocked);
                         ShockNext(en);
