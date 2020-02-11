@@ -64,7 +64,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
 
         for (int i = 0; i < numBars; i++)
         {
-            WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = layout.transform.GetChild(i).gameObject;
+            WorldManager.Instance.Ship.bodyPartObjects[i+1].GetComponent<Health>().healthbarObj = layout.transform.GetChild(i).gameObject;
         }
     }
 }
