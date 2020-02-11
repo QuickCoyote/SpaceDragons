@@ -14519,6 +14519,7 @@ MonoBehaviour:
   joystick: {fileID: 1076237413}
   motherShip: 2
   shipToTest: 2
+  shipHealth: {fileID: 196209910265618379}
   boostSpeed: 10
   returnSpeed: 0
   boostrotateSpeed: 1.5

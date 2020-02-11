@@ -14,7 +14,6 @@ public class LoadManager : Singleton<LoadManager>
     private void Start()
     {
         Load();
-
     }
 
     public void Save()
@@ -27,6 +26,8 @@ public class LoadManager : Singleton<LoadManager>
             FileStream file = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
             bf.Serialize(file, saveData);
             file.Close();
+            Debug.Log("Save Successful");
+
         }
         catch (Exception e)
         {
@@ -38,49 +39,55 @@ public class LoadManager : Singleton<LoadManager>
     {
         try
         {
-            saveData.PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthCount;
-            saveData.PlayerMoney = FindObjectOfType<PlayerController>().money;
-            saveData.motherShipType = FindObjectOfType<Ship>().motherShip;
-
-            //Convert dictionary to a pair array
-            saveData.setItemsFromDictionary(FindObjectOfType<Inventory>().items);
-
-            //Convert ships to a serializable array
-            List<ShipDataSavable> ships = new List<ShipDataSavable>();
-            foreach (GameObject s in FindObjectOfType<Ship>().bodyPartObjects)
+            if (GameObject.FindGameObjectWithTag("Player"))
             {
-                if (s.GetComponent<Turret>() && s.GetComponent<Health>())
+                saveData.PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthCount;
+                saveData.PlayerMoney = FindObjectOfType<PlayerController>().money;
+                saveData.motherShipType = FindObjectOfType<Ship>().motherShip;
+
+                //Convert dictionary to a pair array
+                saveData.setItemsFromDictionary(FindObjectOfType<Inventory>().items);
+
+                //Convert ships to a serializable array
+                List<ShipDataSavable> ships = new List<ShipDataSavable>();
+                foreach (GameObject s in FindObjectOfType<Ship>().bodyPartObjects)
                 {
-                    ShipDataSavable sav = new ShipDataSavable(s.GetComponent<Turret>().data, s.GetComponent<Health>().healthCount);
-                    ships.Add(sav);
+                    if (s.GetComponent<Turret>() && s.GetComponent<Health>())
+                    {
+                        ShipDataSavable sav = new ShipDataSavable(s.GetComponent<Turret>().data, s.GetComponent<Health>().healthCount);
+                        ships.Add(sav);
+                    }
                 }
+                saveData.Ships = ships.ToArray();
+                saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
+                saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
+                saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
+                Debug.Log("Update Save Successful");
+
             }
-            saveData.Ships = ships.ToArray();
-            saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
-            saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
-            saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
         }
         catch (Exception e)
         {
-            Debug.Log("Error in finding info to save:" + e.Message);
+            Debug.Log("Error in Updating save:" + e.Message);
         }
     }
 
     public void ResetSaveData()
     {
         saveData = new SaveData();
-        Debug.Log(saveData);
+        Debug.Log("Resetting Save Data");
+
         try
         {
             string filePath = Application.persistentDataPath + "/" + dataFile;
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+            FileStream file = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite, FileShare.None);
             bf.Serialize(file, saveData);
             file.Close();
         }
         catch (Exception e)
         {
-            Debug.Log("Error in Saving:" + e.Message);
+            Debug.Log("Error in Reset Saving:" + e.Message);
         }
     }
 
@@ -105,11 +112,12 @@ public class LoadManager : Singleton<LoadManager>
             catch (Exception e)
             {
                 Debug.Log("Error in Loading:" + e.Message);
+                ResetSaveData();
             }
         }
         else
         {
-            saveData = new SaveData();
+            ResetSaveData();
         }
     }
 

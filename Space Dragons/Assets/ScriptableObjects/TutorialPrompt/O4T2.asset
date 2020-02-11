@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858e70a896f7e3e4aac494069d9bc02b, type: 3}
   m_Name: O4T2
   m_EditorClassIdentifier: 
-  PromptText: Tap or Drag to move your DRAGON.
+  PromptText: Tap or Drag anywhere to move your DRAGON.
   UIWaypoint: {x: -650, y: 250, z: 0}
   ArrowWaypoint: {x: 0, y: -400, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

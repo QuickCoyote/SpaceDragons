@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TutorialManager : Singleton<TutorialManager>
@@ -38,8 +39,8 @@ public class TutorialManager : Singleton<TutorialManager>
     public void SkipTips()
     {
         tipUI.SetActive(false);
-        //go to game or menu
-        Debug.Log("Exit Tutorial");
+        LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
+
     }
     public void NextTip()
     {

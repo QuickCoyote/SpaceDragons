@@ -197,6 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         money = LoadManager.Instance.saveData.PlayerMoney;
         inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
+        
     }
 
     public void onPressFire()

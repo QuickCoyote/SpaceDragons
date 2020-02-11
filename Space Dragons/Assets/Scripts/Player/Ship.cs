@@ -57,6 +57,7 @@ public class Ship : MonoBehaviour
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
     public eShipToTest shipToTest = eShipToTest.RUSTY;
+    public Health shipHealth = null;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;
@@ -109,7 +110,7 @@ public class Ship : MonoBehaviour
     private void LoadData()
     {
         motherShip = LoadManager.Instance.saveData.motherShipType;
-
+        shipHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
         LoadManager.ShipDataSavable[] ships = LoadManager.Instance.saveData.Ships;
         if (ships != null)
         {
