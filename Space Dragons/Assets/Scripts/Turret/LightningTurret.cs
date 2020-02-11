@@ -58,7 +58,6 @@ public class LightningTurret : Turret
 
         if (enemiesShocked == 1)
         {
-            Debug.Log("ADDED MY LIGHTNING");
             gameObject.AddComponent<Lightning>().target = enemy.transform;
         }
         else
@@ -66,7 +65,7 @@ public class LightningTurret : Turret
             foreach (Component comp in GetComponents<Component>())
             {
                 Lightning lightning = null;
-                TryGetComponent(out lightning);
+                gameObject.TryGetComponent(out lightning);
 
                 if (lightning)
                 {

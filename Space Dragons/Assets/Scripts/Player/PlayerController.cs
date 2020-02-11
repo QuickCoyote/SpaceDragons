@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
 
         if (enemiesShocked == 1)
         {
-            Debug.Log("ADDED MY LIGHTNING");
             gameObject.AddComponent<Lightning>().target = hp.transform;
         }
         else
@@ -96,7 +95,7 @@ public class PlayerController : MonoBehaviour
             foreach (Component comp in GetComponents<Component>())
             {
                 Lightning lightning = null;
-                TryGetComponent(out lightning);
+                comp.TryGetComponent(out lightning);
 
                 if (lightning)
                 {
@@ -110,7 +109,7 @@ public class PlayerController : MonoBehaviour
             Health en = null;
             col.TryGetComponent(out en);
 
-            if (en != null && !en.CompareTag("Turret") && !en.CompareTag("Player"))
+            if (en != null && !(en.gameObject.layer == 11) && !en.CompareTag("Player"))
             {
                 if (objectsShocked.Contains(en))
                 {

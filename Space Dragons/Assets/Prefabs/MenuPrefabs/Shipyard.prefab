@@ -11401,6 +11401,7 @@ MonoBehaviour:
   Motherships:
   - {fileID: 11400000, guid: 0916d398540b6024a909d7f66660123d, type: 2}
   - {fileID: 11400000, guid: 5960535cee58b744c89473474200730f, type: 2}
+  - {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d, type: 2}
   ShopDifficulty: 0
   ShipScrollContent: {fileID: 2806653247236071227}
   ShopShipScrollContent: {fileID: 2806653249048712284}
@@ -14165,7 +14166,7 @@ RectTransform:
   - {fileID: 2806653247063261118}
   - {fileID: 5776800038444265150}
   - {fileID: 487479008565211012}
-  - {fileID: 7223108378590492822}
+  - {fileID: 6600268545016261909}
   - {fileID: 2806653247199268377}
   - {fileID: 6498978040553415459}
   m_Father: {fileID: 2806653247785573554}
@@ -26654,7 +26655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
---- !u!224 &7223108378590492822 stripped
+--- !u!224 &6600268545016261909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
     type: 3}
