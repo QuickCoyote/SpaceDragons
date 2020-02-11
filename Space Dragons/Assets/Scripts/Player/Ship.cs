@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Ship : MonoBehaviour
@@ -77,11 +78,13 @@ public class Ship : MonoBehaviour
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
 
+    bool isDead = true;
 
     #endregion
 
     private void Start()
     {
+        isDead = true;
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
@@ -138,6 +141,7 @@ public class Ship : MonoBehaviour
     {
         joystickdragging = (false);
     }
+
     public void AdjustJoystick()
     {
         if (joystickdragging)
@@ -164,6 +168,7 @@ public class Ship : MonoBehaviour
             boostParticles.SetActive(true);
         }
     }
+
     public void RefillBoost()
     {
         boostFuel = boostFuelMAX;
@@ -236,8 +241,6 @@ public class Ship : MonoBehaviour
         HealthBarManager.Instance.UpdateHealthBars();
     }
 
-
-
     public void MoveWithJoystick()
     {
         float curSpeed = speed;
@@ -282,7 +285,7 @@ public class Ship : MonoBehaviour
         }
     }
 
-public void Move()
+    public void Move()
     {
         float curSpeed = speed;
         if (Input.touchCount > 0)
@@ -455,9 +458,11 @@ public void Move()
 
     public void CheckForDie()
     {
-        if (head.GetComponent<Health>().healthCount <= 0)
+        if (head.GetComponent<Health>().healthCount <= 0 && isDead)
         {
-            DeathPanel.SetActive(true);
+            isDead = false;
+            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Death"));
+
         }
     }
 }

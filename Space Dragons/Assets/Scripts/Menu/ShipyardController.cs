@@ -466,23 +466,31 @@ public class ShipyardController : MonoBehaviour
 
     public void CheckIfSpecial(GameObject selectedShip)
     {
-        if(selectedShip.GetComponent<Turret>().data.isSpecial)
+        if(selectedShip != null)
         {
-            SelectionInfoButtons[2].SetActive(true);
+            if(selectedShip.GetComponent<Turret>().data.isSpecial)
+            {
+                SelectionInfoButtons[2].SetActive(true);
 
+            }
+            else
+            {
+                int num = 0;
+                for (int i = 0; i < SelectionInfoPanels.Count; i++)
+                {
+                    if (SelectionInfoPanels[i].activeSelf)
+                    {
+                        Debug.Log(SelectionInfoPanels[i].name);
+                        num = i;
+                        break;
+                    }
+                }
+                if(num == 2) { OpenSelectedPanel(0); }
+                SelectionInfoButtons[2].SetActive(false);
+            }
         }
         else
         {
-            int num = 0;
-            for (int i = 0; i < SelectionInfoPanels.Count; i++)
-            {
-                if (SelectionInfoPanels[i].activeInHierarchy)
-                {
-                    num = i;
-                    break;
-                }
-            }
-            if(num == 2) { OpenSelectedPanel(0); }
             SelectionInfoButtons[2].SetActive(false);
         }
     }
