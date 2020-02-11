@@ -190,11 +190,14 @@ public class Ship : MonoBehaviour
             if (boostCooldownTimer < 0.0f)
             {
                 boostParticles.SetActive(false);
-                speed = returnSpeed;
+                //speed = returnSpeed;
                 rotationSpeed = returnrotateSpeed;
                 boosting = false;
             }
 
+        } else
+        {
+            speed = Mathf.Lerp(speed, returnSpeed, 1.0f * Time.deltaTime);
         }
         UpdateFeulGauge();
     }
