@@ -90,9 +90,13 @@ MonoBehaviour:
   - {fileID: 958404922570400075, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   - {fileID: 5161195997392135388, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   - {fileID: -7328090111754691621, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
-  price: 0
+  buyPrice: 10
+  sellPrice: 0
   prefab: {fileID: 4977157105735039448, guid: 84ac47bd751de3a40a6994085b6d61df, type: 3}
   rarity: 1
   type: 1
   description: Blue Boy made of Blue Ore
   shipName: Shock Turret
+  isSpecial: 0
+  specialDesc: 
+  specialStat: 

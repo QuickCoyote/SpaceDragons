@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class ShipSelector : MonoBehaviour
 {
@@ -70,14 +71,11 @@ public class ShipSelector : MonoBehaviour
                         }
                     }
                 }
-                //if(child.tag == "SellButton")
-                //{
                 Button sellButton = controller.SelectionDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "Sell").FirstOrDefault();
 
                 sellButton.onClick.RemoveAllListeners();
-                sellButton.onClick.AddListener(delegate { Sell(10); });
-                //}
+                sellButton.onClick.AddListener(delegate { Sell(controller.GenerateSellPrice(SelectedShip)); });
                 if (child.tag == "RepairButton")
                 {
                     Button button = child.GetComponent<Button>();
@@ -107,7 +105,6 @@ public class ShipSelector : MonoBehaviour
             SelecionDisplay.SetActive(true);
             controller.GetSelectionInfo(true, controller.ShopShips[controller.scrollSnap.CurrentPage()]);
             controller.CheckIfSpecial(controller.ShopShips[controller.scrollSnap.CurrentPage()]);
-
             controller.OpenSelectedPanel(0);
         }
 
@@ -143,6 +140,8 @@ public class ShipSelector : MonoBehaviour
 
         ShipMenu.GetComponentsInChildren<Button>().Where
             (o => o.name == "Repair").FirstOrDefault().interactable = false;
+
+        controller.GetSelectionInfo(false, SelectedShip);
 
         controller.ShipyardShipSetup();
     }

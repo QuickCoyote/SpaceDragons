@@ -34,6 +34,8 @@ public class ShipyardController : MonoBehaviour
     public Ship.eMotherShip TradeInMothership;
     public Ship.eMotherShip CurrentMothership;
     public GameObject TradeInButton;
+    public GameObject TradeInCost;
+    public GameObject TurretCost;
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
 
@@ -179,6 +181,9 @@ public class ShipyardController : MonoBehaviour
 
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "Description").FirstOrDefault().text = Motherships[MotherToDisplay].Description;
+
+        TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[MotherToDisplay].Price.ToString();
+
     }
 
     public void MothershipPanelSwap(bool DisplayCurrent)
@@ -191,6 +196,7 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = true;
             TradeInButton.SetActive(false);
+            TradeInCost.SetActive(false);
 
         }
         else
@@ -201,7 +207,7 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = false;
             TradeInButton.SetActive(true);
-
+            TradeInCost.SetActive(true);
         }
     }
 
@@ -441,7 +447,7 @@ public class ShipyardController : MonoBehaviour
         }
 
 
-        ShipTurret.price = data.price;
+        ShipTurret.price = data.buyPrice;
         ShipTurret.turretRarity = data.rarity;
 
         return Ship;
@@ -471,6 +477,7 @@ public class ShipyardController : MonoBehaviour
             if(selectedShip.GetComponent<Turret>().data.isSpecial)
             {
                 SelectionInfoButtons[2].SetActive(true);
+                GetSpecialStats(selectedShip);
 
             }
             else
@@ -480,7 +487,6 @@ public class ShipyardController : MonoBehaviour
                 {
                     if (SelectionInfoPanels[i].activeSelf)
                     {
-                        Debug.Log(SelectionInfoPanels[i].name);
                         num = i;
                         break;
                     }
@@ -499,6 +505,8 @@ public class ShipyardController : MonoBehaviour
     {
         if (selectedShip != null)
         {
+            TurretCost.SetActive(true);
+
             ShipData data = selectedShip.GetComponent<Turret>().data;
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
@@ -545,6 +553,8 @@ public class ShipyardController : MonoBehaviour
 
                 sellButton.gameObject.SetActive(false);
 
+                TurretCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + selectedShip.GetComponent<Turret>().data.buyPrice;
+
             }
             else
             {
@@ -553,6 +563,11 @@ public class ShipyardController : MonoBehaviour
                 sellButton.interactable = true;
 
                 buyButton.gameObject.SetActive(false);
+
+                selectedShip.GetComponent<Turret>().data.sellPrice = GenerateSellPrice(selectedShip);
+
+                TurretCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + (selectedShip.GetComponent<Turret>().data.sellPrice);
+
             }
 
             OpenSelectedPanel(1);
@@ -573,6 +588,8 @@ public class ShipyardController : MonoBehaviour
             buyButton.gameObject.SetActive(true);
 
             buyButton.interactable = false;
+
+            TurretCost.SetActive(false);
 
             GameObject turret = null;
             foreach (Transform child in SelectionDisplay.transform)
@@ -613,6 +630,16 @@ public class ShipyardController : MonoBehaviour
 
         SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "RangeNum").FirstOrDefault().text = (selectedShip.GetComponent<Turret>().range).ToString();
+
+    }
+
+    public void GetSpecialStats(GameObject selectedShip)
+    {
+        SelectionInfoPanels[2].GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "SpecialText").FirstOrDefault().text = selectedShip.GetComponent<Turret>().data.specialDesc;
+
+        SelectionInfoPanels[2].GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "StatText").FirstOrDefault().text = selectedShip.GetComponent<Turret>().data.specialStat;
     }
 
     public void SelectionIncrement()
@@ -629,9 +656,9 @@ public class ShipyardController : MonoBehaviour
 
         OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() + 1]);
-        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() + 1]);
-
         OpenSelectedPanel(num);
+
+        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() + 1]);
     }
 
     public void SelectionDecrement()
@@ -648,9 +675,23 @@ public class ShipyardController : MonoBehaviour
 
         OpenSelectedPanel(0);
         GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
-        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() - 1]);
-
         OpenSelectedPanel(num);
+
+        CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() - 1]);
+    }
+
+    public int GenerateSellPrice(GameObject selectedShip)
+    {
+        int price = 0;
+
+        Turret turret = selectedShip.GetComponent<Turret>();
+        Health health = selectedShip.GetComponent<Health>();
+
+        price = (int)((turret.price * 0.8) * ((int)turret.turretRarity + 1) * (health.healthCount / health.healthMax));
+
+        selectedShip.GetComponent<Turret>().data.sellPrice = price;
+
+        return price;
     }
 
     public void Purchase()
@@ -664,7 +705,7 @@ public class ShipyardController : MonoBehaviour
                 {
                     if (Ships[i] == null)
                     {
-                        if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.price))
+                        if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.buyPrice))
                         {
                             if (i + 1 < MotherShip.bodyPartObjects.Count)
                             {
@@ -736,7 +777,8 @@ public class ShipyardController : MonoBehaviour
 
     public void TradeIn()
     {
-        int tradeInValue = 300;
+        int tradeInValue = Motherships[(int)TradeInMothership].Price;
+
         if (WorldManager.Instance.PlayerController.RemoveMoney(tradeInValue))
         {
             Ship.eMotherShip temp = MotherShip.motherShip;

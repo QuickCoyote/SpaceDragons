@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: The Pilgrim
   Description: A basic mothership that shoots single projectiles to deal damage.
-  mothership: 0
+  Mothership: 0
+  Price: 100
