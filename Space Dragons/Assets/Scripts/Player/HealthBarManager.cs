@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBarManager : Singleton<HealthBarManager>
 {
     [SerializeField] public GridLayoutGroup layout = null;
+    [SerializeField] public GameObject HealthBarParent = null;
     [SerializeField] GameObject healthBarPrefab = null;
     int numBars = 0;
     int cellWidth = 35;
@@ -13,7 +14,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
     void Start()
     {
         numBars = 0;
-        UpdateHealthBars();
+        CreateAllHealthBars();
     }
 
     public void checkForUpdateSizing()
@@ -40,37 +41,22 @@ public class HealthBarManager : Singleton<HealthBarManager>
 
     public void CreateAllHealthBars()
     {
+        RemoveAllHealthBars();
         for (int i = 1; i < WorldManager.Instance.Ship.bodyPartObjects.Count; i++)
         {
             if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
             {
-                Instantiate(healthBarPrefab, layout.transform).name = "HealthBar" + i;
-                Debug.Log("Instantiated - HealthBar" + i);
+                GameObject HealthBar = Instantiate(healthBarPrefab, HealthBarParent.transform);
+                WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = HealthBar;
             }
         }
+        Debug.Log("DONE CREATING >:C");
     }
     public void RemoveAllHealthBars()
     {
-        foreach (Transform child in layout.gameObject.transform)
+        foreach (Transform child in HealthBarParent.transform)
         {
             Destroy(child.gameObject);
-        }
-    }
-
-    public void UpdateHealthBars()
-    {
-        RemoveAllHealthBars();
-        CreateAllHealthBars();
-        AssignHealthBars();
-    }
-
-    public void AssignHealthBars()
-    {
-        numBars = WorldManager.Instance.Ship.bodyPartObjects.Count;
-        for (int i = 1; i < numBars; i++)
-        {
-            Debug.Log("i: " + i);
-            WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = layout.gameObject.transform.GetChild(i - 1).gameObject;
         }
     }
 }

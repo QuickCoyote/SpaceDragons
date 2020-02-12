@@ -339,15 +339,20 @@ public class Ship : MonoBehaviour
         }
     }
 
+    int index = 0;
+
     public void AddBodyPart(GameObject bodyPart)
     {
         Transform newPart = (Instantiate(bodyPart, bodyPartTransforms[bodyPartTransforms.Count - 1].position, bodyPartTransforms[bodyPartTransforms.Count - 1].rotation, transform) as GameObject).transform;
+
+        newPart.name = "Turret" + index;
+        index++;
 
         newPart.SetParent(transform);
         bodyPartTransforms.Add(newPart);
         bodyPartObjects.Add(newPart.gameObject);
 
-        HealthBarManager.Instance.UpdateHealthBars();
+        HealthBarManager.Instance.CreateAllHealthBars();
 
     }
 
@@ -389,7 +394,7 @@ public class Ship : MonoBehaviour
                     Destroy(bodyPartObjects[j - 1]);
                     bodyPartObjects.RemoveAt(j - 1);
                     bodyPartTransforms.RemoveAt(j - 1);
-                    HealthBarManager.Instance.UpdateHealthBars();
+                    HealthBarManager.Instance.CreateAllHealthBars();
                 }
             }
         }
@@ -398,7 +403,7 @@ public class Ship : MonoBehaviour
             Destroy(bodyPartObjects[removeIndex]);
             bodyPartObjects.RemoveAt(removeIndex);
             bodyPartTransforms.RemoveAt(removeIndex);
-            HealthBarManager.Instance.UpdateHealthBars();
+            HealthBarManager.Instance.CreateAllHealthBars();
         }
 
 
@@ -458,7 +463,7 @@ public class Ship : MonoBehaviour
             }
         }
 
-        HealthBarManager.Instance.UpdateHealthBars();
+        HealthBarManager.Instance.CreateAllHealthBars();
     }
 
     public void CheckForDie()
