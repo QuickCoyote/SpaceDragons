@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: The Electrician
   Description: A lightning based mothership that shoots lightning.
-  mothership: 2
+  Mothership: 0
+  Price: 300

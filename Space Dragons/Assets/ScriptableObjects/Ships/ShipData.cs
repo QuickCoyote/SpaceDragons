@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class ShipData : ShipDataParent
 {
-    public int price;
+    public int buyPrice;
+    public int sellPrice;
     public GameObject prefab;
     public eTurretRarity rarity;
     public eTurretType type;
@@ -14,7 +15,7 @@ public class ShipData : ShipDataParent
     public string shipName;
     public bool isSpecial;
     public string specialDesc;
-    public float specialStat;
+    public string specialStat;
 
     public enum eTurretRarity
     {
