@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: The Scorch
   Description: A fire based mothership that shoots fire in a cone.
-  mothership: 1
+  Mothership: 0
+  Price: 200

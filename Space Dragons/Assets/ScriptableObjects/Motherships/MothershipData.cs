@@ -8,7 +8,8 @@ public class MothershipData : ScriptableObject
 {
     public string Title;
     public string Description;
-    public eMotherShip mothership;
+    public eMotherShip Mothership;
+    public int Price;
 
     public enum eMotherShip
     {
