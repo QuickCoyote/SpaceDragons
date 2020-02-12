@@ -26056,16 +26056,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2145986336338120194, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_Layer
@@ -26527,16 +26517,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806653248721534960}
     m_Modifications:
-    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Name
