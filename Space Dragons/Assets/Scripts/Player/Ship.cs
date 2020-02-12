@@ -467,7 +467,6 @@ public class Ship : MonoBehaviour
     {
         if (shipHealth.healthCount <= 0)
         {
-            Debug.Log("Dead");
             if (!isDead)
             {
                 isDead = true;
