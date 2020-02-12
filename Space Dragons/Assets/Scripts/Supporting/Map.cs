@@ -58,7 +58,7 @@ public class Map : Singleton<Map>
         {
             linerenderers.Add(Instantiate(linerendererprefab, transform));
         }
-        player = WorldManager.Instance.Player;
+        player = WorldManager.Instance.Head;
         MiniMapFollow.Target = player;
 
         TargetBeingTracked = targets[0].transform.position;

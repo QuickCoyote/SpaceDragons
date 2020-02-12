@@ -5168,6 +5168,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 7
+--- !u!1 &5319783516499772944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8851336295602080983}
+  m_Layer: 0
+  m_Name: MinionSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8851336295602080983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319783516499772944}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -6.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7044326793431985132}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7044326793431985128
 GameObject:
   m_ObjectHideFlags: 0
@@ -5208,6 +5238,7 @@ Transform:
   - {fileID: 5483058025152428396}
   - {fileID: 352052761349834122}
   - {fileID: 6885627081223472631}
+  - {fileID: 8851336295602080983}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5241,6 +5272,10 @@ MonoBehaviour:
   teleportTimer: 10
   teleportSpeed: 10
   lootnum: 5
+  Minion: {fileID: 191715261875707372, guid: 464eb9711796e7e45b2a717746798ffc, type: 3}
+  SpawnPoint: {fileID: 8851336295602080983}
+  minionTimer: 60
+  minionTimerReset: 60
 --- !u!50 &2911718110754155112
 Rigidbody2D:
   serializedVersion: 4

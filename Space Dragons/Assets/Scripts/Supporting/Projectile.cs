@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bulletSpeed = 1000;
-    public float lifetime = 1.0f;
+    public float bulletSpeed = 40;
+    public float lifetime = 2f;
     public float damage = 0.0f;
     public GameObject parentobj = null;
     public Vector3 goDirection = Vector3.zero;
