@@ -14,6 +14,7 @@ public class Lightning : MonoBehaviour
 
     private void Start()
     {
+        lr = GetComponent<LineRenderer>();
         if(lr)
         {
 
@@ -21,8 +22,8 @@ public class Lightning : MonoBehaviour
         else
         {
             gameObject.AddComponent<LineRenderer>();
+            lr = GetComponent<LineRenderer>();
         }
-        lr = GetComponent<LineRenderer>();
         lr.material = WorldManager.Instance.lightningMat;
         lr.startWidth = 2;
         lr.endWidth = 2;
