@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -78,13 +77,12 @@ public class Ship : MonoBehaviour
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
 
-    bool isDead = true;
+    bool isDead = false;
 
     #endregion
 
     private void Start()
     {
-        isDead = true;
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
@@ -179,7 +177,7 @@ public class Ship : MonoBehaviour
         float min = 23;
         float max = 60;
         float scale = max - min;
-        float gauge = scale * ((float)boostFuel/(float)boostFuelMAX);
+        float gauge = scale * ((float)boostFuel / (float)boostFuelMAX);
         boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
 
         boostSliderTouch.maxValue = boostFuelMAX;
@@ -200,7 +198,8 @@ public class Ship : MonoBehaviour
                 boosting = false;
             }
 
-        } else
+        }
+        else
         {
             speed = Mathf.Lerp(speed, returnSpeed, 1.0f * Time.deltaTime);
         }
@@ -213,9 +212,10 @@ public class Ship : MonoBehaviour
         {
             AdjustJoystick();
             MoveWithJoystick();
-        } else
+        }
+        else
         {
-           Move();
+            Move();
 
         }
         CheckForDie();
@@ -250,14 +250,14 @@ public class Ship : MonoBehaviour
         if (joystickdragging)
         {
 
-                Vector3 targetPos = joystick.anchoredPosition;
-                targetPos.z = 0;
-                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-                Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
-                float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-                bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
-            
+            Vector3 targetPos = joystick.anchoredPosition;
+            targetPos.z = 0;
+            // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+
         }
 
         bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
@@ -424,9 +424,9 @@ public class Ship : MonoBehaviour
         }
         PlayerController playerController = GetComponent<PlayerController>();
         playerController.SwitchFireMode(motherShip);
-        if(val < playerController.headBullets.Length)
+        if (val < playerController.headBullets.Length)
         {
-            if(playerController.headBullets[val])
+            if (playerController.headBullets[val])
             {
                 playerController.headBullet = playerController.headBullets[val];
             }
@@ -461,10 +461,15 @@ public class Ship : MonoBehaviour
 
     public void CheckForDie()
     {
-        if (head.GetComponent<Health>().healthCount <= 0 && isDead)
+        if (shipHealth.healthCount <= 0)
         {
-            isDead = false;
-            LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Death"));
+            Debug.Log("Dead");
+            if (!isDead)
+            {
+                isDead = true;
+                LoadManager.Instance.Save();
+                LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Death"));
+            }
 
         }
     }
