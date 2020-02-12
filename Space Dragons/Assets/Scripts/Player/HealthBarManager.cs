@@ -12,6 +12,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
     int spacingX = 150;
     void Start()
     {
+        numBars = 0;
         UpdateHealthBars();
     }
 
@@ -43,17 +44,16 @@ public class HealthBarManager : Singleton<HealthBarManager>
         {
             if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
             {
-                Instantiate(healthBarPrefab, layout.transform);
-                numBars++;
+                Instantiate(healthBarPrefab, layout.transform).name = "HealthBar" + i;
+                Debug.Log("Instantiated - HealthBar" + i);
             }
         }
     }
     public void RemoveAllHealthBars()
     {
-        foreach (Transform child in layout.transform)
+        foreach (Transform child in layout.gameObject.transform)
         {
             Destroy(child.gameObject);
-            numBars--;
         }
     }
 
@@ -61,10 +61,16 @@ public class HealthBarManager : Singleton<HealthBarManager>
     {
         RemoveAllHealthBars();
         CreateAllHealthBars();
+        AssignHealthBars();
+    }
 
-        for (int i = 0; i < numBars; i++)
+    public void AssignHealthBars()
+    {
+        numBars = WorldManager.Instance.Ship.bodyPartObjects.Count;
+        for (int i = 1; i < numBars; i++)
         {
-            WorldManager.Instance.Ship.bodyPartObjects[i+1].GetComponent<Health>().healthbarObj = layout.transform.GetChild(i).gameObject;
+            Debug.Log("i: " + i);
+            WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = layout.gameObject.transform.GetChild(i - 1).gameObject;
         }
     }
 }

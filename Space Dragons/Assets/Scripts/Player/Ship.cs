@@ -244,8 +244,6 @@ public class Ship : MonoBehaviour
         {
             SortBody();
         }
-
-        HealthBarManager.Instance.UpdateHealthBars();
     }
 
     public void MoveWithJoystick()
