@@ -12,9 +12,11 @@ public class OutpostController : MonoBehaviour
     public GameObject PlayerContent;
     public GameObject ShoppingPanel;
     public Inventory PlayerInventory;
+    public Ship MotherShip;
     public List<ItemData> Items;
     public GameObject ItemLayoutPrefab;
     public TextMeshProUGUI ShopTimer;
+    public TextMeshProUGUI PlayerMoney;
     [Range(0, 2)] public int ShopDifficulty;
 
     public AnimationCurve ItemRarityCurve;
@@ -23,6 +25,7 @@ public class OutpostController : MonoBehaviour
     ItemData selectedItem;
 
     Inventory outpostInventory;
+
     List<int> numsGenerated = new List<int>();
     int sliderValue;
     float Timer = 0;
@@ -35,6 +38,7 @@ public class OutpostController : MonoBehaviour
     public void Start()
     {
         PlayerInventory = WorldManager.Instance.Ship.GetComponent<Inventory>();
+        MotherShip = WorldManager.Instance.Ship;
 
         OutpostShopSetup();
         PlayerShopSetup();
@@ -71,6 +75,8 @@ public class OutpostController : MonoBehaviour
             OutpostShopSetup();
         }
 
+        CalculateMoney();
+
         if (ShoppingPanel.activeInHierarchy)
         {
             Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
@@ -91,6 +97,49 @@ public class OutpostController : MonoBehaviour
                 ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$$$";
             }
             sliderValue = (int)slider.value;
+        }
+    }
+
+    void CalculateMoney()
+    {
+        int money = MotherShip.GetComponent<PlayerController>().money;
+        int switchCase = 0;
+
+        switchCase = money < 10000 ? 0
+            : money >= 10000 && money < 100000 ? 1
+            : money >= 100000 && money < 1000000 ? 2
+            : money >= 1000000 && money < 1000000000 ? 3
+            : 4;
+
+        switch (switchCase)
+        {
+            case 0:
+                PlayerMoney.text = money.ToString();
+                break;
+            case 1:
+                int thousands = money / 1000;
+                int hundreds = money % 1000;
+                char[] hundie = { '0' };
+                if (hundreds >= 100)
+                {
+                    hundie = hundreds.ToString().ToCharArray();
+                }
+                PlayerMoney.text = thousands.ToString() + "." + hundie[0] + "k";
+                break;
+            case 2:
+                thousands = money / 1000;
+                PlayerMoney.text = thousands.ToString() + "k";
+                break;
+            case 3:
+                int millions = money / 1000000;
+                PlayerMoney.text = millions.ToString() + "m";
+                break;
+            case 4:
+                int billions = money / 1000000000;
+                PlayerMoney.text = billions.ToString() + "b";
+                break;
+            default:
+                break;
         }
     }
 

@@ -69,8 +69,8 @@ public class Ship : MonoBehaviour
     [SerializeField] float boostrotateSpeed = 0f;
     [SerializeField] float returnrotateSpeed = 0f;
     [SerializeField] bool boosting = false;
-    [SerializeField] int boostFuel = 0;
-    [SerializeField] int boostFuelMAX = 4;
+    [SerializeField] public int boostFuel = 0;
+    [SerializeField] public int boostFuelMAX = 4;
     [SerializeField] GameObject boostParticles = null;
     [SerializeField] Slider boostSliderJoystick = null;
     [SerializeField] Slider boostSliderTouch = null;
@@ -112,6 +112,8 @@ public class Ship : MonoBehaviour
     {
         motherShip = LoadManager.Instance.saveData.motherShipType;
         shipHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
+        boostFuelMAX = LoadManager.Instance.saveData.PlayerFuelMax;
+        boostFuel = LoadManager.Instance.saveData.PlayerFuelCurrent;
         LoadManager.ShipDataSavable[] ships = LoadManager.Instance.saveData.Ships;
         if (ships != null)
         {
@@ -126,8 +128,10 @@ public class Ship : MonoBehaviour
                 }
             }
         }
-        bodyPartTransforms[0].position = LoadManager.Instance.saveData.PlayerPosition.ToVector();
-
+        foreach (Transform t in bodyPartTransforms)
+        {
+            t.position = LoadManager.Instance.saveData.PlayerPosition.ToVector();
+        }
     }
 
     public void onPressJoystick()
