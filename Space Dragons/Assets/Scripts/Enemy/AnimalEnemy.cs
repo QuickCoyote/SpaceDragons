@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : Enemy
+public class AnimalEnemy : Enemy
 {
 
     protected override void Attack()
