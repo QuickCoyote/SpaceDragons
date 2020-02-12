@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ExplodingEnemy : Enemy
+public class HumanEnemy : Enemy
 {
     protected override void Attack()
     {

@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 
-public class BossEnemy : Enemy
+public class ElfBossEnemy : Enemy
 {
-    [SerializeField] GameObject Turret1 = null;
-    [SerializeField] GameObject Turret2 = null;
-    [SerializeField] GameObject gunNozzle2 = null;
     [SerializeField] ItemObject itemPrefab = null;
+    [SerializeField] GameObject shield = null;
     [SerializeField] MapTargets maptarget = null;
 
     private void Start()
     {
         base.Start();
+        shield.SetActive(false);
         Map.Instance.AddTarget(maptarget);
     }
 
-    public float shootingTimer2 = 0.5f;
+    public float teleportTimer = 10.0f;
+    public float teleportSpeed = 10.0f;
     public float lootnum = 5.0f;
 
     protected override void Attack()
     {
+        if (shield && hp.healthCount < hp.healthMax * 0.75f && !shield.activeSelf) shield.SetActive(true);
+
         if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
@@ -30,43 +32,30 @@ public class BossEnemy : Enemy
                     GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
                     Projectile p = projectileGO.GetComponent<Projectile>();
                     p.Fire(gunNozzle.transform, attackDamage, gameObject);
-
                 }
             }
 
-            shootingTimer2 -= Time.deltaTime;
-            if (shootingTimer2 < 0.0f)
-            {
-                shootingTimer2 = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle2.transform.position, gunNozzle2.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle2.transform, attackDamage, gameObject);
-
-                }
-            }
         }
     }
     protected override void Move()
     {
+        teleportTimer -= Time.deltaTime;
+        if (teleportTimer < 0.0f)
+        {
+            teleportTimer = teleportSpeed;
+            Vector3 newlocation = new Vector3(Random.Range(10.0f, 20.0f), Random.Range(10.0f, 20.0f), 0);
+            newlocation.x *= Random.Range(-1, 1);
+            newlocation.y *= Random.Range(-1, 1);
+            WorldManager.Instance.SpawnWarpHole(transform.position);
+            transform.position += newlocation;
+            WorldManager.Instance.SpawnWarpHole(transform.position);
+        }
         target = Player.transform.position;
 
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-
-        Vector3 TurretDirection1 = target - Turret1.transform.position;
-        Vector3 TurretDirection2 = target - Turret2.transform.position;
-        
-        float angle1 = Mathf.Atan2(TurretDirection1.x, TurretDirection1.y) * Mathf.Rad2Deg;
-        Quaternion rotation1 = Quaternion.AngleAxis(-angle1, Vector3.forward);
-        Turret1.transform.rotation = Quaternion.Slerp(Turret1.transform.rotation, rotation1, rotationSpeed * 2 * Time.deltaTime);
-
-        float angle2 = Mathf.Atan2(TurretDirection2.x, TurretDirection2.y) * Mathf.Rad2Deg;
-        Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
-        Turret2.transform.rotation = Quaternion.Slerp(Turret2.transform.rotation, rotation2, rotationSpeed * 2 * Time.deltaTime);
     }
     private void OnDestroy()
     {
