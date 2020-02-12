@@ -141,22 +141,21 @@ public class PlayerController : MonoBehaviour
         if (myLightning)
         {
             myLightning.RemoveLightning();
+            myLightning = gameObject.AddComponent<Lightning>();
         }
         else
         {
-            gameObject.AddComponent<Lightning>();
+            myLightning = gameObject.AddComponent<Lightning>();
         }
 
         if (hp != GetComponent<Health>())
         {
-            gameObject.AddComponent<Lightning>().target = hp.transform.position;
+            myLightning.target = hp.transform.position;
         }
         else
         {
             return;
         }
-
-
 
         Collider2D[] enemyColliders = Physics2D.OverlapCircleAll(hp.transform.position, lightningMaxDistance);
         foreach (Collider2D col in enemyColliders)
@@ -299,18 +298,41 @@ public class PlayerController : MonoBehaviour
 
     [Header("Guard Drones")]
     [SerializeField] int guardDroneCount = 0;
-
+    [SerializeField] GameObject guardDrone = null;
+    public GameObject droneHolder = null;
+    public GameObject DronePosition1;
+    public GameObject DronePosition2;
+    public GameObject DronePosition3;
+    
     private void GuardDroneFire()
     {
-        if (guardDroneCount < 2)
+        if (guardDroneCount < 3)
         {
-            // Spawn a guard drone
+            SpawnDrone();
         }
     }
 
+    public void SpawnDrone()
+    {
+        Instantiate(guardDrone, head.transform.position, Quaternion.identity, droneHolder.transform);
+        guardDroneCount++;
+
+        for (int i = 0; i < droneHolder.transform.childCount; i++)
+        {
+            PlayerDrone atk = null; 
+            transform.GetChild(i).TryGetComponent(out atk);
+
+            if (atk)
+            {
+                atk.side = i;
+            }
+        }
+    }
+
+
     #endregion
 
-    //Controls
+        //Controls
     private bool firing = false;
 
     void Start()

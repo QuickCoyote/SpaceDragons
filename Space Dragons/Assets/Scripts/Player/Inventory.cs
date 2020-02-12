@@ -88,7 +88,6 @@ public class Inventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        int num = 0;
         inventory = new List<ItemData>();
         for (int i = 0; i < items.Keys.Count; i++)
         {

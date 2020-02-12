@@ -42,7 +42,7 @@ public class Healer : Turret
                 turretImHealing = FindTurretToHeal();
             }
 
-            turretImHealing.healthCount += healAmount;
+            turretImHealing.healthCount += healAmount * Time.deltaTime;
         }
     }
 
