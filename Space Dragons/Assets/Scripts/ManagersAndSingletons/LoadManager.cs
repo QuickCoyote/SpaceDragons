@@ -41,6 +41,8 @@ public class LoadManager : Singleton<LoadManager>
             {
                 saveData.PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthCount;
                 saveData.PlayerMoney = FindObjectOfType<PlayerController>().money;
+                saveData.PlayerFuelMax = FindObjectOfType<Ship>().boostFuelMAX;
+                saveData.PlayerFuelCurrent = FindObjectOfType<Ship>().boostFuel;
                 saveData.motherShipType = FindObjectOfType<Ship>().motherShip;
 
                 //Convert dictionary to a pair array
@@ -125,6 +127,8 @@ public class LoadManager : Singleton<LoadManager>
     {
         public float PlayerHealth;
         public int PlayerMoney;
+        public int PlayerFuelMax;
+        public int PlayerFuelCurrent;
         public Ship.eMotherShip motherShipType;
         public ItemPair[] items;
         public ShipDataSavable[] Ships;
@@ -141,6 +145,8 @@ public class LoadManager : Singleton<LoadManager>
             CurrentWave = 0;
             CurrentCycle = 0;
             PlayerPosition = new Vec3();
+            PlayerFuelMax = 4;
+            PlayerFuelCurrent = 4;
         }
 
         public void setItemsFromDictionary(Dictionary<ItemData, int> itemsDict)

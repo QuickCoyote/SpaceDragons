@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreenController : MonoBehaviour
 {
-    public EnemyWaveManager waveManager = null;
-    public PlayerController playerController = null;
     public TextMeshProUGUI wavesSurvived = null;
     public TextMeshProUGUI moneyAccumulated = null;
     public TextMeshProUGUI returnText = null;
@@ -17,17 +15,15 @@ public class DeathScreenController : MonoBehaviour
 
     public void Start()
     {
-        waveManager = WorldManager.Instance.enemyWaveManager;
-        playerController = WorldManager.Instance.PlayerController;
-        wavesSurvived.text = "Waves Survived: " + waveManager.currentWave.ToString();
-        moneyAccumulated.text = "Money Accumulated: " + playerController.money.ToString();
+        wavesSurvived.text = "Waves Survived: " + LoadManager.Instance.saveData.CurrentWave.ToString();
+        moneyAccumulated.text = "Money Accumulated: " + LoadManager.Instance.saveData.PlayerMoney.ToString();
         LoadManager.Instance.ResetSaveData();
         timer = timerMax;
     }
 
     void Update()
     {
-        returnText.text = "Tap the Button to Return to Main Menu or wait " + (int)timer + "s";
+        returnText.text = "Continuing in ... " + (int)timer + "s";
         timer -= 1 * Time.unscaledDeltaTime;
         if (timer <= 0)
         {

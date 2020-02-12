@@ -4,6 +4,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Basic Variables
+
+    public enum eFireType
+    {
+        BASIC,
+        FLAMETHROWER,
+        LIGHTNING,
+        HEALING,
+        GUARD_DRONE
+    }
+
+    public eFireType fireType = eFireType.BASIC;
+
     [Header("Control UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
@@ -25,6 +37,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float basicAttackSpeed = 0f;
     [SerializeField] float basicAttackDamage = 0f;
 
+    float dt = 0;
+
+    #endregion
+
+    #region Basic
+
+    public void BasicFire()
+    {
+        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
+        Projectile projectile = projectileGO.GetComponent<Projectile>();
+        projectile.parentobj = head;
+        projectile.damage = attackDamage;
+        projectile.Fire();
+    }
+
     #endregion
 
     #region Flame
@@ -35,6 +62,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float flameAttackangle = 0f;
     [SerializeField] float flameAttackSpeed = 0f;
     [SerializeField] float flameAttackDamage = 0f;
+
+    private void FlameFire()
+    {
+        Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
+        Vector3 projectileDirection = rotAngle * head.transform.up;
+
+        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
+        Projectile projectile = projectileGO.GetComponent<Projectile>();
+        projectile.parentobj = head;
+        projectile.damage = attackDamage;
+        projectile.goDirection = projectileDirection;
+        projectile.lifetime = flameLifeSpan;
+        projectile.bulletSpeed = flameSpeed;
+        float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        projectile.sound = "null";
+        projectile.Fire();
+    }
+
 
     #endregion
 
@@ -171,6 +217,81 @@ public class PlayerController : MonoBehaviour
     [Header("Healing Attacks")]
     [SerializeField] float healingSpeed = 0f;
     [SerializeField] float healingAmount = 0f;
+    Health HealthImHealing = null;
+
+    private void HealthyFire()
+    {
+        dt += Time.deltaTime;
+        if (dt >= healingSpeed)
+        {
+            if (HealthImHealing.healthCount >= HealthImHealing.healthMax)
+            {
+                HealthImHealing = FindObjectToHeal();
+            }
+
+            // Deal Damage to Enemy
+            Health enemyHealth = FindEnemyToDamage();
+            if(enemyHealth)
+            {
+                enemyHealth.healthCount -= healingAmount * Time.deltaTime;
+            }
+
+            // Heal
+            HealthImHealing.healthCount += healingAmount * Time.deltaTime;
+        }
+    }
+
+    public Health FindEnemyToDamage()
+    {
+        Health enemy = null;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(head.transform.position, 10);
+
+        foreach(Collider2D collider in colliders)
+        {
+            if(collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
+            {
+                collider.TryGetComponent(out enemy);
+
+                if(enemy)
+                {
+                    return enemy;
+                }
+            }
+        }
+
+        return enemy;
+    }
+
+    public Health FindObjectToHeal()
+    {
+        List<GameObject> turretobjs = WorldManager.Instance.Ship.bodyPartObjects;
+        Health turretToHeal = null;
+
+        foreach (GameObject obj in turretobjs)
+        {
+            Health health;
+            if (obj == null)
+            {
+                return GetComponent<Health>();
+            }
+            obj.TryGetComponent(out health);
+
+            if (health != null)
+            {
+                if (turretToHeal == null)
+                {
+                    turretToHeal = obj.GetComponent<Health>();
+                }
+                else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+                {
+                    turretToHeal = obj.GetComponent<Health>();
+                }
+            }
+        }
+
+        return turretToHeal;
+    }
 
     #endregion
 
@@ -178,6 +299,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("Guard Drones")]
     [SerializeField] int guardDroneCount = 0;
+
+    private void GuardDroneFire()
+    {
+        if (guardDroneCount < 2)
+        {
+            // Spawn a guard drone
+        }
+    }
 
     #endregion
 
@@ -196,7 +325,7 @@ public class PlayerController : MonoBehaviour
     {
         money = LoadManager.Instance.saveData.PlayerMoney;
         inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
-        
+
     }
 
     public void onPressFire()
@@ -277,17 +406,6 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public enum eFireType
-    {
-        BASIC,
-        FLAMETHROWER,
-        LIGHTNING,
-        HEALING,
-        GUARD_DRONE
-    }
-
-    public eFireType fireType = eFireType.BASIC;
-
     public void SwitchFireMode(Ship.eMotherShip eMotherShipType)
     {
         switch (eMotherShipType)
@@ -340,49 +458,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case eFireType.GUARD_DRONE:
                 fireType = eFireType.GUARD_DRONE;
-                ShieldingFire();
+                GuardDroneFire();
                 break;
         }
     }
-
-    private void ShieldingFire()
-    {
-        if (guardDroneCount < 2)
-        {
-            // Spawn a guard drone
-        }
-    }
-
-    private void HealthyFire()
-    {
-        //do a heal boi
-    }
-
-    private void FlameFire()
-    {
-        Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
-        Vector3 projectileDirection = rotAngle * head.transform.up;
-
-        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
-        Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.parentobj = head;
-        projectile.damage = attackDamage;
-        projectile.goDirection = projectileDirection;
-        projectile.lifetime = flameLifeSpan;
-        projectile.bulletSpeed = flameSpeed;
-        float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
-        projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        projectile.sound = "null";
-        projectile.Fire();
-    }
-
-    public void BasicFire()
-    {
-        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
-        Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.parentobj = head;
-        projectile.damage = attackDamage;
-        projectile.Fire();
-    }
-
 }

@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI playtext = null;
+    [SerializeField] Button playbutton = null;
 
-    public void Start()
+    public void Update()
     {
-        if (LoadManager.Instance.saveData == new LoadManager.SaveData())
+        if (LoadManager.Instance.saveData.CurrentWave == 0)
         {
             playtext.text = "NEW GAME";
         }
@@ -22,6 +24,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        playbutton.interactable = false;
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("SpaceWorld"));
     }
 
@@ -33,7 +36,7 @@ public class MainMenu : MonoBehaviour
     public void ResetSave()
     {
         LoadManager.Instance.ResetSaveData();
-        playtext.text = "New Game";
+       // playtext.text = "New Game";
     }
 
 }
