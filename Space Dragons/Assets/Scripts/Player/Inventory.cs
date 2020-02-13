@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject inventoryDisplay = null;
     [SerializeField] GameObject closeInventory = null;
     [SerializeField] GameObject itemInfoPanel = null;
+    [SerializeField] GameObject inventoryUI = null;
     [SerializeField] Image itemInfoPanelImage = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelName = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelDesc = null;
@@ -119,14 +120,10 @@ public class Inventory : MonoBehaviour
     {
         inventoryDisplay.SetActive(!inventoryDisplay.activeSelf);
         closeInventory.SetActive(!closeInventory.activeSelf);
-        if (inventoryDisplay.activeSelf)
-        {
-            Time.timeScale = 0.0f;
-        }
-        else
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        if (!inventoryDisplay.activeSelf)
         {
             ToggleItemInfo(false);
-            Time.timeScale = 1.0f;
         }
     }
 
