@@ -1835,16 +1835,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: DeathPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 196209910753800035, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: shipToTest
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1905,11 +1895,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Object
       objectReference: {fileID: 0}
-    - target: {fileID: 2316629227582956570, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: HealthBarParent
-      value: 
-      objectReference: {fileID: 716196383}
     - target: {fileID: 6435026194209917794, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1934,12 +1919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b14fc1ae4402b49839a5b2dd838c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &716196383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1976199890179452553, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 716196381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!213 &739836999
 Sprite:
   m_ObjectHideFlags: 0
