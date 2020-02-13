@@ -51,7 +51,7 @@ public class OrcBossEnemy : Enemy
 
     protected override void Attack()
     {
-    //    if (IsPlayerInSight())
+        if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
             if (shootingTimer <= 0.0f)

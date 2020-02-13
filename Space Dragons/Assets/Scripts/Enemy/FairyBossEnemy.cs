@@ -7,10 +7,22 @@ public class FairyBossEnemy : Enemy
     [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] MapTargets maptarget = null;
 
-    private void Start()
+    new private void Start()
     {
         base.Start();
         Map.Instance.AddTarget(maptarget);
+    }
+
+    new public void Die()
+    {
+        Map.Instance.RemoveTarget(maptarget);
+        for (int i = 0; i < lootnum; i++)
+        {
+            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
+            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
+            g.image.sprite = g.itemData.itemImage;
+        }
+        base.Die();
     }
 
     public float lootnum = 5.0f;
