@@ -72,8 +72,8 @@ public class ElfBossEnemy : Enemy
         {
             teleportTimer = teleportSpeed;
             Vector3 newlocation = new Vector3(Random.Range(10.0f, 20.0f), Random.Range(10.0f, 20.0f), 0);
-            newlocation.x *= Random.Range(-1, 1);
-            newlocation.y *= Random.Range(-1, 1);
+            newlocation.x *= (Random.Range(0, 2) == 0) ? 1 : -1;
+            newlocation.y *= (Random.Range(0, 2) == 0) ? 1 : -1;
             WorldManager.Instance.SpawnWarpHole(transform.position);
             animator.SetTrigger("Warp");
             transform.position += newlocation;

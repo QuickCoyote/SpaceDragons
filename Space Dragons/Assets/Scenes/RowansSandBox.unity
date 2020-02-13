@@ -1613,22 +1613,17 @@ PrefabInstance:
     - target: {fileID: 1635744926854649109, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1635744926854649109, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
       propertyPath: m_Name
       value: AnimalBossEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044326793431985128, guid: 103732b400b4f364ba12744b3969093a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985132, guid: 103732b400b4f364ba12744b3969093a,
         type: 3}
@@ -3694,16 +3689,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635744926854649109, guid: c811b7ace2da97d4e9553787e70546ae,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635744926854649109, guid: c811b7ace2da97d4e9553787e70546ae,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: c811b7ace2da97d4e9553787e70546ae,
         type: 3}
       propertyPath: m_Name
@@ -5247,25 +5232,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635744926854649109, guid: 9ca50ea2b16b1934a8484b0ab91ef4e7,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635744926854649109, guid: 9ca50ea2b16b1934a8484b0ab91ef4e7,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: 9ca50ea2b16b1934a8484b0ab91ef4e7,
         type: 3}
       propertyPath: m_Name
       value: FairyBossEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044326793431985128, guid: 9ca50ea2b16b1934a8484b0ab91ef4e7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985132, guid: 9ca50ea2b16b1934a8484b0ab91ef4e7,
         type: 3}
@@ -7053,35 +7023,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635744926854649109, guid: d66956fff9ade264f91289260ab702a0,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635744926854649109, guid: d66956fff9ade264f91289260ab702a0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420060800769013324, guid: d66956fff9ade264f91289260ab702a0,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420060800769013324, guid: d66956fff9ade264f91289260ab702a0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: d66956fff9ade264f91289260ab702a0,
         type: 3}
       propertyPath: m_Name
       value: HumanBossEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044326793431985128, guid: d66956fff9ade264f91289260ab702a0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985132, guid: d66956fff9ade264f91289260ab702a0,
         type: 3}
@@ -8347,25 +8292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635744926854649109, guid: d2bc8bbd60e8b6345bef3d74a83612df,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635744926854649109, guid: d2bc8bbd60e8b6345bef3d74a83612df,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: d2bc8bbd60e8b6345bef3d74a83612df,
         type: 3}
       propertyPath: m_Name
       value: ElfBossEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7044326793431985128, guid: d2bc8bbd60e8b6345bef3d74a83612df,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985132, guid: d2bc8bbd60e8b6345bef3d74a83612df,
         type: 3}
@@ -8561,6 +8491,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 105268958, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 130418216, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 134010909, guid: 9cf8245b2f173ab449c7aafd54978c1b, type: 3}
@@ -10105,12 +10039,12 @@ PrefabInstance:
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.7
       objectReference: {fileID: 0}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 106.5
       objectReference: {fileID: 0}
     - target: {fileID: 196209910753800036, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
@@ -10161,6 +10095,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 228751275253496378, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}

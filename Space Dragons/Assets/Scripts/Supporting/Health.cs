@@ -45,6 +45,7 @@ public class Health : MonoBehaviour
         {
             if (healthbar)
             {
+                healthbar.maxValue = healthMax;
                 healthbar.value = healthCount;
                 healthbar.transform.rotation = Quaternion.identity;
             }
