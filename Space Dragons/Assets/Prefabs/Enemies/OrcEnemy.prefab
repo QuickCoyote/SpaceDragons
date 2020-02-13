@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 7661112003638043139}
   m_Layer: 0
-  m_Name: HeavyEnemy
+  m_Name: OrcEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   healthbarObj: {fileID: 3261014608302337697}
   healthMax: 60
   healthCount: 60
+  objectIndex: 0
 --- !u!95 &3035230043823972305
 Animator:
   serializedVersion: 3

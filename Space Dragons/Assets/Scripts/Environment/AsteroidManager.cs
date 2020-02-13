@@ -32,7 +32,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
     {
         if (AsteroidsDestroyed > 8)
         {
-            Vector3 location = WorldManager.Instance.Player.transform.position + new Vector3(100, 100, 0); //select spot for cluster
+            Vector3 location = WorldManager.Instance.Head.transform.position + new Vector3(100, 100, 0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
                 asteroids.Add(Instantiate(asteroidPrefab, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid

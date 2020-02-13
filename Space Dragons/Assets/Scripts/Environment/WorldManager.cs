@@ -11,7 +11,7 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public GameObject Warphole = null;
     [SerializeField] Rigidbody2D[] objectsToRender = null;
 
-    [SerializeField] public GameObject Player = null;
+    [SerializeField] public GameObject Head = null;
     [SerializeField] public PlayerController PlayerController = null;
     [SerializeField] public Ship Ship;
 
@@ -22,9 +22,9 @@ public class WorldManager : Singleton<WorldManager>
     private void Start()
     {
         ResetList();
-        if(Player == null)
+        if(Head == null)
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
+            Head = GameObject.FindGameObjectWithTag("Player");
         }
     }
 
@@ -122,7 +122,7 @@ public class WorldManager : Singleton<WorldManager>
         ResetList();
         foreach (Rigidbody2D go in objectsToRender)
         {
-            if((go.transform.position - Player.transform.position).magnitude > 150)
+            if((go.transform.position - Head.transform.position).magnitude > 150)
             {
                 go.gameObject.SetActive(false);
             }

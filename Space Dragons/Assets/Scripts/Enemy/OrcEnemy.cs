@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HeavyEnemy : Enemy
+public class OrcEnemy : Enemy
 {
     public float stoppingDistance;
 

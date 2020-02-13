@@ -4893,6 +4893,36 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &1296353699978481882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2317404949597390036}
+  m_Layer: 0
+  m_Name: GunNozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2317404949597390036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296353699978481882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7044326793431985132}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3181555817066889456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,6 +5004,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3769657145478141776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7623418618967593756}
+  m_Layer: 0
+  m_Name: MinionSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7623418618967593756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3769657145478141776}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: -5.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7044326793431985132}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7044326793431985128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,6 +5043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7044326793431985132}
+  - component: {fileID: 849510563009335123}
   - component: {fileID: 2911718110754155112}
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
@@ -5011,9 +5072,42 @@ Transform:
   - {fileID: 671673852584926175}
   - {fileID: 1635744927335979015}
   - {fileID: 5483058025152428396}
+  - {fileID: 2317404949597390036}
+  - {fileID: 7623418618967593756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849510563009335123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044326793431985128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c96dfadb0db4147a1b49f2a7531280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
+    type: 3}
+  gunNozzle: {fileID: 1296353699978481882}
+  speed: 0
+  rotationSpeed: 0
+  shootingSpeed: 0
+  sightDistance: 0
+  attackDamage: 0
+  difficulty: 3
+  DamageParticles: {fileID: 882811326204626365}
+  Player: {fileID: 0}
+  itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
+    type: 3}
+  maptarget: {fileID: 6088364536433870511}
+  lootnum: 5
+  Minion: {fileID: 191715261875707372, guid: 754d1740f297f95408e9b8ec5bb16fee, type: 3}
+  SpawnPoint: {fileID: 7623418618967593756}
+  minionTimer: 60
+  minionTimerReset: 60
 --- !u!50 &2911718110754155112
 Rigidbody2D:
   serializedVersion: 4
@@ -5298,6 +5392,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 689361259355220498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6088364536433870511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6768678382184082621, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 689361259355220498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1486c9a35ee5c44b70c49b5ba50a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &827332386000614654
 PrefabInstance:
   m_ObjectHideFlags: 0

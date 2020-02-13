@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void Start()
     {
-        Player = WorldManager.Instance.Player;
+        Player = WorldManager.Instance.Head;
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
         DamageParticles.SetActive(false);

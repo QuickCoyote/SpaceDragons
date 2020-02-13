@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &351495007370847563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5634337031455760749}
+  m_Layer: 0
+  m_Name: GunNozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5634337031455760749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351495007370847563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7044326793431985132}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &448344574535473396
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,6 +5004,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5345051902791332293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5640462163657188155}
+  m_Layer: 0
+  m_Name: MinionSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5640462163657188155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345051902791332293}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7044326793431985132}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7044326793431985128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,6 +5043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7044326793431985132}
+  - component: {fileID: 3138790075800335952}
   - component: {fileID: 2911718110754155112}
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
@@ -5011,9 +5072,42 @@ Transform:
   - {fileID: 671673852584926175}
   - {fileID: 1635744927335979015}
   - {fileID: 5483058025152428396}
+  - {fileID: 5634337031455760749}
+  - {fileID: 5640462163657188155}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3138790075800335952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044326793431985128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53008d0509c2e044c972ef57edc4c430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 8772730476961618180, guid: 137d958d411bbb146ac895c27c625816,
+    type: 3}
+  gunNozzle: {fileID: 351495007370847563}
+  speed: 0
+  rotationSpeed: 0
+  shootingSpeed: 0
+  sightDistance: 0
+  attackDamage: 0
+  difficulty: 3
+  DamageParticles: {fileID: 882811326204626365}
+  Player: {fileID: 0}
+  itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
+    type: 3}
+  maptarget: {fileID: 6088364536433870511}
+  lootnum: 5
+  Minion: {fileID: 7044326793431985128, guid: 09c1a6d648b094e49b3e31e36635b894, type: 3}
+  SpawnPoint: {fileID: 5640462163657188155}
+  minionTimer: 60
+  minionTimerReset: 60
 --- !u!50 &2911718110754155112
 Rigidbody2D:
   serializedVersion: 4
@@ -5281,6 +5375,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 689361259355220498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6088364536433870511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6768678382184082621, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 689361259355220498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1486c9a35ee5c44b70c49b5ba50a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &827332386000614654
 PrefabInstance:
   m_ObjectHideFlags: 0

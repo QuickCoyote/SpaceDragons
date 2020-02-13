@@ -22,7 +22,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
 
     void Start()
     {
-        Player = WorldManager.Instance.Player;
+        Player = WorldManager.Instance.Head;
         currentWave = LoadManager.Instance.saveData.CurrentWave;
         cycleCount = LoadManager.Instance.saveData.CurrentCycle;
         if (currentWave != 0)

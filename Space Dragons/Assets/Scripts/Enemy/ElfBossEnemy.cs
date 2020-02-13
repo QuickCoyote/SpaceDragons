@@ -17,6 +17,22 @@ public class ElfBossEnemy : Enemy
     public float teleportSpeed = 10.0f;
     public float lootnum = 5.0f;
 
+
+    [SerializeField] GameObject Minion = null;
+    [SerializeField] Transform SpawnPoint = null;
+    public float minionTimer = 60.0f;
+    public float minionTimerReset = 60.0f;
+    public void SpawnMinions()
+    {
+        minionTimer -= Time.deltaTime;
+        if (minionTimer < 0.0f)
+        {
+            minionTimer = minionTimerReset;
+            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
+            EnemyWaveManager.Instance.aliveEnemies++;
+        }
+    }
+
     protected override void Attack()
     {
         if (shield && hp.healthCount < hp.healthMax * 0.75f && !shield.activeSelf) shield.SetActive(true);
