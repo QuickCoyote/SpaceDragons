@@ -63,29 +63,9 @@ public class HomingMissile : MonoBehaviour
         transform.rotation = firepoint.transform.rotation;
     }
 
-    public void Fire()
-    {
-        if (sound != "null")
-        {
-            if (sound == "" || sound == null)
-            {
-                AudioManager.Instance.Play("Fire01");
-            }
-            else
-            {
-                AudioManager.Instance.Play(sound);
-            }
-        }
-        if (goDirection == Vector3.zero)
-        {
-            goDirection = parentobj.transform.up;
-        }
-        transform.rotation = parentobj.transform.rotation;
-    }
-
     public void Move()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position, Vector3.forward), rotateSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Vector3.forward, target.transform.position - transform.position), rotateSpeed);
         goDirection = transform.up;
         transform.position += (goDirection * bulletSpeed * Time.smoothDeltaTime);
 

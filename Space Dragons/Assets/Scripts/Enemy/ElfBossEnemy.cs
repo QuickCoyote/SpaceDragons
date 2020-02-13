@@ -6,11 +6,23 @@ public class ElfBossEnemy : Enemy
     [SerializeField] GameObject shield = null;
     [SerializeField] MapTargets maptarget = null;
 
-    private void Start()
+    new private void Start()
     {
         base.Start();
         shield.SetActive(false);
         Map.Instance.AddTarget(maptarget);
+    }
+
+    new public void Die()
+    {
+        Map.Instance.RemoveTarget(maptarget);
+        for (int i = 0; i < lootnum; i++)
+        {
+            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
+            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
+            g.image.sprite = g.itemData.itemImage;
+        }
+        base.Die();
     }
 
     public float teleportTimer = 10.0f;
@@ -63,6 +75,7 @@ public class ElfBossEnemy : Enemy
             newlocation.x *= Random.Range(-1, 1);
             newlocation.y *= Random.Range(-1, 1);
             WorldManager.Instance.SpawnWarpHole(transform.position);
+            animator.SetTrigger("Warp");
             transform.position += newlocation;
             WorldManager.Instance.SpawnWarpHole(transform.position);
         }
@@ -73,15 +86,5 @@ public class ElfBossEnemy : Enemy
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
-    private void OnDestroy()
-    {
-        Map.Instance.RemoveTarget(maptarget);
 
-        for (int i = 0; i < lootnum; i++)
-        {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
-        }
-    }
 }

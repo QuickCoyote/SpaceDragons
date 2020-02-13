@@ -8,6 +8,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
 {
     [SerializeField] float waveSpawnTimer = 25.0f;
 
+    [SerializeField] List<GameObject> Bosses = new List<GameObject>();
     [SerializeField] List<Wave> waves = new List<Wave>();
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
@@ -32,6 +33,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                 waves[currentWave].StartWave();
             }
             dt = 0.0f;
+            currentWave++;
         }
     }
 
@@ -48,18 +50,36 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                     waves[currentWave].StartWave();
                 }
                 dt = 0.0f;
-                currentWave++;
-            }
-        }
 
-        if (currentWave == 10)
-        {
-            currentWave = 0;
-            cycleCount++;
+                if (currentWave == 10)
+                {
+                    for (int i = 0; i <= cycleCount; i++)
+                    {
+                        SpawnRandomBoss();
+                    }
+                    currentWave = 0;
+                    cycleCount++;
+                }
+                else
+                {
+                    currentWave++;
+                }
+            }
         }
 
         WaveText.text = "Wave: " + (currentWave + (cycleCount * 10));
         EnemiesText.text = "Enemies Alive: " + aliveEnemies;
+    }
+
+    public void SpawnRandomBoss()
+    {
+        Vector3 newlocation = new Vector3(Random.Range(30.0f, 50.0f), Random.Range(30.0f, 50.0f), 0);
+        newlocation.x *= Random.Range(-1, 1);
+        newlocation.y *= Random.Range(-1, 1);
+        Vector3 spawnPosition = new Vector3(Player.transform.position.x + newlocation.x, Player.transform.position.y + newlocation.y, 0.0f);
+
+         Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPosition, Quaternion.identity, null).GetComponent<Enemy>().Player = WorldManager.Instance.Head;
+         EnemyWaveManager.Instance.aliveEnemies++;
     }
 
     public void ReduceCycleCount(int amount)

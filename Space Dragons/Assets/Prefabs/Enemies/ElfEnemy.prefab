@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5187557918588629459}
   - component: {fileID: 5292899726065166805}
   m_Layer: 0
-  m_Name: SmartEnemy
+  m_Name: ElfEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   healthbarObj: {fileID: 3478054502161386500}
   healthMax: 25
   healthCount: 25
+  objectIndex: 0
 --- !u!58 &5187557918588629459
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5163,13 +5164,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7301376119133040368}
-  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 191715261875707368}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &215561458568129002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5212,7 +5213,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: cea7d03c2bf7e75459090d887327a834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.56, y: 2.72}
   m_AdaptiveModeThreshold: 0.5

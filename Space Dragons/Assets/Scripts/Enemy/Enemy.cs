@@ -12,6 +12,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] public float sightDistance;
     [SerializeField] public float attackDamage;
     [SerializeField] public EnemyDifficutlty difficulty;
+    [SerializeField] public Animator animator;
     [SerializeField] protected GameObject DamageParticles = null;
 
     public enum EnemyDifficutlty
@@ -35,6 +36,7 @@ public abstract class Enemy : MonoBehaviour
         Player = WorldManager.Instance.Head;
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
+        animator = GetComponent<Animator>();
         DamageParticles.SetActive(false);
     }
 
@@ -45,9 +47,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (hp.healthCount <= 0.0f)
         {
-            WorldManager.Instance.SpawnRandomExplosion(transform.position);
-            EnemyWaveManager.Instance.aliveEnemies--;
-            Destroy(gameObject);
+            Die();
         } else if (hp.healthCount < hp.healthMax/2 && !DamageParticles.activeSelf)
         {
             DamageParticles.SetActive(true);
@@ -56,6 +56,13 @@ public abstract class Enemy : MonoBehaviour
 
     protected abstract void Move();
     protected abstract void Attack();
+
+    public void Die()
+    {
+        WorldManager.Instance.SpawnRandomExplosion(transform.position);
+        EnemyWaveManager.Instance.aliveEnemies--;
+        Destroy(gameObject);
+    }
 
     public bool IsPlayerInSight()
     {

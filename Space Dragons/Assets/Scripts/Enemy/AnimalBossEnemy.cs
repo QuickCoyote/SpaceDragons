@@ -8,11 +8,24 @@ public class AnimalBossEnemy : Enemy
     [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] MapTargets maptarget = null;
 
-    private void Start()
+    new private void Start()
     {
         base.Start();
         Map.Instance.AddTarget(maptarget);
         shootingSpeedIncrease = shootingSpeed / 2;
+
+    }
+
+    new public void Die()
+    {
+        Map.Instance.RemoveTarget(maptarget);
+        for (int i = 0; i < lootnum; i++)
+        {
+            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
+            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
+            g.image.sprite = g.itemData.itemImage;
+        }
+        base.Die();
     }
 
     public float shootingSpeedIncrease = 2.0f;
@@ -87,16 +100,5 @@ public class AnimalBossEnemy : Enemy
         float angle2 = Mathf.Atan2(TurretDirection2.x, TurretDirection2.y) * Mathf.Rad2Deg;
         Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
         Turret2.transform.rotation = Quaternion.Slerp(Turret2.transform.rotation, rotation2, rotationSpeed * 2 * Time.deltaTime);
-    }
-    private void OnDestroy()
-    {
-        Map.Instance.RemoveTarget(maptarget);
-
-        for (int i = 0; i < lootnum; i++)
-        {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
-        }
     }
 }

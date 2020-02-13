@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float bulletSpeed = 40;
+    public float bulletSpeed;
     public float lifetime = 2f;
     public float damage = 0.0f;
     public GameObject parentobj = null;
@@ -53,10 +53,7 @@ public class Projectile : MonoBehaviour
                 AudioManager.Instance.Play(sound);
             }
         }
-        if (goDirection == Vector3.zero)
-        {
-            goDirection = firepoint.transform.up;
-        }
+        goDirection = firepoint.transform.up;
         transform.rotation = firepoint.transform.rotation;
     }
 
