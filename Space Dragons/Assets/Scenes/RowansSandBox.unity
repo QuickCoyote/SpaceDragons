@@ -3704,16 +3704,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2911718110754155112, guid: c811b7ace2da97d4e9553787e70546ae,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2911718110754155112, guid: c811b7ace2da97d4e9553787e70546ae,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7044326793431985128, guid: c811b7ace2da97d4e9553787e70546ae,
         type: 3}
       propertyPath: m_Name
