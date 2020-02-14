@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GasStationController : MonoBehaviour
 {
+    public GameObject GasStationCanvas;
     public Slider StationFuel;
     public GameObject StationContent;
     public Slider PlayerFuel;
@@ -13,50 +14,21 @@ public class GasStationController : MonoBehaviour
     public GameObject CountMarker;
     [Range(0, 2)] public int ShopDifficulty;
 
-    Ship playerShip;
+    public Ship playerShip;
+    int GasCount;
 
     void Start()
     {
-        //playerShip = WorldManager.Instance.Ship;
-        StationSetup(); 
-    }
-
-    public void StationSetup()
-    {
-        switch (ShopDifficulty)
-        {
-            case 0:
-                for (int i = 0; i < 4; i++)
-                {
-                    GameObject go = Instantiate(CountMarker);
-                    go.transform.SetParent(StationContent.transform);
-                    go.transform.localScale = new Vector3(1, 1, 1);
-                }
-                StationFuel.minValue = 0;
-                StationFuel.maxValue = 4;
-                StationFuel.value = StationFuel.maxValue;
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
+        playerShip = WorldManager.Instance.Ship;
+        StationSetup();
+        PlayerSetup();
+        GasStationCanvas.SetActive(false);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F6))
-        {
-            GameObject go = Instantiate(CountMarker);
-
-            go.transform.SetParent(StationContent.transform);
-            go.transform.localScale = new Vector3(1, 1, 1);
-            StationFuel.minValue = 0;
-            StationFuel.maxValue = StationContent.transform.childCount;
-        }
-        if(Input.GetKeyDown(KeyCode.F7))
+        #region Dev Tools
+        if (Input.GetKeyDown(KeyCode.F7))
         {
             StationFuel.value++;
         }
@@ -64,5 +36,105 @@ public class GasStationController : MonoBehaviour
         {
             StationFuel.value--;
         }
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            OpenGasStation();
+        }
+        else if(Input.GetKeyDown(KeyCode.F6))
+        {
+            CloseGasStation();
+        }
+        #endregion
+
+
     }
+
+    public void StationSetup()
+    {
+        switch (ShopDifficulty)
+        {
+            case 0:
+                StationGasCreate(4);
+                break;
+            case 1:
+                StationGasCreate(8);
+                break;
+            case 2:
+                StationGasCreate(12);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void StationGasCreate(int num)
+    {
+        foreach (Transform child in StationContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < num; i++)
+        {
+            GameObject go = Instantiate(CountMarker);
+            go.transform.SetParent(StationContent.transform);
+            go.transform.localScale = new Vector3(1, 1, 1);
+        }
+        StationFuel.minValue = 0;
+        StationFuel.maxValue = num;
+        StationFuel.value = StationFuel.maxValue;
+        GasCount = num;
+    }
+
+    public void PlayerSetup()
+    {
+        foreach (Transform child in PlayerContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < playerShip.boostFuelMAX; i++)
+        {
+            GameObject go = Instantiate(CountMarker);
+            go.transform.SetParent(PlayerContent.transform);
+            go.transform.localScale = new Vector3(1, 1, 1);
+        }
+        PlayerFuel.minValue = 0;
+        PlayerFuel.maxValue = playerShip.boostFuelMAX;
+        PlayerFuel.value = playerShip.boostFuel;    
+    }
+
+    public void FullRefuel()
+    {
+        for (int i = playerShip.boostFuel; i < playerShip.boostFuelMAX; i++)
+        {
+            playerShip.boostFuel++;
+            PlayerFuel.value++;
+            GasCount--;
+            StationFuel.value--;
+
+        }
+    }
+
+    public void OpenGasStation()
+    {
+        GasStationCanvas.SetActive(true);
+        PlayerSetup();
+        Time.timeScale = 0;
+    }
+
+    public void CloseGasStation()
+    {
+        GasStationCanvas.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            OpenGasStation();
+        }
+    }
+
 }
