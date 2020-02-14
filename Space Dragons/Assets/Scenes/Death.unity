@@ -1010,7 +1010,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &2834476428201226654
 GameObject:
@@ -1611,6 +1611,7 @@ MonoBehaviour:
   wavesSurvived: {fileID: 2834476429218515147}
   moneyAccumulated: {fileID: 2944123744651237002}
   returnText: {fileID: 2834476428307526974}
+  button: {fileID: 5622081853083149523}
 --- !u!222 &2882586771070653890
 CanvasRenderer:
   m_ObjectHideFlags: 0

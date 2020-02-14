@@ -5,25 +5,25 @@ using UnityEngine;
 public class AsteroidManager : Singleton<AsteroidManager>
 {
     [SerializeField] GameObject asteroidBreakupPrefab = null;
-    int ClusterMinimum = 500;
-    int ClusterMaximum = 600;
-    [SerializeField] Asteroid asteroidPrefab;
+    [SerializeField] Asteroid[] asteroidPrefabs;
+
     public List<Asteroid> asteroids = new List<Asteroid>();
-    int AsteroidMinimum = 4;
-    int AsteroidMaximum = 8;
+
+    int ClusterNum = 800;
+    int AsteroidMinimum = 2;
+    int AsteroidMaximum = 5;
 
     public int AsteroidsDestroyed = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         Vector2 worldSize = WorldManager.Instance.WorldCorner.position;
-        for (int i = 0; i < Random.Range(ClusterMinimum, ClusterMaximum); i++)
+        for (int i = 0; i < ClusterNum; i++)
         {
             Vector3 location = new Vector3(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y),0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefab, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
+                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0,3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
             }
         }
     }
@@ -35,7 +35,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             Vector3 location = WorldManager.Instance.Head.transform.position + new Vector3(100, 100, 0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefab, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
+                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
             }
             AsteroidsDestroyed = 0;
         }

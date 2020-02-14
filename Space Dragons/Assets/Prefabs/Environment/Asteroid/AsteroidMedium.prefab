@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 336725093998916274}
   - component: {fileID: 336725093998916277}
   - component: {fileID: 7320261426538231230}
-  m_Layer: 0
-  m_Name: Asteroid
-  m_TagString: Untagged
+  m_Layer: 13
+  m_Name: AsteroidMedium
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336725093998916287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.88999987, y: -1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 6887579499598865312}
   - {fileID: 130314869862556699}
@@ -123,8 +123,9 @@ MonoBehaviour:
   - {fileID: -6565937354857456132, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
-  asteroid: {fileID: 336725093998916287}
-  sizeAndWeight: 0
+  asteroidSmaller: {fileID: 336725093998916287, guid: 376037bd2e2e70d41a9eb36eb6345b37,
+    type: 3}
+  sizeAndWeight: 0.5
 --- !u!50 &336725093998916274
 Rigidbody2D:
   serializedVersion: 4
@@ -192,7 +193,7 @@ GameObject:
   - component: {fileID: 6887579499598865312}
   - component: {fileID: 7400748993560705820}
   - component: {fileID: 4768653625723590067}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5058,6 +5059,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 336725093998916275}
     m_Modifications:
+    - target: {fileID: 2145986334364279749, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2145986335121630409, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_MaxValue
@@ -5067,6 +5073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
@@ -5178,6 +5189,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2145986335355972861, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986335496878876, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986335496878878, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986335946547688, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5187,6 +5218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145986336338120194, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}

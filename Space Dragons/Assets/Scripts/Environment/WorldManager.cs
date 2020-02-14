@@ -10,7 +10,6 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public List<GameObject> Explosions = null;
     [SerializeField] public GameObject Warphole = null;
     [SerializeField] Rigidbody2D[] objectsToRender = null;
-
     [SerializeField] public GameObject Head = null;
     [SerializeField] public PlayerController PlayerController = null;
     [SerializeField] public Ship Ship;
@@ -27,6 +26,49 @@ public class WorldManager : Singleton<WorldManager>
             Head = GameObject.FindGameObjectWithTag("Player");
         }
     }
+
+    private void FixedUpdate()
+    {
+        ResetList();
+        foreach (Rigidbody2D go in objectsToRender)
+        {
+            if((go.transform.position - Head.transform.position).magnitude > 150)
+            {
+                if (go.gameObject.layer == 13)
+                {
+                    go.gameObject.SetActive(false);
+                } else
+                {
+                    go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
+                }
+            }
+            else
+            {
+                if (go.gameObject.layer == 13) go.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void ResetList()
+    {
+        objectsToRender = FindObjectsOfType<Rigidbody2D>();
+    }
+
+    #region Spawner Methods
+
+    public void SpawnRandomExplosion(Vector3 target)
+    {
+        Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
+    }
+
+
+    public void SpawnWarpHole(Vector3 target)
+    {
+        Instantiate(Warphole, target, Quaternion.identity, null);
+    }
+    #endregion
+
+    #region Return Item Methods
 
     public ItemData GetRandomItemData()
     {
@@ -67,7 +109,7 @@ public class WorldManager : Singleton<WorldManager>
         float odds = Random.Range(0, 100);
         ItemData.eItemRarity rarity = ItemData.eItemRarity.COMMON;
 
-        if (odds < probablility * (1/5))
+        if (odds < probablility * (1 / 5))
         {
             rarity = ItemData.eItemRarity.LEGENDARY;
         }
@@ -98,44 +140,14 @@ public class WorldManager : Singleton<WorldManager>
 
     public ItemData GetItemById(string Id)
     {
-        foreach(ItemData i in Items)
+        foreach (ItemData i in Items)
         {
             if (i.itemID == Id) return i;
         }
         return null;
     }
 
-    public void SpawnRandomExplosion(Vector3 target)
-    {
-        Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
-    }
+    #endregion
 
-
-    public void SpawnWarpHole(Vector3 target)
-    {
-        Instantiate(Warphole, target, Quaternion.identity, null);
-    }
-
-
-    private void FixedUpdate()
-    {
-        ResetList();
-        foreach (Rigidbody2D go in objectsToRender)
-        {
-            if((go.transform.position - Head.transform.position).magnitude > 150)
-            {
-                if (!go.CompareTag("Boss")) go.gameObject.SetActive(false);
-            }
-            else
-            {
-                go.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public void ResetList()
-    {
-        objectsToRender = FindObjectsOfType<Rigidbody2D>();
-    }
 }
 
