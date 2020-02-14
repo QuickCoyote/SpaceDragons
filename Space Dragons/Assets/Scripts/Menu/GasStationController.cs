@@ -17,7 +17,8 @@ public class GasStationController : MonoBehaviour
 
     void Start()
     {
-        playerShip = WorldManager.Instance.Ship;
+        //playerShip = WorldManager.Instance.Ship;
+        StationSetup(); 
     }
 
     public void StationSetup()
@@ -25,6 +26,15 @@ public class GasStationController : MonoBehaviour
         switch (ShopDifficulty)
         {
             case 0:
+                for (int i = 0; i < 4; i++)
+                {
+                    GameObject go = Instantiate(CountMarker);
+                    go.transform.SetParent(StationContent.transform);
+                    go.transform.localScale = new Vector3(1, 1, 1);
+                }
+                StationFuel.minValue = 0;
+                StationFuel.maxValue = 4;
+                StationFuel.value = StationFuel.maxValue;
                 break;
             case 1:
                 break;
