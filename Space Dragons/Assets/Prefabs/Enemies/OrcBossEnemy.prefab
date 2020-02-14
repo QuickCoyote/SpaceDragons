@@ -5194,11 +5194,11 @@ GameObject:
   - component: {fileID: 4436085565032029936}
   m_Layer: 12
   m_Name: OrcBossEnemy
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7044326793431985132
 Transform:
   m_ObjectHideFlags: 0
@@ -5751,12 +5751,12 @@ PrefabInstance:
     - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2145986336338120194, guid: 30b0450af1fc5424980edd22858faf77,
         type: 3}

@@ -39,4 +39,9 @@ public class MainMenu : MonoBehaviour
        // playtext.text = "New Game";
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }

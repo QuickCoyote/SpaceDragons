@@ -8,6 +8,7 @@ public class CameraZoom : MonoBehaviour
     Ship player;
     CinemachineTargetGroup targetGroup;
     SpriteRenderer spr = null;
+    float offset = 2.0f;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class CameraZoom : MonoBehaviour
             {
                 targetGroup.m_Targets[i].target = player.bodyPartTransforms[i].transform;
                 targetGroup.m_Targets[i].weight = 1f;
-                targetGroup.m_Targets[i].radius = player.bodyPartObjects[i].GetComponentInChildren<SpriteRenderer>().sprite.bounds.max.magnitude;
+                targetGroup.m_Targets[i].radius = player.bodyPartObjects[i].GetComponentInChildren<SpriteRenderer>().sprite.bounds.max.magnitude + offset;
             }
         }
     }

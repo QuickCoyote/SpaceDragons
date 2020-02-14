@@ -9,6 +9,7 @@ TagManager:
   - SellButton
   - RepairButton
   - UpgradeButton
+  - Boss
   layers:
   - Default
   - TransparentFX

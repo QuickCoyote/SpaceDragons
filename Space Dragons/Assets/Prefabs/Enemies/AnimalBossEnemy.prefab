@@ -5164,7 +5164,7 @@ GameObject:
   - component: {fileID: 9160845143721558902}
   m_Layer: 12
   m_Name: AnimalBossEnemy
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
