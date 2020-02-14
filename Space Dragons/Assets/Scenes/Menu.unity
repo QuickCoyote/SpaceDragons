@@ -1310,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playtext: {fileID: 463741163}
   playbutton: {fileID: 1747616226}
+  tutorialbutton: {fileID: 357359067}
 --- !u!1 &1059743337
 GameObject:
   m_ObjectHideFlags: 0

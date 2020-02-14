@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI playtext = null;
     [SerializeField] Button playbutton = null;
+    [SerializeField] Button tutorialbutton = null;
 
     public void Update()
     {
@@ -30,13 +31,13 @@ public class MainMenu : MonoBehaviour
 
     public void ViewTutorial()
     {
+        tutorialbutton.interactable = false;
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Tutorial"));
     }
 
     public void ResetSave()
     {
         LoadManager.Instance.ResetSaveData();
-       // playtext.text = "New Game";
     }
 
     public void QuitGame()

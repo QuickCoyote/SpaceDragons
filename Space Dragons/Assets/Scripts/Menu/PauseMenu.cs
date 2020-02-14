@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : Singleton<PauseMenu>
 {
     [SerializeField] GameObject pauseUI = null;
     [SerializeField] GameObject optionsUI = null;
+    [SerializeField] Button menuButton = null;
+    [SerializeField] Toggle controlToggle = null;
+
     public bool JoystickControls;
 
     public void Start()
     {
         JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 0);
+        controlToggle.isOn = JoystickControls;
     }
 
     private void OnApplicationPause(bool pause)
@@ -34,6 +39,7 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void ReturnToMenu()
     {
+        menuButton.interactable = false;
         LoadManager.Instance.Save();
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
     }
