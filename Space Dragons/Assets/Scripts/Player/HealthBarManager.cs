@@ -50,7 +50,6 @@ public class HealthBarManager : Singleton<HealthBarManager>
                 WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = HealthBar;
             }
         }
-        Debug.Log("DONE CREATING >:C");
     }
     public void RemoveAllHealthBars()
     {
