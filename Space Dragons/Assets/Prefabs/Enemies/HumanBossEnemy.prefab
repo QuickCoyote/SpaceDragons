@@ -4920,7 +4920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2227131675438555590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7044326793431985132}
@@ -4992,8 +4992,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: -0.1}
-  - {x: 0, y: 50, z: -0.1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 0, y: 50, z: -1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -5072,7 +5072,7 @@ GameObject:
   - component: {fileID: 3486056188793449709}
   - component: {fileID: 443898268}
   - component: {fileID: 443898269}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Outer Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5087,7 +5087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2478243412147226986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7044326793431985132}
@@ -5252,7 +5252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7044326793431985132
 Transform:
   m_ObjectHideFlags: 0
@@ -5293,7 +5293,7 @@ MonoBehaviour:
     type: 3}
   gunNozzle: {fileID: 7920608384468392784}
   speed: 0
-  rotationSpeed: 0.1
+  rotationSpeed: 0.25
   shootingSpeed: 0
   sightDistance: 30
   attackDamage: 0
@@ -5304,7 +5304,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
   maptarget: {fileID: 6088364536433870511}
-  lightningMat: {fileID: 2100000, guid: e1ed2302ab020304b8303669ce5047e9, type: 2}
+  lightningMat: {fileID: 2100000, guid: 8c33279572a9a0c479e6d2faa470dbed, type: 2}
   lootnum: 5
   Minion: {fileID: 191715261875707372, guid: af2dd19f2df86184682f1a444bf72bac, type: 3}
   SpawnPoint: {fileID: 8772385848724474163}
@@ -5826,16 +5826,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145986335946547691, guid: 30b0450af1fc5424980edd22858faf77,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}

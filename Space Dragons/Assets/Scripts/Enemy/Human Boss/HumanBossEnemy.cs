@@ -82,13 +82,18 @@ public class HumanBossEnemy : Enemy
         EMPWaveTimer += Time.deltaTime;
         if (EMPWaveTimer > TimeBetweenEMPWaves)
         {
+            OuterRing.gameObject.SetActive(true);
             EMPWaveGrowthTimer += Time.deltaTime;
             OuterRing.gameObject.DrawCircle(EMPWaveBaseRadius + EMPWaveGrowthTimer * EMPWaveGrowthRate, 2, 0.25f, lightningMat);
             OuterRing.radius = EMPWaveBaseRadius + EMPWaveGrowthTimer * EMPWaveGrowthRate;
+            LineRenderer lr = OuterRing.GetComponent<LineRenderer>();
+            lr.alignment = LineAlignment.TransformZ;
+            lr.receiveShadows = false;
             if (EMPWaveGrowthTimer > EMPWaveGrowthMaxTime)
             {
                 EMPWaveTimer = 0;
                 EMPWaveGrowthTimer = 0;
+                OuterRing.gameObject.SetActive(false);
                 Destroy(OuterRing.GetComponent<LineRenderer>());
             }
         }

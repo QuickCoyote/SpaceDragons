@@ -24,7 +24,7 @@ public static class GameObjectEx
         {
             var rad = Mathf.Deg2Rad * (i * 360f / segments);
             points[i] = new Vector3(Mathf.Sin(rad) * radius, Mathf.Cos(rad) * radius, -1);
-            points[i] += (points[i] - container.transform.position).normalized * variance;
+            //points[i] += (points[i] - container.transform.position).normalized * variance;
         }
 
         line.SetPositions(points);
