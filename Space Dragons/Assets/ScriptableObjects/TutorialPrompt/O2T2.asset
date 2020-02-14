@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 858e70a896f7e3e4aac494069d9bc02b, type: 3}
-  m_Name: O9T1
+  m_Name: O2T2
   m_EditorClassIdentifier: 
-  PromptText: TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
-  UIWaypoint: {x: -525, y: 264, z: 0}
-  ArrowWaypoint: {x: 0, y: 130, z: 0}
-  ArrowRotationWaypoint: {x: 0, y: 0, z: 0}
+  PromptText: You'll start with ANIMAL, but other RACES of motherships will be avaliable
+    later in the game.
+  UIWaypoint: {x: 0, y: 264, z: 0}
+  ArrowWaypoint: {x: -480, y: -325, z: 0}
+  ArrowRotationWaypoint: {x: 0, y: 0, z: 90}

@@ -29,7 +29,6 @@ public class Ship : MonoBehaviour
     #region Variables
 
     public Camera cam = null;
-    public GameObject DeathPanel = null;
 
     [Header("Pre-Play Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
@@ -52,7 +51,7 @@ public class Ship : MonoBehaviour
     private bool joystickdragging = false;
 
     [Header("Control UI")]
-    [SerializeField] RectTransform joystick;
+    [SerializeField] RectTransform joystickknob;
 
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
@@ -149,12 +148,12 @@ public class Ship : MonoBehaviour
         if (joystickdragging)
         {
 
-            joystick.anchoredPosition = Vector2.Lerp(joystick.anchoredPosition, joystick.anchoredPosition + Input.touches[0].deltaPosition * joystick.GetComponentInParent<Canvas>().scaleFactor, .25f);
-            joystick.anchoredPosition = Vector2.ClampMagnitude(joystick.anchoredPosition, 150.0f);
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition * joystickknob.GetComponentInParent<Canvas>().scaleFactor, .25f);
+            joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
         }
         else
         {
-            joystick.anchoredPosition = Vector2.Lerp(joystick.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
         }
     }
 
@@ -252,7 +251,7 @@ public class Ship : MonoBehaviour
         if (joystickdragging)
         {
 
-            Vector3 targetPos = joystick.anchoredPosition;
+            Vector3 targetPos = joystickknob.anchoredPosition;
             targetPos.z = 0;
             // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
             Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
