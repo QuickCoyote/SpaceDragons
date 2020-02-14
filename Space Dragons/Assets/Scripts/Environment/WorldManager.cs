@@ -124,7 +124,7 @@ public class WorldManager : Singleton<WorldManager>
         {
             if((go.transform.position - Head.transform.position).magnitude > 150)
             {
-                go.gameObject.SetActive(false);
+                if (!go.CompareTag("Boss")) go.gameObject.SetActive(false);
             }
             else
             {
