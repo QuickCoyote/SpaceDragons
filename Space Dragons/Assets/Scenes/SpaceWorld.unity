@@ -1836,7 +1836,7 @@ PrefabInstance:
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: TradeInMothership
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -3996,6 +3996,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
         type: 2}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: TradeInMothership
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
 --- !u!4 &1567210201 stripped
