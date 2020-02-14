@@ -252,7 +252,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -100
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4073881856100928707
 MonoBehaviour:
@@ -304,10 +304,10 @@ GameObject:
   - component: {fileID: 4073881857116389273}
   - component: {fileID: 4073881857116389270}
   - component: {fileID: 4073881857116389271}
-  - component: {fileID: 4073881857116389268}
   - component: {fileID: 4073881857116389272}
+  - component: {fileID: 706001532517698626}
   m_Layer: 11
-  m_Name: Attack Drone
+  m_Name: GuardDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,29 +369,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
---- !u!114 &4073881857116389268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4073881857116389269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1910fb45d171dd4e991f8e419619355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69, type: 3}
-  damage: 3
-  range: 25
-  attackSpeed: 0.5
-  followOffset: 1
-  moveSpeed: 10
-  myMoveSpeed: 10
-  rotationSpeed: 6
-  side: 1
-  bulletSpawn: {fileID: 2634659005592548437}
-  enemyToAttack: {fileID: 0}
 --- !u!114 &4073881857116389272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +385,28 @@ MonoBehaviour:
   healthMax: 15
   healthCount: 15
   objectIndex: 0
+--- !u!114 &706001532517698626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4073881857116389269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc618abd5ab7cf478b542e17662ee2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69, type: 3}
+  damage: 5
+  range: 20
+  attackSpeed: 0.5
+  followOffset: 0
+  moveSpeed: 0
+  myMoveSpeed: 0
+  rotationSpeed: 0
+  side: 0
+  bulletSpawn: {fileID: 2634659005592548437}
 --- !u!1 &4073881857121926990
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,12 +599,12 @@ PrefabInstance:
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
