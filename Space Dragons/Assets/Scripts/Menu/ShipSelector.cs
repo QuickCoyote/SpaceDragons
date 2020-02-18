@@ -29,8 +29,21 @@ public class ShipSelector : MonoBehaviour
             ShipMenu.SetActive(true);
             ShopMenu.SetActive(false);
             SelecionDisplay.SetActive(true);
+
+            int num = 0;
+            for (int i = 0; i < controller.SelectionInfoPanels.Count; i++)
+            {
+                if (controller.SelectionInfoPanels[i].activeInHierarchy)
+                {
+                    num = i;
+                    break;
+                }
+            }
             controller.OpenSelectedPanel(0);
             controller.GetSelectionInfo(false, SelectedShip);
+            controller.OpenSelectedPanel(num);
+
+            controller.CheckIfSpecial(SelectedShip);
 
             shipHealth = SelectedShip.GetComponent<Health>();
 

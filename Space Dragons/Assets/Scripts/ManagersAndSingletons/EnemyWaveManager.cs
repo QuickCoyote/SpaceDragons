@@ -33,7 +33,6 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                 waves[currentWave].StartWave();
             }
             dt = 0.0f;
-            currentWave++;
         }
     }
 

@@ -1682,6 +1682,8 @@ MonoBehaviour:
   isPersistant: 0
   pauseUI: {fileID: 5009534055427847225}
   optionsUI: {fileID: 5730204029758565188}
+  menuButton: {fileID: 791713350858363406}
+  controlToggle: {fileID: 7684150356805412412}
   JoystickControls: 0
 --- !u!1 &3614001198135323074
 GameObject:
@@ -4546,7 +4548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 381}
+  m_AnchoredPosition: {x: 0, y: 353}
   m_SizeDelta: {x: 220, y: 92.6}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1655401250961410510

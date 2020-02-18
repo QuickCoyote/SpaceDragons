@@ -46,10 +46,9 @@ MonoBehaviour:
   isPersistant: 0
   asteroidBreakupPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
     type: 3}
-  ClusterMinimum: 300
-  ClusterMaximum: 500
-  asteroidPrefab: {fileID: 336725093998916286, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4,
-    type: 3}
+  asteroidPrefabs:
+  - {fileID: 336725093998916286, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4, type: 3}
+  - {fileID: 336725093998916286, guid: 680500986a37aba43a2218aff9d73437, type: 3}
+  - {fileID: 336725093998916286, guid: 376037bd2e2e70d41a9eb36eb6345b37, type: 3}
   asteroids: []
-  AsteroidMinimum: 4
-  AsteroidMaximum: 10
+  AsteroidsDestroyed: 0
