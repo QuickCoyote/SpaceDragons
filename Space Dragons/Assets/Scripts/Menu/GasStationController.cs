@@ -44,6 +44,11 @@ public class GasStationController : MonoBehaviour
         {
             CloseGasStation();
         }
+
+        if(Input.GetKeyDown(KeyCode.Slash))
+        {
+            playerShip.boostFuel = playerShip.boostFuelMAX;
+        }
         #endregion
 
 
