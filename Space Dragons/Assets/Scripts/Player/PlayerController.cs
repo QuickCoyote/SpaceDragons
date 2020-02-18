@@ -343,6 +343,48 @@ public class PlayerController : MonoBehaviour
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
 
+    public string ReturnMoney()
+    {
+        string returncount = "";
+        int switchCase = 0;
+        switchCase = money < 10000 ? 0
+            : money >= 10000 && money < 100000 ? 1
+            : money >= 100000 && money < 1000000 ? 2
+            : money >= 1000000 && money < 1000000000 ? 3
+            : 4;
+        switch (switchCase)
+        {
+            case 0:
+                returncount = money.ToString();
+                break;
+            case 1:
+                int thousands = money / 1000;
+                int hundreds = money % 1000;
+                char[] hundie = { '0' };
+                if (hundreds >= 100)
+                {
+                    hundie = hundreds.ToString().ToCharArray();
+                }
+                returncount = thousands.ToString() + "." + hundie[0] + "k";
+                break;
+            case 2:
+                thousands = money / 1000;
+                returncount = thousands.ToString() + "k";
+                break;
+            case 3:
+                int millions = money / 1000000;
+                returncount = millions.ToString() + "m";
+                break;
+            case 4:
+                int billions = money / 1000000000;
+                returncount = billions.ToString() + "b";
+                break;
+            default:
+                break;
+        }
+        return returncount;
+    }
+
     void LoadData()
     {
         money = LoadManager.Instance.saveData.PlayerMoney;
@@ -361,15 +403,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
-        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
+        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
+        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
     }
 
 
 
     void FixedUpdate()
     {
-        if (PauseMenu.Instance.JoystickControls)
+        if (PlayerPrefs.GetInt("JoystickControls") == 0)
         {
             if (firing)
             {
