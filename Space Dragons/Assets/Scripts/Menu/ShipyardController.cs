@@ -693,6 +693,7 @@ public class ShipyardController : MonoBehaviour
                 ShopShips[scrollSnap.CurrentPage()] = null;
                 SortShips();
                 GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
+                CheckIfSpecial(ShopShips[scrollSnap.CurrentPage()]);
                 ShipyardShipSetup();
                 ShipyardShopSetup();
             }
