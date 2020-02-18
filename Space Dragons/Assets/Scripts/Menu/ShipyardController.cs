@@ -783,6 +783,8 @@ public class ShipyardController : MonoBehaviour
                 }
             }
         }
+        Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+        MotherHealthBar.value = MotherHealth.healthCount;
     }
 
     public void RepairMother()
