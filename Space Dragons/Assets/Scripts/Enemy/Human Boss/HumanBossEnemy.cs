@@ -12,7 +12,6 @@ public class HumanBossEnemy : Enemy
     private void Start()
     {
         base.Start();
-        Map.Instance.AddTarget(maptarget);
     }
 
     public float lootnum = 5.0f;
@@ -109,8 +108,6 @@ public class HumanBossEnemy : Enemy
     }
     private void OnDestroy()
     {
-        Map.Instance.RemoveTarget(maptarget);
-
         for (int i = 0; i < lootnum; i++)
         {
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space

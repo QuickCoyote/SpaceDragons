@@ -100,7 +100,10 @@ public class WorldManager : Singleton<WorldManager>
     {
         foreach(ItemData i in Items)
         {
-            if (i.itemID == Id) return i;
+            if (i.itemID == Id)
+            {
+                return i;
+            }
         }
         return null;
     }
@@ -122,9 +125,12 @@ public class WorldManager : Singleton<WorldManager>
         ResetList();
         foreach (Rigidbody2D go in objectsToRender)
         {
-            if((go.transform.position - Head.transform.position).magnitude > 150)
+            if(Vector3.Distance(go.transform.position, Head.transform.position) > 150)
             {
-                if (!go.CompareTag("Boss")) go.gameObject.SetActive(false);
+                if (!go.CompareTag("Boss") && (go.gameObject.layer != 11))
+                {
+                    go.gameObject.SetActive(false);
+                }
             }
             else
             {
