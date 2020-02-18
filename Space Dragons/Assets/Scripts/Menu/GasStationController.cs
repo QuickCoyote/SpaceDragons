@@ -1,28 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.UI;
 
 public class GasStationController : MonoBehaviour
 {
+    [Header("Fuel Bars")]
     public GameObject GasStationCanvas;
     public Slider StationFuel;
     public GameObject StationContent;
     public Slider PlayerFuel;
     public GameObject PlayerContent;
     public GameObject CountMarker;
-    [Range(0, 2)] public int ShopDifficulty;
 
-    public Ship playerShip;
-    int GasCount;
+    [Header("Buttons")]
+    public Button FullRefillButton;
+    public Button SegmentRefillButton;
+    public Button UpgradeButton;
+
+    [Header("ReadOuts")]
+    public TextMeshProUGUI playerMoneyReadout;
+    public TextMeshProUGUI FullPriceReadout;
+    public TextMeshProUGUI segmentPriceReadout;
+    public TextMeshProUGUI upgradePriceReadout;
+    public TextMeshProUGUI timerReadout;
+
+    [Header("Values")]
+    [Range(0, 2)] public int ShopDifficulty;
+    Ship playerShip;
+    PlayerController playerController;
+    public int segmentPrice = 20;
+    [Range(0, 4)] public int upgradeTotal;
+    public int upgradePrice = 250;
+    public float StockTimer = 0.0f;
+    public float ResetStockTimer = 180.0f;
+    public int GasCount;
 
     void Start()
     {
         playerShip = WorldManager.Instance.Ship;
+        playerController = WorldManager.Instance.PlayerController;
         StationSetup();
         PlayerSetup();
-        GasStationCanvas.SetActive(false);
+        CloseGasStation();
+        UpdateUI();
     }
 
     void Update()
@@ -36,19 +56,34 @@ public class GasStationController : MonoBehaviour
         {
             StationFuel.value--;
         }
-        if(Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             OpenGasStation();
         }
-        else if(Input.GetKeyDown(KeyCode.F6))
+        else if (Input.GetKeyDown(KeyCode.F6))
         {
             CloseGasStation();
         }
         #endregion
 
+        if (GasStationCanvas.activeSelf)
+        {
+            UpdateUI();
+        }
+
+        if (StockTimer > 0)
+        { 
+            StockTimer -= 1 * Time.unscaledDeltaTime;
+        }
+        else if (StockTimer <= 0)
+        {
+            StationSetup();
+        }
 
     }
 
+
+    #region SetUp and Resets
     public void StationSetup()
     {
         switch (ShopDifficulty)
@@ -84,6 +119,7 @@ public class GasStationController : MonoBehaviour
         StationFuel.maxValue = num;
         StationFuel.value = StationFuel.maxValue;
         GasCount = num;
+        StockTimer = ResetStockTimer;
     }
 
     public void PlayerSetup()
@@ -101,25 +137,101 @@ public class GasStationController : MonoBehaviour
         }
         PlayerFuel.minValue = 0;
         PlayerFuel.maxValue = playerShip.boostFuelMAX;
-        PlayerFuel.value = playerShip.boostFuel;    
+        PlayerFuel.value = playerShip.boostFuel;
     }
 
+    #endregion
+
+    #region Button Methods
     public void FullRefuel()
     {
-        for (int i = playerShip.boostFuel; i < playerShip.boostFuelMAX; i++)
+        if (playerShip.boostFuel < playerShip.boostFuelMAX)
+        {
+            if ((playerShip.boostFuelMAX - playerShip.boostFuel) < GasCount)
+            {
+                playerController.RemoveMoney((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice);
+
+                GasCount -= (playerShip.boostFuelMAX - playerShip.boostFuel);
+                playerShip.RefillBoost();
+            }
+            else
+            {
+                playerController.RemoveMoney(GasCount * segmentPrice);
+                for (int i = 0; i < GasCount; i++)
+                {
+                    playerShip.boostFuel++;
+                }
+                GasCount = 0;
+            }
+        }
+        UpdateUI();
+    }
+
+    public void RefuelSegment()
+    {
+        if (playerShip.boostFuel < playerShip.boostFuelMAX)
         {
             playerShip.boostFuel++;
-            PlayerFuel.value++;
             GasCount--;
-            StationFuel.value--;
-
+            playerController.RemoveMoney(segmentPrice);
         }
+        UpdateUI();
+    }
+
+
+    public void UpgradeSegment()
+    {
+        playerShip.boostFuelMAX++;
+        playerShip.boostFuel++;
+        upgradeTotal--;
+        playerController.RemoveMoney(upgradePrice);
+        UpdateUI();
+    }
+    #endregion
+
+    #region UI Activation
+
+    public void UpdateUI()
+    {
+        PlayerSetup();
+
+        StationFuel.value = GasCount;
+
+        int minutes = (int)StockTimer / 60;
+        int seconds = (int)StockTimer % 60;
+        timerReadout.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        playerMoneyReadout.text = playerController.ReturnMoney();
+        segmentPriceReadout.text = segmentPrice.ToString();
+        upgradePriceReadout.text = upgradePrice.ToString();
+
+        if ((playerShip.boostFuelMAX - playerShip.boostFuel) < GasCount)
+        {
+            FullPriceReadout.text = ((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice).ToString();
+            FullRefillButton.interactable = ((GasCount > 0) && ((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice) <= playerController.money && (playerShip.boostFuel < playerShip.boostFuelMAX));
+        }
+        else
+        {
+            FullPriceReadout.text = (GasCount * segmentPrice).ToString();
+            FullRefillButton.interactable = ((GasCount > 0) && (GasCount * segmentPrice <= playerController.money) && (playerShip.boostFuel < playerShip.boostFuelMAX));
+        }
+        if (upgradeTotal > 0)
+        {
+            upgradePriceReadout.text = upgradePrice.ToString();
+
+        } else
+        {
+            upgradePriceReadout.text = "--.--";
+        }
+
+        SegmentRefillButton.interactable = (GasCount > 0 && segmentPrice <= playerController.money && (playerShip.boostFuel < playerShip.boostFuelMAX));
+        UpgradeButton.interactable = (upgradeTotal > 0 && upgradePrice <= playerController.money);
     }
 
     public void OpenGasStation()
     {
-        GasStationCanvas.SetActive(true);
         PlayerSetup();
+        UpdateUI();
+        GasStationCanvas.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -136,5 +248,5 @@ public class GasStationController : MonoBehaviour
             OpenGasStation();
         }
     }
-
+    #endregion
 }

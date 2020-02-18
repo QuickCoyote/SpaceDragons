@@ -148,7 +148,7 @@ public class Ship : MonoBehaviour
         if (joystickdragging)
         {
 
-            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition * joystickknob.GetComponentInParent<Canvas>().scaleFactor, .25f);
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition, .25f);
             joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
         }
         else
