@@ -47,6 +47,22 @@ public class ShipSelector : MonoBehaviour
 
             shipHealth = SelectedShip.GetComponent<Health>();
 
+            float repairCostPerHP = 1f;
+            float hpToRestore = 0f;
+            hpToRestore += shipHealth.healthMax - shipHealth.healthCount;   
+
+            if(shipHealth.healthCount != shipHealth.healthMax)
+            {
+                ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
+                    (o => o.name == "CostText").FirstOrDefault().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
+            }
+            else
+            {
+                ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
+                                    (o => o.name == "CostText").FirstOrDefault().text = "Health Full";
+
+            }
+
             ShipMenu.GetComponentsInChildren<Button>().Where
                 (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
 
@@ -147,12 +163,21 @@ public class ShipSelector : MonoBehaviour
     void Repair()
     {
         //SET SHIP HEALTH TO MAXIMUM
-        SelectedShip.GetComponent<Health>().healthCount = SelectedShip.GetComponent<Health>().healthMax;
-
         healthSlider.value = shipHealth.healthCount;
+
+        float repairCostPerHP = 1f;
+        float hpToRestore = 0f;
+        hpToRestore += shipHealth.healthMax - shipHealth.healthCount;
+
+        if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
+        {
+            shipHealth.healthCount = shipHealth.healthMax;
+            healthSlider.value = shipHealth.healthCount;
+        }
 
         ShipMenu.GetComponentsInChildren<Button>().Where
             (o => o.name == "Repair").FirstOrDefault().interactable = false;
+
 
         controller.GetSelectionInfo(false, SelectedShip);
 
