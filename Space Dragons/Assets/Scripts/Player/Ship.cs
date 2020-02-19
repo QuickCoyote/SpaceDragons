@@ -82,7 +82,6 @@ public class Ship : MonoBehaviour
     private void Start()
     {
         if (!shipHealth) shipHealth = bodyPartTransforms[0].GetComponent<Health>();
-        ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
         returnSpeed = speed;
@@ -110,6 +109,7 @@ public class Ship : MonoBehaviour
     private void LoadData()
     {
         motherShip = LoadManager.Instance.saveData.motherShipType;
+        SetShipHead((int)motherShip);
         shipHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
         boostFuelMAX = LoadManager.Instance.saveData.PlayerFuelMax;
         boostFuel = LoadManager.Instance.saveData.PlayerFuelCurrent;
@@ -442,6 +442,7 @@ public class Ship : MonoBehaviour
             playerController.headBullet = null;
         }
         ShipHeadSprite.sprite = ShipHeadSprites[val];
+        Debug.Log(val);
     }
 
     public void SortBody()

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public Inventory inventory = null;
 
     public GameObject head = null;
+    public Health headHealth = null;
     public GameObject headBullet = null;
     public GameObject[] headBullets = null;
 
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireLightning()
     {
+        objectsWithinRange = new List<Health>();
         objectsShocked = new List<Health>();
 
         float acceptableAngle = 30f;
@@ -111,11 +113,14 @@ public class PlayerController : MonoBehaviour
             col.TryGetComponent(out hp);
             if (hp)
             {
-                objectsWithinRange.Add(hp);
+                if(hp != headHealth)
+                {
+                    objectsWithinRange.Add(hp);
+                }
             }
         }
 
-        if (objectsWithinRange[0])
+        if (objectsWithinRange.Count > 0)
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
@@ -127,8 +132,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Vector3 direction = head.transform.eulerAngles + new Vector3(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
-            Vector3 randomPointInFront = (direction + head.transform.up) * Random.Range(lightningMinDistance, lightningMaxDistance);
+            Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
+            Vector3 randomPointInFront = (rotAngle * head.transform.up).normalized * Random.Range(lightningMinDistance, lightningMaxDistance);
             Shock(randomPointInFront);
         }
     }
@@ -148,7 +153,7 @@ public class PlayerController : MonoBehaviour
             myLightning = gameObject.AddComponent<Lightning>();
         }
 
-        if (hp != GetComponent<Health>())
+        if (hp != headHealth)
         {
             myLightning.target = hp.transform.position;
         }
@@ -186,16 +191,13 @@ public class PlayerController : MonoBehaviour
 
     public void Shock(Vector3 shockPosition)
     {
+        Debug.Log("Shock Position: " + shockPosition);
         Lightning myLightning = null;
         TryGetComponent(out myLightning);
 
         if (myLightning)
         {
             myLightning.RemoveLightning();
-        }
-        else
-        {
-            gameObject.AddComponent<Lightning>();
         }
 
         if (shockPosition != head.transform.position)

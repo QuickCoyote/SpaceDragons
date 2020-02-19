@@ -14574,6 +14574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 196209911218918717}
+  shipHealth: {fileID: 196209910265618379}
   bodyPartTransforms:
   - {fileID: 196209910265618381}
   bodyPartObjects: []
@@ -14599,7 +14600,6 @@ MonoBehaviour:
   joystickknob: {fileID: 1076237413}
   motherShip: 0
   shipToTest: 2
-  shipHealth: {fileID: 196209910265618379}
   boostSpeed: 10
   returnSpeed: 0
   boostrotateSpeed: 1.5
@@ -14632,7 +14632,8 @@ MonoBehaviour:
   money: 100
   attackDamage: 15
   inventory: {fileID: 5215258217068158141}
-  head: {fileID: 196209910265618382}
+  head: {fileID: 196209910334023939}
+  headHealth: {fileID: 196209910265618379}
   headBullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774,
     type: 3}
   headBullets:
@@ -14648,8 +14649,8 @@ MonoBehaviour:
   flameAttackDamage: 2
   lightningAttackSpeed: 1
   lightningAttackDamage: 10
-  lightningMaxDistance: 10
-  lightningMinDistance: 1
+  lightningMaxDistance: 20
+  lightningMinDistance: 0.1
   healingSpeed: 0
   healingAmount: 0
   guardDroneCount: 0
@@ -14745,7 +14746,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3383
+    m_Bits: 15671
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
