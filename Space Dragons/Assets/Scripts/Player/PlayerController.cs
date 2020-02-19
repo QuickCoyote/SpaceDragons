@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
     [SerializeField] GameObject HUD = null;
+    [SerializeField] Toggle controlToggle = null;
 
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
@@ -342,8 +344,10 @@ public class PlayerController : MonoBehaviour
     {
         inventory = GetComponent<Inventory>();
         LoadData();
-        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
-        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
+        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
+        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
+        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
+
         HUD.SetActive(false);
     }
 
@@ -392,10 +396,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
     }
 
+    public void ToggleJoystickControls(bool toggled)
+    {
+        PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
+        controlToggle.isOn = (toggled);
+    }
     public void OpenHUD()
     {
         HUD.SetActive(true);
