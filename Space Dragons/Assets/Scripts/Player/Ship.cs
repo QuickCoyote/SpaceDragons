@@ -29,6 +29,8 @@ public class Ship : MonoBehaviour
     #region Variables
 
     public Camera cam = null;
+    public Health shipHealth = null;
+    bool isDead = false;
 
     [Header("Pre-Play Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
@@ -56,7 +58,6 @@ public class Ship : MonoBehaviour
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
     public eShipToTest shipToTest = eShipToTest.RUSTY;
-    public Health shipHealth = null;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;
@@ -75,13 +76,12 @@ public class Ship : MonoBehaviour
     [SerializeField] Slider boostSliderTouch = null;
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
-
-    bool isDead = false;
-
     #endregion
+
 
     private void Start()
     {
+        if (!shipHealth) shipHealth = bodyPartTransforms[0].GetComponent<Health>();
         ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
