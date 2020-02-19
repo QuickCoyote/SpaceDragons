@@ -49,33 +49,25 @@ public class ShipSelector : MonoBehaviour
 
             float repairCostPerHP = 1f;
             float hpToRestore = 0f;
-            hpToRestore += shipHealth.healthMax - shipHealth.healthCount;   
+            hpToRestore += shipHealth.healthMax - shipHealth.healthCount;
 
-            if(shipHealth.healthCount != shipHealth.healthMax)
+            if (shipHealth.healthCount != shipHealth.healthMax && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
             {
                 ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
                     (o => o.name == "CostText").FirstOrDefault().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Repair").FirstOrDefault().interactable = true;
             }
             else
             {
                 ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
-                                    (o => o.name == "CostText").FirstOrDefault().text = "Health Full";
-
+                    (o => o.name == "CostText").FirstOrDefault().text = "Health Full";
+                ShipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "Repair").FirstOrDefault().interactable = false;
             }
 
             ShipMenu.GetComponentsInChildren<Button>().Where
                 (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
-
-            if(shipHealth.healthCount == shipHealth.healthMax)
-            {
-                ShipMenu.GetComponentsInChildren<Button>().Where
-                    (o => o.name == "Repair").FirstOrDefault().interactable = false;
-            }
-            else if(shipHealth.healthCount != shipHealth.healthMax)
-            {
-                ShipMenu.GetComponentsInChildren<Button>().Where
-                    (o => o.name == "Repair").FirstOrDefault().interactable = true;
-            }
 
             foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
             {
@@ -178,6 +170,8 @@ public class ShipSelector : MonoBehaviour
         ShipMenu.GetComponentsInChildren<Button>().Where
             (o => o.name == "Repair").FirstOrDefault().interactable = false;
 
+        ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
+            (o => o.name == "CostText").FirstOrDefault().text = "Health Full";
 
         controller.GetSelectionInfo(false, SelectedShip);
 

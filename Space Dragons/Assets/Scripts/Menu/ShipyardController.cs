@@ -37,6 +37,7 @@ public class ShipyardController : MonoBehaviour
     public GameObject TradeInButton;
     public GameObject TradeInCost;
     public GameObject TurretCost;
+    public GameObject RepairAllCost;
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
     public Slider MotherHealthBar;
@@ -113,6 +114,30 @@ public class ShipyardController : MonoBehaviour
             }
         }
 
+        float repairCostPerHP = 1f;
+        float hpToRestore = 0f;
+        for (int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
+        {
+            if (MotherShip.bodyPartObjects[i] != null)
+            {
+                hpToRestore += MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax - MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount;
+            }
+        }
+
+        if (hpToRestore != 0 && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+        {
+            RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
+            MothershipMenu.GetComponentsInChildren<Button>().Where
+                (o => o.name == "RepairAll").FirstOrDefault().interactable = true;
+        }
+        else
+        {
+            RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "All at Full";
+            MothershipMenu.GetComponentsInChildren<Button>().Where
+                (o => o.name == "RepairAll").FirstOrDefault().interactable = false;
+        }
+
+
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
 
         MoneyNum.text = MotherShip.GetComponent<PlayerController>().ReturnMoney();
@@ -157,23 +182,21 @@ public class ShipyardController : MonoBehaviour
             RepairMotherButton.SetActive(true);
 
             Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+            float repairCostPerHP = 1f;
+            float hpToRestore = 0f;
+            hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
 
-            if(MotherHealth.healthCount != MotherHealth.healthMax)
+            if(MotherHealth.healthCount != MotherHealth.healthMax && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
             {
-                float repairCostPerHP = 1f;
-                float hpToRestore = 0f;
-                hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
-
                 string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
                 TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
-                RepairMotherButton.GetComponent<Button>().interactable = true;
+                RepairMotherButton.GetComponent<Button>().interactable = true;                
             }
             else
             {
                 TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "Health Full";
                 RepairMotherButton.GetComponent<Button>().interactable = false;
             }
-
         }
         else
         {
