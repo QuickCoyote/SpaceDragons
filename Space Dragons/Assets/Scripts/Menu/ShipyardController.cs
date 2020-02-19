@@ -33,19 +33,19 @@ public class ShipyardController : MonoBehaviour
     public List<GameObject> SelectionInfoButtons;
     public Ship.eMotherShip TradeInMothership;
     public Ship.eMotherShip CurrentMothership;
+    public GameObject RepairMotherButton;
     public GameObject TradeInButton;
     public GameObject TradeInCost;
     public GameObject TurretCost;
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
+    public Slider MotherHealthBar;
 
-    //public int selectedPurchase = 0;
     int NumOfShips;
     float Timer = 0;
     float MaxTime = 300;
     Button buyButton = null;
     Button sellButton = null;
-    Slider MotherHealthBar;
 
     public void Start()
     {
@@ -124,8 +124,6 @@ public class ShipyardController : MonoBehaviour
         {
             MothershipMenu.GetComponentsInChildren<Image>().Where
                 (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
-            MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
-            (o => o.name == "HealthBar").FirstOrDefault();
             Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
 
             MotherHealthBar.minValue = 0;
@@ -142,7 +140,6 @@ public class ShipyardController : MonoBehaviour
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "Description").FirstOrDefault().text = Motherships[MotherToDisplay].Description;
 
-        TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[MotherToDisplay].Price.ToString();
 
     }
 
@@ -156,7 +153,26 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = true;
             TradeInButton.SetActive(false);
-            TradeInCost.SetActive(false);
+            MotherHealthBar.gameObject.SetActive(true);
+            RepairMotherButton.SetActive(true);
+
+            Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+
+            if(MotherHealth.healthCount != MotherHealth.healthMax)
+            {
+                float repairCostPerHP = 1f;
+                float hpToRestore = 0f;
+                hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
+
+                string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
+                TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
+                RepairMotherButton.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "Health Full";
+                RepairMotherButton.GetComponent<Button>().interactable = false;
+            }
 
         }
         else
@@ -167,7 +183,11 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = false;
             TradeInButton.SetActive(true);
-            TradeInCost.SetActive(true);
+            MotherHealthBar.gameObject.SetActive(false);
+            RepairMotherButton.SetActive(false);
+
+            TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[(int)TradeInMothership].Price.ToString();
+
         }
     }
 
@@ -810,6 +830,7 @@ public class ShipyardController : MonoBehaviour
         AudioManager.Instance.PlayRandomMusic("Shop");
         ShipyardShipSetup();
         ShipyardMotherSetup((int)CurrentMothership, false);
+        MothershipPanelSwap(true);
         Shipyard.SetActive(true);
         Time.timeScale = 0;
     }
