@@ -135,9 +135,9 @@ public class PlayerController : MonoBehaviour
             Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
             Vector3 randomDirection = (rotAngle * head.transform.up);
 
+            randomDirection = randomDirection.normalized + head.transform.parent.position;
 
-
-            Shock(randomPointInFront);
+            Shock(randomDirection);
         }
     }
 
