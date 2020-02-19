@@ -817,6 +817,8 @@ public class ShipyardController : MonoBehaviour
             MotherHealth.healthCount = MotherHealth.healthMax;
             MotherHealthBar.value = MotherHealth.healthCount;
         }
+        MothershipPanelSwap(true);
+
     }
 
     public void CloseMessage()
