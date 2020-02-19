@@ -5,7 +5,6 @@ using UnityEngine;
 public class OrcBossEnemy : Enemy
 {
     [SerializeField] ItemObject itemPrefab = null;
-    [SerializeField] MapTargets maptarget = null;
 
     new private void Start()
     {

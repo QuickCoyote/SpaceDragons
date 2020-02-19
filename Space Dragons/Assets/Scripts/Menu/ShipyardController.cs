@@ -47,8 +47,6 @@ public class ShipyardController : MonoBehaviour
     Button buyButton = null;
     Button sellButton = null;
 
-    int num = 0;
-
     public void Start()
     {
         MotherShip = WorldManager.Instance.Ship;

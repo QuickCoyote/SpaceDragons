@@ -10,7 +10,8 @@ public class Map : Singleton<Map>
     public Camera mainMapCam = null;
 
     public GameObject MainMap;
-    public GameObject highLightIcon;
+    public GameObject highlightIcon;
+    public Vector3 highlightPrevPos = Vector3.zero;
     public Image MiniMapTargetIcon;
     public Image EnemyIcon;
 
@@ -43,10 +44,10 @@ public class Map : Singleton<Map>
     {
 
         Vector3 direction = Vector3.zero;
-        if(highLightIcon.activeSelf)
+        if(highlightIcon.activeSelf)
         {
             //Check where to rotate minimap tracker
-            direction = highLightIcon.transform.position - player.transform.position;
+            direction = highlightIcon.transform.position - player.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             MiniMapTargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
             MiniMapTargetIcon.enabled = (direction.magnitude > 10.0f);
@@ -137,6 +138,7 @@ public class Map : Singleton<Map>
                 mainMapCam.transform.position = new Vector3(10, -10, mainMapCam.transform.position.z);
             }
         }
+        highlightIcon.SetActive(true);
     }
 
     //public void Zoom(float increment)
@@ -157,12 +159,14 @@ public class Map : Singleton<Map>
     public void MapOpen()
     {
         MainMap.SetActive(true);
+        highlightIcon.transform.position = highlightPrevPos;
         Time.timeScale = 0;
     }
 
     public void MapClose()
     {
         MainMap.SetActive(false);
+        highlightIcon.transform.position = highlightPrevPos;
         Time.timeScale = 1f;
     }
 
@@ -197,26 +201,12 @@ public class Map : Singleton<Map>
             Debug.DrawLine(oldMousePos, newMousePos, Color.red, 100, false);
 
             tempPos = mainMapCam.transform.position + mousePos;
-
-            Ray ray = mainMapCam.ViewportPointToRay(mousePos);
-
-            RaycastHit hit;
-
-            Physics.Raycast(ray, out hit);
-
-            if(hit.collider)
-            {
-                if(hit.collider.gameObject.layer == 10)
-                {
-                    tempPos = hit.point;
-                }
-            }
-
             tempPos.z = -4f;
 
             // Set marker boi here and activate him
-            highLightIcon.SetActive(true);
-            highLightIcon.transform.position = tempPos;
+            highlightIcon.SetActive(true);
+            highlightPrevPos = highlightIcon.transform.position;
+            highlightIcon.transform.position = tempPos;
         }
     }
 }

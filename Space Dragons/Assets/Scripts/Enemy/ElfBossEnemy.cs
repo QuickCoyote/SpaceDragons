@@ -4,7 +4,6 @@ public class ElfBossEnemy : Enemy
 {
     [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] GameObject shield = null;
-    [SerializeField] MapTargets maptarget = null;
 
     new private void Start()
     {

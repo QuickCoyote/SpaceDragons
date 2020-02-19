@@ -16,7 +16,7 @@ public class AudioManager : Singleton<AudioManager>
     Dictionary<String, Sound> sfx = new Dictionary<String, Sound>();
 
     int curSongLoc = 0;
-    bool isPaused = false;
+    bool isPaused;
     public override void Awake()
     {
         base.Awake();

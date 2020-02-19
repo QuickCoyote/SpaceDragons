@@ -332,15 +332,86 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-        //Controls
-    private bool firing = false;
-
     void Start()
     {
         inventory = GetComponent<Inventory>();
         LoadData();
         JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
+    }
+
+    void LoadData()
+    {
+        money = LoadManager.Instance.saveData.PlayerMoney;
+        inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
+    }
+
+    void FixedUpdate()
+    {
+        if (PlayerPrefs.GetInt("JoystickControls") == 0)
+        {
+            if (firing)
+            {
+                attackTimer += Time.deltaTime;
+
+                if (attackTimer > attackSpeed)
+                {
+                    Fire();
+                    attackTimer = 0;
+                }
+            }
+        }
+        else
+        {
+            if (Input.touchCount > 0)
+            {
+                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                {
+                    attackTimer += Time.deltaTime;
+                    if (attackTimer > attackSpeed)
+                    {
+                        Fire();
+                        attackTimer = 0;
+                    }
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            money += 1000;
+        }
+    }
+
+    private void Update()
+    {
+        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
+        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
+    }
+
+
+    #region Money
+    public void AddMoney(int amount)
+    {
+        if (money + amount < int.MaxValue)
+        {
+            money += amount;
+        }
+        else if ((long)(money + amount) > int.MaxValue)
+        {
+            money = int.MaxValue - 1;
+        }
+    }
+
+    public bool RemoveMoney(int amount)
+    {
+        if (money - amount > 0)
+        {
+            money -= amount;
+            return true;
+        }
+
+        return false;
     }
 
     public string ReturnMoney()
@@ -384,91 +455,9 @@ public class PlayerController : MonoBehaviour
         }
         return returncount;
     }
+    #endregion
 
-    void LoadData()
-    {
-        money = LoadManager.Instance.saveData.PlayerMoney;
-        inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
-    }
-
-    public void onPressFire()
-    {
-        firing = (true);
-    }
-
-    public void onReleaseFire()
-    {
-        firing = (false);
-    }
-
-    private void Update()
-    {
-        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
-        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-    }
-
-
-
-    void FixedUpdate()
-    {
-        if (PlayerPrefs.GetInt("JoystickControls") == 0)
-        {
-            if (firing)
-            {
-                attackTimer += Time.deltaTime;
-
-                if (attackTimer > attackSpeed)
-                {
-                    Fire();
-                    attackTimer = 0;
-                }
-            }
-        }
-        else
-        {
-            if (Input.touchCount > 0)
-            {
-                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
-                {
-                    attackTimer += Time.deltaTime;
-                    if (attackTimer > attackSpeed)
-                    {
-                        Fire();
-                        attackTimer = 0;
-                    }
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            money += 1000;
-        }
-    }
-
-    public void AddMoney(int amount)
-    {
-        if (money + amount < int.MaxValue)
-        {
-            money += amount;
-        }
-        else if ((long)(money + amount) > int.MaxValue)
-        {
-            money = int.MaxValue - 1;
-        }
-    }
-
-    public bool RemoveMoney(int amount)
-    {
-        if (money - amount > 0)
-        {
-            money -= amount;
-            return true;
-        }
-
-        return false;
-    }
-
+    #region Firing and Attacks
     public void SwitchFireMode(Ship.eMotherShip eMotherShipType)
     {
         switch (eMotherShipType)
@@ -525,4 +514,16 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    private bool firing = false;
+    public void onPressFire()
+    {
+        firing = (true);
+    }
+
+    public void onReleaseFire()
+    {
+        firing = (false);
+    }
+    #endregion
 }

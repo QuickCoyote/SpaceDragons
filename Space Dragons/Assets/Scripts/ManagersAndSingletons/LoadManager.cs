@@ -39,11 +39,12 @@ public class LoadManager : Singleton<LoadManager>
         {
             if (GameObject.FindGameObjectWithTag("Player"))
             {
-                saveData.PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthCount;
-                saveData.PlayerMoney = FindObjectOfType<PlayerController>().money;
-                saveData.PlayerFuelMax = FindObjectOfType<Ship>().boostFuelMAX;
-                saveData.PlayerFuelCurrent = FindObjectOfType<Ship>().boostFuel;
-                saveData.motherShipType = FindObjectOfType<Ship>().motherShip;
+                saveData.PlayerHealth = WorldManager.Instance.Ship.shipHealth.healthCount;
+                saveData.PlayerMoney = WorldManager.Instance.PlayerController.money;
+                saveData.PlayerFuelMax = WorldManager.Instance.Ship.boostFuelMAX;
+                saveData.PlayerFuelCurrent = WorldManager.Instance.Ship.boostFuel;
+                saveData.motherShipType = WorldManager.Instance.Ship.motherShip;
+                saveData.PlayerPosition = new Vec3(WorldManager.Instance.Ship.bodyPartTransforms[0].transform.position);
 
                 //Convert dictionary to a pair array
                 saveData.setItemsFromDictionary(FindObjectOfType<Inventory>().items);
@@ -61,7 +62,6 @@ public class LoadManager : Singleton<LoadManager>
                 saveData.Ships = ships.ToArray();
                 saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
                 saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
-                saveData.PlayerPosition = new Vec3(FindObjectOfType<Ship>().transform.position);
             }
         }
         catch (Exception e)

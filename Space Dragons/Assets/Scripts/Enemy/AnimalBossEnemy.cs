@@ -6,7 +6,6 @@ public class AnimalBossEnemy : Enemy
     [SerializeField] GameObject Turret2 = null;
     [SerializeField] GameObject gunNozzle2 = null;
     [SerializeField] ItemObject itemPrefab = null;
-    [SerializeField] MapTargets maptarget = null;
 
     new private void Start()
     {

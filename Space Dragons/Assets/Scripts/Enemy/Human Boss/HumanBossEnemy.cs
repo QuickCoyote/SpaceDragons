@@ -5,8 +5,6 @@ using UnityEngine;
 public class HumanBossEnemy : Enemy
 {
     [SerializeField] ItemObject itemPrefab = null;
-    [SerializeField] MapTargets maptarget = null;
-
     [SerializeField] Material lightningMat = null;
 
     private void Start()
