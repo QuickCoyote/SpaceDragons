@@ -5,26 +5,26 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-    Ship player;
+    [SerializeField] float offset = 5f;
+    Ship ship;
     CinemachineTargetGroup targetGroup;
-    float offset = 2.0f;
 
     void Start()
     {
-        player = WorldManager.Instance.Ship;
+        ship = WorldManager.Instance.Ship;
         targetGroup = GetComponent<CinemachineTargetGroup>();
     }
 
     void FixedUpdate()
     {
-        targetGroup.m_Targets = new CinemachineTargetGroup.Target[player.bodyPartTransforms.Count];
-        for (int i = 0; i < player.bodyPartTransforms.Count; i++)
+        targetGroup.m_Targets = new CinemachineTargetGroup.Target[ship.bodyPartTransforms.Count];
+        for (int i = 0; i < ship.bodyPartTransforms.Count; i++)
         {
-            if (player.bodyPartTransforms[i] != null)
+            if (ship.bodyPartTransforms[i] != null)
             {
-                targetGroup.m_Targets[i].target = player.bodyPartTransforms[i].transform;
+                targetGroup.m_Targets[i].target = ship.bodyPartTransforms[i].transform;
                 targetGroup.m_Targets[i].weight = 1f;
-                targetGroup.m_Targets[i].radius = player.bodyPartObjects[i].GetComponentInChildren<SpriteRenderer>().sprite.bounds.max.magnitude + offset;
+                targetGroup.m_Targets[i].radius = ship.bodyPartObjects[i].GetComponentInChildren<SpriteRenderer>().sprite.bounds.max.magnitude + offset;
             }
         }
     }

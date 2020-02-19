@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (Vector3.Angle(transform.up, direction) < acceptableAngle)
+            if (Mathf.Abs(angle) < acceptableAngle)
             {
                 enemiesShocked = 1;
                 ShockNext(objectsWithinRange[0]);
@@ -134,8 +134,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
-            Vector3 randomPointInFront = (rotAngle * head.transform.up).normalized * Random.Range(lightningMinDistance, lightningMaxDistance);
-            Shock(randomPointInFront);
+            Vector3 randomDirection = (rotAngle * head.transform.up);
+
+            randomDirection = randomDirection.normalized + head.transform.parent.position;
+
+            Shock(randomDirection);
         }
     }
 
