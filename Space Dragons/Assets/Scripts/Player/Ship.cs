@@ -48,9 +48,12 @@ public class Ship : MonoBehaviour
     public int maxShipsAllowed = 4;
 
     [Header("Movement Info")]
-    public float speed = 1.0f;
+    public float speed = 5f;
+    public float defaultSpeed = 7.5f;
+    public float driftSpeed = 5f;
     public float rotationSpeed = 50.0f;
     private bool joystickdragging = false;
+    public bool thrustersOn = true;
 
     [Header("Control UI")]
     [SerializeField] RectTransform joystickknob;
@@ -65,26 +68,24 @@ public class Ship : MonoBehaviour
 
     [Header("Boost Info")]
     [SerializeField] float boostSpeed = 0f;
-    [SerializeField] float returnSpeed = 0f;
     [SerializeField] float boostrotateSpeed = 0f;
     [SerializeField] float returnrotateSpeed = 0f;
     [SerializeField] bool boosting = false;
     [SerializeField] public int boostFuel = 0;
     [SerializeField] public int boostFuelMAX = 4;
-    [SerializeField] GameObject boostParticles = null;
-    [SerializeField] Slider boostSliderJoystick = null;
-    [SerializeField] Slider boostSliderTouch = null;
+    [SerializeField] GameObject boostParticles;
+    [SerializeField] Slider boostSliderJoystick;
+    [SerializeField] Slider boostSliderTouch;
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
     #endregion
-
 
     private void Start()
     {
         if (!shipHealth) shipHealth = bodyPartTransforms[0].GetComponent<Health>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
-        returnSpeed = speed;
+        speed = defaultSpeed;
         returnrotateSpeed = rotationSpeed;
         switch (motherShip)
         {
@@ -133,96 +134,25 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public void onPressJoystick()
-    {
-        joystickdragging = (true);
-    }
-
-    public void onReleaseJoystick()
-    {
-        joystickdragging = (false);
-    }
-
-    public void AdjustJoystick()
-    {
-        if (joystickdragging)
-        {
-
-            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition, .25f);
-            joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
-        }
-        else
-        {
-            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
-        }
-    }
-
-    public void Boost()
-    {
-        if (boostFuel > 0 && !boosting)
-        {
-            boostFuel--;
-            boostCooldownTimer = boostCooldownReset;
-            rotationSpeed = boostrotateSpeed;
-            speed = boostSpeed;
-            boosting = true;
-            boostParticles.SetActive(true);
-        }
-    }
-
-    public void RefillBoost()
-    {
-        boostFuel = boostFuelMAX;
-    }
-
-    private void UpdateFeulGauge()
-    {
-        float min = 23;
-        float max = 60;
-        float scale = max - min;
-        float gauge = scale * ((float)boostFuel / (float)boostFuelMAX);
-        boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
-
-        boostSliderTouch.maxValue = boostFuelMAX;
-        boostSliderTouch.value = Mathf.Lerp(boostSliderTouch.value, boostFuel, 1.5f * Time.deltaTime);
-    }
-
-    public void Update()
-    {
-        if (boosting)
-        {
-            boostCooldownTimer -= Time.deltaTime;
-
-            if (boostCooldownTimer < 0.0f)
-            {
-                boostParticles.SetActive(false);
-                //speed = returnSpeed;
-                rotationSpeed = returnrotateSpeed;
-                boosting = false;
-            }
-
-        }
-        else
-        {
-            speed = Mathf.Lerp(speed, returnSpeed, 1.0f * Time.deltaTime);
-        }
-        UpdateFeulGauge();
-    }
-
     private void FixedUpdate()
     {
-        if (PauseMenu.Instance.JoystickControls)
+        CalculateSpeed();
+        if (thrustersOn)
         {
-            AdjustJoystick();
-            MoveWithJoystick();
+            if (PlayerPrefs.GetInt("JoystickControls") == 0)
+            {
+                AdjustJoystick();
+                MoveWithJoystick();
+            }
+            else
+            {
+                Move();
+            }
         }
-        else
-        {
-            Move();
-
-        }
+        UpdateFeulGauge();
         CheckForDie();
 
+        #region Dev Tools
         if (Input.GetKeyDown(KeyCode.Q))
         {
             AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
@@ -243,7 +173,83 @@ public class Ship : MonoBehaviour
         {
             SortBody();
         }
+
+        #endregion
     }
+
+    #region Movement
+
+    public void ActivateThrusters(bool isOn)
+    {
+        thrustersOn = isOn;
+    }
+
+    public void CalculateSpeed()
+    {
+        if (boosting)
+        {
+            boostCooldownTimer -= Time.deltaTime;
+
+            if (boostCooldownTimer < 0.0f)
+            {
+                boostParticles.SetActive(false);
+                rotationSpeed = returnrotateSpeed;
+                boosting = false;
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("JoystickControls") == 0)
+            {
+                if (joystickdragging)
+                {
+                    speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
+                }
+                else
+                {
+                    speed = Mathf.Lerp(speed, driftSpeed, Time.deltaTime);
+                }
+
+            }
+            else
+            {
+                if (Input.touchCount > 0)
+                {
+                    if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                    {
+                        speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
+                    }
+                } else
+                {
+                    speed = Mathf.Lerp(speed, driftSpeed, Time.deltaTime);
+                }
+            }
+        }
+    }
+
+    public void onPressJoystick()
+    {
+        joystickdragging = (true);
+    }
+
+    public void onReleaseJoystick()
+    {
+        joystickdragging = (false);
+    }
+
+    public void AdjustJoystick()
+    {
+        if (joystickdragging)
+        {
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition, .25f);
+            joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
+        }
+        else
+        {
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
+        }
+    }
+
 
     public void MoveWithJoystick()
     {
@@ -337,7 +343,41 @@ public class Ship : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Boost and Fuel
+    public void Boost()
+    {
+        if (boostFuel > 0 && !boosting)
+        {
+            boostFuel--;
+            boostCooldownTimer = boostCooldownReset;
+            rotationSpeed = boostrotateSpeed;
+            speed = boostSpeed;
+            boosting = true;
+            boostParticles.SetActive(true);
+        }
+    }
+
+    public void RefillBoost()
+    {
+        boostFuel = boostFuelMAX;
+    }
+
+    private void UpdateFeulGauge()
+    {
+        float min = 23;
+        float max = 60;
+        float scale = max - min;
+        float gauge = scale * ((float)boostFuel / (float)boostFuelMAX);
+        boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
+
+        boostSliderTouch.maxValue = boostFuelMAX;
+        boostSliderTouch.value = Mathf.Lerp(boostSliderTouch.value, boostFuel, 1.5f * Time.deltaTime);
+    }
+    #endregion
+
+    #region Body Parts
     int index = 0;
 
     public void AddBodyPart(GameObject bodyPart)
@@ -465,7 +505,8 @@ public class Ship : MonoBehaviour
 
         HealthBarManager.Instance.CreateAllHealthBars();
     }
-
+    #endregion
+    
     public void CheckForDie()
     {
         if (shipHealth.healthCount <= 0)

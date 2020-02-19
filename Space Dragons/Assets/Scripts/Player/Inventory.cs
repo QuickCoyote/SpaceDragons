@@ -125,6 +125,7 @@ public class Inventory : MonoBehaviour
         {
             ToggleItemInfo(false);
         }
+        Time.timeScale = (inventoryDisplay.activeSelf) ? 0 : 1;
     }
 
     public void ToggleItemInfo(bool value)

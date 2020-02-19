@@ -16,9 +16,10 @@ public class PlayerController : MonoBehaviour
 
     public eFireType fireType = eFireType.BASIC;
 
-    [Header("Control UI")]
+    [Header("UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
+    [SerializeField] GameObject HUD = null;
 
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
@@ -340,6 +341,7 @@ public class PlayerController : MonoBehaviour
         LoadData();
         JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
         TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
+        HUD.SetActive(false);
     }
 
     void LoadData()
@@ -391,6 +393,15 @@ public class PlayerController : MonoBehaviour
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
     }
 
+    public void OpenHUD()
+    {
+        HUD.SetActive(true);
+    }
+
+    public void CloseHUD()
+    {
+        HUD.SetActive(false);
+    }
 
     #region Money
     public void AddMoney(int amount)
