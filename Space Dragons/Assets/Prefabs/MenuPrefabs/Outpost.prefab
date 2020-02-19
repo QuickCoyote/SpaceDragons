@@ -2417,7 +2417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 70}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &632571548010627354
@@ -3880,7 +3880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 237.06197}
+  m_AnchoredPosition: {x: 0, y: 236.80005}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8717131723515760480
@@ -6730,7 +6730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: 75}
   m_SizeDelta: {x: 324.66666, y: 645.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8717131724469146511
@@ -7262,7 +7262,7 @@ Transform:
   - {fileID: 1581514906}
   - {fileID: 407945756}
   - {fileID: 233097029}
-  - {fileID: 4756806320981330115}
+  - {fileID: 983303462408429713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8497,7 +8497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 237.06197}
+  m_AnchoredPosition: {x: 0, y: 236.80005}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8717131724943996478
@@ -10443,6 +10443,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8717131724683363522}
     m_Modifications:
+    - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_RootOrder
@@ -10510,9 +10515,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
---- !u!224 &4756806320981330115 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+--- !u!4 &983303462408429713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
     type: 3}
   m_PrefabInstance: {fileID: 541897011489987517}
   m_PrefabAsset: {fileID: 0}

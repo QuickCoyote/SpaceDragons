@@ -56,14 +56,6 @@ public class GasStationController : MonoBehaviour
         {
             StationFuel.value--;
         }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            OpenGasStation();
-        }
-        else if (Input.GetKeyDown(KeyCode.F6))
-        {
-            CloseGasStation();
-        }
 
         if(Input.GetKeyDown(KeyCode.Slash))
         {
@@ -206,22 +198,22 @@ public class GasStationController : MonoBehaviour
         int seconds = (int)StockTimer % 60;
         timerReadout.text = minutes.ToString("00") + ":" + seconds.ToString("00");
         playerMoneyReadout.text = playerController.ReturnMoney();
-        segmentPriceReadout.text = segmentPrice.ToString();
-        upgradePriceReadout.text = upgradePrice.ToString();
+        segmentPriceReadout.text = "$" + segmentPrice.ToString();
+        upgradePriceReadout.text = "$" + upgradePrice.ToString();
 
         if ((playerShip.boostFuelMAX - playerShip.boostFuel) < GasCount)
         {
-            FullPriceReadout.text = ((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice).ToString();
+            FullPriceReadout.text = "$" + ((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice).ToString();
             FullRefillButton.interactable = ((GasCount > 0) && ((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice) <= playerController.money && (playerShip.boostFuel < playerShip.boostFuelMAX));
         }
         else
         {
-            FullPriceReadout.text = (GasCount * segmentPrice).ToString();
+            FullPriceReadout.text = "$" + (GasCount * segmentPrice).ToString();
             FullRefillButton.interactable = ((GasCount > 0) && (GasCount * segmentPrice <= playerController.money) && (playerShip.boostFuel < playerShip.boostFuelMAX));
         }
         if (upgradeTotal > 0)
         {
-            upgradePriceReadout.text = upgradePrice.ToString();
+            upgradePriceReadout.text = "$" + upgradePrice.ToString();
 
         } else
         {

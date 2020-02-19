@@ -123,7 +123,7 @@ MonoBehaviour:
   - {fileID: -6565937354857456132, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
-  asteroidSmaller: {fileID: 336725093998916287, guid: 680500986a37aba43a2218aff9d73437,
+  asteroidSmaller: {fileID: 336725093998916287, guid: 44fb2ab9734cf8a4fb3f4c85494541b0,
     type: 3}
   sizeAndWeight: 1
 --- !u!50 &336725093998916274
