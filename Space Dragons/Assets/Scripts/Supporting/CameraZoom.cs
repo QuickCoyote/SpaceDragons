@@ -7,7 +7,6 @@ public class CameraZoom : MonoBehaviour
 {
     Ship player;
     CinemachineTargetGroup targetGroup;
-    SpriteRenderer spr = null;
     float offset = 2.0f;
 
     void Start()

@@ -13,7 +13,6 @@ public class TeleportController : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyReadout = null;
     [SerializeField] TextMeshProUGUI costReadout = null;
     [SerializeField] TextMeshProUGUI messageReadout = null;
-    [SerializeField] GameObject TeleportPrefab = null;
     [SerializeField] Animator TeleportTransition = null;
 
     public string LocationName = null;

@@ -47,8 +47,6 @@ public class ShipyardController : MonoBehaviour
     Button sellButton = null;
     Slider MotherHealthBar;
 
-    int num = 0;
-
     public void Start()
     {
         MotherShip = WorldManager.Instance.Ship;

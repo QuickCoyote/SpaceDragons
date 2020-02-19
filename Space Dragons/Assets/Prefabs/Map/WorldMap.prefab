@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 1574700872666286324}
   - component: {fileID: 2829094063562948413}
   - component: {fileID: 34114824609307027}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4527,7 +4527,8 @@ MonoBehaviour:
   isPersistant: 0
   mainMapCam: {fileID: 7811200054210905129}
   MainMap: {fileID: 7811200054598161314}
-  highLightIcon: {fileID: 5252001711418953106}
+  highlightIcon: {fileID: 5252001711418953106}
+  highlightPrevPos: {x: 0, y: 0, z: 0}
   MiniMapTargetIcon: {fileID: 1148951603370249124}
   EnemyIcon: {fileID: 5759231331508317070}
   linerendererprefab: {fileID: 1625824605204873009, guid: 6d374776e04e6634fba0db5c1f01ffb7,
@@ -5219,7 +5220,7 @@ GameObject:
   - component: {fileID: 7811200054658695211}
   - component: {fileID: 7811200054658695221}
   - component: {fileID: 7811200054658695210}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5268,7 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:
     m_PersistentCalls:
