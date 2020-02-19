@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
@@ -62,6 +63,7 @@ public class LoadManager : Singleton<LoadManager>
                 saveData.Ships = ships.ToArray();
                 saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
                 saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
+                saveData.VisitedTeleports = FindObjectsOfType<TeleportController>().Where(e=> e.visited).Select(e=>e.LocationName).ToArray();
             }
         }
         catch (Exception e)
@@ -117,9 +119,6 @@ public class LoadManager : Singleton<LoadManager>
             ResetSaveData();
         }
     }
-
-
-
     #region Serializable Objects
 
     [System.Serializable]
@@ -129,12 +128,13 @@ public class LoadManager : Singleton<LoadManager>
         public int PlayerMoney;
         public int PlayerFuelMax;
         public int PlayerFuelCurrent;
+        public Vec3 PlayerPosition;
         public Ship.eMotherShip motherShipType;
         public ItemPair[] items;
         public ShipDataSavable[] Ships;
         public int CurrentWave;
         public int CurrentCycle;
-        public Vec3 PlayerPosition;
+        public string[] VisitedTeleports;
         public SaveData()
         {
             PlayerHealth = 100;
@@ -147,6 +147,7 @@ public class LoadManager : Singleton<LoadManager>
             PlayerPosition = new Vec3();
             PlayerFuelMax = 4;
             PlayerFuelCurrent = 4;
+            VisitedTeleports = new string[0];
         }
 
         public void setItemsFromDictionary(Dictionary<ItemData, int> itemsDict)

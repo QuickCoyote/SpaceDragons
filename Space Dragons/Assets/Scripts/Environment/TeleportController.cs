@@ -25,6 +25,8 @@ public class TeleportController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        visited = LoadManager.Instance.saveData.VisitedTeleports.ToList().Exists(e => e == LocationName);
+
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
         visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
