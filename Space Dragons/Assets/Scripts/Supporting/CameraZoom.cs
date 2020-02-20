@@ -18,6 +18,7 @@ public class CameraZoom : MonoBehaviour
     void FixedUpdate()
     {
         targetGroup.m_Targets = new CinemachineTargetGroup.Target[ship.bodyPartTransforms.Count];
+        offset = ship.bodyPartTransforms.Count * 5;
         for (int i = 0; i < ship.bodyPartTransforms.Count; i++)
         {
             if (ship.bodyPartTransforms[i] != null)
