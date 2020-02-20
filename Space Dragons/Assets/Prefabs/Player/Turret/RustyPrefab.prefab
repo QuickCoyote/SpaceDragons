@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
   healthMax: 75
-  healthCount: 75
+  healthCount: 74
   objectIndex: 0
 --- !u!114 &8445181093077309316
 MonoBehaviour:
@@ -376,7 +376,7 @@ MonoBehaviour:
   damage: 5
   range: 55
   attackSpeed: 0.25
-  price: 0
+  price: 25
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}

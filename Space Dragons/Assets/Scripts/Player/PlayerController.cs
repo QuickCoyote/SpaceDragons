@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
-    [SerializeField] GameObject HUD = null;
     [SerializeField] Toggle controlToggle = null;
 
     [Header("Attacks")]
@@ -344,6 +344,13 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region HUD Variables
+
+    [SerializeField] GameObject HUD = null;
+    [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
+
+    #endregion
+
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -413,6 +420,7 @@ public class PlayerController : MonoBehaviour
     public void OpenHUD()
     {
         HUD.SetActive(true);
+        HUD_Money_Text.text = ReturnMoney();
     }
 
     public void CloseHUD()

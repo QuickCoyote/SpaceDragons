@@ -12,7 +12,7 @@ public class Healer : Turret
 
     private void Start()
     {
-        healAmount = (4 * (int)turretRarity);
+        healAmount = (4 * ((int)turretRarity+1));
     }
 
     public override void Attack()
@@ -71,7 +71,7 @@ public class Healer : Turret
                 {
                     turretToHeal = obj.GetComponent<Health>();
                 }
-                else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+                else if ((obj.GetComponent<Health>().healthCount/obj.GetComponent<Health>().healthMax) < (turretToHeal.healthCount/turretToHeal.healthMax))
                 {
                     turretToHeal = obj.GetComponent<Health>();
                 }

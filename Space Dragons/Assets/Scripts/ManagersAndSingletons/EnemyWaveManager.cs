@@ -44,15 +44,15 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i <= cycleCount; i++)
+                for (int i = -1; i < cycleCount; i++)
                 {
                     waves[currentWave].StartWave();
                 }
                 dt = 0.0f;
 
-                if (currentWave == 10)
+                if (currentWave >= 10)
                 {
-                    for (int i = 0; i <= cycleCount; i++)
+                    for (int i = -1; i < cycleCount; i++)
                     {
                         SpawnRandomBoss();
                     }

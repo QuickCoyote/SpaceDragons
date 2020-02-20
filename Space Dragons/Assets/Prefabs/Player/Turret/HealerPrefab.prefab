@@ -376,7 +376,7 @@ MonoBehaviour:
   damage: 0
   range: 1
   attackSpeed: 0.25
-  price: 10
+  price: 200
   rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}

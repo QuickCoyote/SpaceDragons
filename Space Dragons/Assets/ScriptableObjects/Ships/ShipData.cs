@@ -19,9 +19,9 @@ public class ShipData : ShipDataParent
 
     public enum eTurretRarity
     {
-        COMMON = 1,
-        RARE = 2,
-        EPIC = 3
+        COMMON,
+        RARE,
+        EPIC
     };
 
     public enum eTurretType
