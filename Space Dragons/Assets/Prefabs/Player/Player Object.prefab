@@ -16384,7 +16384,7 @@ MonoBehaviour:
   maxShipsAllowed: 4
   speed: 5
   defaultSpeed: 7.5
-  driftSpeed: 5
+  driftSpeed: 3
   rotationSpeed: 15
   thrustersOn: 1
   joystickknob: {fileID: 1076237413}
@@ -16442,8 +16442,8 @@ MonoBehaviour:
   lightningAttackDamage: 10
   lightningMaxDistance: 10
   lightningMinDistance: 0.1
-  healingSpeed: 0
-  healingAmount: 0
+  healingSpeed: 0.25
+  healingAmount: 25
   guardDroneCount: 0
   guardDrone: {fileID: 4073881857116389269, guid: 5d051bf613cf072498c53cdbc862113c,
     type: 3}

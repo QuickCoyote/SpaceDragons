@@ -10,6 +10,11 @@ public class Healer : Turret
 
     Health turretImHealing = null;
 
+    private void Start()
+    {
+        healAmount = (4 * (int)turretRarity);
+    }
+
     public override void Attack()
     {
         //This method is not used by this class.

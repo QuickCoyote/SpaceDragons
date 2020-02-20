@@ -7,11 +7,11 @@ public class AsteroidManager : Singleton<AsteroidManager>
     [SerializeField] GameObject asteroidBreakupPrefab = null;
     [SerializeField] Asteroid[] asteroidPrefabs;
 
-    public List<Asteroid> asteroids = new List<Asteroid>();
+    [SerializeField] int ClusterNum = 800;
+    [SerializeField] int AsteroidMinimum = 2;
+    [SerializeField] int AsteroidMaximum = 5;
 
-    int ClusterNum = 800;
-    int AsteroidMinimum = 2;
-    int AsteroidMaximum = 5;
+    public List<Asteroid> asteroids = new List<Asteroid>();
 
     public int AsteroidsDestroyed = 0;
 

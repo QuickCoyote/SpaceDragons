@@ -15,6 +15,11 @@ public class FlameTurret : Turret
     public float flameLifeSpan;
     public float flameSpeed;
 
+    private void Start()
+    {
+        
+    }
+
     void FixedUpdate()
     {
         if (enemiesToBurn.Count > 0)
