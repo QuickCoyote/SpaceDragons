@@ -15,6 +15,8 @@ public class FlameTurret : Turret
     public float flameLifeSpan;
     public float flameSpeed;
 
+    public float acceptableDistance = 35f;
+
     private void Start()
     {
         
@@ -56,7 +58,10 @@ public class FlameTurret : Turret
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             if (Vector3.Angle(rotateBoi.transform.up, direction) < 15)
             {
-                Attack();
+                if(direction.magnitude < acceptableDistance)
+                {
+                    Attack();
+                }
             }
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
