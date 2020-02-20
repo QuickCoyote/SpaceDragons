@@ -51,12 +51,21 @@ public class ShipSelector : MonoBehaviour
             float hpToRestore = 0f;
             hpToRestore += shipHealth.healthMax - shipHealth.healthCount;
 
-            if (shipHealth.healthCount != shipHealth.healthMax && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+            if (hpToRestore != 0)
             {
                 ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
                     (o => o.name == "CostText").FirstOrDefault().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
-                ShipMenu.GetComponentsInChildren<Button>().Where
-                    (o => o.name == "Repair").FirstOrDefault().interactable = true;
+
+                if (WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+                {
+                    ShipMenu.GetComponentsInChildren<Button>().Where
+                        (o => o.name == "Repair").FirstOrDefault().interactable = true;
+                }
+                else
+                {
+                    ShipMenu.GetComponentsInChildren<Button>().Where
+                        (o => o.name == "Repair").FirstOrDefault().interactable = false;
+                }
             }
             else
             {

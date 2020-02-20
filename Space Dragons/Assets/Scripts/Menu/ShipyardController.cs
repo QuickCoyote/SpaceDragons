@@ -124,11 +124,19 @@ public class ShipyardController : MonoBehaviour
             }
         }
 
-        if (hpToRestore != 0 && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+        if (hpToRestore != 0)
         {
             RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
-            MothershipMenu.GetComponentsInChildren<Button>().Where
-                (o => o.name == "RepairAll").FirstOrDefault().interactable = true;
+            if (WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+            {
+                MothershipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "RepairAll").FirstOrDefault().interactable = true;
+            }
+            else
+            {
+                MothershipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "RepairAll").FirstOrDefault().interactable = false;
+            }
         }
         else
         {
@@ -186,11 +194,18 @@ public class ShipyardController : MonoBehaviour
             float hpToRestore = 0f;
             hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
 
-            if(MotherHealth.healthCount != MotherHealth.healthMax && WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+            if(hpToRestore != 0)
             {
                 string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
                 TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
-                RepairMotherButton.GetComponent<Button>().interactable = true;                
+                if(WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+                {
+                    RepairMotherButton.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    RepairMotherButton.GetComponent<Button>().interactable = false;
+                }
             }
             else
             {
@@ -826,6 +841,7 @@ public class ShipyardController : MonoBehaviour
         }
         Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
         MotherHealthBar.value = MotherHealth.healthCount;
+        MothershipPanelSwap(true);
     }
 
     public void RepairMother()
