@@ -115,7 +115,11 @@ public class PlayerController : MonoBehaviour
             {
                 if(hp != headHealth)
                 {
-                    objectsWithinRange.Add(hp);
+                    Vector3 direction = col.transform.position - head.transform.position;
+                    if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+                    {
+                        objectsWithinRange.Add(hp);
+                    }
                 }
             }
         }
@@ -123,8 +127,7 @@ public class PlayerController : MonoBehaviour
         if (objectsWithinRange.Count > 0)
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (Mathf.Abs(angle) < acceptableAngle)
+            if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
             {
                 enemiesShocked = 1;
                 ShockNext(objectsWithinRange[0]);
@@ -135,8 +138,9 @@ public class PlayerController : MonoBehaviour
             Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
             Vector3 randomDirection = (rotAngle * head.transform.up);
 
-            randomDirection = randomDirection.normalized + head.transform.parent.position;
+            randomDirection = (randomDirection.normalized * lightningMaxDistance) + head.transform.parent.position;
 
+            Debug.DrawLine(head.transform.position, randomDirection, Color.red, 5);
             Shock(randomDirection);
         }
     }
@@ -205,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
         if (shockPosition != head.transform.position)
         {
-            gameObject.AddComponent<Lightning>().target = shockPosition;
+            head.gameObject.AddComponent<Lightning>().target = shockPosition;
         }
         else
         {

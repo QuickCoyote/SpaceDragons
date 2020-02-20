@@ -385,8 +385,8 @@ MonoBehaviour:
   turretRarity: 0
   data: {fileID: 11400000, guid: 8766fd0860127474e9b943b8e7b714fd, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
-  healTimer: 0.25
-  healAmount: 10
+  healTimer: 0.01
+  healAmount: 100
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
