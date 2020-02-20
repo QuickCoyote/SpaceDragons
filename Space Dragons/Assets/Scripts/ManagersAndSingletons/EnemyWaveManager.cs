@@ -56,7 +56,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                     {
                         SpawnRandomBoss();
                     }
-                    currentWave = 0;
+                    currentWave = 1;
                     cycleCount++;
                 }
                 else

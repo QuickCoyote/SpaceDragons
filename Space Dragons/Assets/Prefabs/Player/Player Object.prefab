@@ -16437,10 +16437,10 @@ MonoBehaviour:
   flameLifeSpan: 1.25
   flameAttackangle: 15
   flameAttackSpeed: 0.0125
-  flameAttackDamage: 2
+  flameAttackDamage: 1
   lightningAttackSpeed: 1
   lightningAttackDamage: 10
-  lightningMaxDistance: 20
+  lightningMaxDistance: 10
   lightningMinDistance: 0.1
   healingSpeed: 0
   healingAmount: 0
