@@ -16451,7 +16451,7 @@ MonoBehaviour:
   DronePosition2: {fileID: 4133956669887764267}
   DronePosition3: {fileID: 4736502031557220835}
   HUD: {fileID: 2237770881112528467}
-  HUD_Money_Text: {fileID: 0}
+  HUD_Money_Text: {fileID: 6374612727981094603}
 --- !u!114 &5215258217068158141
 MonoBehaviour:
   m_ObjectHideFlags: 0
