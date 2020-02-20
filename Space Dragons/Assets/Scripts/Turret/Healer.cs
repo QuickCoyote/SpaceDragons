@@ -37,7 +37,7 @@ public class Healer : Turret
     {
         if (Time.timeScale != 0)
         {
-            if (turretImHealing.healthCount == turretImHealing.healthMax)
+            if (turretImHealing.healthCount >= turretImHealing.healthMax)
             {
                 turretImHealing = FindTurretToHeal();
             }
