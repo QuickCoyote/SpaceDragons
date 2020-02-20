@@ -9,7 +9,7 @@ public class Asteroid : MonoBehaviour
     public GameObject asteroidSmaller = null;
 
     public float sizeAndWeight = 1;
-
+    public float maxHp = 50.0f;
     Rigidbody2D rb;
     SpriteRenderer sr;
     Health hp;
@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
     public void setSizeAndWeight(float sizeweight)
     {
         sizeAndWeight = sizeweight;
-        hp.healthMax = 100 * sizeweight;
+        hp.healthMax = maxHp * sizeweight;
         hp.ResetHealth();
         transform.localScale = new Vector3(sizeweight, sizeweight, 1);
         rb.mass = sizeweight;

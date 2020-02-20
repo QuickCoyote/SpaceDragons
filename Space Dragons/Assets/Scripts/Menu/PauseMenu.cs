@@ -30,7 +30,6 @@ public class PauseMenu : Singleton<PauseMenu>
     {
         JoystickControls = toggled;
         PlayerPrefs.SetInt("JoystickControls", (JoystickControls) ? 0 : 1);
-
     }
     public void ToggleOptions()
     {
