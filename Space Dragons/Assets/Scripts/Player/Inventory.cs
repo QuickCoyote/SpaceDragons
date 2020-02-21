@@ -131,7 +131,6 @@ public class Inventory : UIBaseClass
         }
     }
     
-
     public new void Close()
     {
         base.Close();

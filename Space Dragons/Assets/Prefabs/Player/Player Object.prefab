@@ -16164,7 +16164,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5266144918581565300}
   - {fileID: 196209910334023938}
   - {fileID: 2894379729948650589}
   m_Father: {fileID: 196209910753800036}
@@ -16252,7 +16251,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 196209910265618381}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &196209910334023937
 SpriteRenderer:
@@ -16346,6 +16345,7 @@ Transform:
   - {fileID: 271287060196030703}
   - {fileID: 6800293023804940930}
   - {fileID: 2038372710443856496}
+  - {fileID: 5266144918581565300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17335,8 +17335,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: PlayerHUD, Assembly-CSharp
         m_MethodName: ToggleJoystickControls
         m_Mode: 0
         m_Arguments:
@@ -18574,6 +18574,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6008054583336124012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2223202587485274340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc636bbd0ad09fe4592e357b8cb70042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  Target: {fileID: 196209910265618382}
 --- !u!1 &2237770881112528467
 GameObject:
   m_ObjectHideFlags: 0
@@ -18844,8 +18858,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5215258217068158141}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: ToggleDisplay
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19571,9 +19585,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: CloseHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20653,7 +20667,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5215258217068158141}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: ToggleDisplay
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21765,9 +21779,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OpenHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26633,7 +26647,7 @@ Transform:
   - {fileID: 6720498394559506312}
   - {fileID: 7333550179665814085}
   m_Father: {fileID: 196209910265618381}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8878371453136237570
 GameObject:
@@ -27187,15 +27201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
---- !u!224 &1096590807 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
-    type: 3}
-  m_PrefabInstance: {fileID: 4586212022583358564}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096590805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
+    type: 3}
+  m_PrefabInstance: {fileID: 4586212022583358564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1096590807 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
     type: 3}
   m_PrefabInstance: {fileID: 4586212022583358564}
   m_PrefabAsset: {fileID: 0}
@@ -27204,7 +27218,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 196209910265618381}
+    m_TransformParent: {fileID: 196209910753800036}
     m_Modifications:
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27244,7 +27258,7 @@ PrefabInstance:
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27265,7 +27279,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 26c9b61da37200944a7565aecdf14025,
+      objectReference: {fileID: 21300000, guid: 4b4e5d2340bb85f468ee40fa57114078,
         type: 3}
     - target: {fileID: 6768678382184082620, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27274,6 +27288,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
+--- !u!1 &2223202587485274340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6768678382184082620, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4842860369724091480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5266144918581565300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,

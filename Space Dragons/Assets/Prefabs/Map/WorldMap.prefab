@@ -3826,7 +3826,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 250
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &7727138449777595612
 MonoBehaviour:
@@ -4883,7 +4883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7811200054598161325
 RectTransform:
   m_ObjectHideFlags: 0
