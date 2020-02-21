@@ -32,19 +32,23 @@ public class WorldManager : Singleton<WorldManager>
         ResetList();
         foreach (Rigidbody2D go in objectsToRender)
         {
-            if((go.transform.position - Head.transform.position).magnitude > 150)
+            if(Vector3.Distance(go.transform.position, Head.transform.position) > 150)
             {
                 if (go.gameObject.layer == 13)
                 {
                     go.gameObject.SetActive(false);
-                } else
+                } 
+                else
                 {
                     go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
                 }
             }
             else
             {
-                if (go.gameObject.layer == 13) go.gameObject.SetActive(true);
+                if (go.gameObject.layer != 13)
+                {
+                    go.gameObject.SetActive(true);
+                }
             }
         }
     }

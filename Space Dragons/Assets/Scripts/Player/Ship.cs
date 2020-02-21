@@ -29,9 +29,10 @@ public class Ship : MonoBehaviour
 
     public Camera cam = null;
     public Health shipHealth = null;
+
     bool isDead = false;
 
-    [Header("Pre-Play Info")]
+    [Header("Body Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
@@ -104,6 +105,7 @@ public class Ship : MonoBehaviour
                 SetShipHead(4);
                 break;
         }
+        
     }
 
     private void LoadData()
