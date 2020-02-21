@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidManager : Singleton<AsteroidManager>
 {
     [SerializeField] GameObject asteroidBreakupPrefab = null;
-    [SerializeField] Asteroid[] asteroidPrefabs;
+    [SerializeField] GameObject[] asteroidPrefabs;
 
     [SerializeField] int ClusterNum = 800;
     [SerializeField] int AsteroidMinimum = 2;
@@ -23,7 +23,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             Vector3 location = new Vector3(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y),0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0,3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
+                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0,3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null).GetComponent<Asteroid>()); //Select smaller locations for each asteroid
             }
         }
     }
@@ -35,7 +35,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             Vector3 location = WorldManager.Instance.Head.transform.position + new Vector3(100, 100, 0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null)); //Select smaller locations for each asteroid
+                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null).GetComponent<Asteroid>()); //Select smaller locations for each asteroid
             }
             AsteroidsDestroyed = 0;
         }

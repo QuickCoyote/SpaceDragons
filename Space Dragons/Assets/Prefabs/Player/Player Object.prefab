@@ -16422,6 +16422,8 @@ MonoBehaviour:
   HUD_Money_Text: {fileID: 6374612727981094603}
   HUD_Fuel_Text: {fileID: 9052441457215253061}
   HUD_Mothership_Text: {fileID: 286843501067018213}
+  HUD_ETA_Text: {fileID: 6689906341806295812}
+  HUD_Distance_Text: {fileID: 3698663009369829576}
   attackSpeed: 0.5
   attackTimer: 0
   money: 100

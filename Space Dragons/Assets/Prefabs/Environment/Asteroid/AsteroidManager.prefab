@@ -47,8 +47,11 @@ MonoBehaviour:
   asteroidBreakupPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
     type: 3}
   asteroidPrefabs:
-  - {fileID: 336725093998916286, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4, type: 3}
-  - {fileID: 336725093998916286, guid: 44fb2ab9734cf8a4fb3f4c85494541b0, type: 3}
-  - {fileID: 336725093998916286, guid: cf2b93270f4b1bb4e8b033b297921164, type: 3}
+  - {fileID: 336725093998916287, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4, type: 3}
+  - {fileID: 336725093998916287, guid: 44fb2ab9734cf8a4fb3f4c85494541b0, type: 3}
+  - {fileID: 336725093998916287, guid: cf2b93270f4b1bb4e8b033b297921164, type: 3}
+  ClusterNum: 800
+  AsteroidMinimum: 2
+  AsteroidMaximum: 5
   asteroids: []
   AsteroidsDestroyed: 0

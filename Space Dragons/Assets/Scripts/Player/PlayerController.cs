@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
     [SerializeField] TextMeshProUGUI HUD_Fuel_Text = null;
     [SerializeField] TextMeshProUGUI HUD_Mothership_Text = null;
+    [SerializeField] TextMeshProUGUI HUD_ETA_Text = null;
+    [SerializeField] TextMeshProUGUI HUD_Distance_Text = null;
 
     #endregion
 
@@ -416,6 +418,9 @@ public class PlayerController : MonoBehaviour
             thrusterToggle.isOn = WorldManager.Instance.Ship.thrustersOn;
             HUD_Money_Text.text = ReturnMoney();
             HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
+            HUD_Distance_Text.text = Map.Instance.shortestdistanceReadout.text; //UPDATE HERE
+            HUD_ETA_Text.text = Map.Instance.shortestdistanceReadout.text;//UPDATE HERE
+
             switch (WorldManager.Instance.Ship.motherShip)
             {
                 case Ship.eMotherShip.BASIC:
