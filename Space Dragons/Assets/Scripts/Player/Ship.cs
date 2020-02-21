@@ -482,7 +482,6 @@ public class Ship : MonoBehaviour
             playerController.headBullet = null;
         }
         ShipHeadSprite.sprite = ShipHeadSprites[val];
-        Debug.Log(val);
     }
 
     public void SortBody()

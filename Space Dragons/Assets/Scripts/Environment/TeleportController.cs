@@ -123,7 +123,10 @@ public class TeleportController : MonoBehaviour
         WorldManager.Instance.SpawnWarpHole(visitedTeleports[index].transform.position);
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)
         {
-            t.position = pos;
+            if(t)
+            {
+                t.position = pos;
+            }
         }
     }
 }

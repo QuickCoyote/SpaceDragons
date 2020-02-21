@@ -443,7 +443,7 @@ public class PlayerController : MonoBehaviour
 
     public bool RemoveMoney(int amount)
     {
-        if (money - amount > 0)
+        if (money - amount >= 0)
         {
             money -= amount;
             return true;

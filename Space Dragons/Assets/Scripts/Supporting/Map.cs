@@ -42,7 +42,6 @@ public class Map : Singleton<Map>
 
     private void Update()
     {
-
         Vector3 direction = Vector3.zero;
         if(highlightIcon.activeSelf)
         {
@@ -51,6 +50,7 @@ public class Map : Singleton<Map>
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             MiniMapTargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
             MiniMapTargetIcon.enabled = (direction.magnitude > 10.0f);
+            shortestdistanceReadout.text = Mathf.CeilToInt(ReturnDistanceToTracker()).ToString() + "au";
         }
         else
         {
@@ -69,6 +69,7 @@ public class Map : Singleton<Map>
                 enemydirection = e.transform.position - player.transform.position;
             }
         }
+
         float enemyangle = Mathf.Atan2(enemydirection.y, enemydirection.x) * Mathf.Rad2Deg;
         EnemyIcon.transform.rotation = Quaternion.AngleAxis(enemyangle + 90, Vector3.forward);
         EnemyIcon.enabled = (enemydirection.magnitude > 10.0f);
@@ -180,33 +181,32 @@ public class Map : Singleton<Map>
             mousePos.x -= Screen.width / 2;
             mousePos.y -= Screen.height / 2;
 
-            mousePos.x += (Screen.width*0.1469594595f);
-            mousePos.y += (Screen.height*0.0034722222f);
-            mousePos *= 0.825f;
+            //mousePos.x += (Screen.width * (332f / 1919.514f));
+            //mousePos.y += (Screen.height * 0.0034722222f);
 
-            //mousePos *= 1 / (mainMapCam.orthographicSize / 510);
+
+
+            //mousePos *= 1.111111111111111111111111111111f;// this is for 16:9 (1.111111111, 16/9)
+            mousePos *= 1.3333333333f;// this is for 18:9 (1.333333333, 18/9)
 
             Vector3 newMousePos = new Vector3(0, 0, -200);
             Vector3 oldMousePos = new Vector3(mousePos.x, mousePos.y, 100);
 
-            Vector3 tempPos = new Vector3(mousePos.x, mousePos.y, -4f);
-
-            float c2 = Mathf.Pow(mapX*0.5f, 2) + Mathf.Pow(mapY*0.5f, 2);
-            float c = Mathf.Sqrt(c2);
-
-            float f = Vector3.Distance(mainMapCam.transform.position, Vector3.zero);
-
-            tempPos *= f / c;
+            Vector3 tempPos;
 
             Debug.DrawLine(oldMousePos, newMousePos, Color.red, 100, false);
 
             tempPos = mainMapCam.transform.position + mousePos;
             tempPos.z = -4f;
 
-            // Set marker boi here and activate him
-            highlightIcon.SetActive(true);
             highlightPrevPos = highlightIcon.transform.position;
             highlightIcon.transform.position = tempPos;
+            highlightIcon.SetActive(true);
         }
+    }
+
+    public float ReturnDistanceToTracker()
+    {
+        return (highlightIcon.transform.position - player.transform.position).magnitude;
     }
 }
