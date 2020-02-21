@@ -11376,7 +11376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4a6c594edba7f48b8cef04960d9e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shipyard: {fileID: 2806653248522468035}
+  UICanvas: {fileID: 2806653248522468035}
+  PauseOnly: 1
   MotherShip: {fileID: 0}
   Ships: []
   ShopShips: []
@@ -12937,7 +12938,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &2806653248522468061
 MonoBehaviour:

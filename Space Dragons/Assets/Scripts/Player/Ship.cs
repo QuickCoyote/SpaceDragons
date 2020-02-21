@@ -217,7 +217,7 @@ public class Ship : MonoBehaviour
             {
                 if (Input.touchCount > 0)
                 {
-                    if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                    if (!UIManager.Instance.IsPointerOverUIObject())
                     {
                         speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
                     }
@@ -302,7 +302,7 @@ public class Ship : MonoBehaviour
         {
             // This is just getting touch
             Touch touch = Input.GetTouch(0);
-            if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+            if (!UIManager.Instance.IsPointerOverUIObject())
             {
                 Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
                 targetPos.z = 0;

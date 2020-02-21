@@ -1,27 +1,13 @@
-﻿using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using System.Linq;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class Map : Singleton<Map>
+public class MainMapController : UIBaseClass
 {
     public Camera mainMapCam = null;
 
-    public GameObject MainMap;
+    public TextMeshProUGUI shortestdistanceReadout = null;
     public GameObject highlightIcon;
     public Vector3 highlightPrevPos = Vector3.zero;
-    public Image MiniMapTargetIcon;
-    public Image EnemyIcon;
-
-    public LineRenderer linerendererprefab;
-    public TextMeshProUGUI shortestdistanceReadout = null;
-    public FollowTarget MiniMapFollow = null;
-
-    public Vector3 TargetBeingTracked = Vector3.zero;
-
-    GameObject player;
 
     float mapX = 1000f;
     float mapY = 1000f;
@@ -33,50 +19,11 @@ public class Map : Singleton<Map>
 
     Vector3 panStart;
 
-    private void Start()
-    {
-        // Instantiate the Map Tracker if it doesn't already exist.
-        player = WorldManager.Instance.Head;
-        MiniMapFollow.Target = player;
-    }
-
     private void Update()
     {
-        Vector3 direction = Vector3.zero;
-        if(highlightIcon.activeSelf)
-        {
-            //Check where to rotate minimap tracker
-            direction = highlightIcon.transform.position - player.transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            MiniMapTargetIcon.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-            MiniMapTargetIcon.enabled = (direction.magnitude > 10.0f);
-            shortestdistanceReadout.text = Mathf.CeilToInt(ReturnDistanceToTracker()).ToString() + "au";
-        }
-        else
-        {
-            MiniMapTargetIcon.enabled = false;
-        }
-
-        //Check where to rotate enemy tracker
-        float closestEnemy = 50000;
-        Vector3 enemydirection = Vector3.zero;
-        foreach (Enemy e in FindObjectsOfType<Enemy>())
-        {
-            float distance = Vector3.Distance(e.transform.position, player.transform.position);
-            if (distance < closestEnemy)
-            {
-                closestEnemy = distance;
-                enemydirection = e.transform.position - player.transform.position;
-            }
-        }
-
-        float enemyangle = Mathf.Atan2(enemydirection.y, enemydirection.x) * Mathf.Rad2Deg;
-        EnemyIcon.transform.rotation = Quaternion.AngleAxis(enemyangle + 90, Vector3.forward);
-        EnemyIcon.enabled = (enemydirection.magnitude > 10.0f);
-
+        shortestdistanceReadout.text = Mathf.CeilToInt(TrackingManager.Instance.ReturnDistanceToTracker()).ToString() + "au";
         // This is panning/zooming on the map
-
-        if (MainMap.activeSelf)
+        if (UICanvas.activeSelf)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -98,7 +45,7 @@ public class Map : Singleton<Map>
 
             //    touchOne.position -= mod;
             //    touchTwo.position -= mod;
-              
+
             //    touchOne.position *= 0.825f;
             //    touchTwo.position *= 0.825f;
 
@@ -118,7 +65,7 @@ public class Map : Singleton<Map>
                 mainMapCam.transform.position += panDirection;
             }
 
-            if(maxX < minX)
+            if (maxX < minX)
             {
                 maxX *= -1;
                 minX *= -1;
@@ -148,6 +95,7 @@ public class Map : Singleton<Map>
     //    GenerateBounds();
     //}
 
+
     public void GenerateBounds()
     {
         var vertExtent = mainMapCam.orthographicSize;
@@ -155,20 +103,6 @@ public class Map : Singleton<Map>
         maxX = mapX / 2.0f - vertExtent;
         minY = vertExtent - mapY / 2.0f;
         maxY = mapY / 2.0f - vertExtent;
-    }
-
-    public void MapOpen()
-    {
-        MainMap.SetActive(true);
-        highlightIcon.transform.position = highlightPrevPos;
-        Time.timeScale = 0;
-    }
-
-    public void MapClose()
-    {
-        MainMap.SetActive(false);
-        highlightIcon.transform.position = highlightPrevPos;
-        Time.timeScale = 1f;
     }
 
     public void SetTracker()
@@ -205,8 +139,18 @@ public class Map : Singleton<Map>
         }
     }
 
-    public float ReturnDistanceToTracker()
+
+    public new void Open()
     {
-        return (highlightIcon.transform.position - player.transform.position).magnitude;
+        base.Open();
+        highlightIcon.transform.position = highlightPrevPos;
     }
+    public new void Close()
+    {
+        base.Close();
+        highlightIcon.transform.position = highlightPrevPos;
+    }
+
+
+
 }

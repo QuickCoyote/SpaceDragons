@@ -2873,7 +2873,7 @@ RectTransform:
   m_Children:
   - {fileID: 953799823}
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16316,6 +16316,7 @@ GameObject:
   - component: {fileID: 196209910753800035}
   - component: {fileID: 1753379421}
   - component: {fileID: 5215258217068158141}
+  - component: {fileID: 6555393975105471797}
   m_Layer: 8
   m_Name: Player Object
   m_TagString: Untagged
@@ -16414,16 +16415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireType: 0
-  JoystickControls: {fileID: 2090208725807647126}
-  TouchControls: {fileID: 3349519419594841222}
-  controlToggle: {fileID: 3319085884783165921}
-  thrusterToggle: {fileID: 118829312654711622}
-  HUD: {fileID: 2237770881112528467}
-  HUD_Money_Text: {fileID: 6374612727981094603}
-  HUD_Fuel_Text: {fileID: 9052441457215253061}
-  HUD_Mothership_Text: {fileID: 286843501067018213}
-  HUD_ETA_Text: {fileID: 6689906341806295812}
-  HUD_Distance_Text: {fileID: 3698663009369829576}
   attackSpeed: 0.5
   attackTimer: 0
   money: 100
@@ -16469,15 +16460,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8116ec6a62cbb4f489c98e7642cf39ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICanvas: {fileID: 1462492966755865231}
+  PauseOnly: 1
   emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   inventoryDisplay: {fileID: 152004549}
-  closeInventory: {fileID: 4108330008081556441}
   itemInfoPanel: {fileID: 417303761}
-  inventoryUI: {fileID: 396466653645988635}
   itemInfoPanelImage: {fileID: 792260484}
   itemInfoPanelName: {fileID: 1668860860}
   itemInfoPanelDesc: {fileID: 1179927840}
   inventory: []
+--- !u!114 &6555393975105471797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196209910753800038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3593051172ea9e74d9bdb4635c916110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UICanvas: {fileID: 1143159698782520790}
+  PauseOnly: 0
+  JoystickControls: {fileID: 2090208725807647126}
+  TouchControls: {fileID: 3349519419594841222}
+  controlToggle: {fileID: 3319085884783165921}
+  thrusterToggle: {fileID: 118829312654711622}
+  HUD_Money_Text: {fileID: 6374612727981094603}
+  HUD_Fuel_Text: {fileID: 9052441457215253061}
+  HUD_Mothership_Text: {fileID: 286843501067018213}
+  HUD_ETA_Text: {fileID: 6689906341806295812}
+  HUD_Distance_Text: {fileID: 3698663009369829576}
+  CaptainIcon: {fileID: 5061519275806370970}
+  ShipIcon: {fileID: 5809358921844284628}
 --- !u!1 &196209911218918719
 GameObject:
   m_ObjectHideFlags: 0
@@ -16818,7 +16834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6879357312923538032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16837,7 +16853,7 @@ RectTransform:
   - {fileID: 7343654029135111315}
   - {fileID: 152004550}
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17449,7 +17465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8197424782224132223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17461,9 +17477,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 417303762}
   - {fileID: 8147234957570145885}
   - {fileID: 6879357312923538032}
+  - {fileID: 417303762}
   m_Father: {fileID: 196209910753800036}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20535,7 +20551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8147234957570145885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20548,7 +20564,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -5,13 +5,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : UIBaseClass
 {
     [SerializeField] Sprite emptyItemImage;
     [SerializeField] GameObject inventoryDisplay = null;
-    [SerializeField] GameObject closeInventory = null;
     [SerializeField] GameObject itemInfoPanel = null;
-    [SerializeField] GameObject inventoryUI = null;
     [SerializeField] Image itemInfoPanelImage = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelName = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelDesc = null;
@@ -116,18 +114,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ToggleDisplay()
-    {
-        inventoryDisplay.SetActive(!inventoryDisplay.activeSelf);
-        closeInventory.SetActive(!closeInventory.activeSelf);
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
-        if (!inventoryDisplay.activeSelf)
-        {
-            ToggleItemInfo(false);
-        }
-        Time.timeScale = (inventoryDisplay.activeSelf) ? 0 : 1;
-    }
-
     public void ToggleItemInfo(bool value)
     {
         itemInfoPanel.SetActive(value);
@@ -143,5 +129,12 @@ public class Inventory : MonoBehaviour
             itemInfoPanelName.text = "Item Name: " + data.itemName;
             itemInfoPanelDesc.text = "Item Description: " + data.description;
         }
+    }
+    
+
+    public new void Close()
+    {
+        base.Close();
+        ToggleItemInfo(false);
     }
 }

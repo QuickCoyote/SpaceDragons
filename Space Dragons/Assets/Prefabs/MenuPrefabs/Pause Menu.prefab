@@ -191,7 +191,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 29000
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4643927500636394741
 MonoBehaviour:
@@ -1679,12 +1679,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad71c014b8664c84589cfd6db0d5e2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPersistant: 0
-  pauseUI: {fileID: 5009534055427847225}
+  UICanvas: {fileID: 5009534055427847225}
+  PauseOnly: 1
   optionsUI: {fileID: 5730204029758565188}
   menuButton: {fileID: 791713350858363406}
   controlToggle: {fileID: 7684150356805412412}
-  JoystickControls: 0
 --- !u!1 &3614001198135323074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +2887,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 750
   m_TargetDisplay: 0
 --- !u!114 &8407400483346741668
 MonoBehaviour:

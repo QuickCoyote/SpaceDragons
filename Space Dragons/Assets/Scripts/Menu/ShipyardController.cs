@@ -6,9 +6,8 @@ using TMPro;
 using System.Linq;
 using UnityEngine.UI.Extensions;
 
-public class ShipyardController : MonoBehaviour
+public class ShipyardController : UIBaseClass
 {
-    public GameObject Shipyard;
     public Ship MotherShip;
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
@@ -62,9 +61,6 @@ public class ShipyardController : MonoBehaviour
             (o => o.name == "Buy").FirstOrDefault();
         sellButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
             (o => o.name == "Sell").FirstOrDefault();        
-
-        Shipyard.SetActive(false);
-
     }
 
     public void Update()
@@ -76,11 +72,11 @@ public class ShipyardController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            OpenShop();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseShop();
+            ToggleUI();
         }
         #endregion
 
@@ -145,9 +141,7 @@ public class ShipyardController : MonoBehaviour
                 (o => o.name == "RepairAll").FirstOrDefault().interactable = false;
         }
 
-
         ShipCounter.text = NumOfShips + "/" + Ships.Count;
-
         MoneyNum.text = MotherShip.GetComponent<PlayerController>().ReturnMoney();
     }
 
@@ -857,7 +851,6 @@ public class ShipyardController : MonoBehaviour
             MotherHealthBar.value = MotherHealth.healthCount;
         }
         MothershipPanelSwap(true);
-
     }
 
     public void CloseMessage()
@@ -865,34 +858,31 @@ public class ShipyardController : MonoBehaviour
         MaxShipWarning.SetActive(false);
     }
 
-    public void OpenShop()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            ToggleUI();
+        }
+    }
+
+    public new void Open()
+    {
+        base.Open();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
         ShipyardShipSetup();
         ShipyardMotherSetup((int)CurrentMothership, false);
         MothershipPanelSwap(true);
-        Shipyard.SetActive(true);
-        Time.timeScale = 0;
     }
 
-    public void CloseShop()
+    public new void Close()
     {
+        base.Close();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Battle");
-        Shipyard.SetActive(false);
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
-        Time.timeScale = 1;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            OpenShop();
-        }
-    }
-
 }

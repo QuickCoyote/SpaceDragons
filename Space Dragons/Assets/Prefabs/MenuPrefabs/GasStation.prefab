@@ -139,7 +139,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5945657156178514168}
+  - {fileID: 2100296740198381738}
   - {fileID: 47266789313860954}
   - {fileID: 1672659404229005244}
   m_Father: {fileID: 0}
@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9720cb207fef40b40b6a7d848704fa9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GasStationCanvas: {fileID: 47266789313860953}
+  UICanvas: {fileID: 47266789313860953}
+  PauseOnly: 1
   StationFuel: {fileID: 47266789400206760}
   StationContent: {fileID: 2864317914777388807}
   PlayerFuel: {fileID: 3363235453995935639}
@@ -524,7 +525,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &47266789313860948
 MonoBehaviour:
@@ -9665,9 +9666,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
---- !u!224 &5945657156178514168 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+--- !u!4 &2100296740198381738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
     type: 3}
   m_PrefabInstance: {fileID: 1658892558259946374}
   m_PrefabAsset: {fileID: 0}
