@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,21 +15,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public eFireType fireType = eFireType.BASIC;
-
-    [Header("UI")]
-    [SerializeField] GameObject JoystickControls = null;
-    [SerializeField] GameObject TouchControls = null;
-    #region HUD Variables
-    [SerializeField] Toggle controlToggle = null;
-    [SerializeField] Toggle thrusterToggle = null;
-    [SerializeField] GameObject HUD = null;
-    [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
-    [SerializeField] TextMeshProUGUI HUD_Fuel_Text = null;
-    [SerializeField] TextMeshProUGUI HUD_Mothership_Text = null;
-    [SerializeField] TextMeshProUGUI HUD_ETA_Text = null;
-    [SerializeField] TextMeshProUGUI HUD_Distance_Text = null;
-
-    #endregion
 
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
@@ -126,7 +109,7 @@ public class PlayerController : MonoBehaviour
             col.TryGetComponent(out hp);
             if (hp)
             {
-                if(hp != headHealth)
+                if (hp != headHealth)
                 {
                     Vector3 direction = col.transform.position - head.transform.position;
                     if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
@@ -252,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
             // Deal Damage to Enemy
             Health enemyHealth = FindEnemyToDamage();
-            if(enemyHealth)
+            if (enemyHealth)
             {
                 enemyHealth.healthCount -= healingAmount * Time.deltaTime;
             }
@@ -268,13 +251,13 @@ public class PlayerController : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(head.transform.position, 10);
 
-        foreach(Collider2D collider in colliders)
+        foreach (Collider2D collider in colliders)
         {
-            if(collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
+            if (collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
             {
                 collider.TryGetComponent(out enemy);
 
-                if(enemy)
+                if (enemy)
                 {
                     return enemy;
                 }
@@ -325,7 +308,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DronePosition1;
     public GameObject DronePosition2;
     public GameObject DronePosition3;
-    
+
     private void GuardDroneFire()
     {
         if (guardDroneCount < 3)
@@ -341,7 +324,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < droneHolder.transform.childCount; i++)
         {
-            PlayerDrone atk = null; 
+            PlayerDrone atk = null;
             transform.GetChild(i).TryGetComponent(out atk);
 
             if (atk)
@@ -358,11 +341,6 @@ public class PlayerController : MonoBehaviour
     {
         inventory = GetComponent<Inventory>();
         LoadData();
-        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
-        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
-        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-
-        HUD.SetActive(false);
     }
 
     void LoadData()
@@ -390,7 +368,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
-                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                if (!UIManager.Instance.IsPointerOverUIObject())
                 {
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackSpeed)
@@ -406,55 +384,6 @@ public class PlayerController : MonoBehaviour
         {
             money += 1000;
         }
-    }
-
-    private void Update()
-    {
-        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
-        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-        if (HUD.activeSelf)
-        {
-            controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
-            thrusterToggle.isOn = WorldManager.Instance.Ship.thrustersOn;
-            HUD_Money_Text.text = ReturnMoney();
-            HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
-            HUD_Distance_Text.text = Map.Instance.shortestdistanceReadout.text; //UPDATE HERE
-            HUD_ETA_Text.text = Map.Instance.shortestdistanceReadout.text;//UPDATE HERE
-
-            switch (WorldManager.Instance.Ship.motherShip)
-            {
-                case Ship.eMotherShip.BASIC:
-                    HUD_Mothership_Text.text = "Race: Animal, Abilities: Basic, Description: Made of Orange Ore";
-                    break;
-                case Ship.eMotherShip.FLAMETHROWER:
-                    HUD_Mothership_Text.text = "Race: Orc, Abilities: FlameThrower, Description: Made of neither Blood or Oranges";
-                    break;
-                case Ship.eMotherShip.LIGHTNING:
-                    HUD_Mothership_Text.text = "Race: Human, Abilities: Lighting, Description: Made of Blue Ore";
-                    break;
-                case Ship.eMotherShip.HEALING:
-                    HUD_Mothership_Text.text = "Race: Elf, Abilities: Healing, Description: Made of Green Ore";
-                    break;
-                case Ship.eMotherShip.GUARD_DRONE:
-                    HUD_Mothership_Text.text = "Race: Fairy, Abilities: Guard Drones, Description: Made of Purple Ore";
-                    break;
-            }
-        }
-    }
-
-    public void ToggleJoystickControls(bool toggled)
-    {
-        PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
-        controlToggle.isOn = (toggled);
-    }
-    public void OpenHUD()
-    {
-        HUD.SetActive(true);
-    }
-
-    public void CloseHUD()
-    {
-        HUD.SetActive(false);
     }
 
     #region Money

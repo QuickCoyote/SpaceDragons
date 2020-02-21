@@ -2316,8 +2316,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5862446533662427156}
-        m_TargetAssemblyTypeName: TeleportController, Assembly-CSharp
-        m_MethodName: CloseUI
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2587,7 +2587,7 @@ Transform:
   - {fileID: 5862446532715283660}
   - {fileID: 5862446534135597330}
   - {fileID: 4701865353163559990}
-  - {fileID: 8437940591774682232}
+  - {fileID: 4233209018048095274}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2603,7 +2603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba9d109948ebfb449bec3aa381a9ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCanvas: {fileID: 5862446532715283663}
+  UICanvas: {fileID: 5862446532715283663}
+  PauseOnly: 1
   uiTeleportButton: {fileID: 5862446533259868943}
   uiTeleportArrows: {fileID: 5862446532301585287}
   nameReadout: {fileID: 5862446532637564761}
@@ -2611,8 +2612,6 @@ MonoBehaviour:
   moneyReadout: {fileID: 2472957670996285185}
   costReadout: {fileID: 6593187934492422626}
   messageReadout: {fileID: 5862446533828723979}
-  TeleportPrefab: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
-    type: 3}
   TeleportTransition: {fileID: 8450094810979454205}
   LocationName: Location 1
   costmultiplier: 0.05
@@ -3639,6 +3638,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5862446533662427157}
     m_Modifications:
+    - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3767,9 +3771,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
---- !u!224 &8437940591774682232 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+--- !u!4 &4233209018048095274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
     type: 3}
   m_PrefabInstance: {fileID: 3503571895717748486}
   m_PrefabAsset: {fileID: 0}

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LoadingScreen : Singleton<LoadingScreen>
 {
+    public bool IsLoadingOpen;
     // Make sure the loading screen shows for at least 1 second:
     private const float MIN_TIME_TO_SHOW = 1.0f;
     // The reference to the current loading operation running in the background:
@@ -113,6 +114,7 @@ public class LoadingScreen : Singleton<LoadingScreen>
 
         Time.timeScale = 1;
         isLoading = true;
+        IsLoadingOpen = true;
     }
     // Call this to hide it:
     public void Hide()
@@ -121,5 +123,6 @@ public class LoadingScreen : Singleton<LoadingScreen>
         currentLoadingOperation = null;
         if (LoadingPanel) LoadingPanel.SetActive(false);
         isLoading = false;
+        IsLoadingOpen = false;
     }
 }

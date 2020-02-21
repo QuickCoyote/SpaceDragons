@@ -2873,7 +2873,7 @@ RectTransform:
   m_Children:
   - {fileID: 953799823}
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5099,9 +5099,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OpenHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16164,7 +16164,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5266144918581565300}
   - {fileID: 196209910334023938}
   - {fileID: 2894379729948650589}
   m_Father: {fileID: 196209910753800036}
@@ -16252,7 +16251,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 196209910265618381}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &196209910334023937
 SpriteRenderer:
@@ -16316,6 +16315,7 @@ GameObject:
   - component: {fileID: 196209910753800035}
   - component: {fileID: 1753379421}
   - component: {fileID: 5215258217068158141}
+  - component: {fileID: 6555393975105471797}
   m_Layer: 8
   m_Name: Player Object
   m_TagString: Untagged
@@ -16345,6 +16345,7 @@ Transform:
   - {fileID: 271287060196030703}
   - {fileID: 6800293023804940930}
   - {fileID: 2038372710443856496}
+  - {fileID: 5266144918581565300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16414,16 +16415,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireType: 0
-  JoystickControls: {fileID: 2090208725807647126}
-  TouchControls: {fileID: 3349519419594841222}
-  controlToggle: {fileID: 3319085884783165921}
-  thrusterToggle: {fileID: 118829312654711622}
-  HUD: {fileID: 2237770881112528467}
-  HUD_Money_Text: {fileID: 6374612727981094603}
-  HUD_Fuel_Text: {fileID: 9052441457215253061}
-  HUD_Mothership_Text: {fileID: 286843501067018213}
-  HUD_ETA_Text: {fileID: 6689906341806295812}
-  HUD_Distance_Text: {fileID: 3698663009369829576}
   attackSpeed: 0.5
   attackTimer: 0
   money: 100
@@ -16469,15 +16460,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8116ec6a62cbb4f489c98e7642cf39ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICanvas: {fileID: 1462492966755865231}
+  PauseOnly: 1
   emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   inventoryDisplay: {fileID: 152004549}
-  closeInventory: {fileID: 4108330008081556441}
   itemInfoPanel: {fileID: 417303761}
-  inventoryUI: {fileID: 396466653645988635}
   itemInfoPanelImage: {fileID: 792260484}
   itemInfoPanelName: {fileID: 1668860860}
   itemInfoPanelDesc: {fileID: 1179927840}
   inventory: []
+--- !u!114 &6555393975105471797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196209910753800038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3593051172ea9e74d9bdb4635c916110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UICanvas: {fileID: 1143159698782520790}
+  PauseOnly: 0
+  JoystickControls: {fileID: 2090208725807647126}
+  TouchControls: {fileID: 3349519419594841222}
+  controlToggle: {fileID: 3319085884783165921}
+  thrusterToggle: {fileID: 118829312654711622}
+  HUD_Money_Text: {fileID: 6374612727981094603}
+  HUD_Fuel_Text: {fileID: 9052441457215253061}
+  HUD_Mothership_Text: {fileID: 286843501067018213}
+  HUD_ETA_Text: {fileID: 6689906341806295812}
+  HUD_Distance_Text: {fileID: 3698663009369829576}
+  CaptainIcon: {fileID: 5061519275806370970}
+  ShipIcon: {fileID: 5809358921844284628}
 --- !u!1 &196209911218918719
 GameObject:
   m_ObjectHideFlags: 0
@@ -16818,7 +16834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6879357312923538032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16837,7 +16853,7 @@ RectTransform:
   - {fileID: 7343654029135111315}
   - {fileID: 152004550}
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17319,8 +17335,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: PlayerHUD, Assembly-CSharp
         m_MethodName: ToggleJoystickControls
         m_Mode: 0
         m_Arguments:
@@ -17449,7 +17465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8197424782224132223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17461,9 +17477,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 417303762}
   - {fileID: 8147234957570145885}
   - {fileID: 6879357312923538032}
+  - {fileID: 417303762}
   m_Father: {fileID: 196209910753800036}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18558,6 +18574,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6008054583336124012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2223202587485274340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc636bbd0ad09fe4592e357b8cb70042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  Target: {fileID: 196209910265618382}
 --- !u!1 &2237770881112528467
 GameObject:
   m_ObjectHideFlags: 0
@@ -18828,8 +18858,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5215258217068158141}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: ToggleDisplay
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19555,9 +19585,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: CloseHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20535,7 +20565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8147234957570145885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20548,7 +20578,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8197424782224132223}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20637,7 +20667,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5215258217068158141}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: ToggleDisplay
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21749,9 +21779,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OpenHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26617,7 +26647,7 @@ Transform:
   - {fileID: 6720498394559506312}
   - {fileID: 7333550179665814085}
   m_Father: {fileID: 196209910265618381}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8878371453136237570
 GameObject:
@@ -27171,15 +27201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
---- !u!224 &1096590807 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
-    type: 3}
-  m_PrefabInstance: {fileID: 4586212022583358564}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096590805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
+    type: 3}
+  m_PrefabInstance: {fileID: 4586212022583358564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1096590807 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
     type: 3}
   m_PrefabInstance: {fileID: 4586212022583358564}
   m_PrefabAsset: {fileID: 0}
@@ -27188,7 +27218,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 196209910265618381}
+    m_TransformParent: {fileID: 196209910753800036}
     m_Modifications:
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27228,7 +27258,7 @@ PrefabInstance:
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27249,7 +27279,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 26c9b61da37200944a7565aecdf14025,
+      objectReference: {fileID: 21300000, guid: 4b4e5d2340bb85f468ee40fa57114078,
         type: 3}
     - target: {fileID: 6768678382184082620, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
@@ -27258,6 +27288,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
+--- !u!1 &2223202587485274340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6768678382184082620, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4842860369724091480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5266144918581565300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,

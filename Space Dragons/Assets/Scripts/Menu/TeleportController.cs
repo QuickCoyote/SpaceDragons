@@ -3,9 +3,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class TeleportController : MonoBehaviour
+public class TeleportController : UIBaseClass
 {
-    [SerializeField] GameObject uiCanvas = null;
     [SerializeField] GameObject uiTeleportButton = null;
     [SerializeField] GameObject uiTeleportArrows = null;
     [SerializeField] TextMeshProUGUI nameReadout = null;
@@ -26,7 +25,6 @@ public class TeleportController : MonoBehaviour
     void Start()
     {
         visited = LoadManager.Instance.saveData.VisitedTeleports.ToList().Exists(e => e == LocationName);
-
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
         visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
@@ -95,25 +93,19 @@ public class TeleportController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             visited = true;
-            uiCanvas.SetActive(true);
             visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
             UpdateUI();
-            Time.timeScale = 0;
+            ToggleUI();
         }
     }
 
-    public void CloseUI()
-    {
-        uiCanvas.SetActive(false);
-        Time.timeScale = 1;
-    }
 
     public void TeleportToLocation()
     {
         UpdateUI();
         WorldManager.Instance.PlayerController.RemoveMoney(cost);
         WorldManager.Instance.SpawnWarpHole(transform.position);
-        CloseUI();
+        ToggleUI();
         TeleportTransition.SetTrigger("Warp");
     }
 

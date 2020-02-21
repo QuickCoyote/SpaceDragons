@@ -2,10 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GasStationController : MonoBehaviour
+public class GasStationController : UIBaseClass
 {
     [Header("Fuel Bars")]
-    public GameObject GasStationCanvas;
     public Slider StationFuel;
     public GameObject StationContent;
     public Slider PlayerFuel;
@@ -41,7 +40,6 @@ public class GasStationController : MonoBehaviour
         playerController = WorldManager.Instance.PlayerController;
         StationSetup();
         PlayerSetup();
-        CloseGasStation();
         UpdateUI();
     }
 
@@ -63,7 +61,7 @@ public class GasStationController : MonoBehaviour
         }
         #endregion
 
-        if (GasStationCanvas.activeSelf)
+        if (UICanvas.activeSelf)
         {
             UpdateUI();
         }
@@ -224,26 +222,20 @@ public class GasStationController : MonoBehaviour
         UpgradeButton.interactable = (upgradeTotal > 0 && upgradePrice <= playerController.money);
     }
 
-    public void OpenGasStation()
-    {
-        PlayerSetup();
-        UpdateUI();
-        GasStationCanvas.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void CloseGasStation()
-    {
-        GasStationCanvas.SetActive(false);
-        Time.timeScale = 1;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            OpenGasStation();
+            ToggleUI();
         }
     }
+
+    public new void Open()
+    {
+        base.Open();
+        PlayerSetup();
+        UpdateUI();
+    }
+
     #endregion
 }
