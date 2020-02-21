@@ -5708,8 +5708,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6072019081939798877}
-        m_TargetAssemblyTypeName: GasStationController, Assembly-CSharp
-        m_MethodName: CloseGasStation
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

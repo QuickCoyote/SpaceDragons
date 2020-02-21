@@ -5099,9 +5099,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753379421}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OpenHUD
+      - m_Target: {fileID: 6555393975105471797}
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

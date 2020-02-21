@@ -122,8 +122,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3074590289259437775}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: PauseGame
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5742,8 +5742,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3074590289259437775}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ResumeGame
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

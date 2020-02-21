@@ -28,7 +28,9 @@ public class MainMapController : UIBaseClass
             if (Input.GetMouseButtonDown(0))
             {
                 panStart = mainMapCam.ScreenToWorldPoint(Input.mousePosition);
-                SetTracker();
+                //    if (Input.touchCount > 0){
+                //    SetTracker();
+                //}
             }
             //if (Input.touchCount == 2)
             //{
@@ -104,41 +106,26 @@ public class MainMapController : UIBaseClass
         minY = vertExtent - mapY / 2.0f;
         maxY = mapY / 2.0f - vertExtent;
     }
-
     public void SetTracker()
     {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            var mousePos = Input.mousePosition;
-            mousePos.x -= Screen.width / 2;
-            mousePos.y -= Screen.height / 2;
-
-            //mousePos.x += (Screen.width * (332f / 1919.514f));
-            //mousePos.y += (Screen.height * 0.0034722222f);
-
-
-
-            //mousePos *= 1.111111111111111111111111111111f;// this is for 16:9 (1.111111111, 16/9)
-            mousePos *= 1.3333333333f;// this is for 18:9 (1.333333333, 18/9)
-
-            Vector3 newMousePos = new Vector3(0, 0, -200);
-            Vector3 oldMousePos = new Vector3(mousePos.x, mousePos.y, 100);
-
-            Vector3 tempPos;
-
-            Debug.DrawLine(oldMousePos, newMousePos, Color.red, 100, false);
-
-            tempPos = mainMapCam.transform.position + mousePos;
-            tempPos.z = -4f;
-
-            highlightPrevPos = highlightIcon.transform.position;
-            highlightIcon.transform.position = tempPos;
-            highlightIcon.SetActive(true);
-        }
+        Touch touch = Input.GetTouch(0);
+        var mousePos = Input.mousePosition;
+        mousePos.x -= Screen.width / 2;
+        mousePos.y -= Screen.height / 2;
+        //mousePos.x += (Screen.width * (332f / 1919.514f));
+        //mousePos.y += (Screen.height * 0.0034722222f);
+        //mousePos *= 1.111111111111111111111111111111f;// this is for 16:9 (1.111111111, 16/9)
+        mousePos *= 1.3333333333f;// this is for 18:9 (1.333333333, 18/9)
+        Vector3 newMousePos = new Vector3(0, 0, -200);
+        Vector3 oldMousePos = new Vector3(mousePos.x, mousePos.y, 100);
+        Vector3 tempPos;
+        Debug.DrawLine(oldMousePos, newMousePos, Color.red, 100, false);
+        tempPos = mainMapCam.transform.position + mousePos;
+        tempPos.z = -4f;
+        highlightPrevPos = highlightIcon.transform.position;
+        highlightIcon.transform.position = tempPos;
+        highlightIcon.SetActive(true);
     }
-
 
     public new void Open()
     {
@@ -150,7 +137,4 @@ public class MainMapController : UIBaseClass
         base.Close();
         highlightIcon.transform.position = highlightPrevPos;
     }
-
-
-
 }

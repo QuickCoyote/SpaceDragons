@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerHUD : UIBaseClass 
 {
-    [Header("UIBaseClass")]
-    public GameObject UICanvas;
-    public bool PauseOnly;
-
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
 
@@ -22,8 +18,6 @@ public class PlayerHUD : UIBaseClass
     [SerializeField] TextMeshProUGUI HUD_Distance_Text = null;
     [SerializeField] Image CaptainIcon = null;
     [SerializeField] Image ShipIcon = null;
-
-
 
     private void Start()
     {
@@ -66,13 +60,9 @@ public class PlayerHUD : UIBaseClass
             }
         }
     }
-
-
     public void ToggleJoystickControls(bool toggled)
     {
         PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
         controlToggle.isOn = (toggled);
     }
-
-
 }

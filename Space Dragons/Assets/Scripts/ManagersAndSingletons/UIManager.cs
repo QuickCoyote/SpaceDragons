@@ -33,16 +33,16 @@ public class UIManager : Singleton<UIManager>
 
     public void ResumeTimeScale()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         foreach(UIBaseClass ui in AllUI.Where(ui=> ui.PauseOnly))
         {
-            ui.Close();
+            ui.HideOnly();
         }
     }
 
     public void PauseTimeScale()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void SetCurrentOpen(UIBaseClass other)
