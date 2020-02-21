@@ -22,7 +22,6 @@ public class Ship : MonoBehaviour
         LIGHTNING = 2,
         HEALING = 3,
         GUARD_DRONE = 4,
-        LASER = 5
     }
     #endregion
 
@@ -137,8 +136,7 @@ public class Ship : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateSpeed();
-        if (thrustersOn)
-        {
+       
             if (PlayerPrefs.GetInt("JoystickControls") == 0)
             {
                 AdjustJoystick();
@@ -148,7 +146,7 @@ public class Ship : MonoBehaviour
             {
                 Move();
             }
-        }
+        
         UpdateFeulGauge();
         CheckForDie();
 
@@ -186,6 +184,7 @@ public class Ship : MonoBehaviour
 
     public void CalculateSpeed()
     {
+        
         if (boosting)
         {
             boostCooldownTimer -= Time.deltaTime;
@@ -196,6 +195,9 @@ public class Ship : MonoBehaviour
                 rotationSpeed = returnrotateSpeed;
                 boosting = false;
             }
+        } else if (!thrustersOn)
+        {
+            speed = Mathf.Lerp(speed, 0, Time.deltaTime);
         }
         else
         {
@@ -253,7 +255,6 @@ public class Ship : MonoBehaviour
 
     public void MoveWithJoystick()
     {
-        float curSpeed = speed;
         if (joystickdragging)
         {
 
@@ -267,7 +268,7 @@ public class Ship : MonoBehaviour
 
         }
 
-        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
+        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
 
         for (int i = 1; i < bodyPartTransforms.Count; i++)
         {
@@ -282,7 +283,7 @@ public class Ship : MonoBehaviour
                 Vector3 newPos = prevBodyPart.position;
                 newPos.z = bodyPartTransforms[0].position.z;
 
-                float t = Time.deltaTime * dst / minDst * curSpeed;
+                float t = Time.deltaTime * dst / minDst * speed;
 
                 if (t > .5f)
                 {
@@ -297,7 +298,6 @@ public class Ship : MonoBehaviour
 
     public void Move()
     {
-        float curSpeed = speed;
         if (Input.touchCount > 0)
         {
             // This is just getting touch
@@ -314,7 +314,7 @@ public class Ship : MonoBehaviour
             }
         }
 
-        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
+        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
 
         for (int i = 1; i < bodyPartTransforms.Count; i++)
         {
@@ -329,7 +329,7 @@ public class Ship : MonoBehaviour
                 Vector3 newPos = prevBodyPart.position;
                 newPos.z = bodyPartTransforms[0].position.z;
 
-                float t = Time.deltaTime * dst / minDst * curSpeed;
+                float t = Time.deltaTime * dst / minDst * speed;
 
                 if (t > .5f)
                 {

@@ -21,7 +21,15 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject JoystickControls = null;
     [SerializeField] GameObject TouchControls = null;
+    #region HUD Variables
     [SerializeField] Toggle controlToggle = null;
+    [SerializeField] Toggle thrusterToggle = null;
+    [SerializeField] GameObject HUD = null;
+    [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
+    [SerializeField] TextMeshProUGUI HUD_Fuel_Text = null;
+    [SerializeField] TextMeshProUGUI HUD_Mothership_Text = null;
+
+    #endregion
 
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
@@ -344,13 +352,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region HUD Variables
-
-    [SerializeField] GameObject HUD = null;
-    [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
-
-    #endregion
-
     void Start()
     {
         inventory = GetComponent<Inventory>();
@@ -407,9 +408,33 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
+        if (HUD.activeSelf)
+        {
+            controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
+            thrusterToggle.isOn = WorldManager.Instance.Ship.thrustersOn;
+            HUD_Money_Text.text = ReturnMoney();
+            HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
+            switch (WorldManager.Instance.Ship.motherShip)
+            {
+                case Ship.eMotherShip.BASIC:
+                    HUD_Mothership_Text.text = "Race: Animal, Abilities: Basic, Description: Made of Orange Ore";
+                    break;
+                case Ship.eMotherShip.FLAMETHROWER:
+                    HUD_Mothership_Text.text = "Race: Orc, Abilities: FlameThrower, Description: Made of neither Blood or Oranges";
+                    break;
+                case Ship.eMotherShip.LIGHTNING:
+                    HUD_Mothership_Text.text = "Race: Human, Abilities: Lighting, Description: Made of Blue Ore";
+                    break;
+                case Ship.eMotherShip.HEALING:
+                    HUD_Mothership_Text.text = "Race: Elf, Abilities: Healing, Description: Made of Green Ore";
+                    break;
+                case Ship.eMotherShip.GUARD_DRONE:
+                    HUD_Mothership_Text.text = "Race: Fairy, Abilities: Guard Drones, Description: Made of Purple Ore";
+                    break;
+            }
+        }
     }
 
     public void ToggleJoystickControls(bool toggled)
@@ -420,7 +445,6 @@ public class PlayerController : MonoBehaviour
     public void OpenHUD()
     {
         HUD.SetActive(true);
-        HUD_Money_Text.text = ReturnMoney();
     }
 
     public void CloseHUD()
