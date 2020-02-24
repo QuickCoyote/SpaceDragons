@@ -120,7 +120,7 @@ public class ShipyardController : UIBaseClass
             }
         }
 
-        if (hpToRestore != 0)
+        if (hpToRestore != 0 && hpToRestore > 0)
         {
             RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
             if (WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
@@ -188,7 +188,7 @@ public class ShipyardController : UIBaseClass
             float hpToRestore = 0f;
             hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
 
-            if(hpToRestore != 0)
+            if(hpToRestore != 0 && hpToRestore > 0)
             {
                 string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
                 TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
