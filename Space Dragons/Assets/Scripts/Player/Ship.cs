@@ -245,7 +245,7 @@ public class Ship : MonoBehaviour
     {
         if (joystickdragging)
         {
-            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition, .25f);
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.GetTouch(0).deltaPosition, .25f);
             joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
         }
         else
@@ -253,7 +253,6 @@ public class Ship : MonoBehaviour
             joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, new Vector2(0, 0), 5 * Time.deltaTime);
         }
     }
-
 
     public void MoveWithJoystick()
     {
@@ -263,35 +262,26 @@ public class Ship : MonoBehaviour
             Vector3 targetPos = joystickknob.anchoredPosition;
             targetPos.z = 0;
             // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+            Vector3 direction =  bodyPartTransforms[0].transform.position + targetPos;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
-
         }
-
         bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
-
         for (int i = 1; i < bodyPartTransforms.Count; i++)
         {
             if (bodyPartTransforms[i] != null)
             {
-
                 curBodyPart = bodyPartTransforms[i];
                 prevBodyPart = bodyPartTransforms[i - 1];
-
                 dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
                 Vector3 newPos = prevBodyPart.position;
                 newPos.z = bodyPartTransforms[0].position.z;
-
                 float t = Time.deltaTime * dst / minDst * speed;
-
                 if (t > .5f)
                 {
                     t = 0.5f;
                 }
-
                 curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
                 curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
             }
