@@ -859,7 +859,6 @@ public class ShipyardController : UIBaseClass
     public new void Open()
     {
         base.Open();
-    
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
         CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;

@@ -261,14 +261,13 @@ public class OutpostController : UIBaseClass
         base.Open();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
-        PlayerShopSetup();
+        Refresh();
     }
     public new void Close()
     {
         base.Close();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Battle");
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
