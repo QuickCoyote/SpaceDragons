@@ -8,6 +8,7 @@ using UnityEngine.UI.Extensions;
 
 public class ShipyardController : UIBaseClass
 {
+    [Header("Stock")]
     public Ship MotherShip;
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
@@ -16,6 +17,7 @@ public class ShipyardController : UIBaseClass
     public List<ShipData> EpicShips;
     public List<MothershipData> Motherships;
     [Range(0, 2)] public int ShopDifficulty;
+    [Header("UI")]
     public GameObject ShipScrollContent;
     public GameObject ShopShipScrollContent;
     public GameObject ShipButtonPrefab;
@@ -852,20 +854,8 @@ public class ShipyardController : UIBaseClass
         }
         MothershipPanelSwap(true);
     }
-
-    public void CloseMessage()
-    {
-        MaxShipWarning.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            ToggleUI();
-        }
-    }
-
+       
+    #region UI
     public new void Open()
     {
         base.Open();
@@ -875,7 +865,6 @@ public class ShipyardController : UIBaseClass
         ShipyardMotherSetup((int)CurrentMothership, false);
         MothershipPanelSwap(true);
     }
-
     public new void Close()
     {
         base.Close();
@@ -885,4 +874,16 @@ public class ShipyardController : UIBaseClass
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            ToggleUI();
+        }
+    }
+    public void CloseMessage()
+    {
+        MaxShipWarning.SetActive(false);
+    }
+    #endregion
 }

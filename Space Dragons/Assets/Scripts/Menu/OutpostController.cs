@@ -22,14 +22,11 @@ public class OutpostController : UIBaseClass
     public AnimationCurve DemandCurve;
 
     ItemData selectedItem;
-
     Inventory outpostInventory;
-
     List<int> numsGenerated = new List<int>();
     int sliderValue;
     float Timer = 0;
     float MaxTime = 300;
-
     int itemBaseCost = 10;
     int price = 0;
     bool selling = false;
@@ -227,27 +224,6 @@ public class OutpostController : UIBaseClass
         }
     }
 
-    public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
-    {
-        ShoppingPanel.SetActive(true);
-
-        ShoppingPanel.GetComponentsInChildren<Image>().Where(o => o.name == "Item Image").FirstOrDefault().sprite = item.itemImage;
-        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Count").FirstOrDefault().text = "x" + numOfItem;
-        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Description").FirstOrDefault().text = item.description;
-        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "ItemName").FirstOrDefault().text = item.itemName;
-        Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
-        slider.maxValue = numOfItem;
-        slider.minValue = 1;
-        slider.value = 0;
-        Button button = ShoppingPanel.GetComponentsInChildren<Button>().Where(o => o.name == "SaleButton").FirstOrDefault();
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(delegate { CompleteSale(isSelling, item); });
-        button.GetComponentInChildren<TextMeshProUGUI>().text = isSelling ? "SELL" : "BUY";
-        selectedItem = item;
-        selling = isSelling;
-
-    }
-
     public void CompleteSale(bool isSelling, ItemData item)
     {
         if (isSelling)
@@ -279,6 +255,7 @@ public class OutpostController : UIBaseClass
         }
     }
 
+    #region UI
     public new void Open()
     {
         base.Open();
@@ -293,7 +270,6 @@ public class OutpostController : UIBaseClass
         AudioManager.Instance.PlayRandomMusic("Battle");
 
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -301,7 +277,29 @@ public class OutpostController : UIBaseClass
             ToggleUI();
         }
     }
+    public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
+    {
+        ShoppingPanel.SetActive(true);
 
+        ShoppingPanel.GetComponentsInChildren<Image>().Where(o => o.name == "Item Image").FirstOrDefault().sprite = item.itemImage;
+        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Count").FirstOrDefault().text = "x" + numOfItem;
+        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Item Description").FirstOrDefault().text = item.description;
+        ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "ItemName").FirstOrDefault().text = item.itemName;
+        Slider slider = ShoppingPanel.GetComponentsInChildren<Slider>().Where(o => o.name == "NumSlider").FirstOrDefault();
+        slider.maxValue = numOfItem;
+        slider.minValue = 1;
+        slider.value = 0;
+        Button button = ShoppingPanel.GetComponentsInChildren<Button>().Where(o => o.name == "SaleButton").FirstOrDefault();
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { CompleteSale(isSelling, item); });
+        button.GetComponentInChildren<TextMeshProUGUI>().text = isSelling ? "SELL" : "BUY";
+        selectedItem = item;
+        selling = isSelling;
+
+    }
+    #endregion
+
+    #region Money Calculations
     public int CheckForAmount(ItemData item)
     {
         if(outpostInventory.items.ContainsKey(item))
@@ -313,7 +311,6 @@ public class OutpostController : UIBaseClass
             return 0;
         }
     }
-
     public int CalculateSellPrice(ItemData item)
     {
         float tempPrice = 0;
@@ -327,7 +324,6 @@ public class OutpostController : UIBaseClass
             
         return price;
     }
-
     public int CalculateBuyPrice(ItemData item)
     {
         float tempPrice = 0;
@@ -340,4 +336,5 @@ public class OutpostController : UIBaseClass
         price = Mathf.FloorToInt(tempPrice * 220);
         return price;
     }
+    #endregion
 }
