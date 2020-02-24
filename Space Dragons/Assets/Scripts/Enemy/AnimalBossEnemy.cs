@@ -6,19 +6,15 @@ public class AnimalBossEnemy : Enemy
     [SerializeField] GameObject Turret2 = null;
     [SerializeField] GameObject gunNozzle2 = null;
     [SerializeField] ItemObject itemPrefab = null;
-    [SerializeField] MapTargets maptarget = null;
 
     new private void Start()
     {
         base.Start();
-        Map.Instance.AddTarget(maptarget);
         shootingSpeedIncrease = shootingSpeed / 2;
-
     }
 
     new public void Die()
     {
-        Map.Instance.RemoveTarget(maptarget);
         for (int i = 0; i < lootnum; i++)
         {
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space

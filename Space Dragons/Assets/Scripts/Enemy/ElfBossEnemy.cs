@@ -4,18 +4,15 @@ public class ElfBossEnemy : Enemy
 {
     [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] GameObject shield = null;
-    [SerializeField] MapTargets maptarget = null;
 
     new private void Start()
     {
         base.Start();
         shield.SetActive(false);
-        Map.Instance.AddTarget(maptarget);
     }
 
     new public void Die()
     {
-        Map.Instance.RemoveTarget(maptarget);
         for (int i = 0; i < lootnum; i++)
         {
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space

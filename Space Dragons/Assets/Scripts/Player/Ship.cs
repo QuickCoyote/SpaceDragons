@@ -22,15 +22,17 @@ public class Ship : MonoBehaviour
         LIGHTNING = 2,
         HEALING = 3,
         GUARD_DRONE = 4,
-        LASER = 5
     }
     #endregion
 
     #region Variables
 
     public Camera cam = null;
+    public Health shipHealth = null;
 
-    [Header("Pre-Play Info")]
+    bool isDead = false;
+
+    [Header("Body Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
     public List<GameObject> bodyPartPrefabs = null;
@@ -46,9 +48,12 @@ public class Ship : MonoBehaviour
     public int maxShipsAllowed = 4;
 
     [Header("Movement Info")]
-    public float speed = 1.0f;
+    public float speed = 5f;
+    public float defaultSpeed = 7.5f;
+    public float driftSpeed = 5f;
     public float rotationSpeed = 50.0f;
     private bool joystickdragging = false;
+    public bool thrustersOn = true;
 
     [Header("Control UI")]
     [SerializeField] RectTransform joystickknob;
@@ -56,7 +61,6 @@ public class Ship : MonoBehaviour
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
     public eShipToTest shipToTest = eShipToTest.RUSTY;
-    public Health shipHealth = null;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;
@@ -64,28 +68,24 @@ public class Ship : MonoBehaviour
 
     [Header("Boost Info")]
     [SerializeField] float boostSpeed = 0f;
-    [SerializeField] float returnSpeed = 0f;
     [SerializeField] float boostrotateSpeed = 0f;
     [SerializeField] float returnrotateSpeed = 0f;
     [SerializeField] bool boosting = false;
     [SerializeField] public int boostFuel = 0;
     [SerializeField] public int boostFuelMAX = 4;
-    [SerializeField] GameObject boostParticles = null;
-    [SerializeField] Slider boostSliderJoystick = null;
-    [SerializeField] Slider boostSliderTouch = null;
+    [SerializeField] GameObject boostParticles;
+    [SerializeField] Slider boostSliderJoystick;
+    [SerializeField] Slider boostSliderTouch;
     [SerializeField] float boostCooldownReset = 0f;
     [SerializeField] float boostCooldownTimer = 0f;
-
-    bool isDead = false;
-
     #endregion
 
     private void Start()
     {
-        ShipHeadSprite = GetComponentInChildren<SpriteRenderer>();
+        if (!shipHealth) shipHealth = bodyPartTransforms[0].GetComponent<Health>();
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
-        returnSpeed = speed;
+        speed = defaultSpeed;
         returnrotateSpeed = rotationSpeed;
         switch (motherShip)
         {
@@ -105,11 +105,13 @@ public class Ship : MonoBehaviour
                 SetShipHead(4);
                 break;
         }
+        
     }
 
     private void LoadData()
     {
         motherShip = LoadManager.Instance.saveData.motherShipType;
+        SetShipHead((int)motherShip);
         shipHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
         boostFuelMAX = LoadManager.Instance.saveData.PlayerFuelMax;
         boostFuel = LoadManager.Instance.saveData.PlayerFuelCurrent;
@@ -133,6 +135,102 @@ public class Ship : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        CalculateSpeed();
+       
+            if (PlayerPrefs.GetInt("JoystickControls") == 0)
+            {
+                AdjustJoystick();
+                MoveWithJoystick();
+            }
+            else
+            {
+                Move();
+            }
+        
+        UpdateFeulGauge();
+        CheckForDie();
+
+        #region Dev Tools
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            RemoveBodyPart(bodyPartObjects[2], false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RemoveBodyPart(bodyPartObjects[2], true);
+            SortBody();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SortBody();
+        }
+
+        #endregion
+    }
+
+    #region Movement
+
+    public void ActivateThrusters(bool isOn)
+    {
+        thrustersOn = isOn;
+    }
+
+    public void CalculateSpeed()
+    {
+        
+        if (boosting)
+        {
+            boostCooldownTimer -= Time.deltaTime;
+
+            if (boostCooldownTimer < 0.0f)
+            {
+                boostParticles.SetActive(false);
+                rotationSpeed = returnrotateSpeed;
+                boosting = false;
+            }
+        } else if (!thrustersOn)
+        {
+            speed = Mathf.Lerp(speed, 0, Time.deltaTime);
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("JoystickControls") == 0)
+            {
+                if (joystickdragging)
+                {
+                    speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
+                }
+                else
+                {
+                    speed = Mathf.Lerp(speed, driftSpeed, Time.deltaTime);
+                }
+
+            }
+            else
+            {
+                if (Input.touchCount > 0)
+                {
+                    if (!UIManager.Instance.IsPointerOverUIObject())
+                    {
+                        speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
+                    }
+                } else
+                {
+                    speed = Mathf.Lerp(speed, driftSpeed, Time.deltaTime);
+                }
+            }
+        }
+    }
+
     public void onPressJoystick()
     {
         joystickdragging = (true);
@@ -147,8 +245,7 @@ public class Ship : MonoBehaviour
     {
         if (joystickdragging)
         {
-
-            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition * joystickknob.GetComponentInParent<Canvas>().scaleFactor, .25f);
+            joystickknob.anchoredPosition = Vector2.Lerp(joystickknob.anchoredPosition, joystickknob.anchoredPosition + Input.touches[0].deltaPosition, .25f);
             joystickknob.anchoredPosition = Vector2.ClampMagnitude(joystickknob.anchoredPosition, 150.0f);
         }
         else
@@ -157,6 +254,100 @@ public class Ship : MonoBehaviour
         }
     }
 
+
+    public void MoveWithJoystick()
+    {
+        if (joystickdragging)
+        {
+
+            Vector3 targetPos = joystickknob.anchoredPosition;
+            targetPos.z = 0;
+            // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+            bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+
+        }
+
+        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
+
+        for (int i = 1; i < bodyPartTransforms.Count; i++)
+        {
+            if (bodyPartTransforms[i] != null)
+            {
+
+                curBodyPart = bodyPartTransforms[i];
+                prevBodyPart = bodyPartTransforms[i - 1];
+
+                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                Vector3 newPos = prevBodyPart.position;
+                newPos.z = bodyPartTransforms[0].position.z;
+
+                float t = Time.deltaTime * dst / minDst * speed;
+
+                if (t > .5f)
+                {
+                    t = 0.5f;
+                }
+
+                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+            }
+        }
+    }
+
+    public void Move()
+    {
+        if (Input.touchCount > 0)
+        {
+            // This is just getting touch
+            Touch touch = Input.GetTouch(0);
+            if (!UIManager.Instance.IsPointerOverUIObject())
+            {
+                Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
+                targetPos.z = 0;
+                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+                Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
+                float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+                bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
+            }
+        }
+
+        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
+
+        for (int i = 1; i < bodyPartTransforms.Count; i++)
+        {
+            if (bodyPartTransforms[i] != null)
+            {
+
+                curBodyPart = bodyPartTransforms[i];
+                prevBodyPart = bodyPartTransforms[i - 1];
+
+                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
+                Vector3 newPos = prevBodyPart.position;
+                newPos.z = bodyPartTransforms[0].position.z;
+
+                float t = Time.deltaTime * dst / minDst * speed;
+
+                if (t > .5f)
+                {
+                    t = 0.5f;
+                }
+
+                curBodyPart.gameObject.GetComponent<Turret>().travelDirection = (newPos - transform.position).normalized;
+
+                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
+                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
+            }
+        }
+    }
+    #endregion
+
+    #region Boost and Fuel
     public void Boost()
     {
         if (boostFuel > 0 && !boosting)
@@ -186,158 +377,9 @@ public class Ship : MonoBehaviour
         boostSliderTouch.maxValue = boostFuelMAX;
         boostSliderTouch.value = Mathf.Lerp(boostSliderTouch.value, boostFuel, 1.5f * Time.deltaTime);
     }
+    #endregion
 
-    public void Update()
-    {
-        if (boosting)
-        {
-            boostCooldownTimer -= Time.deltaTime;
-
-            if (boostCooldownTimer < 0.0f)
-            {
-                boostParticles.SetActive(false);
-                //speed = returnSpeed;
-                rotationSpeed = returnrotateSpeed;
-                boosting = false;
-            }
-
-        }
-        else
-        {
-            speed = Mathf.Lerp(speed, returnSpeed, 1.0f * Time.deltaTime);
-        }
-        UpdateFeulGauge();
-    }
-
-    private void FixedUpdate()
-    {
-        if (PauseMenu.Instance.JoystickControls)
-        {
-            AdjustJoystick();
-            MoveWithJoystick();
-        }
-        else
-        {
-            Move();
-
-        }
-        CheckForDie();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RemoveBodyPart(bodyPartObjects[2], false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RemoveBodyPart(bodyPartObjects[2], true);
-            SortBody();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SortBody();
-        }
-    }
-
-    public void MoveWithJoystick()
-    {
-        float curSpeed = speed;
-        if (joystickdragging)
-        {
-
-            Vector3 targetPos = joystickknob.anchoredPosition;
-            targetPos.z = 0;
-            // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-            Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
-
-        }
-
-        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
-
-        for (int i = 1; i < bodyPartTransforms.Count; i++)
-        {
-            if (bodyPartTransforms[i] != null)
-            {
-
-                curBodyPart = bodyPartTransforms[i];
-                prevBodyPart = bodyPartTransforms[i - 1];
-
-                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
-                Vector3 newPos = prevBodyPart.position;
-                newPos.z = bodyPartTransforms[0].position.z;
-
-                float t = Time.deltaTime * dst / minDst * curSpeed;
-
-                if (t > .5f)
-                {
-                    t = 0.5f;
-                }
-
-                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
-                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
-            }
-        }
-    }
-
-    public void Move()
-    {
-        float curSpeed = speed;
-        if (Input.touchCount > 0)
-        {
-            // This is just getting touch
-            Touch touch = Input.GetTouch(0);
-            if (!UIDetectionManager.Instance.IsPointerOverUIObject())
-            {
-                Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
-                targetPos.z = 0;
-                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-                Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
-                float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-                bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
-            }
-        }
-
-        bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * curSpeed * Time.smoothDeltaTime, Space.World);
-
-        for (int i = 1; i < bodyPartTransforms.Count; i++)
-        {
-            if (bodyPartTransforms[i] != null)
-            {
-
-                curBodyPart = bodyPartTransforms[i];
-                prevBodyPart = bodyPartTransforms[i - 1];
-
-                dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
-
-                Vector3 newPos = prevBodyPart.position;
-                newPos.z = bodyPartTransforms[0].position.z;
-
-                float t = Time.deltaTime * dst / minDst * curSpeed;
-
-                if (t > .5f)
-                {
-                    t = 0.5f;
-                }
-
-                curBodyPart.gameObject.GetComponent<Turret>().travelDirection = (newPos - transform.position).normalized;
-
-                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
-                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
-            }
-        }
-    }
-
+    #region Body Parts
     int index = 0;
 
     public void AddBodyPart(GameObject bodyPart)
@@ -464,7 +506,8 @@ public class Ship : MonoBehaviour
 
         HealthBarManager.Instance.CreateAllHealthBars();
     }
-
+    #endregion
+    
     public void CheckForDie()
     {
         if (shipHealth.healthCount <= 0)

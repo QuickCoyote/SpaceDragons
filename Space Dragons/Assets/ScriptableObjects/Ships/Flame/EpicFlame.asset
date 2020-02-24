@@ -90,7 +90,7 @@ MonoBehaviour:
   - {fileID: 958404922570400075, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   - {fileID: 5161195997392135388, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   - {fileID: -7328090111754691621, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
-  buyPrice: 10
+  buyPrice: 225
   sellPrice: 0
   prefab: {fileID: 4977157105735039448, guid: fe6ec7d7a1671654aa9b1eb504d486e4, type: 3}
   rarity: 2

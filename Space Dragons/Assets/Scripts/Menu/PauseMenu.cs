@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : Singleton<PauseMenu>
+public class PauseMenu : UIBaseClass
 {
-    [SerializeField] GameObject pauseUI = null;
     [SerializeField] GameObject optionsUI = null;
-    public bool JoystickControls;
-
-    public void Start()
-    {
-        JoystickControls = (PlayerPrefs.GetInt("JoystickControls") == 0);
-    }
+    [SerializeField] Button menuButton = null;
+    [SerializeField] Toggle controlToggle = null;
 
     private void OnApplicationPause(bool pause)
     {
+        UIManager.Instance.SetCurrentOpen(this);
         LoadManager.Instance.Save();
     }
     private void OnApplicationQuit()
@@ -23,9 +20,7 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void ToggleJoystickControls(bool toggled)
     {
-        JoystickControls = toggled;
-        PlayerPrefs.SetInt("JoystickControls", (JoystickControls) ? 0 : 1);
-
+        PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
     }
     public void ToggleOptions()
     {
@@ -34,19 +29,15 @@ public class PauseMenu : Singleton<PauseMenu>
 
     public void ReturnToMenu()
     {
+        menuButton.interactable = false;
         LoadManager.Instance.Save();
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
     }
 
-    public void PauseGame()
+    public new void Open()
     {
-        pauseUI.SetActive(true);
-        Time.timeScale = 0;
+        base.Open();
+        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
     }
 
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-        pauseUI.SetActive(false);
-    }
 }

@@ -6,9 +6,8 @@ using TMPro;
 using System.Linq;
 using UnityEngine.UI.Extensions;
 
-public class ShipyardController : MonoBehaviour
+public class ShipyardController : UIBaseClass
 {
-    public GameObject Shipyard;
     public Ship MotherShip;
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
@@ -33,21 +32,20 @@ public class ShipyardController : MonoBehaviour
     public List<GameObject> SelectionInfoButtons;
     public Ship.eMotherShip TradeInMothership;
     public Ship.eMotherShip CurrentMothership;
+    public GameObject RepairMotherButton;
     public GameObject TradeInButton;
     public GameObject TradeInCost;
     public GameObject TurretCost;
+    public GameObject RepairAllCost;
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
+    public Slider MotherHealthBar;
 
-    //public int selectedPurchase = 0;
     int NumOfShips;
     float Timer = 0;
     float MaxTime = 300;
     Button buyButton = null;
     Button sellButton = null;
-    Slider MotherHealthBar;
-
-    int num = 0;
 
     public void Start()
     {
@@ -63,9 +61,6 @@ public class ShipyardController : MonoBehaviour
             (o => o.name == "Buy").FirstOrDefault();
         sellButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
             (o => o.name == "Sell").FirstOrDefault();        
-
-        Shipyard.SetActive(false);
-
     }
 
     public void Update()
@@ -77,11 +72,11 @@ public class ShipyardController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            OpenShop();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseShop();
+            ToggleUI();
         }
         #endregion
 
@@ -115,47 +110,39 @@ public class ShipyardController : MonoBehaviour
             }
         }
 
-        ShipCounter.text = NumOfShips + "/" + Ships.Count;
-
-        int money = MotherShip.GetComponent<PlayerController>().money;
-        int switchCase = 0;
-
-        switchCase = money < 10000 ? 0
-            : money >= 10000 && money < 100000 ? 1
-            : money >= 100000 && money < 1000000 ? 2
-            : money >= 1000000 && money < 1000000000 ? 3
-            : 4;
-
-        switch (switchCase)
+        float repairCostPerHP = 1f;
+        float hpToRestore = 0f;
+        for (int i = 0; i < MotherShip.bodyPartObjects.Count; i++)
         {
-            case 0:
-                MoneyNum.text = money.ToString();
-                break;
-            case 1:
-                int thousands = money / 1000;
-                int hundreds = money % 1000;
-                char[] hundie = { '0' };
-                if (hundreds >= 100)
-                {
-                     hundie = hundreds.ToString().ToCharArray();
-                }
-                MoneyNum.text = thousands.ToString() + "." + hundie[0] + "k";
-                break;
-            case 2:
-                thousands = money / 1000;
-                MoneyNum.text = thousands.ToString() + "k";
-                break;
-            case 3:
-                int millions = money / 1000000;
-                MoneyNum.text = millions.ToString() + "m";
-                break;
-            case 4:
-                int billions = money / 1000000000;
-                MoneyNum.text = billions.ToString() + "b";
-                break;
-            default:
-                break;
+            if (MotherShip.bodyPartObjects[i] != null)
+            {
+                hpToRestore += MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax - MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount;
+            }
         }
+
+        if (hpToRestore != 0 && hpToRestore > 0)
+        {
+            RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
+            if (WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+            {
+                MothershipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "RepairAll").FirstOrDefault().interactable = true;
+            }
+            else
+            {
+                MothershipMenu.GetComponentsInChildren<Button>().Where
+                    (o => o.name == "RepairAll").FirstOrDefault().interactable = false;
+            }
+        }
+        else
+        {
+            RepairAllCost.GetComponentInChildren<TextMeshProUGUI>().text = "All at Full";
+            MothershipMenu.GetComponentsInChildren<Button>().Where
+                (o => o.name == "RepairAll").FirstOrDefault().interactable = false;
+        }
+
+        ShipCounter.text = NumOfShips + "/" + Ships.Count;
+        MoneyNum.text = MotherShip.GetComponent<PlayerController>().ReturnMoney();
     }
 
     public void ShipyardMotherSetup(int MotherToDisplay, bool isPanelSwap)
@@ -164,8 +151,6 @@ public class ShipyardController : MonoBehaviour
         {
             MothershipMenu.GetComponentsInChildren<Image>().Where
                 (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
-            MotherHealthBar = MothershipMenu.GetComponentsInChildren<Slider>().Where
-            (o => o.name == "HealthBar").FirstOrDefault();
             Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
 
             MotherHealthBar.minValue = 0;
@@ -182,7 +167,6 @@ public class ShipyardController : MonoBehaviour
         MothershipDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
             (o => o.name == "Description").FirstOrDefault().text = Motherships[MotherToDisplay].Description;
 
-        TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[MotherToDisplay].Price.ToString();
 
     }
 
@@ -196,8 +180,32 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = true;
             TradeInButton.SetActive(false);
-            TradeInCost.SetActive(false);
+            MotherHealthBar.gameObject.SetActive(true);
+            RepairMotherButton.SetActive(true);
 
+            Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+            float repairCostPerHP = 1f;
+            float hpToRestore = 0f;
+            hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
+
+            if(hpToRestore != 0 && hpToRestore > 0)
+            {
+                string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
+                TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
+                if(WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+                {
+                    RepairMotherButton.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    RepairMotherButton.GetComponent<Button>().interactable = false;
+                }
+            }
+            else
+            {
+                TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "Health Full";
+                RepairMotherButton.GetComponent<Button>().interactable = false;
+            }
         }
         else
         {
@@ -207,7 +215,11 @@ public class ShipyardController : MonoBehaviour
             MothershipDisplay.GetComponentsInChildren<Button>().Where
                     (o => o.name == "ShopMotherButton").FirstOrDefault().interactable = false;
             TradeInButton.SetActive(true);
-            TradeInCost.SetActive(true);
+            MotherHealthBar.gameObject.SetActive(false);
+            RepairMotherButton.SetActive(false);
+
+            TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[(int)TradeInMothership].Price.ToString();
+
         }
     }
 
@@ -731,6 +743,7 @@ public class ShipyardController : MonoBehaviour
                 ShopShips[scrollSnap.CurrentPage()] = null;
                 SortShips();
                 GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
+                CheckIfSpecial(ShopShips[scrollSnap.CurrentPage()]);
                 ShipyardShipSetup();
                 ShipyardShopSetup();
             }
@@ -820,6 +833,9 @@ public class ShipyardController : MonoBehaviour
                 }
             }
         }
+        Health MotherHealth = MotherShip.GetComponentInChildren<Health>();
+        MotherHealthBar.value = MotherHealth.healthCount;
+        MothershipPanelSwap(true);
     }
 
     public void RepairMother()
@@ -834,6 +850,7 @@ public class ShipyardController : MonoBehaviour
             MotherHealth.healthCount = MotherHealth.healthMax;
             MotherHealthBar.value = MotherHealth.healthCount;
         }
+        MothershipPanelSwap(true);
     }
 
     public void CloseMessage()
@@ -841,33 +858,32 @@ public class ShipyardController : MonoBehaviour
         MaxShipWarning.SetActive(false);
     }
 
-    public void OpenShop()
-    {
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Shop");
-        ShipyardShipSetup();
-        ShipyardMotherSetup((int)CurrentMothership, false);
-        Shipyard.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void CloseShop()
-    {
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Battle");
-        Shipyard.SetActive(false);
-        ShipMenu.SetActive(false);
-        ShopMenu.SetActive(false);
-        SelectionDisplay.SetActive(false);
-        Time.timeScale = 1;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            OpenShop();
+            ToggleUI();
         }
     }
 
+    public new void Open()
+    {
+        base.Open();
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Shop");
+        CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
+        ShipyardShipSetup();
+        ShipyardMotherSetup((int)CurrentMothership, false);
+        MothershipPanelSwap(true);
+    }
+
+    public new void Close()
+    {
+        base.Close();
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
+        ShipMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        SelectionDisplay.SetActive(false);
+    }
 }

@@ -5,9 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class OutpostController : MonoBehaviour
+public class OutpostController : UIBaseClass
 {
-    public GameObject Outpost;
     public GameObject OutpostContent;
     public GameObject PlayerContent;
     public GameObject ShoppingPanel;
@@ -43,7 +42,6 @@ public class OutpostController : MonoBehaviour
         OutpostShopSetup();
         PlayerShopSetup();
         ShoppingPanel.SetActive(false);
-        Outpost.SetActive(false);
     }
 
     public void Update()
@@ -51,11 +49,11 @@ public class OutpostController : MonoBehaviour
         #region Dev Debug Controls
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            OpenOutpost();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseOutpost();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.F12))
         {
@@ -75,7 +73,7 @@ public class OutpostController : MonoBehaviour
             OutpostShopSetup();
         }
 
-        CalculateMoney();
+        PlayerMoney.text = MotherShip.GetComponent<PlayerController>().ReturnMoney();
 
         if (ShoppingPanel.activeInHierarchy)
         {
@@ -97,49 +95,6 @@ public class OutpostController : MonoBehaviour
                 ShoppingPanel.GetComponentsInChildren<TextMeshProUGUI>().Where(o => o.name == "Price Text").FirstOrDefault().text = "$$$";
             }
             sliderValue = (int)slider.value;
-        }
-    }
-
-    void CalculateMoney()
-    {
-        int money = MotherShip.GetComponent<PlayerController>().money;
-        int switchCase = 0;
-
-        switchCase = money < 10000 ? 0
-            : money >= 10000 && money < 100000 ? 1
-            : money >= 100000 && money < 1000000 ? 2
-            : money >= 1000000 && money < 1000000000 ? 3
-            : 4;
-
-        switch (switchCase)
-        {
-            case 0:
-                PlayerMoney.text = money.ToString();
-                break;
-            case 1:
-                int thousands = money / 1000;
-                int hundreds = money % 1000;
-                char[] hundie = { '0' };
-                if (hundreds >= 100)
-                {
-                    hundie = hundreds.ToString().ToCharArray();
-                }
-                PlayerMoney.text = thousands.ToString() + "." + hundie[0] + "k";
-                break;
-            case 2:
-                thousands = money / 1000;
-                PlayerMoney.text = thousands.ToString() + "k";
-                break;
-            case 3:
-                int millions = money / 1000000;
-                PlayerMoney.text = millions.ToString() + "m";
-                break;
-            case 4:
-                int billions = money / 1000000000;
-                PlayerMoney.text = billions.ToString() + "b";
-                break;
-            default:
-                break;
         }
     }
 
@@ -324,28 +279,26 @@ public class OutpostController : MonoBehaviour
         }
     }
 
-    public void OpenOutpost()
+    public new void Open()
     {
+        base.Open();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
-        Outpost.SetActive(true);
-        Time.timeScale = 0;
         PlayerShopSetup();
     }
-
-    public void CloseOutpost()
+    public new void Close()
     {
+        base.Close();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Battle");
-        Outpost.SetActive(false);
-        Time.timeScale = 1;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            OpenOutpost();
+            ToggleUI();
         }
     }
 
@@ -385,7 +338,6 @@ public class OutpostController : MonoBehaviour
         }
 
         price = Mathf.FloorToInt(tempPrice * 220);
-
         return price;
     }
 }

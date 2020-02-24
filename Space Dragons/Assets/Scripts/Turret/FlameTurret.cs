@@ -15,6 +15,13 @@ public class FlameTurret : Turret
     public float flameLifeSpan;
     public float flameSpeed;
 
+    public float acceptableDistance = 35f;
+
+    private void Start()
+    {
+        
+    }
+
     void FixedUpdate()
     {
         if (enemiesToBurn.Count > 0)
@@ -51,7 +58,10 @@ public class FlameTurret : Turret
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             if (Vector3.Angle(rotateBoi.transform.up, direction) < 15)
             {
-                Attack();
+                if(direction.magnitude < acceptableDistance)
+                {
+                    Attack();
+                }
             }
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             rotateBoi.gameObject.transform.rotation = Quaternion.Slerp(rotateBoi.gameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
@@ -74,7 +84,7 @@ public class FlameTurret : Turret
         projectile.goDirection = projectileDirection;
         projectile.lifetime = flameLifeSpan;
         float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
-        projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         projectile.bulletSpeed = flameSpeed;
         projectile.sound = "null";
         projectile.Fire();

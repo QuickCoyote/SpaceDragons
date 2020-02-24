@@ -26,8 +26,13 @@ public class AnimalEnemy : Enemy
 
     protected override void Move()
     {
-
-        target = WorldManager.Instance.Ship.bodyPartObjects[WorldManager.Instance.Ship.bodyPartObjects.Count - 1].transform.position;
+        for (int i = 0; i < WorldManager.Instance.Ship.bodyPartObjects.Count; i++)
+        {
+            if (WorldManager.Instance.Ship.bodyPartObjects[i])
+            {
+                target = WorldManager.Instance.Ship.bodyPartObjects[i].transform.position;
+            }
+        }
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);

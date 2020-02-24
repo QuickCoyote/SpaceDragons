@@ -10,6 +10,11 @@ public class Healer : Turret
 
     Health turretImHealing = null;
 
+    private void Start()
+    {
+        healAmount = (4 * ((int)turretRarity+1));
+    }
+
     public override void Attack()
     {
         //This method is not used by this class.
@@ -37,7 +42,7 @@ public class Healer : Turret
     {
         if (Time.timeScale != 0)
         {
-            if (turretImHealing.healthCount == turretImHealing.healthMax)
+            if (turretImHealing.healthCount >= turretImHealing.healthMax)
             {
                 turretImHealing = FindTurretToHeal();
             }
@@ -66,7 +71,7 @@ public class Healer : Turret
                 {
                     turretToHeal = obj.GetComponent<Health>();
                 }
-                else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+                else if ((obj.GetComponent<Health>().healthCount/obj.GetComponent<Health>().healthMax) < (turretToHeal.healthCount/turretToHeal.healthMax))
                 {
                     turretToHeal = obj.GetComponent<Health>();
                 }

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 3901950792775414541, guid: 2ca9b1bfb0383ad46a3679770224f8f4,
+  m_Sprite: {fileID: -3548031942192175384, guid: 2ca9b1bfb0383ad46a3679770224f8f4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   parentobj: {fileID: 0}
   goDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
+  sound: 
 --- !u!58 &1428152543217758845
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -16,10 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public eFireType fireType = eFireType.BASIC;
 
-    [Header("Control UI")]
-    [SerializeField] GameObject JoystickControls = null;
-    [SerializeField] GameObject TouchControls = null;
-
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
     public float attackTimer = 0.0f;
@@ -29,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Inventory inventory = null;
 
     public GameObject head = null;
+    public Health headHealth = null;
     public GameObject headBullet = null;
     public GameObject[] headBullets = null;
 
@@ -99,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireLightning()
     {
+        objectsWithinRange = new List<Health>();
         objectsShocked = new List<Health>();
 
         float acceptableAngle = 30f;
@@ -111,15 +109,21 @@ public class PlayerController : MonoBehaviour
             col.TryGetComponent(out hp);
             if (hp)
             {
-                objectsWithinRange.Add(hp);
+                if (hp != headHealth)
+                {
+                    Vector3 direction = col.transform.position - head.transform.position;
+                    if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+                    {
+                        objectsWithinRange.Add(hp);
+                    }
+                }
             }
         }
 
-        if (objectsWithinRange[0])
+        if (objectsWithinRange.Count > 0)
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            if (Vector3.Angle(transform.up, direction) < acceptableAngle)
+            if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
             {
                 enemiesShocked = 1;
                 ShockNext(objectsWithinRange[0]);
@@ -127,9 +131,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Vector3 direction = head.transform.eulerAngles + new Vector3(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
-            Vector3 randomPointInFront = (direction + head.transform.up) * Random.Range(lightningMinDistance, lightningMaxDistance);
-            Shock(randomPointInFront);
+            Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
+            Vector3 randomDirection = (rotAngle * head.transform.up);
+
+            randomDirection = (randomDirection.normalized * lightningMaxDistance) + head.transform.parent.position;
+
+            Debug.DrawLine(head.transform.position, randomDirection, Color.red, 5);
+            Shock(randomDirection);
         }
     }
 
@@ -148,7 +156,7 @@ public class PlayerController : MonoBehaviour
             myLightning = gameObject.AddComponent<Lightning>();
         }
 
-        if (hp != GetComponent<Health>())
+        if (hp != headHealth)
         {
             myLightning.target = hp.transform.position;
         }
@@ -186,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
     public void Shock(Vector3 shockPosition)
     {
+        Debug.Log("Shock Position: " + shockPosition);
         Lightning myLightning = null;
         TryGetComponent(out myLightning);
 
@@ -193,14 +202,10 @@ public class PlayerController : MonoBehaviour
         {
             myLightning.RemoveLightning();
         }
-        else
-        {
-            gameObject.AddComponent<Lightning>();
-        }
 
         if (shockPosition != head.transform.position)
         {
-            gameObject.AddComponent<Lightning>().target = shockPosition;
+            head.gameObject.AddComponent<Lightning>().target = shockPosition;
         }
         else
         {
@@ -230,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
             // Deal Damage to Enemy
             Health enemyHealth = FindEnemyToDamage();
-            if(enemyHealth)
+            if (enemyHealth)
             {
                 enemyHealth.healthCount -= healingAmount * Time.deltaTime;
             }
@@ -246,13 +251,13 @@ public class PlayerController : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(head.transform.position, 10);
 
-        foreach(Collider2D collider in colliders)
+        foreach (Collider2D collider in colliders)
         {
-            if(collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
+            if (collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
             {
                 collider.TryGetComponent(out enemy);
 
-                if(enemy)
+                if (enemy)
                 {
                     return enemy;
                 }
@@ -303,7 +308,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DronePosition1;
     public GameObject DronePosition2;
     public GameObject DronePosition3;
-    
+
     private void GuardDroneFire()
     {
         if (guardDroneCount < 3)
@@ -319,7 +324,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < droneHolder.transform.childCount; i++)
         {
-            PlayerDrone atk = null; 
+            PlayerDrone atk = null;
             transform.GetChild(i).TryGetComponent(out atk);
 
             if (atk)
@@ -332,15 +337,10 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-        //Controls
-    private bool firing = false;
-
     void Start()
     {
         inventory = GetComponent<Inventory>();
         LoadData();
-        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
-        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
     }
 
     void LoadData()
@@ -349,27 +349,9 @@ public class PlayerController : MonoBehaviour
         inventory.items = LoadManager.Instance.saveData.GetItemsAsDictionary();
     }
 
-    public void onPressFire()
-    {
-        firing = (true);
-    }
-
-    public void onReleaseFire()
-    {
-        firing = (false);
-    }
-
-    private void Update()
-    {
-        JoystickControls.SetActive(PauseMenu.Instance.JoystickControls);
-        TouchControls.SetActive(!PauseMenu.Instance.JoystickControls);
-    }
-
-
-
     void FixedUpdate()
     {
-        if (PauseMenu.Instance.JoystickControls)
+        if (PlayerPrefs.GetInt("JoystickControls") == 0)
         {
             if (firing)
             {
@@ -386,7 +368,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
-                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                if (!UIManager.Instance.IsPointerOverUIObject())
                 {
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackSpeed)
@@ -404,6 +386,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region Money
     public void AddMoney(int amount)
     {
         if (money + amount < int.MaxValue)
@@ -418,7 +401,7 @@ public class PlayerController : MonoBehaviour
 
     public bool RemoveMoney(int amount)
     {
-        if (money - amount > 0)
+        if (money - amount >= 0)
         {
             money -= amount;
             return true;
@@ -427,6 +410,50 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    public string ReturnMoney()
+    {
+        string returncount = "";
+        int switchCase = 0;
+        switchCase = money < 10000 ? 0
+            : money >= 10000 && money < 100000 ? 1
+            : money >= 100000 && money < 1000000 ? 2
+            : money >= 1000000 && money < 1000000000 ? 3
+            : 4;
+        switch (switchCase)
+        {
+            case 0:
+                returncount = money.ToString();
+                break;
+            case 1:
+                int thousands = money / 1000;
+                int hundreds = money % 1000;
+                char[] hundie = { '0' };
+                if (hundreds >= 100)
+                {
+                    hundie = hundreds.ToString().ToCharArray();
+                }
+                returncount = thousands.ToString() + "." + hundie[0] + "k";
+                break;
+            case 2:
+                thousands = money / 1000;
+                returncount = thousands.ToString() + "k";
+                break;
+            case 3:
+                int millions = money / 1000000;
+                returncount = millions.ToString() + "m";
+                break;
+            case 4:
+                int billions = money / 1000000000;
+                returncount = billions.ToString() + "b";
+                break;
+            default:
+                break;
+        }
+        return returncount;
+    }
+    #endregion
+
+    #region Firing and Attacks
     public void SwitchFireMode(Ship.eMotherShip eMotherShipType)
     {
         switch (eMotherShipType)
@@ -483,4 +510,16 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    private bool firing = false;
+    public void onPressFire()
+    {
+        firing = (true);
+    }
+
+    public void onReleaseFire()
+    {
+        firing = (false);
+    }
+    #endregion
 }
