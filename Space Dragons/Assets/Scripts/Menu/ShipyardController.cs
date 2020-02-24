@@ -859,12 +859,18 @@ public class ShipyardController : UIBaseClass
     public new void Open()
     {
         base.Open();
+    public void CloseMessage()
+    {
+        MaxShipWarning.SetActive(false);
+    }
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
+        CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
         ShipyardShipSetup();
         ShipyardMotherSetup((int)CurrentMothership, false);
         MothershipPanelSwap(true);
     }
+
     public new void Close()
     {
         base.Close();
