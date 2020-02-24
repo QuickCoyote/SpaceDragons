@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HelpScreenManager : Singleton<HelpScreenManager>
 {
-    [SerializeField] List<helpScreen> screens;
+    [SerializeField] List<helpScreen> screens = new List<helpScreen>();
 
     [Serializable]
-    public struct helpScreen
+    public class helpScreen
     {
         public GameObject panel;
-        public bool opened;
+        public bool opened = true;
         public eHelpScreens screenID;
     }
 
@@ -25,16 +24,31 @@ public class HelpScreenManager : Singleton<HelpScreenManager>
 
     public void OpenHelpScreen(eHelpScreens screen)
     {
-        screens.First(e => e.screenID == screen).panel.SetActive(true);
+        for (int i = 0; i < screens.Count; i++)
+        {
+            if (screens[i].screenID == screen)
+            {
+                screens[i].panel.SetActive(true);
+                screens[i].opened = true;
+            }
+        }
     }
+
     public void CheckFirstTimeHelpScreen(eHelpScreens screen)
     {
-       if (!screens.First(e => e.screenID == screen).opened) screens.First(e => e.screenID == screen).panel.SetActive(true);
+        for (int i = 0; i < screens.Count; i++)
+        {
+            if (screens[i].screenID == screen && !screens[i].opened)
+            {
+                screens[i].panel.SetActive(true);
+                screens[i].opened = true;
+            }
+        }
     }
 
     public void CloseAllHelpScreens()
     {
-        foreach(helpScreen s in screens)
+        foreach (helpScreen s in screens)
         {
             s.panel.SetActive(false);
         }
