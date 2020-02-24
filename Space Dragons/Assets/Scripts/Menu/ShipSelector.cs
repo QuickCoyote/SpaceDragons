@@ -51,7 +51,7 @@ public class ShipSelector : MonoBehaviour
             float hpToRestore = 0f;
             hpToRestore += shipHealth.healthMax - shipHealth.healthCount;
 
-            if (hpToRestore != 0)
+            if (hpToRestore != 0 && hpToRestore > 0)
             {
                 ShipMenu.GetComponentsInChildren<TextMeshProUGUI>().Where
                     (o => o.name == "CostText").FirstOrDefault().text = "$" + ((int)(hpToRestore * repairCostPerHP)).ToString();
