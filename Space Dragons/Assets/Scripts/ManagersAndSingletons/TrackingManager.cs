@@ -63,8 +63,8 @@ public class TrackingManager : Singleton<TrackingManager>
         return (MainMap.highlightIcon.transform.position - player.transform.position).magnitude;
     }
 
-    public string ReturnETA()
+    public int ReturnETA()
     {
-        return Mathf.CeilToInt((Vector3.Distance(MainMap.highlightIcon.transform.position, player.transform.position) / WorldManager.Instance.Ship.speed)).ToString();
+        return Mathf.CeilToInt((Vector3.Distance(MainMap.highlightIcon.transform.position, player.transform.position) / WorldManager.Instance.Ship.speed));
     }
 }

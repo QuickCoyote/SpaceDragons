@@ -403,10 +403,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -741,12 +746,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -874,10 +879,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -1212,12 +1222,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -1348,10 +1358,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -1691,12 +1706,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -3017,6 +3032,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Object
       objectReference: {fileID: 0}
+    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 196209911218918717, guid: 9cf8245b2f173ab449c7aafd54978c1b,
+        type: 3}
+      propertyPath: orthographic size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6435026194209917794, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3263,10 +3298,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -3601,12 +3641,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -3743,10 +3783,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -4086,12 +4131,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -4610,10 +4655,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -4948,12 +4998,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -5906,10 +5956,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 47266788706886023, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 47266789037088672, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 232668458029951292, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -6244,12 +6299,12 @@ PrefabInstance:
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628929762354604975, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955865115282157963, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}

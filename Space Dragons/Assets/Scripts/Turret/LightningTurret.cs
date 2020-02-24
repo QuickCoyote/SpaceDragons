@@ -15,6 +15,15 @@ public class LightningTurret : Turret
         if (enemies.Count > 0)
         {
             RotateTurret();
+            if((enemies.Peek().transform.position - transform.position).magnitude > range)
+            {
+                Lightning myLightning = null;
+
+                if(TryGetComponent(out myLightning))
+                {
+                    Destroy(myLightning);
+                }
+            }
         }
         CheckForDie();
     }

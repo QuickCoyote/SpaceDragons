@@ -38,7 +38,14 @@ public class PlayerHUD : UIBaseClass
             HUD_Money_Text.text = WorldManager.Instance.PlayerController.ReturnMoney();
             HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
             HUD_Distance_Text.text = Mathf.CeilToInt(TrackingManager.Instance.ReturnDistanceToTracker()).ToString() + "au";
-            HUD_ETA_Text.text = TrackingManager.Instance.ReturnETA() + "s";
+            if(TrackingManager.Instance.ReturnETA() > 1000000 || TrackingManager.Instance.ReturnETA() < 0)
+            {
+                HUD_ETA_Text.text = "[REDACTED]";
+            }
+            else
+            {
+                HUD_ETA_Text.text = TrackingManager.Instance.ReturnETA() + "s";
+            }
 
             switch (WorldManager.Instance.Ship.motherShip)
             {

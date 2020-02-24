@@ -28,9 +28,6 @@ public class MainMapController : UIBaseClass
             if (Input.GetMouseButtonDown(0))
             {
                 panStart = mainMapCam.ScreenToWorldPoint(Input.mousePosition);
-                //    if (Input.touchCount > 0){
-                //    SetTracker();
-                //}
             }
             //if (Input.touchCount == 2)
             //{
