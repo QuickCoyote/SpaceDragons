@@ -38,7 +38,7 @@ public class PlayerHUD : UIBaseClass
             HUD_Money_Text.text = WorldManager.Instance.PlayerController.ReturnMoney();
             HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
             HUD_Distance_Text.text = Mathf.CeilToInt(TrackingManager.Instance.ReturnDistanceToTracker()).ToString() + "au";
-            HUD_ETA_Text.text = "Uncalculated";
+            HUD_ETA_Text.text = TrackingManager.Instance.ReturnETA() + "s";
 
             switch (WorldManager.Instance.Ship.motherShip)
             {
