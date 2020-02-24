@@ -15,5 +15,5 @@ MonoBehaviour:
   PromptText: TELEPORTS will make travel faster for a price, but only to TELEPORTS
     you've already visited.
   UIWaypoint: {x: 325, y: 0, z: 0}
-  ArrowWaypoint: {x: -500, y: 0, z: 0}
+  ArrowWaypoint: {x: -480, y: 0, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

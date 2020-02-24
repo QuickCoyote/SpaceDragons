@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O9T1
   m_EditorClassIdentifier: 
   PromptText: TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
-  UIWaypoint: {x: -525, y: 264, z: 0}
-  ArrowWaypoint: {x: 0, y: 130, z: 0}
+  UIWaypoint: {x: -465, y: 264, z: 0}
+  ArrowWaypoint: {x: 140, y: 130, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

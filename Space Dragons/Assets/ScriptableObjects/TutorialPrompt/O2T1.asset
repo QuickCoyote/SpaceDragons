@@ -15,5 +15,5 @@ MonoBehaviour:
   PromptText: By the end of the TUTORIAL, you'll be able to pilot your own certified
     DRAGON Spaceship.
   UIWaypoint: {x: 0, y: 264, z: 0}
-  ArrowWaypoint: {x: -480, y: -325, z: 0}
+  ArrowWaypoint: {x: -2000, y: -325, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

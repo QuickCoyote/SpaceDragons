@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O7T1
   m_EditorClassIdentifier: 
   PromptText: OUTPOSTS will offer currency for certain MATERIALS.
-  UIWaypoint: {x: -650, y: 275, z: 0}
+  UIWaypoint: {x: -465, y: 275, z: 0}
   ArrowWaypoint: {x: 375, y: -190, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: -90}
