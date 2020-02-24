@@ -95,8 +95,8 @@ public class LightningTurret : Turret
                         Debug.Log("Shocked enemies: " + enemiesShocked);
                         ShockNext(en);
                     }
-                }
                 en.GetComponent<Health>().healthCount -= damage;
+                }
             }
         }
     }

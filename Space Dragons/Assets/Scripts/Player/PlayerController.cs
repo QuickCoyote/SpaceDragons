@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,11 +15,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public eFireType fireType = eFireType.BASIC;
-
-    [Header("UI")]
-    [SerializeField] GameObject JoystickControls = null;
-    [SerializeField] GameObject TouchControls = null;
-    [SerializeField] Toggle controlToggle = null;
 
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
@@ -116,7 +109,7 @@ public class PlayerController : MonoBehaviour
             col.TryGetComponent(out hp);
             if (hp)
             {
-                if(hp != headHealth)
+                if (hp != headHealth)
                 {
                     Vector3 direction = col.transform.position - head.transform.position;
                     if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
@@ -242,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
             // Deal Damage to Enemy
             Health enemyHealth = FindEnemyToDamage();
-            if(enemyHealth)
+            if (enemyHealth)
             {
                 enemyHealth.healthCount -= healingAmount * Time.deltaTime;
             }
@@ -258,13 +251,13 @@ public class PlayerController : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(head.transform.position, 10);
 
-        foreach(Collider2D collider in colliders)
+        foreach (Collider2D collider in colliders)
         {
-            if(collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
+            if (collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
             {
                 collider.TryGetComponent(out enemy);
 
-                if(enemy)
+                if (enemy)
                 {
                     return enemy;
                 }
@@ -315,7 +308,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DronePosition1;
     public GameObject DronePosition2;
     public GameObject DronePosition3;
-    
+
     private void GuardDroneFire()
     {
         if (guardDroneCount < 3)
@@ -331,7 +324,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < droneHolder.transform.childCount; i++)
         {
-            PlayerDrone atk = null; 
+            PlayerDrone atk = null;
             transform.GetChild(i).TryGetComponent(out atk);
 
             if (atk)
@@ -344,22 +337,10 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region HUD Variables
-
-    [SerializeField] GameObject HUD = null;
-    [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
-
-    #endregion
-
     void Start()
     {
         inventory = GetComponent<Inventory>();
         LoadData();
-        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
-        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
-        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-
-        HUD.SetActive(false);
     }
 
     void LoadData()
@@ -387,7 +368,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
-                if (!UIDetectionManager.Instance.IsPointerOverUIObject())
+                if (!UIManager.Instance.IsPointerOverUIObject())
                 {
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackSpeed)
@@ -405,29 +386,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
-        JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
-        TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-    }
-
-    public void ToggleJoystickControls(bool toggled)
-    {
-        PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
-        controlToggle.isOn = (toggled);
-    }
-    public void OpenHUD()
-    {
-        HUD.SetActive(true);
-        HUD_Money_Text.text = ReturnMoney();
-    }
-
-    public void CloseHUD()
-    {
-        HUD.SetActive(false);
-    }
-
     #region Money
     public void AddMoney(int amount)
     {
@@ -443,7 +401,7 @@ public class PlayerController : MonoBehaviour
 
     public bool RemoveMoney(int amount)
     {
-        if (money - amount > 0)
+        if (money - amount >= 0)
         {
             money -= amount;
             return true;

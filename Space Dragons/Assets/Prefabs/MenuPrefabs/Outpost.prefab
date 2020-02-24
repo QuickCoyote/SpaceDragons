@@ -2501,8 +2501,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6131947648133326801}
-        m_TargetAssemblyTypeName: OutpostController, Assembly-CSharp
-        m_MethodName: CloseOutpost
+        m_TargetAssemblyTypeName: UIBaseClass, Assembly-CSharp
+        m_MethodName: ToggleUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7278,7 +7278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1fc7b2d76b2034cb367bc6a6bdfd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Outpost: {fileID: 8717131725320784142}
+  UICanvas: {fileID: 8717131725320784142}
+  PauseOnly: 1
   OutpostContent: {fileID: 8717131724943996467}
   PlayerContent: {fileID: 8717131723515760485}
   ShoppingPanel: {fileID: 8717131724469146496}
@@ -9517,7 +9518,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 32660
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &8717131725320784141
 MonoBehaviour:

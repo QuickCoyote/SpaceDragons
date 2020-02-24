@@ -5,9 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class OutpostController : MonoBehaviour
+public class OutpostController : UIBaseClass
 {
-    public GameObject Outpost;
     public GameObject OutpostContent;
     public GameObject PlayerContent;
     public GameObject ShoppingPanel;
@@ -43,7 +42,6 @@ public class OutpostController : MonoBehaviour
         OutpostShopSetup();
         PlayerShopSetup();
         ShoppingPanel.SetActive(false);
-        Outpost.SetActive(false);
     }
 
     public void Update()
@@ -51,11 +49,11 @@ public class OutpostController : MonoBehaviour
         #region Dev Debug Controls
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            OpenOutpost();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseOutpost();
+            ToggleUI();
         }
         else if (Input.GetKeyDown(KeyCode.F12))
         {
@@ -281,28 +279,26 @@ public class OutpostController : MonoBehaviour
         }
     }
 
-    public void OpenOutpost()
+    public new void Open()
     {
+        base.Open();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
-        Outpost.SetActive(true);
-        Time.timeScale = 0;
         PlayerShopSetup();
     }
-
-    public void CloseOutpost()
+    public new void Close()
     {
+        base.Close();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Battle");
-        Outpost.SetActive(false);
-        Time.timeScale = 1;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            OpenOutpost();
+            ToggleUI();
         }
     }
 
@@ -342,7 +338,6 @@ public class OutpostController : MonoBehaviour
         }
 
         price = Mathf.FloorToInt(tempPrice * 220);
-
         return price;
     }
 }
