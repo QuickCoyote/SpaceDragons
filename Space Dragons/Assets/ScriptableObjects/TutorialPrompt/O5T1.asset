@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: 'ENEMIES come in many different RACES:'
   UIWaypoint: {x: 0, y: -200, z: 0}
-  ArrowWaypoint: {x: 0, y: -650, z: 0}
+  ArrowWaypoint: {x: 0, y: -2000, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

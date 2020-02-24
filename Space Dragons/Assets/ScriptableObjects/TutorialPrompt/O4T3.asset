@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O4T3
   m_EditorClassIdentifier: 
   PromptText: While your finger is down, your DRAGON's weapons will fire.
-  UIWaypoint: {x: 650, y: 250, z: 0}
+  UIWaypoint: {x: 460, y: 250, z: 0}
   ArrowWaypoint: {x: 0, y: -400, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

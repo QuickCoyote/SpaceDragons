@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: Welcome to SPACE DRAGONS! Here's a few TIPS to get you started.
   UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 400, y: -250, z: 0}
+  ArrowWaypoint: {x: 470, y: -250, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: -90}
