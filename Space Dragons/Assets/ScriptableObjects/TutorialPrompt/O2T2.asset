@@ -16,4 +16,4 @@ MonoBehaviour:
     later in the game.
   UIWaypoint: {x: 0, y: 264, z: 0}
   ArrowWaypoint: {x: -480, y: -325, z: 0}
-  ArrowRotationWaypoint: {x: 0, y: 0, z: 90}
+  ArrowRotationWaypoint: {x: 0, y: 0, z: 180}
