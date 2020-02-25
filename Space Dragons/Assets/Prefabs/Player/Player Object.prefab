@@ -2233,7 +2233,7 @@ GameObject:
   - component: {fileID: 294643443}
   - component: {fileID: 294643447}
   - component: {fileID: 294643446}
-  - component: {fileID: 294643444}
+  - component: {fileID: 5315646531512310622}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
@@ -2298,7 +2298,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &294643444
+--- !u!114 &5315646531512310622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2307,42 +2307,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 294643442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a3c439be038b3b4586d7ffdb37b8ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 196209910753800035}
-          m_TargetAssemblyTypeName: Ship, Assembly-CSharp
-          m_MethodName: onPressJoystick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 196209910753800035}
-          m_TargetAssemblyTypeName: Ship, Assembly-CSharp
-          m_MethodName: onReleaseJoystick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  InputDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &314788404
 GameObject:
   m_ObjectHideFlags: 0
@@ -16388,6 +16356,7 @@ MonoBehaviour:
   driftSpeed: 3
   rotationSpeed: 15
   thrustersOn: 1
+  joystickMovement: {fileID: 5315646531512310622}
   joystickknob: {fileID: 1076237413}
   motherShip: 0
   shipToTest: 2
@@ -16462,6 +16431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 396466653645988635}
   PauseOnly: 1
+  helpScreen: 0
   emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   inventoryDisplay: {fileID: 152004549}
   itemInfoPanel: {fileID: 417303761}
@@ -16483,6 +16453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 1143159698782520790}
   PauseOnly: 0
+  helpScreen: 0
   JoystickControls: {fileID: 2090208725807647126}
   TouchControls: {fileID: 3349519419594841222}
   controlToggle: {fileID: 3319085884783165921}
@@ -16522,7 +16493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196209911218918719}
   m_LocalRotation: {x: -1e-45, y: -0, z: 2.587824e-10, w: 1}
-  m_LocalPosition: {x: -34.08277, y: -327.7121, z: -20.471867}
+  m_LocalPosition: {x: 0, y: -2.8e-44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 196209910753800036}
@@ -16555,7 +16526,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 13.089832
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

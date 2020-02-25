@@ -34,6 +34,11 @@ public class GasStationController : UIBaseClass
     public float ResetStockTimer = 180.0f;
     public int GasCount;
 
+    [Header("Ads")]
+    public Sprite[] ads;
+    public Image advertDisplay;
+    public float adDisplayTimer = 3.0f;
+
     void Start()
     {
         playerShip = WorldManager.Instance.Ship;
@@ -41,6 +46,7 @@ public class GasStationController : UIBaseClass
         StationSetup();
         PlayerSetup();
         UpdateUI();
+        advertDisplay.sprite = ads[Random.Range(0, ads.Length)];
     }
 
     void Update()
@@ -189,7 +195,6 @@ public class GasStationController : UIBaseClass
     public void UpdateUI()
     {
         PlayerSetup();
-
         StationFuel.value = GasCount;
 
         int minutes = (int)StockTimer / 60;
@@ -234,6 +239,7 @@ public class GasStationController : UIBaseClass
     {
         base.Open();
         PlayerSetup();
+        advertDisplay.sprite = ads[Random.Range(0, ads.Length)];
         UpdateUI();
     }
 

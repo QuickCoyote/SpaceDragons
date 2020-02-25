@@ -27,21 +27,6 @@ public abstract class Turret : MonoBehaviour
     protected void Awake()
     {
         GetComponent<CircleCollider2D>().radius = range;
-
-        switch (turretRarity)
-        {
-            case ShipData.eTurretRarity.COMMON:
-                rarityModifier = 1.0f;
-                break;
-            case ShipData.eTurretRarity.RARE:
-                rarityModifier = 1.5f;
-                break;
-            case ShipData.eTurretRarity.EPIC:
-                rarityModifier = 2.0f;
-                break;
-        }
-
-        ApplyRarity();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,5 +54,47 @@ public abstract class Turret : MonoBehaviour
             FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
             FindObjectOfType<Ship>().RemoveBodyPart(gameObject, false);
         }
+    }
+
+    public void Initialize()
+    {
+
+        int badgeColor = 0;
+        switch (data.type)
+        {
+            case ShipData.eTurretType.FLAME:
+                badgeColor = 0;
+                break;
+            case ShipData.eTurretType.HEALING:
+                badgeColor = 1;
+                break;
+            case ShipData.eTurretType.LIGHTNING:
+                badgeColor = 2;
+                break;
+            case ShipData.eTurretType.RUSTY:
+                badgeColor = 3;
+                break;
+            case ShipData.eTurretType.ATTACK_DRONE:
+                badgeColor = 4;
+                break;
+        }
+
+        switch (turretRarity)
+        {
+            case ShipData.eTurretRarity.COMMON:
+                rarityModifier = 1.0f;
+                spriteRendererBadge.sprite = data.spriteBadgesCommon[badgeColor];
+                break;
+            case ShipData.eTurretRarity.RARE:
+                rarityModifier = 1.5f;
+                spriteRendererBadge.sprite = data.spriteBadgesRare[badgeColor];
+                break;
+            case ShipData.eTurretRarity.EPIC:
+                rarityModifier = 2.0f;
+                spriteRendererBadge.sprite = data.spriteBadgesEpic[badgeColor];
+                break;
+        }
+
+        ApplyRarity();
     }
 }

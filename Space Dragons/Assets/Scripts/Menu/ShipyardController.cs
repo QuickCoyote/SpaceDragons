@@ -880,6 +880,7 @@ public class ShipyardController : UIBaseClass
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
+            Open();
         }
     }
     public void CloseMessage()

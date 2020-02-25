@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: O10T1
   m_EditorClassIdentifier: 
   PromptText: Find a SHIPYARD to buy and sell TURRET SHIPS.
-  UIWaypoint: {x: -450, y: 250, z: 0}
+  UIWaypoint: {x: -465, y: 250, z: 0}
   ArrowWaypoint: {x: -150, y: -400, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 90}

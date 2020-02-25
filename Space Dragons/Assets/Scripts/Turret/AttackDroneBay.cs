@@ -19,6 +19,27 @@ public class AttackDroneBay : Turret
         {
             SpawnDrone();
         }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AttackDrone atk = null;
+
+            if (transform.GetChild(i).TryGetComponent(out atk))
+            {
+                atk.side = side;
+                if (enemies.Count > 0)
+                {
+                    atk.enemyToAttack = enemies.Peek().gameObject;
+                }
+                else
+                {
+                    atk.enemyToAttack = null;
+                }
+            }
+
+
+            side *= -1;
+        }
     }
 
 
@@ -40,40 +61,19 @@ public class AttackDroneBay : Turret
                 Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, transform);
                 break;
         }
-        droneCount++;
 
         for (int i = 0; i < transform.childCount; i++)
         {
             AttackDrone atk = null;
-            transform.GetChild(i).TryGetComponent(out atk);
 
-            if (atk)
+            if (transform.GetChild(i).TryGetComponent(out atk))
             {
                 atk.side = side;
             }
             side *= -1;
         }
 
-        if (enemies.Count > 0)
-        {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                AttackDrone atk = null;
-                transform.GetChild(i).TryGetComponent(out atk);
-
-                if (atk)
-                {
-                    if(enemies.Peek())
-                    {
-                        atk.enemyToAttack = enemies.Peek().gameObject;
-                    }
-                    else
-                    {
-                        atk.enemyToAttack = null;
-                    }
-                }
-            }
-        }
+        droneCount++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
