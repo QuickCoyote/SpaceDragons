@@ -15,13 +15,16 @@ public class LightningTurret : Turret
         if (enemies.Count > 0)
         {
             RotateTurret();
-            if((enemies.Peek().transform.position - transform.position).magnitude > range)
+            if (enemies.Peek())
             {
-                Lightning myLightning = null;
-
-                if(TryGetComponent(out myLightning))
+                if ((enemies.Peek().transform.position - transform.position).magnitude > range)
                 {
-                    Destroy(myLightning);
+                    Lightning myLightning = null;
+
+                    if (TryGetComponent(out myLightning))
+                    {
+                        Destroy(myLightning);
+                    }
                 }
             }
         }
@@ -53,7 +56,7 @@ public class LightningTurret : Turret
     {
         if (enemies.Count > 0)
         {
-            if(enemies.Peek() != null)
+            if (enemies.Peek() != null)
             {
                 ShockNext(enemies.Peek());
             }
@@ -96,7 +99,7 @@ public class LightningTurret : Turret
                 }
                 else
                 {
-                    if(en != enemy)
+                    if (en != enemy)
                     {
                         shockedBois.Add(en);
                         enemy.gameObject.AddComponent<Lightning>().target = en.transform.position;
@@ -104,7 +107,7 @@ public class LightningTurret : Turret
                         Debug.Log("Shocked enemies: " + enemiesShocked);
                         ShockNext(en);
                     }
-                en.GetComponent<Health>().healthCount -= damage;
+                    en.GetComponent<Health>().healthCount -= damage;
                 }
             }
         }
