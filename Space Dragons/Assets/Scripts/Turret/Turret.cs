@@ -58,32 +58,20 @@ public abstract class Turret : MonoBehaviour
 
     public void Initialize()
     {
-        switch (turretRarity)
-        {
-            case ShipData.eTurretRarity.COMMON:
-                rarityModifier = 1.0f;
-                break;
-            case ShipData.eTurretRarity.RARE:
-                rarityModifier = 1.5f;
-                break;
-            case ShipData.eTurretRarity.EPIC:
-                rarityModifier = 2.0f;
-                break;
-        }
 
         int badgeColor = 0;
         switch (data.type)
         {
-            case ShipData.eTurretType.RUSTY:
+            case ShipData.eTurretType.FLAME:
                 badgeColor = 0;
                 break;
-            case ShipData.eTurretType.FLAME:
+            case ShipData.eTurretType.HEALING:
                 badgeColor = 1;
                 break;
             case ShipData.eTurretType.LIGHTNING:
                 badgeColor = 2;
                 break;
-            case ShipData.eTurretType.HEALING:
+            case ShipData.eTurretType.RUSTY:
                 badgeColor = 3;
                 break;
             case ShipData.eTurretType.ATTACK_DRONE:
@@ -94,12 +82,15 @@ public abstract class Turret : MonoBehaviour
         switch (turretRarity)
         {
             case ShipData.eTurretRarity.COMMON:
+                rarityModifier = 1.0f;
                 spriteRendererBadge.sprite = data.spriteBadgesCommon[badgeColor];
                 break;
             case ShipData.eTurretRarity.RARE:
+                rarityModifier = 1.5f;
                 spriteRendererBadge.sprite = data.spriteBadgesRare[badgeColor];
                 break;
             case ShipData.eTurretRarity.EPIC:
+                rarityModifier = 2.0f;
                 spriteRendererBadge.sprite = data.spriteBadgesEpic[badgeColor];
                 break;
         }
