@@ -33,6 +33,8 @@ public class GasStationController : UIBaseClass
     public float StockTimer = 0.0f;
     public float ResetStockTimer = 180.0f;
     public int GasCount;
+
+    [Header("Ads")]
     public Sprite[] ads;
     public Image advertDisplay;
     public float adDisplayTimer = 3.0f;
@@ -193,18 +195,6 @@ public class GasStationController : UIBaseClass
     public void UpdateUI()
     {
         PlayerSetup();
-
-        //ad floating
-        float x = Mathf.PingPong(1.0f * Time.time, 5.0f);
-        Vector3 pos = new Vector3(advertDisplay.transform.position.x + x, advertDisplay.transform.position.y, 0);
-        advertDisplay.transform.position = pos;
-        adDisplayTimer -= Time.deltaTime;
-        if (adDisplayTimer < 0.0f)
-        {
-            adDisplayTimer = 3.0f;
-            advertDisplay.sprite = ads[Random.Range(0, ads.Length)];
-        }
-
         StationFuel.value = GasCount;
 
         int minutes = (int)StockTimer / 60;
@@ -249,6 +239,7 @@ public class GasStationController : UIBaseClass
     {
         base.Open();
         PlayerSetup();
+        advertDisplay.sprite = ads[Random.Range(0, ads.Length)];
         UpdateUI();
     }
 
