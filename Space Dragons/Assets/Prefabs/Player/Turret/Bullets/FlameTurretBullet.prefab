@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1428152543217758845}
   - component: {fileID: -7519156700708784674}
   m_Layer: 8
-  m_Name: FlameTurret
+  m_Name: FlameTurretBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -8092923757046829498, guid: 2ca9b1bfb0383ad46a3679770224f8f4,
+  m_Sprite: {fileID: 4206860055589038045, guid: 2ca9b1bfb0383ad46a3679770224f8f4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

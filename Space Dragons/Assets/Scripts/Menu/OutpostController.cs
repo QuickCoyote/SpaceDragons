@@ -239,7 +239,7 @@ public class OutpostController : UIBaseClass
         }
         else
         {
-            if (WorldManager.Instance.PlayerController.RemoveMoney(CalculateSellPrice(item)))
+            if (WorldManager.Instance.PlayerController.RemoveMoney(CalculateBuyPrice(item)))
             {
                 outpostInventory.RemoveItem(item, sliderValue);
                 outpostInventory.UpdateInventory();
@@ -259,9 +259,9 @@ public class OutpostController : UIBaseClass
     public new void Open()
     {
         base.Open();
+        Refresh();
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
-        Refresh();
     }
     public new void Close()
     {
@@ -274,6 +274,7 @@ public class OutpostController : UIBaseClass
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
+            Refresh();
         }
     }
     public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
@@ -329,7 +330,7 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) + i + 1));
+            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) - i + 1));
         }
 
         price = Mathf.FloorToInt(tempPrice * 220);

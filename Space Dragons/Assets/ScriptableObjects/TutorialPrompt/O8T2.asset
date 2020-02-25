@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: RED is the nearest ENEMY.
   UIWaypoint: {x: 450, y: 260, z: 0}
-  ArrowWaypoint: {x: -800, y: -45, z: 0}
+  ArrowWaypoint: {x: -730, y: -100, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 90}

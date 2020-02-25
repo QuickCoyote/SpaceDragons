@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 858e70a896f7e3e4aac494069d9bc02b, type: 3}
-  m_Name: O9T1
+  m_Name: O3T6
   m_EditorClassIdentifier: 
-  PromptText: TURRET SHIPS will follow behind your ship and attack ENEMIES for you.
-  UIWaypoint: {x: -465, y: 250, z: 0}
-  ArrowWaypoint: {x: 140, y: 130, z: 0}
-  ArrowRotationWaypoint: {x: 0, y: 0, z: 0}
+  PromptText: These are your Turrets' Healthbars.
+  UIWaypoint: {x: 0, y: -200, z: 0}
+  ArrowWaypoint: {x: -535, y: 375, z: 0}
+  ArrowRotationWaypoint: {x: 0, y: 0, z: 90}
