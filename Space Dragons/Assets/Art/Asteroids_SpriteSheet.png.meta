@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 62385b5d51569664d99f66d616d5e3c9
+guid: 2172eaa84ad8bfc498abfc8dadb1c280
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2610820940064512960
-    second: Asteroid_Spritesheet_2_0
+      213: 4384477400853751541
+    second: Asteroids_SpriteSheet_0
   - first:
-      213: 7207317592713883248
-    second: Asteroid_Spritesheet_2_1
+      213: -8272436509152678118
+    second: Asteroids_SpriteSheet_1
   - first:
-      213: -6565937354857456132
-    second: Asteroid_Spritesheet_2_2
+      213: -2913350097118850848
+    second: Asteroids_SpriteSheet_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Asteroid_Spritesheet_2_0
+      name: Asteroids_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1371
-        width: 1533
-        height: 1358
+        y: 142
+        width: 120
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ba349ef9463ef34c858892f40dafcd9
-      internalID: 2610820940064512960
+      spriteID: 585ec8aac85524347b312fba33a1df9b
+      internalID: 4384477400853751541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroid_Spritesheet_2_1
+      name: Asteroids_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 1618
-        y: 1440
-        width: 1638
-        height: 1325
+        x: 138
+        y: 144
+        width: 118
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 071cc30412007cf4ea3551d448da9ee3
-      internalID: 7207317592713883248
+      spriteID: 47b9aa16502a4d44492d2e4b63f4c020
+      internalID: -8272436509152678118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Asteroid_Spritesheet_2_2
+      name: Asteroids_SpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 952
+        x: 58
         y: 0
-        width: 1461
-        height: 1357
+        width: 124
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,8 +189,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59bb6e591ffe93a45be88c73f3f4167d
-      internalID: -6565937354857456132
+      spriteID: 4f56d18e825cf874a909e7229232db8a
+      internalID: -2913350097118850848
       vertices: []
       indices: 
       edges: []
