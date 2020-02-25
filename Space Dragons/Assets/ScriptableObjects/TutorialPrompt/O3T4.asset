@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858e70a896f7e3e4aac494069d9bc02b, type: 3}
   m_Name: O3T4
   m_EditorClassIdentifier: 
-  PromptText: This shows your Current Wave and Enemy Count!
+  PromptText: This shows your Current Wave and Enemy Count.
   UIWaypoint: {x: 0, y: -200, z: 0}
   ArrowWaypoint: {x: -50, y: 360, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}
