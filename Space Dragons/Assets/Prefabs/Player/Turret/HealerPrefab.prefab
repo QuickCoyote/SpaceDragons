@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
   healthMax: 75
-  healthCount: 75
+  healthCount: 64.36017
   objectIndex: 0
 --- !u!114 &3550365470619791874
 MonoBehaviour:

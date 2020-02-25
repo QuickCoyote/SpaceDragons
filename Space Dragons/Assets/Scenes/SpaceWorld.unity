@@ -4248,11 +4248,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Wave Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3603683583041895938, guid: 922df777a6933d5439014bce6ecb9948,
-        type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3603683583041895939, guid: 922df777a6933d5439014bce6ecb9948,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4329,6 +4324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913406559}
     m_Modifications:
+    - target: {fileID: 233097028, guid: 9261172924b549547b039003d032a5c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8717131723515760482, guid: 9261172924b549547b039003d032a5c2,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -6660,7 +6659,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4229753921854191400, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
-      propertyPath: Player
+      propertyPath: Head
       value: 
       objectReference: {fileID: 434344665}
     - target: {fileID: 4229753921854191400, guid: c03491f4a3e540f418e56991ec4cd7be,
@@ -6678,11 +6677,6 @@ PrefabInstance:
       propertyPath: enemyWaveManager
       value: 
       objectReference: {fileID: 1107346901}
-    - target: {fileID: 4229753921854191400, guid: c03491f4a3e540f418e56991ec4cd7be,
-        type: 3}
-      propertyPath: Head
-      value: 
-      objectReference: {fileID: 434344665}
     - target: {fileID: 4229753921854191401, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
       propertyPath: m_LocalPosition.x

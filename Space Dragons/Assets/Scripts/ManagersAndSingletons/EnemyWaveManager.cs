@@ -13,8 +13,8 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
 
-    public int currentWave = 0;
-    public int cycleCount = 0;
+    public int currentWave = 1;
+    public int cycleCount = 1;
     public GameObject Player = null;
 
     public int aliveEnemies = 0;
@@ -45,7 +45,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i < cycleCount; i++)
+                for (int i = 0; i <= cycleCount; i++)
                 {
                     waves[currentWave].StartWave();
                 }

@@ -15,16 +15,13 @@ public class LightningTurret : Turret
         if (enemies.Count > 0)
         {
             RotateTurret();
-            if (enemies.Peek())
+            if ((enemies.Peek().transform.position - transform.position).magnitude > range)
             {
-                if ((enemies.Peek().transform.position - transform.position).magnitude > range)
-                {
-                    Lightning myLightning = null;
+                Lightning myLightning = null;
 
-                    if (TryGetComponent(out myLightning))
-                    {
-                        Destroy(myLightning);
-                    }
+                if (TryGetComponent(out myLightning))
+                {
+                    Destroy(myLightning);
                 }
             }
         }
@@ -56,10 +53,7 @@ public class LightningTurret : Turret
     {
         if (enemies.Count > 0)
         {
-            if (enemies.Peek() != null)
-            {
-                ShockNext(enemies.Peek());
-            }
+            ShockNext(enemies.Peek());
         }
     }
 

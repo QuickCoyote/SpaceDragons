@@ -568,6 +568,7 @@ MonoBehaviour:
   - {fileID: 7044326793431985128, guid: 103732b400b4f364ba12744b3969093a, type: 3}
   - {fileID: 7044326793431985128, guid: d2bc8bbd60e8b6345bef3d74a83612df, type: 3}
   - {fileID: 7044326793431985128, guid: c811b7ace2da97d4e9553787e70546ae, type: 3}
+  - {fileID: 7044326793431985128, guid: d66956fff9ade264f91289260ab702a0, type: 3}
   waves:
   - {fileID: 11400000, guid: 56db1f46babcb5f44bf067366ec05e94, type: 2}
   - {fileID: 11400000, guid: 0de6d74a85233e643937282ff363b80a, type: 2}
@@ -581,8 +582,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad17269c886113c479026a09a4772be4, type: 2}
   WaveText: {fileID: 225155001}
   EnemiesText: {fileID: 926442505}
-  currentWave: 0
-  cycleCount: 0
+  currentWave: 1
+  cycleCount: 1
   Player: {fileID: 0}
   aliveEnemies: 0
 --- !u!1 &5267157296245402885
