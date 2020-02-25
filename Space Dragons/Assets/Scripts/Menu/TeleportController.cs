@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TeleportController : UIBaseClass
 {
+    [Header("UI")]
     [SerializeField] GameObject uiTeleportButton = null;
     [SerializeField] GameObject uiTeleportArrows = null;
     [SerializeField] TextMeshProUGUI nameReadout = null;
@@ -14,6 +15,8 @@ public class TeleportController : UIBaseClass
     [SerializeField] TextMeshProUGUI messageReadout = null;
     [SerializeField] Animator TeleportTransition = null;
 
+    [Header("Values")]
+    [SerializeField] GameObject mapIcon = null;
     public string LocationName = null;
     public float costmultiplier = 0.05f;
     public bool visited = false;
@@ -29,6 +32,8 @@ public class TeleportController : UIBaseClass
         teleportLocationReadout.text = LocationName;
         visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
         if (visitedTeleports.Count > 0) UpdateUI();
+        mapIcon.SetActive(false);
+        if (visited) mapIcon.SetActive(true); 
     }
 
     public void IncreaseIndex()
@@ -74,7 +79,7 @@ public class TeleportController : UIBaseClass
         {
             uiTeleportArrows.SetActive(true);
         }
-
+        if (visited) mapIcon.SetActive(true);
     }
 
     public void DecreaseIndex()

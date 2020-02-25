@@ -342,7 +342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 580, y: 28}
+  m_AnchoredPosition: {x: -567, y: 28}
   m_SizeDelta: {x: 300, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5968555192297274075
@@ -763,7 +763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -569, y: 27.999985}
+  m_AnchoredPosition: {x: 581, y: 27.999985}
   m_SizeDelta: {x: 300, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &493087187450906958
@@ -2699,6 +2699,7 @@ MonoBehaviour:
   costReadout: {fileID: 6593187934492422626}
   messageReadout: {fileID: 5862446533828723979}
   TeleportTransition: {fileID: 8450094810979454205}
+  mapIcon: {fileID: 7885835056596317114}
   LocationName: Location 1
   costmultiplier: 0.05
   visited: 0
@@ -4100,6 +4101,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
+--- !u!1 &7885835056596317114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6768678382184082620, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3503571895717748486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4233209018048095274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
