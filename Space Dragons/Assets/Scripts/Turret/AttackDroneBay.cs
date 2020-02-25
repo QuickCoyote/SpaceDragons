@@ -27,15 +27,17 @@ public class AttackDroneBay : Turret
             if (transform.GetChild(i).TryGetComponent(out atk))
             {
                 atk.side = side;
+                if (enemies.Count > 0)
+                {
+                    atk.enemyToAttack = enemies.Peek().gameObject;
+                }
+                else
+                {
+                    atk.enemyToAttack = null;
+                }
             }
-            if (enemies.Peek())
-            {
-                atk.enemyToAttack = enemies.Peek().gameObject;
-            }
-            else
-            {
-                atk.enemyToAttack = null;
-            }
+
+
             side *= -1;
         }
     }
@@ -58,6 +60,17 @@ public class AttackDroneBay : Turret
             case 1:
                 Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, transform);
                 break;
+        }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            AttackDrone atk = null;
+
+            if (transform.GetChild(i).TryGetComponent(out atk))
+            {
+                atk.side = side;
+            }
+            side *= -1;
         }
 
         droneCount++;
