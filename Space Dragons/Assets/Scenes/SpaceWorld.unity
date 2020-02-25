@@ -1099,6 +1099,11 @@ PrefabInstance:
       propertyPath: upgradeTotal
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6789312854010171595, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1586,7 +1591,7 @@ PrefabInstance:
     - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: ShopDifficulty
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -2048,6 +2053,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: TradeInMothership
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
 --- !u!4 &393313891 stripped
@@ -2383,6 +2398,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1581514905, guid: 9261172924b549547b039003d032a5c2, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131947648133326801, guid: 9261172924b549547b039003d032a5c2,
+        type: 3}
+      propertyPath: ShopDifficulty
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8717131723515760482, guid: 9261172924b549547b039003d032a5c2,
@@ -3543,6 +3563,11 @@ PrefabInstance:
       propertyPath: upgradeTotal
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6789312854010171595, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -4026,7 +4051,7 @@ PrefabInstance:
     - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
       propertyPath: ShopDifficulty
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
@@ -4327,6 +4352,11 @@ PrefabInstance:
     - target: {fileID: 233097028, guid: 9261172924b549547b039003d032a5c2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131947648133326801, guid: 9261172924b549547b039003d032a5c2,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8717131723515760482, guid: 9261172924b549547b039003d032a5c2,
         type: 3}
@@ -5430,6 +5460,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: TradeInMothership
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
 --- !u!4 &1407142166 stripped
@@ -5784,6 +5824,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: TradeInMothership
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
 --- !u!4 &1567210201 stripped
@@ -5870,6 +5920,11 @@ PrefabInstance:
     - target: {fileID: 407945755, guid: 9261172924b549547b039003d032a5c2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131947648133326801, guid: 9261172924b549547b039003d032a5c2,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8717131723515760482, guid: 9261172924b549547b039003d032a5c2,
         type: 3}
@@ -6249,6 +6304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: upgradeTotal
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072019081939798877, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
+        type: 3}
+      propertyPath: ShopDifficulty
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6789312854010171595, guid: 949fcfecdb4e95840a63c7a21dd57b7d,
         type: 3}
