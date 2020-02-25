@@ -386,7 +386,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 55307f6383b91754c84955c85f44f23b, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   bullet: {fileID: 2532223516486878601, guid: 51c78af39cab59a4789cf13c55af15d3, type: 3}
-  rotationSpeed: 3
+  rotationSpeed: 5
   bulletOffsetY: 1
   acceptableDistance: 45
 --- !u!1 &5907399425726392834
