@@ -77,13 +77,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 2610820940064512960, guid: 62385b5d51569664d99f66d616d5e3c9,
+  m_Sprite: {fileID: 4384477400853751541, guid: 2172eaa84ad8bfc498abfc8dadb1c280,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3, y: 3.01}
+  m_Size: {x: 1.2, y: 1.35}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,13 +118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidImages:
-  - {fileID: 2610820940064512960, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
-  - {fileID: 7207317592713883248, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
-  - {fileID: -6565937354857456132, guid: 62385b5d51569664d99f66d616d5e3c9, type: 3}
+  - {fileID: 4384477400853751541, guid: 2172eaa84ad8bfc498abfc8dadb1c280, type: 3}
+  - {fileID: -8272436509152678118, guid: 2172eaa84ad8bfc498abfc8dadb1c280, type: 3}
+  - {fileID: -2913350097118850848, guid: 2172eaa84ad8bfc498abfc8dadb1c280, type: 3}
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
   asteroidSmaller: {fileID: 0}
   sizeAndWeight: 0.25
+  maxHp: 50
 --- !u!50 &336725093998916274
 Rigidbody2D:
   serializedVersion: 4
