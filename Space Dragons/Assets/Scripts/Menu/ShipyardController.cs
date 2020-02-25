@@ -8,6 +8,7 @@ using UnityEngine.UI.Extensions;
 
 public class ShipyardController : UIBaseClass
 {
+    public string ShipyardId;
     [Header("Stock")]
     public Ship MotherShip;
     public List<GameObject> Ships;
@@ -52,6 +53,12 @@ public class ShipyardController : UIBaseClass
     public void Start()
     {
         MotherShip = WorldManager.Instance.Ship;
+        foreach (LoadManager.ShipyardMotherships s in LoadManager.Instance.saveData.shipyards)
+        {
+            if (s.shipyardID == ShipyardId) {
+                CurrentMothership = (Ship.eMotherShip)s.mothershipEnum;
+            }
+        }
         ShipyardShipSetup();
         ShipyardShopSetup();
         MothershipPanelSwap(true);
