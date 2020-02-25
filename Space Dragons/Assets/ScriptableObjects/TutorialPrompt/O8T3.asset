@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: GREEN is defaulted to the nearest MAPTARGET.
   UIWaypoint: {x: 450, y: 260, z: 0}
-  ArrowWaypoint: {x: -490, y: -380, z: 0}
+  ArrowWaypoint: {x: -415, y: -390, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

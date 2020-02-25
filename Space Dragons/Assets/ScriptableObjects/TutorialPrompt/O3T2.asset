@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: Hold FIRE to attack.
   UIWaypoint: {x: 0, y: 250, z: 0}
-  ArrowWaypoint: {x: -750, y: 225, z: 0}
+  ArrowWaypoint: {x: -700, y: 225, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}
