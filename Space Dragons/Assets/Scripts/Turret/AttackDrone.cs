@@ -65,6 +65,13 @@ public class AttackDrone : MonoBehaviour
             {
                 transform.Translate(transform.up * moveSpeed * Time.smoothDeltaTime, Space.World);
             }
+            else
+            {
+                Vector3 direction2 = targetPosition - transform.position + transform.up;
+                float angle2 = Mathf.Atan2(direction2.x, direction2.y) * Mathf.Rad2Deg;
+                Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation2, rotationSpeed * Time.deltaTime);
+            }
         }
 
         CheckForAttack();
