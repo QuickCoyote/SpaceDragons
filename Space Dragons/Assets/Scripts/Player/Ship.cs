@@ -52,8 +52,11 @@ public class Ship : MonoBehaviour
     public float defaultSpeed = 7.5f;
     public float driftSpeed = 5f;
     public float rotationSpeed = 50.0f;
-    private bool joystickdragging = false;
     public bool thrustersOn = true;
+
+    public VJHandler joystickMovement;
+
+    private bool joystickdragging = false;
 
     [Header("Control UI")]
     [SerializeField] RectTransform joystickknob;
@@ -123,7 +126,9 @@ public class Ship : MonoBehaviour
                 if (ships[i].prefabName != null)
                 {
                     GameObject ship = FindBodyPartFromPrefabs(ships[i].prefabName);
-                    ship.GetComponent<Turret>().turretRarity = ships[i].rarity;
+                    Turret shipTurret = ship.GetComponent<Turret>();
+                    shipTurret.turretRarity = ships[i].rarity;
+                    shipTurret.Initialize();
                     ship.GetComponent<Health>().healthCount = ships[i].shipHealth;
                     AddBodyPart(ship);
                 }
@@ -258,11 +263,12 @@ public class Ship : MonoBehaviour
     {
         if (joystickdragging)
         {
-
+            //Vector3 targetPos = joystickMovement.InputDirection;
             Vector3 targetPos = joystickknob.anchoredPosition;
             targetPos.z = 0;
             // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
-            Vector3 direction =  bodyPartTransforms[0].transform.position + targetPos;
+            Vector3 direction =  joystickMovement.InputDirection;
+            //Vector3 direction =  bodyPartTransforms[0].transform.position + targetPos;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
