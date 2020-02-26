@@ -3185,11 +3185,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10
       objectReference: {fileID: 0}
-    - target: {fileID: 196209911218918717, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: orthographic size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6435026194209917794, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_AnchorMax.x

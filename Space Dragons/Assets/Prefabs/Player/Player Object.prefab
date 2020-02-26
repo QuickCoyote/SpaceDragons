@@ -16431,6 +16431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 396466653645988635}
   PauseOnly: 1
+  IsShop: 0
   helpScreen: 0
   emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   inventoryDisplay: {fileID: 152004549}
@@ -16453,6 +16454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 1143159698782520790}
   PauseOnly: 0
+  IsShop: 0
   helpScreen: 0
   JoystickControls: {fileID: 2090208725807647126}
   TouchControls: {fileID: 3349519419594841222}
@@ -16508,8 +16510,8 @@ Camera:
   m_GameObject: {fileID: 196209911218918719}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.24705884, g: 0.015686275, b: 0.40784317, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
