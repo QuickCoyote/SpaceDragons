@@ -6,6 +6,7 @@ public class AttackDrone : MonoBehaviour
 {
     public GameObject bullet = null;
     public GameObject parent = null;
+    public Transform idleLocation = null;
 
     public float damage;
     public float range;
@@ -14,6 +15,7 @@ public class AttackDrone : MonoBehaviour
     public float moveSpeed;
     public float myMoveSpeed;
     public float rotationSpeed;
+
 
     Vector3 targetPosition = Vector3.zero;
     public int side;
@@ -55,19 +57,35 @@ public class AttackDrone : MonoBehaviour
         }
         else
         {
-            moveSpeed = WorldManager.Instance.Ship.speed + 0.02f;
-            targetPosition = parent.transform.position + ((parent.transform.right * side) * followOffset);
+            moveSpeed = WorldManager.Instance.Ship.speed + 1f;
+            if(idleLocation)
+            {
+                targetPosition = idleLocation.position;
+            }
+            else
+            {
+                switch(side)
+                {
+                    case -1:
+                        idleLocation = parent.GetComponent<AttackDroneBay>().droneIdlePos1;
+                        break;
+                    case 1:
+                        idleLocation = parent.GetComponent<AttackDroneBay>().droneIdlePos2;
+                        break;
+                }
+            }
             Vector3 direction = targetPosition - transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) > .25f)
+            if (Vector3.Distance(transform.position, targetPosition) > 0f)
             {
                 transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
             else
             {
+                moveSpeed = WorldManager.Instance.Ship.speed;
                 Vector3 direction2 = targetPosition - transform.position + transform.up;
                 float angle2 = Mathf.Atan2(direction2.x, direction2.y) * Mathf.Rad2Deg;
                 Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
@@ -92,6 +110,10 @@ public class AttackDrone : MonoBehaviour
 
     public void CheckForDie()
     {
+        if(!parent)
+        {
+            Destroy(gameObject);
+        }
         if (GetComponent<Health>().healthCount <= 0)
         {
             parent.GetComponent<AttackDroneBay>().droneCount--;
