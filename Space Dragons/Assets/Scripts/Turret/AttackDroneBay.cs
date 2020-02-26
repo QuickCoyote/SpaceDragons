@@ -8,71 +8,96 @@ public class AttackDroneBay : Turret
     public Transform droneSpawnPos1;
     public Transform droneSpawnPos2;
 
+    public GameObject[] drones = new GameObject[2];
+
     public GameObject attackDronePrefab = null;
 
     public int droneCount = 0;
     int side = 1;
 
+    List<Enemy> myEnemies = new List<Enemy>();
+
     public override void Attack()
     {
-        if (droneCount < 2)
-        {
-            SpawnDrone();
-        }
-
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (GameObject go in drones)
         {
             AttackDrone atk = null;
 
-            if (transform.GetChild(i).TryGetComponent(out atk))
+            if (go.TryGetComponent(out atk))
             {
-                atk.side = side;
-                if (enemies.Count > 0)
-                {
-                    atk.enemyToAttack = enemies.Peek().gameObject;
-                }
-                else
-                {
-                    atk.enemyToAttack = null;
-                }
+                atk.enemyToAttack = myEnemies[0].gameObject;
             }
-
-
-            side *= -1;
+            else
+            {
+                atk.enemyToAttack = null;
+            }
         }
     }
 
 
     void FixedUpdate()
     {
+        if (droneCount < 2)
+        {
+            SpawnDrone();
+        }
+        AssignParents();
         Attack();
         CheckForDie();
     }
 
+    public void AssignParents()
+    {
+        foreach (GameObject go in drones)
+        {
+            if (go)
+            {
+                go.GetComponent<AttackDrone>().parent = gameObject;
+                go.GetComponent<AttackDrone>().side = side;
+                side *= -1;
+            }
+        }
+    }
+
     public void SpawnDrone()
     {
-        side *= -1;
         switch (side)
         {
             case -1:
-                Instantiate(attackDronePrefab, droneSpawnPos1.position, droneSpawnPos1.rotation, transform);
+                if (!drones[0])
+                {
+                    drones[1] = Instantiate(attackDronePrefab, droneSpawnPos1.position, droneSpawnPos1.rotation, null);
+                }
+                else
+                {
+                    drones[0] = Instantiate(attackDronePrefab, droneSpawnPos1.position, droneSpawnPos1.rotation, null);
+                }
                 break;
             case 1:
-                Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, transform);
+                if (!drones[0])
+                {
+                    drones[1] = Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, null);
+                }
+                else
+                {
+                    drones[0] = Instantiate(attackDronePrefab, droneSpawnPos2.position, droneSpawnPos2.rotation, null);
+                }
                 break;
         }
 
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (GameObject go in drones)
         {
             AttackDrone atk = null;
 
-            if (transform.GetChild(i).TryGetComponent(out atk))
+            if (go)
             {
-                atk.side = side;
+                if (go.TryGetComponent(out atk))
+                {
+                    atk.side = side;
+                }
+                side *= -1;
             }
-            side *= -1;
         }
-
         droneCount++;
     }
 
@@ -80,11 +105,9 @@ public class AttackDroneBay : Turret
     {
         Enemy enemy = null;
 
-        collision.gameObject.TryGetComponent(out enemy);
-
-        if (enemy)
+        if (collision.gameObject.TryGetComponent(out enemy))
         {
-            enemies.Enqueue(enemy);
+            myEnemies.Add(enemy);
         }
     }
 
@@ -92,12 +115,9 @@ public class AttackDroneBay : Turret
     {
         Enemy enemy = null;
 
-        collision.gameObject.TryGetComponent(out enemy);
-
-        if (enemy)
+        if (collision.gameObject.TryGetComponent(out enemy))
         {
-            enemies.ToList().Remove(enemy);
-            enemies = new Queue<Enemy>(enemies);
+            myEnemies.Remove(enemy);
         }
     }
 }

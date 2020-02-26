@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
   healthMax: 75
-  healthCount: 75
+  healthCount: 31
   objectIndex: 0
 --- !u!114 &-9089636261077495847
 MonoBehaviour:
@@ -448,6 +448,9 @@ MonoBehaviour:
   travelDirection: {x: 0, y: 0, z: 0}
   droneSpawnPos1: {fileID: 5128541019205800547}
   droneSpawnPos2: {fileID: 5665009518640163647}
+  drones:
+  - {fileID: 0}
+  - {fileID: 0}
   attackDronePrefab: {fileID: 4073881857116389269, guid: 5d051bf613cf072498c53cdbc862113c,
     type: 3}
   droneCount: 0

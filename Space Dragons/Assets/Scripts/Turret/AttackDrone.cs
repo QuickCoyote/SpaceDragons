@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackDrone : MonoBehaviour
 {
     public GameObject bullet = null;
+    public GameObject parent = null;
 
     public float damage;
     public float range;
@@ -29,7 +30,7 @@ public class AttackDrone : MonoBehaviour
         if (attackTimer > attackSpeed)
         {
             attackTimer = 0;
-            GameObject projectileGO = (Instantiate(bullet, bulletSpawn.transform.position, transform.rotation, transform) as GameObject);
+            GameObject projectileGO = (Instantiate(bullet, bulletSpawn.transform.position, transform.rotation, null) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = gameObject;
             projectile.Fire();
@@ -48,14 +49,14 @@ public class AttackDrone : MonoBehaviour
 
             if (Vector3.Distance(transform.position, targetPosition) > .25f) //Stop moving if player gets too close.
             {
-                transform.Translate(transform.up * moveSpeed * Time.smoothDeltaTime, Space.World);
+                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
-            moveSpeed = 6f;
+            moveSpeed = 10f;
         }
         else
         {
-            moveSpeed = 3f;
-            targetPosition = transform.parent.position + ((transform.parent.right * side) * followOffset);
+            moveSpeed = WorldManager.Instance.Ship.speed + 0.02f;
+            targetPosition = parent.transform.position + ((parent.transform.right * side) * followOffset);
             Vector3 direction = targetPosition - transform.position;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
@@ -63,7 +64,7 @@ public class AttackDrone : MonoBehaviour
 
             if (Vector3.Distance(transform.position, targetPosition) > .25f)
             {
-                transform.Translate(transform.up * moveSpeed * Time.smoothDeltaTime, Space.World);
+                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
             else
             {
@@ -93,7 +94,7 @@ public class AttackDrone : MonoBehaviour
     {
         if (GetComponent<Health>().healthCount <= 0)
         {
-            transform.parent.GetComponent<AttackDroneBay>().droneCount--;
+            parent.GetComponent<AttackDroneBay>().droneCount--;
             WorldManager.Instance.SpawnRandomExplosion(transform.position);
             Destroy(gameObject);
         }

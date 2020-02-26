@@ -108,7 +108,6 @@ public class Ship : MonoBehaviour
                 SetShipHead(4);
                 break;
         }
-        
     }
 
     private void LoadData()

@@ -39,13 +39,12 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     void FixedUpdate()
     {
         dt += Time.deltaTime;
-        Debug.Log("Current Wave: " + currentWave);
 
         if (aliveEnemies == 0)
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i <= cycleCount; i++)
+                for (int i = 0; i < cycleCount; i++)
                 {
                     waves[currentWave].StartWave();
                 }

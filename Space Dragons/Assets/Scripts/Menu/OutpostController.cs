@@ -274,7 +274,7 @@ public class OutpostController : UIBaseClass
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
-            Refresh();
+            Open();
         }
     }
     public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
@@ -317,7 +317,7 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1));
+            tempPrice += (itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1);
         }
 
         price = Mathf.FloorToInt(tempPrice * 100);
@@ -330,7 +330,7 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += ((ShopDifficulty * itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) - i + 1));
+            tempPrice += (itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) - i + 1);
         }
 
         price = Mathf.FloorToInt(tempPrice * 220);

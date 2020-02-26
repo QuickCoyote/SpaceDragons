@@ -16348,7 +16348,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3adcac949a7718341a6d61520d72f13e, type: 3}
   - {fileID: 21300000, guid: 9b835cb6fb3c28e439ef2a4652ad2271, type: 3}
   ShipHeadSprite: {fileID: 196209910334023937}
-  minDst: 2
+  minDst: 3
   startSize: 2
   maxShipsAllowed: 4
   speed: 5
