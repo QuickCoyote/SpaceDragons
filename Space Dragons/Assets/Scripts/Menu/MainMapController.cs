@@ -135,12 +135,9 @@ public class MainMapController : UIBaseClass
         var mousePos = Input.mousePosition;
         Vector2 pos = Vector2.zero;
         GetPositionOnImage01(map, mousePos, out pos);
-        Debug.Log("Screen:" + pos);
         pos /= 1000.0f; //Get Percentage
-
         pos.x *= WorldManager.Instance.WorldCorner.position.x; //Relative to World
         pos.y *= WorldManager.Instance.WorldCorner.position.y;
-        Debug.Log("World:" + pos);
 
         highlightIcon.transform.position = pos;
     }

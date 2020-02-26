@@ -64,6 +64,12 @@ public class LoadManager : Singleton<LoadManager>
                 saveData.CurrentWave = EnemyWaveManager.Instance.currentWave;
                 saveData.CurrentCycle = EnemyWaveManager.Instance.cycleCount;
                 saveData.VisitedTeleports = FindObjectsOfType<TeleportController>().Where(e=> e.visited).Select(e=>e.LocationName).ToArray();
+                List<ShipyardMotherships> motherships = new List<ShipyardMotherships>();
+                foreach (ShipyardController s in FindObjectsOfType<ShipyardController>())
+                {
+                    motherships.Add(new ShipyardMotherships(s.ShipyardId,(int)s.CurrentMothership));
+                }
+                saveData.shipyards = motherships.ToArray();
             }
         }
         catch (Exception e)
@@ -135,6 +141,7 @@ public class LoadManager : Singleton<LoadManager>
         public int CurrentWave;
         public int CurrentCycle;
         public string[] VisitedTeleports;
+        public ShipyardMotherships[] shipyards;
         public SaveData()
         {
             PlayerHealth = 100;
@@ -148,6 +155,7 @@ public class LoadManager : Singleton<LoadManager>
             PlayerFuelMax = 4;
             PlayerFuelCurrent = 4;
             VisitedTeleports = new string[0];
+            shipyards = new ShipyardMotherships[0];
         }
 
         public void setItemsFromDictionary(Dictionary<ItemData, int> itemsDict)
@@ -215,6 +223,18 @@ public class LoadManager : Singleton<LoadManager>
         {
             itemID = dat;
             num = i;
+        }
+    }
+
+    [System.Serializable]
+    public class ShipyardMotherships
+    {
+        public string shipyardID;
+        public int mothershipEnum;
+        public ShipyardMotherships(string shipyard, int mothershipE)
+        {
+            shipyardID = shipyard;
+            mothershipEnum = mothershipE;
         }
     }
 
