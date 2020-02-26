@@ -877,7 +877,6 @@ public class ShipyardController : UIBaseClass
         AudioManager.Instance.PlayRandomMusic("Shop");
         CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
         ShipyardShipSetup();
-        ShipyardMotherSetup((int)CurrentMothership, false);
         MothershipPanelSwap(true);
     }
     public new void Close()
@@ -894,7 +893,7 @@ public class ShipyardController : UIBaseClass
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
-            //Open();
+            Open();
         }
     }
     public void CloseMessage()

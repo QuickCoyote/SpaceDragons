@@ -2082,13 +2082,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
+      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
+      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -2100,7 +2100,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
+      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
@@ -2798,13 +2798,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
+      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
+      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -2816,7 +2816,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
+      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f4cf970ff9ecc042bd224115fa14acd, type: 3}
@@ -5557,13 +5557,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
+      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
+      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -5575,7 +5575,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
+      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -5955,13 +5955,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
+      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 5960535cee58b744c89473474200730f,
+      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
@@ -5973,7 +5973,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Motherships.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: f77a04ac071815846b181adfe371091d,
+      objectReference: {fileID: 11400000, guid: 1ae39f1279da8c8428e172c353624669,
         type: 2}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
