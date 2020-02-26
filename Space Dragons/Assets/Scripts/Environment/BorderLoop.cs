@@ -27,6 +27,8 @@ public class BorderLoop : MonoBehaviour
         {
             t.position = pos;
         }
+        AndroidManager.HapticFeedback();
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

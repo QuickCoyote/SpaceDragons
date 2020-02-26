@@ -123,6 +123,7 @@ public class TeleportController : UIBaseClass
 
     public void MovePlayer()
     {
+        AndroidManager.HapticFeedback();
         Vector3 pos = visitedTeleports[index].transform.position + (WorldManager.Instance.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
         WorldManager.Instance.SpawnWarpHole(visitedTeleports[index].transform.position);
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)

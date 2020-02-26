@@ -233,6 +233,8 @@ public class OutpostController : UIBaseClass
             outpostInventory.UpdateInventory();
             PlayerInventory.RemoveItem(item, sliderValue);
             PlayerInventory.UpdateInventory();
+            AndroidManager.HapticFeedback();
+
 
             ShoppingPanel.SetActive(false);
             Refresh();
@@ -241,6 +243,8 @@ public class OutpostController : UIBaseClass
         {
             if (WorldManager.Instance.PlayerController.RemoveMoney(CalculateBuyPrice(item)))
             {
+                AndroidManager.HapticFeedback();
+
                 outpostInventory.RemoveItem(item, sliderValue);
                 outpostInventory.UpdateInventory();
                 PlayerInventory.AddItem(item, sliderValue);

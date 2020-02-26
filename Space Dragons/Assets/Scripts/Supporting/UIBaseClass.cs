@@ -20,6 +20,7 @@ public abstract class UIBaseClass : MonoBehaviour
             AudioManager.Instance.Play("ShopEntrance");
             AudioManager.Instance.PlayRandomMusic("Shop Music");
         }
+        AndroidManager.HapticFeedback();
         HelpScreenManager.Instance.CheckFirstTimeHelpScreen(helpScreen);
         UICanvas.SetActive(true);
     }
@@ -37,6 +38,7 @@ public abstract class UIBaseClass : MonoBehaviour
         if (PauseOnly) UIManager.Instance.ResumeTimeScale();
         UICanvas.SetActive(false);
         HelpScreenManager.Instance.CloseAllHelpScreens();
+        AndroidManager.HapticFeedback();
     }
 
     public void OpenHelpScreen()

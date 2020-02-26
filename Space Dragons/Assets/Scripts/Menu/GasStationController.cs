@@ -151,6 +151,7 @@ public class GasStationController : UIBaseClass
             if ((playerShip.boostFuelMAX - playerShip.boostFuel) < GasCount)
             {
                 playerController.RemoveMoney((playerShip.boostFuelMAX - playerShip.boostFuel) * segmentPrice);
+                AndroidManager.HapticFeedback();
 
                 GasCount -= (playerShip.boostFuelMAX - playerShip.boostFuel);
                 playerShip.RefillBoost();
@@ -163,7 +164,10 @@ public class GasStationController : UIBaseClass
                     playerShip.boostFuel++;
                 }
                 GasCount = 0;
+                AndroidManager.HapticFeedback();
+
             }
+
         }
         UpdateUI();
     }
@@ -187,6 +191,8 @@ public class GasStationController : UIBaseClass
         upgradeTotal--;
         playerController.RemoveMoney(upgradePrice);
         UpdateUI();
+        AndroidManager.HapticFeedback();
+
     }
     #endregion
 

@@ -728,6 +728,8 @@ public class ShipyardController : UIBaseClass
                     {
                         if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.buyPrice))
                         {
+                            AndroidManager.HapticFeedback();
+
                             if (i + 1 < MotherShip.bodyPartObjects.Count)
                             {
                                 MotherShip.bodyPartObjects[i + 1] = purchase;
@@ -810,6 +812,7 @@ public class ShipyardController : UIBaseClass
             CurrentMothership = TradeInMothership;
             TradeInMothership = temp;
 
+            AndroidManager.HapticFeedback();
 
             ShipyardMotherSetup((int)TradeInMothership, false);
             MothershipPanelSwap(true);
@@ -831,6 +834,9 @@ public class ShipyardController : UIBaseClass
                 hpToRestore += MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax - MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount;
             }
         }
+
+        AndroidManager.HapticFeedback();
+
 
         if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
         {

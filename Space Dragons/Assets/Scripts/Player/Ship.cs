@@ -193,6 +193,8 @@ public class Ship : MonoBehaviour
         
         if (boosting)
         {
+            AndroidManager.HapticFeedback();
+
             boostCooldownTimer -= Time.deltaTime;
 
             if (boostCooldownTimer < 0.0f)
@@ -507,6 +509,7 @@ public class Ship : MonoBehaviour
     {
         if (shipHealth.healthCount <= 0)
         {
+            AndroidManager.HapticFeedback();
             if (!isDead)
             {
                 isDead = true;
