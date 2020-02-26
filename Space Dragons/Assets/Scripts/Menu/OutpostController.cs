@@ -233,6 +233,8 @@ public class OutpostController : UIBaseClass
             outpostInventory.UpdateInventory();
             PlayerInventory.RemoveItem(item, sliderValue);
             PlayerInventory.UpdateInventory();
+            AndroidManager.HapticFeedback();
+
 
             ShoppingPanel.SetActive(false);
             Refresh();
@@ -241,6 +243,8 @@ public class OutpostController : UIBaseClass
         {
             if (WorldManager.Instance.PlayerController.RemoveMoney(CalculateBuyPrice(item)))
             {
+                AndroidManager.HapticFeedback();
+
                 outpostInventory.RemoveItem(item, sliderValue);
                 outpostInventory.UpdateInventory();
                 PlayerInventory.AddItem(item, sliderValue);
@@ -260,15 +264,12 @@ public class OutpostController : UIBaseClass
     {
         base.Open();
         Refresh();
+        AudioManager.Instance.Play("ShopEntrance");
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
+
     }
-    public new void Close()
-    {
-        base.Close();
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Battle");
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -277,6 +278,14 @@ public class OutpostController : UIBaseClass
             Open();
         }
     }
+
+    public new void Close()
+    {
+        base.Close();
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
+    }
+
     public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
     {
         ShoppingPanel.SetActive(true);

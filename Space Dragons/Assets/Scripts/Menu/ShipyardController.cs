@@ -728,6 +728,8 @@ public class ShipyardController : UIBaseClass
                     {
                         if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.buyPrice))
                         {
+                            AndroidManager.HapticFeedback();
+
                             if (i + 1 < MotherShip.bodyPartObjects.Count)
                             {
                                 MotherShip.bodyPartObjects[i + 1] = purchase;
@@ -810,6 +812,7 @@ public class ShipyardController : UIBaseClass
             CurrentMothership = TradeInMothership;
             TradeInMothership = temp;
 
+            AndroidManager.HapticFeedback();
 
             ShipyardMotherSetup((int)TradeInMothership, false);
             MothershipPanelSwap(true);
@@ -831,6 +834,9 @@ public class ShipyardController : UIBaseClass
                 hpToRestore += MotherShip.bodyPartObjects[i].GetComponent<Health>().healthMax - MotherShip.bodyPartObjects[i].GetComponent<Health>().healthCount;
             }
         }
+
+        AndroidManager.HapticFeedback();
+
 
         if (WorldManager.Instance.PlayerController.RemoveMoney((int)(hpToRestore * repairCostPerHP)))
         {
@@ -866,6 +872,7 @@ public class ShipyardController : UIBaseClass
     public new void Open()
     {
         base.Open();
+        AudioManager.Instance.Play("ShopEntrance");
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
         CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
@@ -876,18 +883,18 @@ public class ShipyardController : UIBaseClass
     public new void Close()
     {
         base.Close();
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Battle");
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
-            Open();
+            //Open();
         }
     }
     public void CloseMessage()

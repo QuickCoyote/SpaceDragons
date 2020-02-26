@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 public class AndroidManager : MonoBehaviour
-{
+{ 
     private class HapticFeedbackManager
     {
 #if UNITY_ANDROID && !UNITY_EDITOR

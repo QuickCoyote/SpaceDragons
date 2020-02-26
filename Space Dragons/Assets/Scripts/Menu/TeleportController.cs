@@ -92,6 +92,13 @@ public class TeleportController : UIBaseClass
         UpdateUI();
     }
 
+    public new void Open()
+    {
+        base.Open();
+        AudioManager.Instance.Play("ShopEntrance");
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Shop");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,8 +111,7 @@ public class TeleportController : UIBaseClass
         }
     }
 
-
-    public void TeleportToLocation()
+      public void TeleportToLocation()
     {
         UpdateUI();
         WorldManager.Instance.PlayerController.RemoveMoney(cost);
@@ -114,8 +120,10 @@ public class TeleportController : UIBaseClass
         TeleportTransition.SetTrigger("Warp");
     }
 
+
     public void MovePlayer()
     {
+        AndroidManager.HapticFeedback();
         Vector3 pos = visitedTeleports[index].transform.position + (WorldManager.Instance.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
         WorldManager.Instance.SpawnWarpHole(visitedTeleports[index].transform.position);
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)

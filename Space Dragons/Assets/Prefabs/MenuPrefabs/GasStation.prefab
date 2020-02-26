@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 47266789313860953}
   PauseOnly: 1
+  IsShop: 1
   helpScreen: 0
   StationFuel: {fileID: 47266789400206760}
   StationContent: {fileID: 2864317914777388807}

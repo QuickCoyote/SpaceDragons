@@ -40,12 +40,12 @@ public class WorldManager : Singleton<WorldManager>
                 } 
                 else
                 {
-                    go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
+                    go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.5f;
                 }
             }
             else
             {
-                if (go.gameObject.layer != 13)
+                if (go.gameObject.layer == 13)
                 {
                     go.gameObject.SetActive(true);
                 }

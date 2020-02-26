@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPersistant: 1
   m_sounds:
-  - name: Fire01
+  - audioName: Fire01
     audioClip: {fileID: 8300000, guid: 70f9ea961732cc6449147915f3832cd6, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -59,7 +59,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: Fire02
+  - audioName: Fire02
     audioClip: {fileID: 8300000, guid: 97b2def5bb01b3f4ebcd1fede8b3d7e3, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -68,7 +68,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: Explosion01
+  - audioName: Explosion01
     audioClip: {fileID: 8300000, guid: af6e3d75da237f94eb0e4c51725ea6af, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -77,7 +77,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: Pickup01
+  - audioName: Pickup01
     audioClip: {fileID: 8300000, guid: 86a3fdb0a3d985a4ea5562cdaa2d0b1a, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -86,7 +86,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: Pickup02
+  - audioName: Pickup02
     audioClip: {fileID: 8300000, guid: ac09010ff4e3b554d99b28e85f7a4132, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -95,7 +95,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Battle Music: Billy''s Sacrifice'
+  - audioName: 'Battle Music: Billy''s Sacrifice'
     audioClip: {fileID: 8300000, guid: ac8263dd90e0650468f45f8a3909dd75, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -104,7 +104,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Shop Music: Checking Manifest'
+  - audioName: 'Shop Music: Checking Manifest'
     audioClip: {fileID: 8300000, guid: fe5c4791d0cd799468d14669a9b8ca1f, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -113,7 +113,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Battle Music: Crash Landing'
+  - audioName: 'Battle Music: Crash Landing'
     audioClip: {fileID: 8300000, guid: 2403e9dc9a8f026449475e5028e95aa7, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -122,7 +122,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Battle Music: City Stomper - DOS-88'
+  - audioName: 'Battle Music: DOS-88-City'
     audioClip: {fileID: 8300000, guid: e4db0f4752997c8498919bdb161434ba, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -131,7 +131,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Shop Music: Far Away - DOS-88'
+  - audioName: 'Shop Music: DOS-88-Far Away'
     audioClip: {fileID: 8300000, guid: c43c5dcca2ceb0d4dbd3d34fe867b4b1, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -140,7 +140,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Battle Music: Parabola'
+  - audioName: 'Battle Music: Parabola'
     audioClip: {fileID: 8300000, guid: 21df777acc2cbe244ac485c814deda83, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -149,7 +149,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Battle Music: Race to Mars'
+  - audioName: 'Battle Music: Race To Mars'
     audioClip: {fileID: 8300000, guid: 351a4d80a7f89b64a83f97e102243139, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -158,7 +158,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: 'Menu Music: Smooth Sailing'
+  - audioName: 'Menu Music: Smooth Sailing'
     audioClip: {fileID: 8300000, guid: 310bc1d0ebadc1b4c8dca47c127f0065, type: 3}
     audioMixerGroup: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -167,7 +167,7 @@ MonoBehaviour:
     loop: 0
     image: {fileID: 0}
     audioSource: {fileID: 0}
-  - name: ShopEntrance
+  - audioName: ShopEntrance
     audioClip: {fileID: 8300000, guid: 3c33800b40e08ac4ea401a72926748a7, type: 3}
     audioMixerGroup: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
       type: 2}
@@ -179,8 +179,3 @@ MonoBehaviour:
   m_music: {fileID: -8908421714336222316, guid: 5346a7e46dc8cf049b9a36f91e6b8423,
     type: 2}
   m_sfx: {fileID: 7314182047857909466, guid: 5346a7e46dc8cf049b9a36f91e6b8423, type: 2}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  Music_Readout: {fileID: 0}
-  SFX_Readout: {fileID: 0}
-  UIDisplay: {fileID: 0}

@@ -21,6 +21,8 @@ public class PauseMenu : UIBaseClass
     public void ToggleJoystickControls(bool toggled)
     {
         PlayerPrefs.SetInt("JoystickControls", (toggled) ? 0 : 1);
+        AndroidManager.HapticFeedback();
+
     }
     public void ToggleOptions()
     {
@@ -32,6 +34,8 @@ public class PauseMenu : UIBaseClass
         menuButton.interactable = false;
         LoadManager.Instance.Save();
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Menu"));
+        AndroidManager.HapticFeedback();
+
     }
 
     public new void Open()

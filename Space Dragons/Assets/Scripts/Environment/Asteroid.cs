@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
     public void setSizeAndWeight(float sizeweight)
     {
         sizeAndWeight = sizeweight;
-        hp.healthMax = maxHp * sizeweight;
+        hp.healthMax = maxHp/2 * sizeweight;
         hp.ResetHealth();
         transform.localScale = new Vector3(sizeweight, sizeweight, 1);
         rb.mass = sizeweight;
@@ -52,11 +52,7 @@ public class Asteroid : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                Asteroid child = Instantiate(asteroidSmaller, transform.parent).GetComponent<Asteroid>(); // creates new asteroids at 1/2 the size
-                if (child)
-                {
-                    AsteroidManager.Instance.asteroids.Add(child);
-                }
+                Instantiate(asteroidSmaller, transform.position, transform.rotation, null); // creates new asteroids at 1/2 the size
             }
         }
         if (itemPrefab)
@@ -65,7 +61,6 @@ public class Asteroid : MonoBehaviour
             g.itemData = WorldManager.Instance.GetRandomItemDataStepped();
             g.image.sprite = g.itemData.itemImage;
         }
-        AsteroidManager.Instance.asteroids.Remove(this);
         AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
         AsteroidManager.Instance.AsteroidsDestroyed++;
         Destroy(gameObject);

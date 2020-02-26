@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 336725093998916287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6887579499598865312}
   - {fileID: 130314869862556699}
@@ -125,7 +125,7 @@ MonoBehaviour:
     type: 3}
   asteroidSmaller: {fileID: 336725093998916287, guid: cf2b93270f4b1bb4e8b033b297921164,
     type: 3}
-  sizeAndWeight: 0.5
+  sizeAndWeight: 1
   maxHp: 50
 --- !u!50 &336725093998916274
 Rigidbody2D:

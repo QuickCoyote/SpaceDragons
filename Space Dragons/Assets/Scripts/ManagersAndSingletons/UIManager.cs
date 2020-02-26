@@ -34,7 +34,7 @@ public class UIManager : Singleton<UIManager>
     public void ResumeTimeScale()
     {
         Time.timeScale = 1;
-        foreach(UIBaseClass ui in AllUI.Where(ui=> ui.PauseOnly))
+        foreach(UIBaseClass ui in AllUI.Where(ui => ui.PauseOnly))
         {
             ui.HideOnly();
         }
@@ -54,7 +54,7 @@ public class UIManager : Singleton<UIManager>
                 CurrentlyOpen.Close();
             }
             CurrentlyOpen = other;
-            other.Open();
+            CurrentlyOpen.Open();
         }
     }
 
