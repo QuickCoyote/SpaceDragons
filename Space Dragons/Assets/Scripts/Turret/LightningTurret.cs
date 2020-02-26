@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class LightningTurret : Turret
 {
@@ -14,14 +15,27 @@ public class LightningTurret : Turret
     {
         if (enemies.Count > 0)
         {
-            RotateTurret();
-            if ((enemies.Peek().transform.position - transform.position).magnitude > range)
+            List<Enemy> enemiesL = enemies.ToList<Enemy>();
+            for (int i = 0; i < enemiesL.Count; i++)
             {
-                Lightning myLightning = null;
-
-                if (TryGetComponent(out myLightning))
+                if(enemiesL[i] == null)
                 {
-                    Destroy(myLightning);
+                    enemiesL.Remove(enemiesL[i]);
+                }
+            }
+            enemies = new Queue<Enemy>(enemiesL);
+            
+            if(enemies.Count > 0)
+            {
+                RotateTurret();
+                if ((enemies.Peek().transform.position - transform.position).magnitude > range)
+                {
+                    Lightning myLightning = null;
+
+                    if (TryGetComponent(out myLightning))
+                    {
+                        Destroy(myLightning);
+                    }
                 }
             }
         }
