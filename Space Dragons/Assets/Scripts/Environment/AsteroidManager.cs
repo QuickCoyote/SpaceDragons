@@ -11,8 +11,6 @@ public class AsteroidManager : Singleton<AsteroidManager>
     [SerializeField] int AsteroidMinimum = 2;
     [SerializeField] int AsteroidMaximum = 5;
 
-    public List<Asteroid> asteroids = new List<Asteroid>();
-
     public int AsteroidsDestroyed = 0;
 
     void Start()
@@ -23,7 +21,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             Vector3 location = new Vector3(Random.Range(-worldSize.x, worldSize.x), Random.Range(-worldSize.y, worldSize.y),0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0,3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null).GetComponent<Asteroid>()); //Select smaller locations for each asteroid
+                Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null); //Select smaller locations for each asteroid
             }
         }
     }
@@ -35,7 +33,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             Vector3 location = new Vector3(Random.Range(-1000, 1000), Random.Range(-1000, 1000), 0); //select spot for cluster
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                asteroids.Add(Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null).GetComponent<Asteroid>()); //Select smaller locations for each asteroid
+               Instantiate(asteroidPrefabs[Random.Range(0, 3)], location + new Vector3(Random.value, Random.value, 0), Quaternion.identity, null); //Select smaller locations for each asteroid
             }
             AsteroidsDestroyed = 0;
         }
