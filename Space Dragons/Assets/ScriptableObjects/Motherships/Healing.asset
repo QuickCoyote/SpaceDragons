@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7b074bf282602449aba3ef7541026d1, type: 3}
-  m_Name: Lightning
+  m_Name: Healing
   m_EditorClassIdentifier: 
-  Title: The Coil
-  Description: A lightning based mothership that shoots lightning.
-  Mothership: 0
-  Price: 300
+  Title: The Leech
+  Description: A healing based mothership that leeches health from enemies and gives
+    it to itself and it's turrets.
+  Mothership: 3
+  Price: 400
