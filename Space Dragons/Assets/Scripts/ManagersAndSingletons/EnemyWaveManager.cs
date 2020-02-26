@@ -44,7 +44,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i < cycleCount; i++)
+                for (int i = 0; i <= cycleCount; i++)
                 {
                     waves[currentWave].StartWave();
                 }
@@ -66,7 +66,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
             }
         }
 
-        WaveText.text = "Wave: " + (currentWave + (cycleCount * 10));
+        WaveText.text = "Wave: " + (currentWave + ((cycleCount-1) * 10));
         EnemiesText.text = "Enemies Alive: " + aliveEnemies;
     }
 

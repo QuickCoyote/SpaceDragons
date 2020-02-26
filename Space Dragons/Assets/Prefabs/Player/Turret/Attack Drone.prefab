@@ -386,7 +386,7 @@ MonoBehaviour:
   damage: 3
   range: 55
   attackSpeed: 0.5
-  followOffset: 1
+  followOffset: 3
   moveSpeed: 10
   myMoveSpeed: 10
   rotationSpeed: 6
