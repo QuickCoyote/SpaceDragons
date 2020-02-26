@@ -27,17 +27,23 @@ public class MainMenu : MonoBehaviour
     {
         playbutton.interactable = false;
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("SpaceWorld"));
+        AndroidManager.HapticFeedback();
+
     }
 
     public void ViewTutorial()
     {
         tutorialbutton.interactable = false;
         LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Tutorial"));
+        AndroidManager.HapticFeedback();
+
     }
 
     public void ResetSave()
     {
         LoadManager.Instance.ResetSaveData();
+        AndroidManager.HapticFeedback();
+
     }
 
     public void QuitGame()
