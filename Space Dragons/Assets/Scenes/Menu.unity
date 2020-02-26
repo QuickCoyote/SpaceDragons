@@ -202,6 +202,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1554789684, guid: d7c45bf7a7e8b1a43ba46a7151bda333, type: 3}
+      propertyPath: m_sounds.Array.data[13].name
+      value: Shop Entrance
+      objectReference: {fileID: 0}
     - target: {fileID: 7556955695529148649, guid: d7c45bf7a7e8b1a43ba46a7151bda333,
         type: 3}
       propertyPath: m_LocalPosition.x

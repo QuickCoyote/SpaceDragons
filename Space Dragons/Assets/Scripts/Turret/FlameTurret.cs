@@ -17,11 +17,6 @@ public class FlameTurret : Turret
 
     public float acceptableDistance = 35f;
 
-    private void Start()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         if (enemiesToBurn.Count > 0)

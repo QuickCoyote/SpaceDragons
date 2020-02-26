@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         projectile.damage = attackDamage;
         projectile.goDirection = projectileDirection;
         projectile.lifetime = flameLifeSpan;
-        projectile.bulletSpeed = flameSpeed;
+        projectile.bulletSpeed = flameSpeed + WorldManager.Instance.Ship.speed;
         float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
         projectile.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         projectile.sound = "null";

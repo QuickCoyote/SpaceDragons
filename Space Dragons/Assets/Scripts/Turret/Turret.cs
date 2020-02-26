@@ -95,6 +95,8 @@ public abstract class Turret : MonoBehaviour
                 break;
         }
 
+        data.rarity = turretRarity;
+
         ApplyRarity();
     }
 }
