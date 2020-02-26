@@ -52,7 +52,7 @@ public class Asteroid : MonoBehaviour
         {
             for (int i = 0; i < 2; i++)
             {
-                Asteroid child = Instantiate(asteroidSmaller, transform.parent).GetComponent<Asteroid>(); // creates new asteroids at 1/2 the size
+                Asteroid child = Instantiate(asteroidSmaller, transform, true).GetComponent<Asteroid>(); // creates new asteroids at 1/2 the size
                 if (child)
                 {
                     AsteroidManager.Instance.asteroids.Add(child);

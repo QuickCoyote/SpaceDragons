@@ -260,15 +260,12 @@ public class OutpostController : UIBaseClass
     {
         base.Open();
         Refresh();
+        AudioManager.Instance.Play("ShopEntrance");
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
+
     }
-    public new void Close()
-    {
-        base.Close();
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Battle");
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -277,6 +274,14 @@ public class OutpostController : UIBaseClass
             Refresh();
         }
     }
+
+    public new void Close()
+    {
+        base.Close();
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
+    }
+
     public void OpenShoppingMenu(bool isSelling, ItemData item, int numOfItem)
     {
         ShoppingPanel.SetActive(true);

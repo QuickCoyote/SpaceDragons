@@ -238,6 +238,7 @@ public class GasStationController : UIBaseClass
     public new void Open()
     {
         base.Open();
+
         PlayerSetup();
         advertDisplay.sprite = ads[Random.Range(0, ads.Length)];
         UpdateUI();

@@ -10199,7 +10199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 2806653248522468035}
   PauseOnly: 1
+  IsShop: 1
   helpScreen: 1
+  ShipyardId: 
   MotherShip: {fileID: 0}
   Ships: []
   ShopShips: []

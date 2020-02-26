@@ -8,16 +8,32 @@ public abstract class UIBaseClass : MonoBehaviour
 
     public GameObject UICanvas;
     public bool PauseOnly;
+    public bool IsShop;
     public HelpScreenManager.eHelpScreens helpScreen = HelpScreenManager.eHelpScreens.NONE;
 
     public void Open()
     {
         if (PauseOnly) UIManager.Instance.PauseTimeScale();
+        if (IsShop)
+        {
+            AudioManager.Instance.StopAll();
+            AudioManager.Instance.Play("ShopEntrance");
+            AudioManager.Instance.PlayRandomMusic("Shop Music");
+        }
         HelpScreenManager.Instance.CheckFirstTimeHelpScreen(helpScreen);
         UICanvas.SetActive(true);
     }
     public void Close()
     {
+        if (UIManager.Instance.CurrentlyOpen == this)
+        {
+            UIManager.Instance.CurrentlyOpen = null;
+        }
+        if (IsShop)
+        {
+            AudioManager.Instance.StopAll();
+            AudioManager.Instance.PlayRandomMusic("Battle Music");
+        }
         if (PauseOnly) UIManager.Instance.ResumeTimeScale();
         UICanvas.SetActive(false);
         HelpScreenManager.Instance.CloseAllHelpScreens();
@@ -32,10 +48,6 @@ public abstract class UIBaseClass : MonoBehaviour
     {
         if (UICanvas.activeSelf)
         {
-            if (UIManager.Instance.CurrentlyOpen == this)
-            {
-                UIManager.Instance.CurrentlyOpen = null;
-            }
             Close();
         } else
         {

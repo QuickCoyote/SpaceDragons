@@ -92,6 +92,13 @@ public class TeleportController : UIBaseClass
         UpdateUI();
     }
 
+    public new void Open()
+    {
+        base.Open();
+        AudioManager.Instance.Play("ShopEntrance");
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Shop");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,8 +111,7 @@ public class TeleportController : UIBaseClass
         }
     }
 
-
-    public void TeleportToLocation()
+      public void TeleportToLocation()
     {
         UpdateUI();
         WorldManager.Instance.PlayerController.RemoveMoney(cost);
@@ -113,6 +119,7 @@ public class TeleportController : UIBaseClass
         ToggleUI();
         TeleportTransition.SetTrigger("Warp");
     }
+
 
     public void MovePlayer()
     {

@@ -1681,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 5009534055427847225}
   PauseOnly: 1
+  IsShop: 0
   helpScreen: 0
   optionsUI: {fileID: 5730204029758565188}
   menuButton: {fileID: 791713350858363406}
@@ -2847,7 +2848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &503859559662846482
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3085,14 +3086,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 1765912584197669285}
   m_HandleRect: {fileID: 6854612287357629268}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1554789684, guid: d7c45bf7a7e8b1a43ba46a7151bda333, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
@@ -4548,7 +4549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 310}
+  m_AnchoredPosition: {x: 0, y: 340.0403}
   m_SizeDelta: {x: 220, y: 92.6}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1655401250961410510
@@ -5946,14 +5947,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 405851763056577634}
   m_HandleRect: {fileID: 1779568103080274187}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1554789684, guid: d7c45bf7a7e8b1a43ba46a7151bda333, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0

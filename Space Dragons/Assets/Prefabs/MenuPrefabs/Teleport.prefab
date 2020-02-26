@@ -2690,6 +2690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UICanvas: {fileID: 5862446532715283663}
   PauseOnly: 1
+  IsShop: 1
   helpScreen: 0
   uiTeleportButton: {fileID: 5862446533259868943}
   uiTeleportArrows: {fileID: 5862446532301585287}

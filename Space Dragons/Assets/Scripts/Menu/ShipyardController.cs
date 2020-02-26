@@ -866,6 +866,7 @@ public class ShipyardController : UIBaseClass
     public new void Open()
     {
         base.Open();
+        AudioManager.Instance.Play("ShopEntrance");
         AudioManager.Instance.StopAll();
         AudioManager.Instance.PlayRandomMusic("Shop");
         CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
@@ -876,18 +877,18 @@ public class ShipyardController : UIBaseClass
     public new void Close()
     {
         base.Close();
-        AudioManager.Instance.StopAll();
-        AudioManager.Instance.PlayRandomMusic("Battle");
         ShipMenu.SetActive(false);
         ShopMenu.SetActive(false);
         SelectionDisplay.SetActive(false);
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.PlayRandomMusic("Battle");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             ToggleUI();
-            Open();
+            //Open();
         }
     }
     public void CloseMessage()

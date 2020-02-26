@@ -12,11 +12,12 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioMixerGroup m_music = null;
     [SerializeField] AudioMixerGroup m_sfx = null;
 
-    Dictionary<String, Sound> music = new Dictionary<String, Sound>();
-    Dictionary<String, Sound> sfx = new Dictionary<String, Sound>();
+    Dictionary<string, Sound> music = new Dictionary<string, Sound>();
+    Dictionary<string, Sound> sfx = new Dictionary<string, Sound>();
 
     int curSongLoc = 0;
     bool isPaused;
+
     public override void Awake()
     {
         base.Awake();
@@ -40,13 +41,13 @@ public class AudioManager : Singleton<AudioManager>
 
         foreach (Sound sound in m_sounds)
         {
-            if (sound.name.Contains("Music "))
+            if (sound.audioName.Contains("Music"))
             {
-                music.Add(sound.name, sound);
+                music.Add(sound.audioName, sound);
             }
             else
             {
-                sfx.Add(sound.name, sound);
+                sfx.Add(sound.audioName, sound);
             }
         }
 
@@ -56,7 +57,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void Play(string name)
     {
-        Sound sound = Array.Find(m_sounds, s => s.name == name);
+        Sound sound = Array.Find(m_sounds, s => s.audioName == name);
         if (sound != null)
         {
             if (sound.volume != 0)
@@ -88,18 +89,18 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayRandomMusic(string contains)
     {
-        List<string> battleMusic = new List<string>();
-        for (int i = 0; i < m_sounds.Length; i++)
+        List<string> randommusic = new List<string>();
+        foreach (KeyValuePair<string, Sound> m in music)
         {
-            if (m_sounds[i].name.Contains(contains))
+            if (m.Key.Contains(contains))
             {
-                battleMusic.Add(m_sounds[i].name);   
+                randommusic.Add(m.Value.audioName);   
             }
         }
 
-        int num = UnityEngine.Random.Range(0, battleMusic.Count);
+        int num = UnityEngine.Random.Range(0, randommusic.Count);
 
-        Play(battleMusic[num]);
+        Play(randommusic[num]);
     }
 
     public void StopAll()
@@ -110,51 +111,17 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    public void ToggleMusic()
-    {
-        for (int i = 0; i < m_sounds.Length; i++)
-        {
-            if (m_sounds[i].name == "Music")
-            {
-                if (m_sounds[i].volume == 0)
-                {
-                    m_sounds[i].volume = 1;
-                    m_sounds[i].audioSource.UnPause();
-                }
-                else
-                {
-                    m_sounds[i].volume = 0;
-                    m_sounds[i].audioSource.Pause();
-                }
-            }
-        }
-
-    }
-
-    public void ToggleSFX()
-    {
-        for (int i = 0; i < m_sounds.Length; i++)
-        {
-            if (m_sounds[i].name == "SoundFX")
-            {
-                if (m_sounds[i].volume == 0)
-                {
-                    m_sounds[i].volume = 1;
-                }
-                else
-                {
-                    m_sounds[i].volume = 0;
-                }
-            }
-        }
-    }
-
     public void SetSFXVolume(float volume)
     {
         m_sfx.audioMixer.SetFloat("SFXVolume", Mathf.Log(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", Mathf.Log(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVolume01", volume);
     }
     public void SetMusicVolume(float volume)
     {
         m_music.audioMixer.SetFloat("MusicVolume", Mathf.Log(volume) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", Mathf.Log(volume) * 20);
+        PlayerPrefs.SetFloat("MusicVolume01", volume);
+
     }
 }
