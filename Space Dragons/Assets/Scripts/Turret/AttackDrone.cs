@@ -62,8 +62,8 @@ public class AttackDrone : MonoBehaviour
         }
         else
         {
-            moveSpeed = WorldManager.Instance.Ship.speed + 1f;
-            if(idleLocation)
+
+            if (idleLocation)
             {
                 targetPosition = idleLocation.position;
             }
@@ -84,8 +84,9 @@ public class AttackDrone : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPosition) > 0f)
+            if (Vector3.Distance(transform.position, targetPosition) > .5f)
             {
+                moveSpeed = WorldManager.Instance.Ship.speed + 1;
                 transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
             else
@@ -95,6 +96,7 @@ public class AttackDrone : MonoBehaviour
                 float angle2 = Mathf.Atan2(direction2.x, direction2.y) * Mathf.Rad2Deg;
                 Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation2, rotationSpeed * Time.deltaTime);
+                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
         }
 
