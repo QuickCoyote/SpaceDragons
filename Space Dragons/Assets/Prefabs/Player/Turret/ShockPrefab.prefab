@@ -227,8 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6761716525866257232, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
-    type: 3}
+  m_Sprite: {fileID: -43064866181220950, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -359,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
   healthMax: 75
-  healthCount: 75.08
+  healthCount: 75
   objectIndex: 0
 --- !u!114 &5518216971948190161
 MonoBehaviour:
@@ -373,16 +372,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f64233b71229747b6d888897987b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 3
   range: 45
-  attackSpeed: 2
+  attackSpeed: 1.3333334
   price: 150
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 0
+  turretRarity: 1
   data: {fileID: 11400000, guid: c29bdb004a5424945ba58536cb4d16e6, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   chainDistance: 20

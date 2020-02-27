@@ -26,14 +26,12 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         Player = WorldManager.Instance.Head;
         currentWave = LoadManager.Instance.saveData.CurrentWave;
         cycleCount = LoadManager.Instance.saveData.CurrentCycle;
-        if (currentWave != 0)
+
+        for (int i = 0; i < cycleCount; i++)
         {
-            for (int i = 0; i < cycleCount; i++)
-            {
-                waves[currentWave].StartWave();
-            }
-            dt = 0.0f;
+            waves[currentWave].StartWave();
         }
+        dt = 0.0f;
     }
 
     void FixedUpdate()
@@ -60,6 +58,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                     for (int i = 0; i < cycleCount; i++)
                     {
                         SpawnRandomBoss();
+                        Debug.Log("Spawned Boss");
                     }
                     currentWave = 11;
                 }
@@ -87,7 +86,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         newlocation.y *= Random.Range(-1, 1);
         Vector3 spawnPosition = new Vector3(Player.transform.position.x + newlocation.x, Player.transform.position.y + newlocation.y, 0.0f);
 
-         Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPosition, Quaternion.identity, null).GetComponent<Enemy>().Player = WorldManager.Instance.Head;
+        Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPosition, Quaternion.identity, null);
          aliveEnemies++;
     }
 
