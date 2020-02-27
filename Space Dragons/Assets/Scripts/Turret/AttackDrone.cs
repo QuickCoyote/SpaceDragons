@@ -41,6 +41,11 @@ public class AttackDrone : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!parent)
+        {
+            Destroy(gameObject);
+        }
+
         if (enemyToAttack)
         {
             targetPosition = enemyToAttack.transform.position;
@@ -110,10 +115,6 @@ public class AttackDrone : MonoBehaviour
 
     public void CheckForDie()
     {
-        if(!parent)
-        {
-            Destroy(gameObject);
-        }
         if (GetComponent<Health>().healthCount <= 0)
         {
             parent.GetComponent<AttackDroneBay>().droneCount--;

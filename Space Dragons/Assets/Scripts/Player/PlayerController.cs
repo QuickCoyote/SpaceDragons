@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lightningAttackSpeed = 0f;
     [SerializeField] float lightningAttackDamage = 0f;
     [SerializeField] float lightningMaxDistance = 0f;
-    [SerializeField] float lightningMinDistance = 0f;
+    [SerializeField] GameObject myTargetIcon = null;
 
     int enemiesShocked = 0;
 
@@ -111,10 +111,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (hp != headHealth)
                 {
-                    Vector3 direction = col.transform.position - head.transform.position;
-                    if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+                    if (hp.gameObject.layer != 11 && hp.gameObject.layer != 8)
                     {
-                        objectsWithinRange.Add(hp);
+                        Vector3 direction = col.transform.position - head.transform.position;
+                        if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+                        {
+                            objectsWithinRange.Add(hp);
+                        }
                     }
                 }
             }
@@ -123,6 +126,9 @@ public class PlayerController : MonoBehaviour
         if (objectsWithinRange.Count > 0)
         {
             Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
+            myTargetIcon.SetActive(true);
+            myTargetIcon.transform.position = objectsWithinRange[0].transform.position;
+            Debug.Log("I activated my boi; he's over here: " + myTargetIcon.transform.position);
             if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
             {
                 enemiesShocked = 1;
@@ -131,12 +137,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            myTargetIcon.SetActive(false);
             Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
             Vector3 randomDirection = (rotAngle * head.transform.up);
-
             randomDirection = (randomDirection.normalized * lightningMaxDistance) + head.transform.parent.position;
 
-            Debug.DrawLine(head.transform.position, randomDirection, Color.red, 5);
             Shock(randomDirection);
         }
     }
@@ -351,6 +356,15 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (objectsWithinRange.Count > 0)
+        {
+            if (objectsWithinRange[0])
+            {
+                myTargetIcon.SetActive(true);
+                myTargetIcon.transform.position = objectsWithinRange[0].transform.position;
+            }
+        }
+
         if (PlayerPrefs.GetInt("JoystickControls") == 0)
         {
             if (firing)

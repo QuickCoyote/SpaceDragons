@@ -50,20 +50,24 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
                 }
                 dt = 0.0f;
 
-                if (currentWave >= 10)
+                if (currentWave == 10)
                 {
                     for (int i = 0; i < cycleCount; i++)
                     {
                         SpawnRandomBoss();
                     }
                     currentWave = 1;
-                    cycleCount++;
                 }
                 else
                 {
                     currentWave++;
                 }
             }
+        }
+
+        if(currentWave > 10)
+        {
+            cycleCount++;
         }
 
         WaveText.text = "Wave: " + (currentWave + ((cycleCount-1) * 10));

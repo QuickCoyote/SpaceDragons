@@ -226,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5447370022736960061, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 8707681804326772231, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
   healthMax: 75
-  healthCount: 31
+  healthCount: 75
   objectIndex: 0
 --- !u!114 &-9089636261077495847
 MonoBehaviour:
@@ -436,16 +436,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052a01513a22533479a465f8c0ad1ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 10.125
   range: 55
-  attackSpeed: 0.5
+  attackSpeed: 0.14814815
   price: 100
   rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 0
+  turretRarity: 1
   data: {fileID: 11400000, guid: 368034b0997b65643a07eeaeb3cc1474, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   droneSpawnPos1: {fileID: 5128541019205800547}
