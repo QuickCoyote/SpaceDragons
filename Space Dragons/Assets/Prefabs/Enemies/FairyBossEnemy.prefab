@@ -5071,7 +5071,7 @@ Transform:
   - {fileID: 5042476312375907001}
   - {fileID: 671673852584926175}
   - {fileID: 1635744927335979015}
-  - {fileID: 5483058025152428396}
+  - {fileID: 266076687009599806}
   - {fileID: 2317404949597390036}
   - {fileID: 7623418618967593756}
   m_Father: {fileID: 0}
@@ -5093,7 +5093,7 @@ MonoBehaviour:
     type: 3}
   gunNozzle: {fileID: 1296353699978481882}
   speed: 0
-  rotationSpeed: 0
+  rotationSpeed: 0.25
   shootingSpeed: 0
   sightDistance: 0
   attackDamage: 0
@@ -5103,7 +5103,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
     type: 3}
-  maptarget: {fileID: 6088364536433870511}
   lootnum: 5
   Minion: {fileID: 191715261875707372, guid: 754d1740f297f95408e9b8ec5bb16fee, type: 3}
   SpawnPoint: {fileID: 7623418618967593756}
@@ -5304,6 +5303,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7044326793431985132}
     m_Modifications:
+    - target: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5432,24 +5436,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 549e78bc9a26c874a9399d52eb7a03c3, type: 3}
---- !u!224 &5483058025152428396 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5009874500336489342, guid: 549e78bc9a26c874a9399d52eb7a03c3,
+--- !u!4 &266076687009599806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 729672474785020716, guid: 549e78bc9a26c874a9399d52eb7a03c3,
     type: 3}
   m_PrefabInstance: {fileID: 689361259355220498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6088364536433870511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6768678382184082621, guid: 549e78bc9a26c874a9399d52eb7a03c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 689361259355220498}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1486c9a35ee5c44b70c49b5ba50a68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &827332386000614654
 PrefabInstance:
   m_ObjectHideFlags: 0

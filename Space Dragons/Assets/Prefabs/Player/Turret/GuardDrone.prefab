@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 4073881857116389269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4073881857121926993}
   - {fileID: 4073881855394537652}
@@ -398,13 +398,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69, type: 3}
+  idleLocation: {fileID: 0}
   damage: 5
   range: 20
   attackSpeed: 0.5
   followOffset: 0
   moveSpeed: 0
   myMoveSpeed: 0
-  rotationSpeed: 0
+  rotationSpeed: 6
   side: 0
   bulletSpawn: {fileID: 2634659005592548437}
 --- !u!1 &4073881857121926990
@@ -499,12 +500,12 @@ PrefabInstance:
     - target: {fileID: 4586212021960276573, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4586212022472313549, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023479636824, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -519,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 4586212023479636831, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -529,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 4586212023677243825, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -544,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -594,7 +595,7 @@ PrefabInstance:
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -639,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 4586212023931978319, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}

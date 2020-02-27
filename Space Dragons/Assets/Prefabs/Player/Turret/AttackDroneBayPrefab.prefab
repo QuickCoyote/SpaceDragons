@@ -436,9 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052a01513a22533479a465f8c0ad1ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10.125
+  damage: 2187
   range: 55
-  attackSpeed: 0.14814815
+  attackSpeed: 0.00068587105
   price: 100
   rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}

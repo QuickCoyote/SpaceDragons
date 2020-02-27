@@ -3170,21 +3170,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Object
       objectReference: {fileID: 0}
-    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.8e-44
-      objectReference: {fileID: 0}
-    - target: {fileID: 196209911218918716, guid: 9cf8245b2f173ab449c7aafd54978c1b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
     - target: {fileID: 6435026194209917794, guid: 9cf8245b2f173ab449c7aafd54978c1b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4345,6 +4330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Wave Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603683583041895938, guid: 922df777a6933d5439014bce6ecb9948,
+        type: 3}
+      propertyPath: currentWave
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3603683583041895939, guid: 922df777a6933d5439014bce6ecb9948,
         type: 3}

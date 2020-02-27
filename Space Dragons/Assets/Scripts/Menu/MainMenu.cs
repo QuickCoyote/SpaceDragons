@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void Update()
     {
-        if (LoadManager.Instance.saveData.CurrentWave == 1 && LoadManager.Instance.saveData.CurrentCycle == 1)
+        if (LoadManager.Instance.saveData.CurrentWave == 0 && LoadManager.Instance.saveData.CurrentCycle == 1)
         {
             playtext.text = "NEW GAME";
         }

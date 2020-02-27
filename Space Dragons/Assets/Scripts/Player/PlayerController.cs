@@ -230,23 +230,31 @@ public class PlayerController : MonoBehaviour
 
     private void HealthyFire()
     {
+        if (!HealthImHealing)
+        {
+            HealthImHealing = FindObjectToHeal();
+        }
+
         dt += Time.deltaTime;
         if (dt >= healingSpeed)
         {
-            if (HealthImHealing.healthCount >= HealthImHealing.healthMax)
+            if (HealthImHealing)
             {
-                HealthImHealing = FindObjectToHeal();
-            }
+                if (HealthImHealing.healthCount >= HealthImHealing.healthMax)
+                {
+                    HealthImHealing = FindObjectToHeal();
+                }
 
-            // Deal Damage to Enemy
-            Health enemyHealth = FindEnemyToDamage();
-            if (enemyHealth)
-            {
-                enemyHealth.healthCount -= healingAmount * Time.deltaTime;
-            }
+                // Deal Damage to Enemy
+                Health enemyHealth = FindEnemyToDamage();
+                if (enemyHealth)
+                {
+                    enemyHealth.healthCount -= healingAmount * Time.deltaTime;
+                }
 
-            // Heal
-            HealthImHealing.healthCount += healingAmount * Time.deltaTime;
+                // Heal
+                HealthImHealing.healthCount += healingAmount * Time.deltaTime;
+            }
         }
     }
 
@@ -280,9 +288,9 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject obj in turretobjs)
         {
             Health health;
-            if (obj == null)
+            if (!obj)
             {
-                return GetComponent<Health>();
+                turretToHeal = GetComponent<Health>();
             }
             obj.TryGetComponent(out health);
 
@@ -307,38 +315,68 @@ public class PlayerController : MonoBehaviour
     #region Guard Drone
 
     [Header("Guard Drones")]
-    [SerializeField] int guardDroneCount = 0;
     [SerializeField] GameObject guardDrone = null;
+    [SerializeField] float guardDroneFireTime = 0.75f;
+
+    public List<GameObject> guardDrones = new List<GameObject>();
     public GameObject droneHolder = null;
     public GameObject DronePosition1;
     public GameObject DronePosition2;
     public GameObject DronePosition3;
+    public int guardDroneCount = 0;
+
+    float guardDroneDT = 0.0f;
 
     private void GuardDroneFire()
     {
-        if (guardDroneCount < 3)
+        foreach (GameObject go in guardDrones)
         {
-            SpawnDrone();
+            PlayerDrone drone = null;
+
+            if (go.TryGetComponent(out drone))
+            {
+                drone.Attack();
+            }
         }
     }
 
     public void SpawnDrone()
     {
-        Instantiate(guardDrone, head.transform.position, Quaternion.identity, droneHolder.transform);
         guardDroneCount++;
+        guardDrones.Add(Instantiate(guardDrone, head.transform.position, Quaternion.identity, null));
 
-        for (int i = 0; i < droneHolder.transform.childCount; i++)
+        for (int i = 0; i < guardDrones.Count; i++)
         {
             PlayerDrone atk = null;
-            transform.GetChild(i).TryGetComponent(out atk);
 
-            if (atk)
+            if (guardDrones[i].TryGetComponent(out atk))
             {
                 atk.side = i;
             }
         }
+
+        AlignDrones();
     }
 
+    public void AlignDrones()
+    {
+        foreach (GameObject go in guardDrones)
+        {
+            PlayerDrone drone = go.GetComponent<PlayerDrone>();
+            switch (drone.side)
+            {
+                case 0:
+                    drone.targetPosition = head.transform.right;
+                    break;
+                case 1:
+                    drone.targetPosition = head.transform.up;
+                    break;
+                case 2:
+                    drone.targetPosition = -head.transform.right;
+                    break;
+            }
+        }
+    }
 
     #endregion
 
@@ -356,6 +394,23 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (fireType == eFireType.GUARD_DRONE)
+        {
+            if (guardDroneCount < 3)
+            {
+                SpawnDrone();
+            }
+        }
+
+        for (int i = 0; i < guardDrones.Count; i++)
+        {
+            if (!guardDrones[i])
+            {
+                guardDrones.RemoveAt(i);
+                guardDroneCount--;
+            }
+        }
+
         if (objectsWithinRange.Count > 0)
         {
             if (objectsWithinRange[0])

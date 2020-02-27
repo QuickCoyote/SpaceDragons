@@ -13,7 +13,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
 
-    public int currentWave = 1;
+    public int currentWave = 0;
     public int cycleCount = 1;
     public GameObject Player = null;
 
@@ -28,7 +28,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         cycleCount = LoadManager.Instance.saveData.CurrentCycle;
         if (currentWave != 0)
         {
-            for (int i = 0; i <= cycleCount; i++)
+            for (int i = 0; i < cycleCount; i++)
             {
                 waves[currentWave].StartWave();
             }
@@ -38,25 +38,30 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
 
     void FixedUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.F7))
+        {
+            currentWave = 9;
+        }
+
         dt += Time.deltaTime;
 
         if (aliveEnemies == 0)
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i <= cycleCount; i++)
+                for (int i = 0; i < cycleCount; i++)
                 {
                     waves[currentWave].StartWave();
                 }
                 dt = 0.0f;
 
-                if (currentWave == 10)
+                if (currentWave == 9)
                 {
                     for (int i = 0; i < cycleCount; i++)
                     {
                         SpawnRandomBoss();
                     }
-                    currentWave = 1;
+                    currentWave = 11;
                 }
                 else
                 {
@@ -65,12 +70,13 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
             }
         }
 
-        if(currentWave > 10)
+        if(currentWave > 9)
         {
             cycleCount++;
+            currentWave = 1;
         }
 
-        WaveText.text = "Wave: " + (currentWave + ((cycleCount-1) * 10));
+        WaveText.text = "Wave: " + ((currentWave+1) + ((cycleCount-1) * 10));
         EnemiesText.text = "Enemies Alive: " + aliveEnemies;
     }
 

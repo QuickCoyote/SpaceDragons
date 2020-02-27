@@ -149,7 +149,7 @@ public class LoadManager : Singleton<LoadManager>
             motherShipType = Ship.eMotherShip.BASIC;
             items = new ItemPair[0];
             Ships = new ShipDataSavable[0];
-            CurrentWave = 1;
+            CurrentWave = 0;
             CurrentCycle = 1;
             PlayerPosition = new Vec3();
             PlayerFuelMax = 4;
