@@ -49,7 +49,6 @@ public class VJHandler : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
 
     public void OnPointerUp(PointerEventData ped)
     {
-
         InputDirection = Vector3.zero;
         joystick.rectTransform.anchoredPosition = Vector3.zero;
         WorldManager.Instance.Ship.onReleaseJoystick();

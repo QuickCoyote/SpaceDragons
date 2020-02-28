@@ -10,10 +10,12 @@ public class OutpostController : UIBaseClass
     public GameObject OutpostContent;
     public GameObject PlayerContent;
     public GameObject ShoppingPanel;
+    public GameObject ItemLayoutPrefab;
+
     public Inventory PlayerInventory;
     public Ship MotherShip;
     public List<ItemData> Items;
-    public GameObject ItemLayoutPrefab;
+
     public TextMeshProUGUI ShopTimer;
     public TextMeshProUGUI PlayerMoney;
     [Range(0, 2)] public int ShopDifficulty;
@@ -21,14 +23,18 @@ public class OutpostController : UIBaseClass
     public AnimationCurve ItemRarityCurve;
     public AnimationCurve DemandCurve;
 
-    ItemData selectedItem;
     Inventory outpostInventory;
+    ItemData selectedItem;
+
     List<int> numsGenerated = new List<int>();
-    int sliderValue;
+
     float Timer = 0;
     float MaxTime = 300;
+
+    int sliderValue;
     int itemBaseCost = 10;
     int price = 0;
+
     bool selling = false;
 
     public void Start()

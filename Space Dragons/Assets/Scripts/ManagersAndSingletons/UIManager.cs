@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (LoadingScreen.Instance.IsLoadingOpen)
         {

@@ -19,20 +19,22 @@ public class PlayerController : MonoBehaviour
     [Header("Attacks")]
     public float attackSpeed = 0.25f;
     public float attackTimer = 0.0f;
-
-    public int money = 100;
     public float attackDamage = 25.0f;
-    public Inventory inventory = null;
-
-    public GameObject head = null;
-    public Health headHealth = null;
-    public GameObject headBullet = null;
-    public GameObject[] headBullets = null;
 
     [SerializeField] float bulletOffsetY = 1.0f;
-
     [SerializeField] float basicAttackSpeed = 0f;
     [SerializeField] float basicAttackDamage = 0f;
+
+    public int money = 100;
+
+    public GameObject[] headBullets = null;
+    public GameObject head = null;
+    public GameObject headBullet = null;
+
+    public Health headHealth = null;
+
+    public Inventory inventory = null;
+
 
     float dt = 0;
 
@@ -325,8 +327,6 @@ public class PlayerController : MonoBehaviour
     public GameObject DronePosition3;
     public int guardDroneCount = 0;
 
-    float guardDroneDT = 0.0f;
-
     private void GuardDroneFire()
     {
         foreach (GameObject go in guardDrones)
@@ -366,13 +366,13 @@ public class PlayerController : MonoBehaviour
             switch (drone.side)
             {
                 case 0:
-                    drone.targetPosition = head.transform.right;
+                    drone.targetPosition = head.transform.right + head.transform.position;
                     break;
                 case 1:
-                    drone.targetPosition = head.transform.up;
+                    drone.targetPosition = head.transform.up + head.transform.position;
                     break;
                 case 2:
-                    drone.targetPosition = -head.transform.right;
+                    drone.targetPosition = -head.transform.right + head.transform.position;
                     break;
             }
         }
@@ -400,6 +400,8 @@ public class PlayerController : MonoBehaviour
             {
                 SpawnDrone();
             }
+
+            AlignDrones();
         }
 
         for (int i = 0; i < guardDrones.Count; i++)
@@ -447,11 +449,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            money += 1000;
         }
     }
 
@@ -550,31 +547,26 @@ public class PlayerController : MonoBehaviour
         switch (fireType)
         {
             case eFireType.BASIC:
-                fireType = eFireType.BASIC;
                 attackSpeed = basicAttackSpeed;
                 attackDamage = basicAttackDamage;
                 BasicFire();
                 break;
             case eFireType.FLAMETHROWER:
-                fireType = eFireType.FLAMETHROWER;
                 attackSpeed = flameAttackSpeed;
                 attackDamage = flameAttackDamage;
                 FlameFire();
                 break;
             case eFireType.LIGHTNING:
-                fireType = eFireType.LIGHTNING;
                 attackSpeed = lightningAttackSpeed;
                 attackDamage = lightningAttackDamage;
                 FireLightning();
                 break;
             case eFireType.HEALING:
-                fireType = eFireType.HEALING;
                 attackSpeed = healingSpeed;
                 attackDamage = healingAmount;
                 HealthyFire();
                 break;
             case eFireType.GUARD_DRONE:
-                fireType = eFireType.GUARD_DRONE;
                 GuardDroneFire();
                 break;
         }

@@ -85,7 +85,10 @@ public class Ship : MonoBehaviour
 
     private void Start()
     {
-        if (!shipHealth) shipHealth = bodyPartTransforms[0].GetComponent<Health>();
+        if (!shipHealth)
+        {
+            shipHealth = bodyPartTransforms[0].GetComponent<Health>();
+        }
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
         speed = defaultSpeed;
@@ -155,30 +158,6 @@ public class Ship : MonoBehaviour
         
         UpdateFeulGauge();
         CheckForDie();
-
-        #region Dev Tools
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AddBodyPart(FindBodyPartFromPrefabs("ShockPrefab"));
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            RemoveBodyPart(bodyPartObjects[2], false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RemoveBodyPart(bodyPartObjects[2], true);
-            SortBody();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SortBody();
-        }
-
-        #endregion
     }
 
     #region Movement
@@ -229,7 +208,8 @@ public class Ship : MonoBehaviour
                     {
                         speed = Mathf.Lerp(speed, defaultSpeed, Time.deltaTime);
                     }
-                } else
+                }
+                else
                 {
                     speed = Mathf.Lerp(speed, driftSpeed, Time.deltaTime);
                 }
@@ -264,26 +244,29 @@ public class Ship : MonoBehaviour
     {
         if (joystickdragging)
         {
-            //Vector3 targetPos = joystickMovement.InputDirection;
             Vector3 targetPos = joystickknob.anchoredPosition;
             targetPos.z = 0;
-            // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+
             Vector3 direction =  joystickMovement.InputDirection;
-            //Vector3 direction =  bodyPartTransforms[0].transform.position + targetPos;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
         }
+
         bodyPartTransforms[0].Translate(bodyPartTransforms[0].up * speed * Time.smoothDeltaTime, Space.World);
+
         for (int i = 1; i < bodyPartTransforms.Count; i++)
         {
             if (bodyPartTransforms[i] != null)
             {
                 curBodyPart = bodyPartTransforms[i];
                 prevBodyPart = bodyPartTransforms[i - 1];
+
                 dst = Vector3.Distance(prevBodyPart.position, curBodyPart.position);
+
                 Vector3 newPos = prevBodyPart.position;
                 newPos.z = bodyPartTransforms[0].position.z;
+
                 float t = Time.deltaTime * dst / minDst * speed;
                 if (t > .5f)
                 {
@@ -299,13 +282,12 @@ public class Ship : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            // This is just getting touch
             Touch touch = Input.GetTouch(0);
             if (!UIManager.Instance.IsPointerOverUIObject())
             {
                 Vector3 targetPos = Camera.main.ScreenToWorldPoint(touch.position);
                 targetPos.z = 0;
-                // This is just getting the angle from the head of the snake to the touched position, and rotating the head accordingly
+
                 Vector3 direction = targetPos - bodyPartTransforms[0].transform.position;
                 float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
                 Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
@@ -335,7 +317,7 @@ public class Ship : MonoBehaviour
                     t = 0.5f;
                 }
 
-                curBodyPart.gameObject.GetComponent<Turret>().travelDirection = (newPos - transform.position).normalized;
+                curBodyPart.GetComponent<Turret>().travelDirection = (newPos - transform.position).normalized;
 
                 curBodyPart.position = Vector3.Slerp(curBodyPart.position, newPos, t);
                 curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, prevBodyPart.rotation, t);
@@ -368,7 +350,7 @@ public class Ship : MonoBehaviour
         float min = 23;
         float max = 60;
         float scale = max - min;
-        float gauge = scale * ((float)boostFuel / (float)boostFuelMAX);
+        float gauge = scale * (boostFuel / boostFuelMAX);
         boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
 
         boostSliderTouch.maxValue = boostFuelMAX;
@@ -381,9 +363,7 @@ public class Ship : MonoBehaviour
 
     public void AddBodyPart(GameObject bodyPart)
     {
-        Transform newPart = (Instantiate(bodyPart, bodyPartTransforms[bodyPartTransforms.Count - 1].position, bodyPartTransforms[bodyPartTransforms.Count - 1].rotation, transform) as GameObject).transform;
-
-        newPart.name = "Turret" + index;
+        Transform newPart = Instantiate(bodyPart, bodyPartTransforms[bodyPartTransforms.Count - 1].position, bodyPartTransforms[bodyPartTransforms.Count - 1].rotation, transform).transform;
         index++;
 
         newPart.SetParent(transform);
@@ -391,7 +371,6 @@ public class Ship : MonoBehaviour
         bodyPartObjects.Add(newPart.gameObject);
 
         HealthBarManager.Instance.CreateAllHealthBars();
-
     }
 
     public GameObject FindBodyPartFromPrefabs(string partName)

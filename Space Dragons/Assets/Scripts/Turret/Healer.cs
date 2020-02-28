@@ -59,13 +59,12 @@ public class Healer : Turret
         foreach (GameObject obj in turretobjs)
         {
             Health health;
-            if(obj == null)
+            if(!obj)
             {
-                return GetComponent<Health>();
+                continue;
             }
-            obj.TryGetComponent(out health);
 
-            if (health != null)
+            if (obj.TryGetComponent(out health))
             {
                 if (turretToHeal == null)
                 {

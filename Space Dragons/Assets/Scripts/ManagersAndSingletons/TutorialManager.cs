@@ -8,10 +8,12 @@ using UnityEngine.UI;
 
 public class TutorialManager : Singleton<TutorialManager>
 {
+    [SerializeField] List<TutorialOrder> Orders = null;
+
     [SerializeField] TextMeshProUGUI tipPrompt = null;
+
     [SerializeField] GameObject tipUI = null;
     [SerializeField] GameObject tipArrow = null;
-    [SerializeField] List<TutorialOrder> Orders = null;
     [SerializeField] GameObject Next = null;
     [SerializeField] GameObject Back = null;
 

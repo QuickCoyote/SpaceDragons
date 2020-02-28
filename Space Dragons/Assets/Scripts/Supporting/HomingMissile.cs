@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class HomingMissile : MonoBehaviour
 {
+    public GameObject parentobj = null;
+    public GameObject target = null;
+    public Rigidbody2D rb = null;
+
+    public Vector3 goDirection = Vector3.zero;
+
+    public string sound = "";
+
     public float bulletSpeed = 20;
     public float rotateSpeed = 5;
     public float lifetime = 4.0f;
     public float damage = 0.0f;
-    public GameObject parentobj = null;
-    public GameObject target = null;
-    public Vector3 goDirection = Vector3.zero;
-    public Rigidbody2D rb = null;
-    public string sound = "";
 
     private void FixedUpdate()
     {
@@ -68,6 +71,5 @@ public class HomingMissile : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Vector3.forward, target.transform.position - transform.position), rotateSpeed);
         goDirection = transform.up;
         transform.position += (goDirection * bulletSpeed * Time.smoothDeltaTime);
-
     }
 }

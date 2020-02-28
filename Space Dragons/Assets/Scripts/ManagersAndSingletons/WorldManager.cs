@@ -5,12 +5,13 @@ using UnityEngine;
 public class WorldManager : Singleton<WorldManager>
 {
     [SerializeField] public Transform WorldCorner = null;
-    
+
     [SerializeField] public List<ItemData> Items = null;
     [SerializeField] public List<GameObject> Explosions = null;
+
     [SerializeField] public GameObject Warphole = null;
-    [SerializeField] Rigidbody2D[] objectsToRender = null;
     [SerializeField] public GameObject Head = null;
+
     [SerializeField] public PlayerController PlayerController = null;
     [SerializeField] public Ship Ship;
 
@@ -18,10 +19,14 @@ public class WorldManager : Singleton<WorldManager>
 
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
 
+    [SerializeField] Rigidbody2D[] objectsToRender = null;
+
+    private float dt = 0.0f;
+
     private void Start()
     {
         ResetList();
-        if(Head == null)
+        if (Head == null)
         {
             Head = GameObject.FindGameObjectWithTag("Player");
         }
@@ -29,25 +34,29 @@ public class WorldManager : Singleton<WorldManager>
 
     private void FixedUpdate()
     {
-        ResetList();
-        foreach (Rigidbody2D go in objectsToRender)
+        dt += Time.fixedDeltaTime;
+        if (dt > 5)
         {
-            if(Vector3.Distance(go.transform.position, Head.transform.position) > 150)
+            ResetList();
+            foreach (Rigidbody2D go in objectsToRender)
             {
-                if (go.gameObject.layer == 13)
+                if (Vector3.Distance(go.transform.position, Head.transform.position) > 150)
                 {
-                    go.gameObject.SetActive(false);
-                } 
+                    if (go.gameObject.layer == 13)
+                    {
+                        go.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.5f;
+                    }
+                }
                 else
                 {
-                    go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.5f;
-                }
-            }
-            else
-            {
-                if (go.gameObject.layer == 13)
-                {
-                    go.gameObject.SetActive(true);
+                    if (go.gameObject.layer == 13)
+                    {
+                        go.gameObject.SetActive(true);
+                    }
                 }
             }
         }

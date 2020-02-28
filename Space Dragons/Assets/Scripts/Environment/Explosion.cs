@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-
     AudioSource explosionSFX;
 
     public void Start()
@@ -20,8 +19,8 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Health hp = collision.gameObject.GetComponent<Health>();
-        if (hp)
+        Health hp;
+        if (collision.TryGetComponent(out hp))
         {
             hp.DealDamage(damage);
         }

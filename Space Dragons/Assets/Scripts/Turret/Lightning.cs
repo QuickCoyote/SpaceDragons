@@ -17,7 +17,6 @@ public class Lightning : MonoBehaviour
         lr = GetComponent<LineRenderer>();
         if(lr)
         {
-
         }
         else
         {
