@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI playtext = null;
     [SerializeField] Button playbutton = null;
     [SerializeField] Button tutorialbutton = null;
+    [SerializeField] GameObject creditsPopUp = null;
 
     public void Update()
     {
@@ -49,6 +50,11 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ToggleCredits()
+    {
+        creditsPopUp.SetActive(!creditsPopUp.activeSelf);
     }
 
 }
