@@ -12,6 +12,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] List<Wave> waves = new List<Wave>();
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
+    [SerializeField] GameObject BossIcon = null;
 
     public GameObject Player = null;
 
@@ -75,6 +76,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
             currentWave = 1;
         }
 
+        BossIcon.SetActive((GameObject.FindGameObjectsWithTag("Boss").Length > 0));
         WaveText.text = "Wave: " + ((currentWave+1) + ((cycleCount-1) * 10));
         EnemiesText.text = "Enemies Alive: " + aliveEnemies;
     }
