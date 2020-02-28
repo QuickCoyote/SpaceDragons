@@ -36,7 +36,10 @@ public class Health : MonoBehaviour
     public void DealDamage(float dmg)
     {
         healthCount -= dmg;
-        if (an) an.SetTrigger("Damage");
+        if (an)
+        {
+            an.SetTrigger("Damage");
+        }
     }
 
     public void FixedUpdate()

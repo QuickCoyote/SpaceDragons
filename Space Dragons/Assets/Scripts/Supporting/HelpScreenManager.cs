@@ -24,24 +24,26 @@ public class HelpScreenManager : Singleton<HelpScreenManager>
 
     public void OpenHelpScreen(eHelpScreens screen)
     {
-        for (int i = 0; i < screens.Count; i++)
+        foreach(helpScreen hpScreen in screens)
         {
-            if (screens[i].screenID == screen)
+            if(hpScreen.screenID == screen)
             {
-                screens[i].panel.SetActive(true);
-                screens[i].opened = true;
+                hpScreen.panel.SetActive(true);
+                hpScreen.opened = true;
+                break;
             }
         }
     }
 
     public void CheckFirstTimeHelpScreen(eHelpScreens screen)
     {
-        for (int i = 0; i < screens.Count; i++)
+        foreach (helpScreen hpScreen in screens)
         {
-            if (screens[i].screenID == screen && !screens[i].opened)
+            if (hpScreen.screenID == screen && !hpScreen.opened)
             {
-                screens[i].panel.SetActive(true);
-                screens[i].opened = true;
+                hpScreen.panel.SetActive(true);
+                hpScreen.opened = true;
+                break;
             }
         }
     }

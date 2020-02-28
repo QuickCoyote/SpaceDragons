@@ -31,7 +31,7 @@ public class OrcEnemy : Enemy
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target) > stoppingDistance) //Stop moving if player gets too close.
+        if (Vector3.Distance(transform.position, target) > stoppingDistance)
         {
             transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
         }

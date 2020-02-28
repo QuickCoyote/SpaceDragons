@@ -9,10 +9,31 @@ public class BorderLoop : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         pos = collision.transform.position;
-        if (flipX) pos.x = -pos.x;
-        if (pos.x > 0) pos.x -= 10.0f; else pos.y += 10.0f;
-        if (flipY) pos.y = -pos.y;
-        if (pos.y > 0) pos.y -= 10.0f; else pos.y += 10.0f;
+        if (flipX)
+        {
+            pos.x = -pos.x;
+        }
+        if (pos.x > 0)
+        {
+            pos.x -= 10.0f;
+        }
+        else
+        {
+            pos.y += 10.0f;
+        }
+        if (flipY)
+        {
+            pos.y = -pos.y;
+        }
+        if (pos.y > 0)
+        {
+            pos.y -= 10.0f;
+        }
+        else
+        {
+            pos.y += 10.0f;
+        }
+
 
         if (collision.transform.tag == "Player")
         {
@@ -33,10 +54,27 @@ public class BorderLoop : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         pos = collision.transform.position;
-        if (flipX) pos.x = -pos.x;
-        if (pos.x > 0) pos.x -= 10.0f; pos.y += 10.0f;
-        if (flipY) pos.y = -pos.y;
-        if (pos.y > 0) pos.y -= 10.0f; else pos.y += 10.0f;
+        if (flipX)
+        {
+            pos.x = -pos.x;
+        }
+        if (pos.x > 0)
+        {
+            pos.x -= 10.0f;
+            pos.y += 10.0f;
+        }
+        if (flipY)
+        {
+            pos.y = -pos.y;
+        }
+        if (pos.y > 0)
+        {
+            pos.y -= 10.0f;
+        }
+        else
+        {
+            pos.y += 10.0f;
+        }
 
         if (collision.transform.tag != "Player" && collision.gameObject.layer != 8 && collision.gameObject.layer != 11) //dont do turrets or snake
         {

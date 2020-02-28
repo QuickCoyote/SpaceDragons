@@ -13,10 +13,10 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
 
-    public int currentWave = 0;
-    public int cycleCount = 1;
     public GameObject Player = null;
 
+    public int cycleCount = 1;
+    public int currentWave = 0;
     public int aliveEnemies = 0;
 
     float dt = 0.0f;

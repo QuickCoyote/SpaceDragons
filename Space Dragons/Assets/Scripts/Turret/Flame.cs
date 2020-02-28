@@ -14,7 +14,6 @@ public class Flame : Projectile
         {
             Destroy(gameObject);
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -46,10 +45,5 @@ public class Flame : Projectile
         {
             goDirection = parentobj.transform.up;
         }
-    }
-
-    public void Move()
-    {
-        transform.position += (goDirection * bulletSpeed * Time.smoothDeltaTime);
     }
 }

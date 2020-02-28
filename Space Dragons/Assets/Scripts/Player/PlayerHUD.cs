@@ -11,21 +11,27 @@ public class PlayerHUD : UIBaseClass
 
     [SerializeField] Toggle controlToggle = null;
     [SerializeField] Toggle thrusterToggle = null;
+
     [SerializeField] TextMeshProUGUI HUD_Money_Text = null;
     [SerializeField] TextMeshProUGUI HUD_Fuel_Text = null;
     [SerializeField] TextMeshProUGUI HUD_Mothership_Text = null;
     [SerializeField] TextMeshProUGUI HUD_ETA_Text = null;
     [SerializeField] TextMeshProUGUI HUD_Distance_Text = null;
+
     [SerializeField] Image CaptainIcon = null;
     [SerializeField] Image ShipIcon = null;
+
+    private Ship ship;
 
     private void Start()
     {
         controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
+
+        ship = WorldManager.Instance.Ship;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
@@ -34,9 +40,9 @@ public class PlayerHUD : UIBaseClass
             ShipIcon.sprite = WorldManager.Instance.Head.GetComponentInChildren<SpriteRenderer>().sprite;
 
             controlToggle.isOn = (PlayerPrefs.GetInt("JoystickControls") == 0);
-            thrusterToggle.isOn = WorldManager.Instance.Ship.thrustersOn;
+            thrusterToggle.isOn = ship.thrustersOn;
             HUD_Money_Text.text = WorldManager.Instance.PlayerController.ReturnMoney();
-            HUD_Fuel_Text.text = "Fuel: " + WorldManager.Instance.Ship.boostFuel + "/" + WorldManager.Instance.Ship.boostFuelMAX;
+            HUD_Fuel_Text.text = "Fuel: " + ship.boostFuel + "/" + ship.boostFuelMAX;
             HUD_Distance_Text.text = Mathf.CeilToInt(TrackingManager.Instance.ReturnDistanceToTracker()).ToString() + "au";
             if(TrackingManager.Instance.ReturnETA() > 1000000 || TrackingManager.Instance.ReturnETA() < 0)
             {
@@ -47,7 +53,7 @@ public class PlayerHUD : UIBaseClass
                 HUD_ETA_Text.text = TrackingManager.Instance.ReturnETA() + "s";
             }
 
-            switch (WorldManager.Instance.Ship.motherShip)
+            switch (ship.motherShip)
             {
                 case Ship.eMotherShip.BASIC:
                     HUD_Mothership_Text.text = "Race: Animal, Abilities: Basic, Description: Made of Orange Ore";

@@ -11,11 +11,14 @@ public class ShipyardController : UIBaseClass
     public string ShipyardId;
     [Header("Stock")]
     public Ship MotherShip;
+    
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
+
     public List<ShipData> CommonShips;
     public List<ShipData> RareShips;
     public List<ShipData> EpicShips;
+    
     public List<MothershipData> Motherships;
     [Range(0, 2)] public int ShopDifficulty;
     [Header("UI")]
@@ -27,28 +30,32 @@ public class ShipyardController : UIBaseClass
     public GameObject MothershipMenu;
     public GameObject MothershipDisplay;
     public GameObject SelectionDisplay;
-    public TextMeshProUGUI ShipCounter;
-    public TextMeshProUGUI ShopTimer;
-    public TextMeshProUGUI MoneyNum;
     public GameObject MaxShipWarning;
-    public List<GameObject> SelectionInfoPanels;
-    public List<GameObject> SelectionInfoButtons;
-    public Ship.eMotherShip TradeInMothership;
-    public Ship.eMotherShip CurrentMothership;
     public GameObject RepairMotherButton;
     public GameObject TradeInButton;
     public GameObject TradeInCost;
     public GameObject TurretCost;
     public GameObject RepairAllCost;
+
+    public TextMeshProUGUI ShipCounter;
+    public TextMeshProUGUI ShopTimer;
+    public TextMeshProUGUI MoneyNum;
+
+    public List<GameObject> SelectionInfoPanels;
+    public List<GameObject> SelectionInfoButtons;
+
+    public Ship.eMotherShip TradeInMothership;
+    public Ship.eMotherShip CurrentMothership;
+
     public ScrollSnap scrollSnap;
     public Sprite EmptySlot;
     public Slider MotherHealthBar;
 
-    int NumOfShips;
-    float Timer = 0;
-    float MaxTime = 300;
     Button buyButton = null;
     Button sellButton = null;
+    float Timer = 0;
+    float MaxTime = 300;
+    int NumOfShips;
 
     public void Start()
     {
@@ -74,21 +81,6 @@ public class ShipyardController : UIBaseClass
 
     public void Update()
     {
-        #region Dev Debug Controls
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            Timer = 5;
-        }
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            ToggleUI();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleUI();
-        }
-        #endregion
-
         if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
@@ -228,7 +220,6 @@ public class ShipyardController : UIBaseClass
             RepairMotherButton.SetActive(false);
 
             TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + Motherships[(int)TradeInMothership].Price.ToString();
-
         }
     }
 

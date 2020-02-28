@@ -16410,7 +16410,7 @@ MonoBehaviour:
   myTargetIcon: {fileID: 0}
   healingSpeed: 0.25
   healingAmount: 25
-  guardDrone: {fileID: 4073881857116389269, guid: 5d051bf613cf072498c53cdbc862113c,
+  guardDrone: {fileID: 4073881857116389269, guid: eb7982f4f6af798498b4b0d0d431b0e4,
     type: 3}
   guardDroneFireTime: 0.75
   guardDrones: []
@@ -25663,7 +25663,7 @@ RectTransform:
   m_GameObject: {fileID: 7463423391058427780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 8689189252521973215}
   m_Father: {fileID: 6942633185597010967}
@@ -25671,8 +25671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.00009346008}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 0.000030517578, y: -22}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4709587877128866376
 CanvasRenderer:
@@ -25701,8 +25701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4597467143409903823, guid: 7ffeac77b88875a4ab4e9c4e6f52d915,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: f853d28142a180141be5f5823b649a09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26982,7 +26981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00010681152, y: 0.000038146973}
+  m_AnchoredPosition: {x: 3, y: 22}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6011955928397260330

@@ -51,7 +51,7 @@ public class RustyOldTurret : Turret
         if (attackTimer > attackSpeed)
         {
             attackTimer = 0;
-            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * rotateBoi.transform.up), rotateBoi.transform.rotation, transform) as GameObject);
+            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * rotateBoi.transform.up), rotateBoi.transform.rotation, null) as GameObject);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = rotateBoi;
             projectile.Fire();

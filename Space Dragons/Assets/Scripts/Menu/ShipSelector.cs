@@ -11,8 +11,11 @@ public class ShipSelector : MonoBehaviour
     public GameObject ShopMenu;
     public GameObject SelecionDisplay;
     public GameObject SelectedShip; 
+
     public ShipyardController controller;
+
     public bool IsSlotFilled = false;
+
     public Sprite baseSprite = null;
     public Sprite turretSprite = null;
     public Sprite wingsSprite = null;

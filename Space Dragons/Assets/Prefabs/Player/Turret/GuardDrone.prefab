@@ -399,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69, type: 3}
   idleLocation: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   damage: 5
   range: 20
   attackSpeed: 0.5
@@ -600,12 +601,12 @@ PrefabInstance:
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}

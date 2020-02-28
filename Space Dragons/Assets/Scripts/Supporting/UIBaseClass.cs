@@ -13,7 +13,10 @@ public abstract class UIBaseClass : MonoBehaviour
 
     public void Open()
     {
-        if (PauseOnly) UIManager.Instance.PauseTimeScale();
+        if (PauseOnly)
+        {
+            UIManager.Instance.PauseTimeScale();
+        }
         if (IsShop)
         {
             AudioManager.Instance.StopAll();

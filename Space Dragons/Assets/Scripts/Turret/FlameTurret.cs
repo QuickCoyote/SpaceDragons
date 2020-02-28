@@ -23,7 +23,7 @@ public class FlameTurret : Turret
         {
             foreach (Enemy enemy in enemiesToBurn)
             {
-                if(enemy != null)
+                if(enemy)
                 {
                     enemy.GetComponent<Health>().healthCount -= burnDamage * Time.deltaTime;
                 }
@@ -79,7 +79,7 @@ public class FlameTurret : Turret
         projectile.goDirection = projectileDirection;
         projectile.lifetime = flameLifeSpan;
         float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
-        projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        projectile.transform.rotation = Quaternion.AngleAxis(angle+90, Vector3.forward);
         projectile.bulletSpeed = flameSpeed;
         projectile.sound = "null";
         projectile.Fire();

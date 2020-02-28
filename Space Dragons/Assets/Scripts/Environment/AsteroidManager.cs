@@ -26,7 +26,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (AsteroidsDestroyed > 8)
         {

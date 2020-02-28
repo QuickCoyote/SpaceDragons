@@ -38,7 +38,7 @@ public class Asteroid : MonoBehaviour
         rb.mass = sizeweight;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (hp.healthCount < 0.0f)
         {

@@ -10,6 +10,7 @@ public class DeathScreenController : MonoBehaviour
     public TextMeshProUGUI wavesSurvived = null;
     public TextMeshProUGUI moneyAccumulated = null;
     public TextMeshProUGUI returnText = null;
+
     public Button button = null;
 
     float timer = 0;

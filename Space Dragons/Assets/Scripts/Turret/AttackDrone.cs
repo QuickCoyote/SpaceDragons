@@ -6,6 +6,8 @@ public class AttackDrone : MonoBehaviour
 {
     public GameObject bullet = null;
     public GameObject parent = null;
+    public GameObject enemyToAttack;
+    public GameObject bulletSpawn = null;
     public Transform idleLocation = null;
 
     public float damage;
@@ -15,15 +17,18 @@ public class AttackDrone : MonoBehaviour
     public float moveSpeed;
     public float myMoveSpeed;
     public float rotationSpeed;
-
-
-    Vector3 targetPosition = Vector3.zero;
     public int side;
 
     protected float attackTimer = 0f;
 
-    [SerializeField] GameObject bulletSpawn = null;
-    public GameObject enemyToAttack;
+    private Health myHealth = null;
+    private Vector3 targetPosition = Vector3.zero;
+
+
+    private void Start()
+    {
+        myHealth = GetComponent<Health>();
+    }
 
     public void Attack()
     {
@@ -46,19 +51,13 @@ public class AttackDrone : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Vector3 direction = targetPosition - transform.position;
+
         if (enemyToAttack)
         {
             targetPosition = enemyToAttack.transform.position;
-            Vector3 direction = targetPosition - transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, targetPosition) > .25f) //Stop moving if player gets too close.
-            {
-                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
-            }
-            moveSpeed = 10f;
+            direction = targetPosition - transform.position;
+            moveSpeed = 10.0f;
         }
         else
         {
@@ -79,26 +78,23 @@ public class AttackDrone : MonoBehaviour
                         break;
                 }
             }
-            Vector3 direction = targetPosition - transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+            direction = targetPosition - transform.position;
 
             if (Vector3.Distance(transform.position, targetPosition) > .5f)
             {
                 moveSpeed = WorldManager.Instance.Ship.speed + 1;
-                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
             else
             {
                 moveSpeed = WorldManager.Instance.Ship.speed;
-                Vector3 direction2 = targetPosition - transform.position + transform.up;
-                float angle2 = Mathf.Atan2(direction2.x, direction2.y) * Mathf.Rad2Deg;
-                Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation2, rotationSpeed * Time.deltaTime);
-                transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
             }
         }
+
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
 
         CheckForAttack();
         CheckForDie();
@@ -108,7 +104,7 @@ public class AttackDrone : MonoBehaviour
     {
         if (enemyToAttack)
         {
-            if ((enemyToAttack.transform.position - transform.position).magnitude < range)
+            if (Vector3.Distance(enemyToAttack.transform.position, transform.position) < range)
             {
                 Attack();
             }
@@ -117,7 +113,7 @@ public class AttackDrone : MonoBehaviour
 
     public void CheckForDie()
     {
-        if (GetComponent<Health>().healthCount <= 0)
+        if (myHealth.healthCount <= 0)
         {
             parent.GetComponent<AttackDroneBay>().droneCount--;
             WorldManager.Instance.SpawnRandomExplosion(transform.position);

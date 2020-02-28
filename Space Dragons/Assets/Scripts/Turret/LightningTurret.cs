@@ -15,7 +15,7 @@ public class LightningTurret : Turret
     {
         if (enemies.Count > 0)
         {
-            List<Enemy> enemiesL = enemies.ToList<Enemy>();
+            List<Enemy> enemiesL = enemies.ToList();
             for (int i = 0; i < enemiesL.Count; i++)
             {
                 if(enemiesL[i] == null)

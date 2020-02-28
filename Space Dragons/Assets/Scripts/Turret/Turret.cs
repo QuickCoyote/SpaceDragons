@@ -22,6 +22,7 @@ public abstract class Turret : MonoBehaviour
     public Vector3 travelDirection = Vector3.zero;
 
     protected Queue<Enemy> enemies = new Queue<Enemy>();
+    protected Health myHealth = null;
     public abstract void Attack();
 
     protected void Awake()
@@ -49,16 +50,15 @@ public abstract class Turret : MonoBehaviour
 
     public void CheckForDie()
     {
-        if(GetComponent<Health>().healthCount <= 0)
+        if(myHealth.healthCount <= 0)
         {
-            FindObjectOfType<WorldManager>().SpawnRandomExplosion(transform.position);
-            FindObjectOfType<Ship>().RemoveBodyPart(gameObject, false);
+            WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
         }
     }
 
     public void Initialize()
     {
-
         int badgeColor = 0;
         switch (data.type)
         {

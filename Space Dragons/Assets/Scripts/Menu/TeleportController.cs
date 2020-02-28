@@ -8,32 +8,45 @@ public class TeleportController : UIBaseClass
     [Header("UI")]
     [SerializeField] GameObject uiTeleportButton = null;
     [SerializeField] GameObject uiTeleportArrows = null;
+
     [SerializeField] TextMeshProUGUI nameReadout = null;
     [SerializeField] TextMeshProUGUI teleportLocationReadout = null;
     [SerializeField] TextMeshProUGUI moneyReadout = null;
     [SerializeField] TextMeshProUGUI costReadout = null;
     [SerializeField] TextMeshProUGUI messageReadout = null;
+
     [SerializeField] Animator TeleportTransition = null;
 
     [Header("Values")]
     [SerializeField] GameObject mapIcon = null;
+
     public string LocationName = null;
     public float costmultiplier = 0.05f;
     public bool visited = false;
+
     int index = 0;
     int cost = 0;
+
     List<TeleportController> visitedTeleports = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         visited = LoadManager.Instance.saveData.VisitedTeleports.ToList().Exists(e => e == LocationName);
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
         visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
-        if (visitedTeleports.Count > 0) UpdateUI();
+
+        if (visitedTeleports.Count > 0)
+        {
+            UpdateUI();
+        }
+
         mapIcon.SetActive(false);
-        if (visited) mapIcon.SetActive(true); 
+
+        if (visited)
+        {
+            mapIcon.SetActive(true);
+        }
     }
 
     public void IncreaseIndex()
@@ -51,7 +64,7 @@ public class TeleportController : UIBaseClass
     void UpdateUI()
     {
         cost = (int)(Vector3.Distance(transform.position, visitedTeleports[index].transform.position) * costmultiplier);
-        costReadout.text = (cost).ToString();
+        costReadout.text = cost.ToString();
         moneyReadout.text = WorldManager.Instance.PlayerController.money.ToString();
         teleportLocationReadout.text = visitedTeleports[index].LocationName;
         messageReadout.text = "";

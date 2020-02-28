@@ -7,10 +7,12 @@ using UnityEngine.UI;
 
 public class Inventory : UIBaseClass
 {
-    [SerializeField] Sprite emptyItemImage;
     [SerializeField] GameObject inventoryDisplay = null;
     [SerializeField] GameObject itemInfoPanel = null;
+
+    [SerializeField] Sprite emptyItemImage;
     [SerializeField] Image itemInfoPanelImage = null;
+
     [SerializeField] TextMeshProUGUI itemInfoPanelName = null;
     [SerializeField] TextMeshProUGUI itemInfoPanelDesc = null;
 
