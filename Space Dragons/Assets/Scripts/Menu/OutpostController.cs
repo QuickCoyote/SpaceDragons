@@ -244,6 +244,7 @@ public class OutpostController : UIBaseClass
 
             ShoppingPanel.SetActive(false);
             Refresh();
+            selling = true;
         }
         else
         {
@@ -262,6 +263,7 @@ public class OutpostController : UIBaseClass
             {
                 Debug.Log("YOU'RE BROKE >:C STOP TRYING TO BUY THIS");
             }
+            selling = false;
         }
     }
 
@@ -332,10 +334,10 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += (itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity)/3)) / (CheckForAmount(item)+i+1);
+            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3f)) ) / (CheckForAmount(item) + i + 1);
         }
 
-        price = Mathf.FloorToInt(tempPrice * 100);
+        price = Mathf.FloorToInt(tempPrice * 10);
             
         return price;
     }
@@ -345,10 +347,10 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += (itemBaseCost) + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3)) / (CheckForAmount(item) - i + 1);
+            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3f)) ) / (CheckForAmount(item) - i + 1);
         }
 
-        price = Mathf.FloorToInt(tempPrice * 220);
+        price = Mathf.FloorToInt(tempPrice * 22);
         return price;
     }
     #endregion
