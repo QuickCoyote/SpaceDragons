@@ -61,6 +61,9 @@ public class ElfBossEnemy : Enemy
             }
 
         }
+
+        SpawnMinions();
+
     }
     protected override void Move()
     {

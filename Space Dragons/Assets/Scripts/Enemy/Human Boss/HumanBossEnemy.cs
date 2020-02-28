@@ -94,6 +94,9 @@ public class HumanBossEnemy : Enemy
                 Destroy(OuterRing.GetComponent<LineRenderer>());
             }
         }
+
+        SpawnMinions();
+
     }
     protected override void Move()
     {

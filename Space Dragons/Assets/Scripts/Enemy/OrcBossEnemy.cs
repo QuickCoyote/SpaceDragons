@@ -79,6 +79,7 @@ public class OrcBossEnemy : Enemy
 
         FireGun.transform.Rotate(Vector3.forward, firewaveRotateSpeed * Time.deltaTime);
         FireNozzle.localRotation = Quaternion.identity;
+        SpawnMinions();
     }
     protected override void Move()
     {

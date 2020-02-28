@@ -76,6 +76,9 @@ public class AnimalBossEnemy : Enemy
                 }
             }
         }
+
+        SpawnMinions();
+
     }
     protected override void Move()
     {
