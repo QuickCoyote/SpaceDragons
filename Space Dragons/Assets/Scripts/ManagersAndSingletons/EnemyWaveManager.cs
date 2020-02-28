@@ -27,19 +27,15 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         Player = WorldManager.Instance.Head;
         currentWave = LoadManager.Instance.saveData.CurrentWave;
         cycleCount = LoadManager.Instance.saveData.CurrentCycle;
-
-        for (int i = 0; i < cycleCount; i++)
-        {
-            waves[currentWave].StartWave();
-        }
-        dt = 0.0f;
+        SpawnWave();
     }
 
     void FixedUpdate()
     {
         if(Input.GetKeyDown(KeyCode.F7))
         {
-            currentWave = 9;
+            currentWave++;
+            SpawnWave();
         }
 
         dt += Time.deltaTime;
@@ -48,37 +44,37 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         {
             if (dt >= waveSpawnTimer)
             {
-                for (int i = 0; i < cycleCount; i++)
-                {
-                    waves[currentWave].StartWave();
-                }
-                dt = 0.0f;
-
-                if (currentWave == 9)
-                {
-                    for (int i = 0; i < cycleCount; i++)
-                    {
-                        SpawnRandomBoss();
-                        Debug.Log("Spawned Boss");
-                    }
-                    currentWave = 11;
-                }
-                else
-                {
-                    currentWave++;
-                }
+                currentWave++;
+                SpawnWave();
             }
-        }
-
-        if(currentWave > 9)
-        {
-            cycleCount++;
-            currentWave = 1;
         }
 
         BossIcon.SetActive((GameObject.FindGameObjectsWithTag("Boss").Length > 0));
         WaveText.text = "Wave: " + ((currentWave+1) + ((cycleCount-1) * 10));
         EnemiesText.text = "Enemies Alive: " + aliveEnemies;
+    }
+
+
+    public void SpawnWave()
+    {
+        if (currentWave > 9)
+        {
+            cycleCount++;
+            currentWave = 0;
+        }
+        for (int i = 0; i < cycleCount; i++)
+        {
+            waves[currentWave].StartWave();
+        }
+        dt = 0.0f;
+        if (currentWave == 9)
+        {
+            for (int i = 0; i < cycleCount; i++)
+            {
+                SpawnRandomBoss();
+                Debug.Log("Spawned Boss");
+            }
+        }
     }
 
     public void SpawnRandomBoss()

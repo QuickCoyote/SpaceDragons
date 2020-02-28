@@ -11,7 +11,7 @@ public class Wave : ScriptableObject
 
     public void StartWave()
     {
-        GameObject player = FindObjectOfType<EnemyWaveManager>().Player;
+        GameObject player = EnemyWaveManager.Instance.Player;
 
         for (int i = 0; i < myEnemies.Count; i++)
         {
