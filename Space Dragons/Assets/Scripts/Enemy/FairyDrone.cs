@@ -49,7 +49,11 @@ public class FairyDrone : Enemy
             {
                 target = idleLocation.position;
             }
-           
+            if (Vector3.Distance(transform.position, idleLocation.position) > 50.0f)
+            {
+                Die();
+            }
+
             if (Vector3.Distance(transform.position, target) > 1.0f)
             {
                 Vector3 direction = target - transform.position;

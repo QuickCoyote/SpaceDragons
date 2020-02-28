@@ -51,6 +51,7 @@ public class AttackDrone : MonoBehaviour
             Destroy(gameObject);
         }
 
+
         Vector3 direction = targetPosition - transform.position;
 
         if (enemyToAttack)
@@ -77,6 +78,10 @@ public class AttackDrone : MonoBehaviour
                         idleLocation = parent.GetComponent<AttackDroneBay>().droneIdlePos2;
                         break;
                 }
+            }
+            if (Vector3.Distance(transform.position, idleLocation.position) > 50.0f)
+            {
+                Destroy(gameObject);
             }
 
             direction = targetPosition - transform.position;

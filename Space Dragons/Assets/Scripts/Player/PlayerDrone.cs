@@ -65,6 +65,11 @@ public class PlayerDrone : MonoBehaviour
             direction = targetPosition - transform.position + transform.up;
         }
 
+        if (Vector3.Distance(transform.position, idleLocation.position) > 100.0f)
+        {
+            myHealth.healthCount = 0.0f;
+        }
+
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
