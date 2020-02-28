@@ -1,14 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class FairyBossEnemy : Enemy
 {
     [SerializeField] ItemObject itemPrefab = null;
+    public Transform droneSpawnPos;
+    public Transform droneIdlePos1;
+    public Transform droneIdlePos2;
+    public Transform droneIdlePos3;
+    public Transform droneIdlePos4;
+    public List<FairyDrone> drones = new List<FairyDrone>();
+    public GameObject attackDronePrefab = null;
+
+    public int droneCount = 0;
+    int side = 0;
 
     new private void Start()
     {
         base.Start();
+        SpawnDrone();
+        SpawnDrone();
+        SpawnDrone();
+        SpawnDrone();
     }
 
     new public void Die()
@@ -18,6 +31,13 @@ public class FairyBossEnemy : Enemy
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
             g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
             g.image.sprite = g.itemData.itemImage;
+        }
+        foreach (FairyDrone go in drones)
+        {
+            if (go)
+            {
+                go.Die();
+            }
         }
         base.Die();
     }
@@ -37,6 +57,7 @@ public class FairyBossEnemy : Enemy
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
+
     protected override void Attack()
     {
         if (IsPlayerInSight())
@@ -52,8 +73,13 @@ public class FairyBossEnemy : Enemy
                     p.Fire(gunNozzle.transform, attackDamage, gameObject);
                 }
             }
-
         }
+        if (droneCount < 4)
+        {
+            SpawnDrone();
+        }
+        AssignParents();
+        SpawnMinions();
     }
     protected override void Move()
     {
@@ -63,14 +89,53 @@ public class FairyBossEnemy : Enemy
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        transform.Translate(transform.up * speed * Time.fixedDeltaTime, Space.World);
     }
-    private void OnDestroy()
+
+    public void AssignParents()
     {
-        for (int i = 0; i < lootnum; i++)
+        side = 0;
+        foreach (FairyDrone dro in drones)
         {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
+            if (dro)
+            {
+                dro.side = side;
+                dro.fairySpeed = speed;
+            }
+            side++;
+            if (side > 3) side = 0;
+        }
+    }
+
+    public void SpawnDrone()
+    {
+        drones.Add(Instantiate(attackDronePrefab, droneSpawnPos.position, droneSpawnPos.rotation).GetComponent<FairyDrone>());
+        droneCount++;
+
+        side = 0;
+        foreach (FairyDrone go in drones)
+        {
+            if (go)
+            {
+                go.side = side;
+                switch (side)
+                {
+                    case 0:
+                        go.idleLocation = droneIdlePos1;
+                        break;
+                    case 1:
+                        go.idleLocation = droneIdlePos2;
+                        break;
+                    case 2:
+                        go.idleLocation = droneIdlePos3;
+                        break;
+                    case 3:
+                        go.idleLocation = droneIdlePos4;
+                        break;
+                }
+                side++;
+                if (side > 3) side = 0;
+            }
         }
     }
 }
