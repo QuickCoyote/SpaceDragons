@@ -26,11 +26,12 @@ public class TeleportController : UIBaseClass
 
     int index = 0;
     int cost = 0;
-
+    WorldManager worldManager;
     List<TeleportController> visitedTeleports = null;
 
     void Start()
     {
+        worldManager = WorldManager.Instance;
         visited = LoadManager.Instance.saveData.VisitedTeleports.ToList().Exists(e => e == LocationName);
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
@@ -65,7 +66,7 @@ public class TeleportController : UIBaseClass
     {
         cost = (int)(Vector3.Distance(transform.position, visitedTeleports[index].transform.position) * costmultiplier);
         costReadout.text = cost.ToString();
-        moneyReadout.text = WorldManager.Instance.PlayerController.money.ToString();
+        moneyReadout.text = worldManager.PlayerController.money.ToString();
         teleportLocationReadout.text = visitedTeleports[index].LocationName;
         messageReadout.text = "";
         if (visitedTeleports[index].LocationName == LocationName)
@@ -73,7 +74,7 @@ public class TeleportController : UIBaseClass
             uiTeleportButton.SetActive(false);
             messageReadout.text += "Current Location. ";
         }
-        else if (WorldManager.Instance.PlayerController.money < cost)
+        else if (worldManager.PlayerController.money < cost)
         {
             uiTeleportArrows.SetActive(false);
             messageReadout.text += "Not Enough Money. ";
@@ -127,8 +128,9 @@ public class TeleportController : UIBaseClass
       public void TeleportToLocation()
     {
         UpdateUI();
-        WorldManager.Instance.PlayerController.RemoveMoney(cost);
-        WorldManager.Instance.SpawnWarpHole(transform.position);
+        worldManager.PlayerController.RemoveMoney(cost);
+        WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", transform.position, Quaternion.identity).GetComponent<WarpHole>();
+        if (warp1) warp1.Activate();
         ToggleUI();
         TeleportTransition.SetTrigger("Warp");
     }
@@ -137,9 +139,10 @@ public class TeleportController : UIBaseClass
     public void MovePlayer()
     {
         AndroidManager.HapticFeedback();
-        Vector3 pos = visitedTeleports[index].transform.position + (WorldManager.Instance.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
-        WorldManager.Instance.SpawnWarpHole(visitedTeleports[index].transform.position);
-        foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)
+        Vector3 pos = visitedTeleports[index].transform.position + (worldManager.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
+        WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", visitedTeleports[index].transform.position, Quaternion.identity).GetComponent<WarpHole>();
+        if (warp1) warp1.Activate();
+        foreach (Transform t in worldManager.Ship.bodyPartTransforms)
         {
             if(t)
             {

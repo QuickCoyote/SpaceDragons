@@ -53,5 +53,9 @@ MonoBehaviour:
   ClusterNum: 800
   AsteroidMinimum: 2
   AsteroidMaximum: 5
-  asteroids: []
   AsteroidsDestroyed: 0
+  AsteroidPool:
+    tag: Asteroid
+    objectPrefab: {fileID: 336725093998916287, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4,
+      type: 3}
+    maxNumOfObject: 100

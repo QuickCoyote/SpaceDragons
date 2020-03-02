@@ -5,18 +5,30 @@ using UnityEngine;
 public class WarpHole : MonoBehaviour
 {
    public float m_lifetime = 3.0f;
+   public float m_lifetimeReset = 3.0f;
+
+    Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public void Activate()
+    {
+        m_lifetime = m_lifetimeReset;
+    }
 
     private void Update()
     {
         m_lifetime -= Time.deltaTime;
         if (m_lifetime < 0.0f)
         {
-            GetComponent<Animator>().SetTrigger("Die");
+            anim.SetTrigger("Die");
         }
     }
 
     void Destoyself()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class HumanBossEnemy : Enemy
 {
-    [SerializeField] ItemObject itemPrefab = null;
     [SerializeField] Material lightningMat = null;
-
-    private void Start()
-    {
-        base.Start();
-    }
 
     public float lootnum = 5.0f;
 
@@ -107,14 +101,19 @@ public class HumanBossEnemy : Enemy
         Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
-    private void OnDestroy()
+
+    new public void Die()
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
+            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            if (item)
+            {
+                item.itemData = worldManager.GetRandomItemDataWeighted();
+                item.image.sprite = item.itemData.itemImage;
+            }
         }
+        base.Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

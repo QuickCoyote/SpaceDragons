@@ -7,7 +7,6 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public Transform WorldCorner = null;
 
     [SerializeField] public List<ItemData> Items = null;
-    [SerializeField] public List<GameObject> Explosions = null;
 
     [SerializeField] public GameObject Warphole = null;
     [SerializeField] public GameObject Head = null;
@@ -23,6 +22,15 @@ public class WorldManager : Singleton<WorldManager>
 
     public List<GameObject> AsteroidsToRender = null;
 
+    [System.Serializable]
+    public class Pool
+    {
+        public string tag = "";
+        public GameObject objectPrefab;
+        public int maxNumOfObject;
+    }
+    public Dictionary<string, Queue<GameObject>> objectPools = new Dictionary<string, Queue<GameObject>>();
+    public List<Pool> GenericPools = new List<Pool>();
     private float dt = 0.0f;
 
     private void Start()
@@ -30,6 +38,19 @@ public class WorldManager : Singleton<WorldManager>
         if (!Head)
         {
             Head = GameObject.FindGameObjectWithTag("Player");
+        }
+        foreach (Pool pool in GenericPools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+
+            for (int i = 0; i < pool.maxNumOfObject; i++)
+            {
+                GameObject obj = Instantiate(pool.objectPrefab);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+
+            objectPools.Add(pool.tag, objectPool);
         }
     }
 
@@ -60,16 +81,43 @@ public class WorldManager : Singleton<WorldManager>
 
     #region Spawner Methods
 
-    public void SpawnRandomExplosion(Vector3 target)
+    //public void SpawnRandomExplosion(Vector3 target)
+    //{
+    //    Explosion explosion = SpawnFromPool("Explosion", target, Quaternion.identity).GetComponent<Explosion>();
+    //    if (explosion) explosion.Activate();
+    //}
+
+    //public void SpawnWarpHole(Vector3 target)
+    //{
+    //    WarpHole warp = SpawnFromPool("WarpHole", target, Quaternion.identity).GetComponent<WarpHole>();
+    //    if(warp) warp.Activate();
+    //}
+
+    //public void SpawnAsteroidDestruction(Vector3 target)
+    //{
+    //    AsteroidBreakup breakup = SpawnFromPool("AsteroidDestruction", target, Quaternion.identity).GetComponent<AsteroidBreakup>();
+    //    if (breakup) breakup.Activate();
+    //}
+
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
-        Instantiate(Explosions[Random.Range(0, Explosions.Count)], target, Quaternion.identity, null);
+        if (!objectPools.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + "doesn't exist.");
+            return null;
+        }
+
+        GameObject objectToSpawn = objectPools[tag].Dequeue();
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
+
+        objectPools[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
     }
 
-
-    public void SpawnWarpHole(Vector3 target)
-    {
-        Instantiate(Warphole, target, Quaternion.identity, null);
-    }
     #endregion
 
     #region Return Item Methods

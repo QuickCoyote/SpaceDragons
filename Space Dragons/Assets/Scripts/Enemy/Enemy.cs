@@ -30,10 +30,11 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector3 target;
     protected Health hp;
-
+    protected WorldManager worldManager;
     protected void Start()
     {
-        Player = WorldManager.Instance.Head;
+        worldManager = WorldManager.Instance;
+        Player = worldManager.Head;
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
         animator = GetComponent<Animator>();
@@ -59,7 +60,8 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
-        WorldManager.Instance.SpawnRandomExplosion(transform.position);
+        Explosion explosion = worldManager.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+        if (explosion) explosion.Activate();
         EnemyWaveManager.Instance.aliveEnemies--;
         Destroy(gameObject);
     }

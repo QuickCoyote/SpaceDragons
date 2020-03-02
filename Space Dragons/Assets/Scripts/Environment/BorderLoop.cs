@@ -37,13 +37,15 @@ public class BorderLoop : MonoBehaviour
 
         if (collision.transform.tag == "Player")
         {
-            WorldManager.Instance.SpawnWarpHole(collision.transform.position);
+            WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
+            if (warp) warp.Activate();
             TeleportTransition.SetTrigger("Warp");
         }
     }
     public void MovePlayer()
     {
-        WorldManager.Instance.SpawnWarpHole(pos);
+        WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", pos, Quaternion.identity).GetComponent<WarpHole>();
+        if (warp) warp.Activate();
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)
         {
             t.position = pos;
@@ -78,8 +80,10 @@ public class BorderLoop : MonoBehaviour
 
         if (collision.transform.tag != "Player" && collision.gameObject.layer != 8 && collision.gameObject.layer != 11) //dont do turrets or snake
         {
-            WorldManager.Instance.SpawnWarpHole(pos);
-            WorldManager.Instance.SpawnWarpHole(collision.transform.position);
+            WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", pos, Quaternion.identity).GetComponent<WarpHole>();
+            if (warp) warp.Activate();
+            WarpHole warp2 = WorldManager.Instance.SpawnFromPool("WarpHole", collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
+            if (warp2) warp2.Activate();
             collision.transform.position = pos;
         }
     }

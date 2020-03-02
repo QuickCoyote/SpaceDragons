@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FairyBossEnemy : Enemy
 {
-    [SerializeField] ItemObject itemPrefab = null;
     public Transform droneSpawnPos;
     public Transform droneIdlePos1;
     public Transform droneIdlePos2;
@@ -28,9 +27,12 @@ public class FairyBossEnemy : Enemy
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
+            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            if (item)
+            {
+                item.itemData = worldManager.GetRandomItemDataWeighted();
+                item.image.sprite = item.itemData.itemImage;
+            }
         }
         foreach (FairyDrone go in drones)
         {

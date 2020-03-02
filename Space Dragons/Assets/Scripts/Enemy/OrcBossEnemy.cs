@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class OrcBossEnemy : Enemy
 {
-    [SerializeField] ItemObject itemPrefab = null;
-
-    new private void Start()
-    {
-        base.Start();
-    }
-
      new public void Die()
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
-            g.itemData = WorldManager.Instance.GetRandomItemDataWeighted();
-            g.image.sprite = g.itemData.itemImage;
+            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            if (item)
+            {
+                item.itemData = worldManager.GetRandomItemDataWeighted();
+                item.image.sprite = item.itemData.itemImage;
+            }
         }
         base.Die();
     }

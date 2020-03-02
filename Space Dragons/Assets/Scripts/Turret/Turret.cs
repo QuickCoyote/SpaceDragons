@@ -53,7 +53,8 @@ public abstract class Turret : MonoBehaviour
     {
         if(myHealth.healthCount <= 0)
         {
-            WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            Explosion explosion = WorldManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+            if (explosion) explosion.Activate();
             WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
         }
     }

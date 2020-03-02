@@ -5538,11 +5538,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c005a3ef29311ca4c8f1302c328ffedf, type: 2}
   - {fileID: 11400000, guid: bfdbb1a29540d4f44a62e2993778731a, type: 2}
   - {fileID: 11400000, guid: 52373a7b60042d444a17979ac1ce4ae7, type: 2}
-  Explosions:
-  - {fileID: 7860787846816169698, guid: 52996effe82245b44812bc855a09a948, type: 3}
-  - {fileID: 7558689610011893139, guid: fe76e160e2618de4da7a818a59c0ee7c, type: 3}
-  - {fileID: 3625080498115814520, guid: 4792332e7c6b4954e929752fbf9bb6f0, type: 3}
-  - {fileID: 756791437917144548, guid: 7523bfa12921a664c9d5807c7aac87d7, type: 3}
   Warphole: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
     type: 3}
   Head: {fileID: 0}
@@ -5550,7 +5545,25 @@ MonoBehaviour:
   Ship: {fileID: 0}
   lightningMat: {fileID: 2100000, guid: 35c24991d1ed52e4aa94aa51dda4bcf3, type: 2}
   enemyWaveManager: {fileID: 0}
-  objectsToRender: []
+  enemiesToRender: []
+  AsteroidsToRender: []
+  GenericPools:
+  - tag: WarpHole
+    objectPrefab: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: Explosion
+    objectPrefab: {fileID: 7860787846816169698, guid: 52996effe82245b44812bc855a09a948,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: AsteroidDestruction
+    objectPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: Item
+    objectPrefab: {fileID: 2912807714242326508, guid: 68adc80050e331044bb4903d011e0333,
+      type: 3}
+    maxNumOfObject: 150
 --- !u!1001 &323123249055565024
 PrefabInstance:
   m_ObjectHideFlags: 0

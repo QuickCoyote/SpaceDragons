@@ -121,7 +121,8 @@ public class AttackDrone : MonoBehaviour
         if (myHealth.healthCount <= 0)
         {
             parent.GetComponent<AttackDroneBay>().droneCount--;
-            WorldManager.Instance.SpawnRandomExplosion(transform.position);
+            Explosion explosion = WorldManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+            if (explosion) explosion.Activate();
             Destroy(gameObject);
         }
     }
