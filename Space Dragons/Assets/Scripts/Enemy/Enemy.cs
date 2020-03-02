@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected GameObject projectile = null;
     [SerializeField] protected GameObject gunNozzle = null;
+    [SerializeField] public string projectileName = "";
     [SerializeField] public float speed;
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float shootingSpeed;
@@ -39,6 +39,7 @@ public abstract class Enemy : MonoBehaviour
         hp = GetComponent<Health>();
         animator = GetComponent<Animator>();
         DamageParticles.SetActive(false);
+        if (projectileName == "") projectileName = "BasicProjectile";
     }
 
     void FixedUpdate()

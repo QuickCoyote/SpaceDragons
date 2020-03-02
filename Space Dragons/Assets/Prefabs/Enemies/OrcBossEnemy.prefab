@@ -5234,9 +5234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53008d0509c2e044c972ef57edc4c430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 8772730476961618180, guid: 137d958d411bbb146ac895c27c625816,
-    type: 3}
   gunNozzle: {fileID: 351495007370847563}
+  projectileName: BossHomingMissile
   speed: 0
   rotationSpeed: 0.25
   shootingSpeed: 2
@@ -5246,15 +5245,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   DamageParticles: {fileID: 882811326204626365}
   Player: {fileID: 0}
-  itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
-    type: 3}
   lootnum: 5
   flameDamage: 5
   fireWaveTimer: 0.025
   fireWaveReset: 0.025
   firewaveRotateSpeed: 90
-  FireProjectile: {fileID: 2532223516486878604, guid: dd7bc936f2824e04881a6ddf73b51957,
-    type: 3}
   FireNozzle: {fileID: 5279458367193505627}
   FireGun: {fileID: 152299765253800439}
   Minion: {fileID: 7044326793431985128, guid: 09c1a6d648b094e49b3e31e36635b894, type: 3}

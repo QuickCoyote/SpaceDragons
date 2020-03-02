@@ -15,12 +15,11 @@ public class FairyDrone : Enemy
             if (shootingTimer < 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
-                }
+                GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
+
+                Projectile p = projectileGO.GetComponent<Projectile>();
+                p.Fire(gunNozzle.transform, attackDamage, gameObject);
+
             }
         }
     }
@@ -66,7 +65,7 @@ public class FairyDrone : Enemy
             else
             {
                 speed = fairySpeed + .05f;
-                transform.rotation = Quaternion.Slerp(transform.rotation, idleLocation.rotation, rotationSpeed/10 * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, idleLocation.rotation, rotationSpeed / 10 * Time.deltaTime);
                 transform.Translate(transform.up * speed * Time.fixedDeltaTime, Space.World);
             }
         }

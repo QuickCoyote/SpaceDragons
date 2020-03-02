@@ -28,9 +28,8 @@ public class Ship : MonoBehaviour
     #region Variables
 
     public Camera cam = null;
-    public Health shipHealth = null;
-
     bool isDead = false;
+    PlayerController controller;
 
     [Header("Body Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
@@ -41,6 +40,7 @@ public class Ship : MonoBehaviour
     public GameObject head = null;
     public Sprite[] ShipHeadSprites;
     public SpriteRenderer ShipHeadSprite = null;
+    public Health headHealth = null;
 
     [Header("Snake Info")]
     public float minDst = 1.0f;
@@ -85,10 +85,8 @@ public class Ship : MonoBehaviour
 
     private void Start()
     {
-        if (!shipHealth)
-        {
-            shipHealth = bodyPartTransforms[0].GetComponent<Health>();
-        }
+        controller = WorldManager.Instance.PlayerController;
+       
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
         speed = defaultSpeed;
@@ -117,7 +115,7 @@ public class Ship : MonoBehaviour
     {
         motherShip = LoadManager.Instance.saveData.motherShipType;
         SetShipHead((int)motherShip);
-        shipHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
+        headHealth.healthCount = LoadManager.Instance.saveData.PlayerHealth;
         boostFuelMAX = LoadManager.Instance.saveData.PlayerFuelMax;
         boostFuel = LoadManager.Instance.saveData.PlayerFuelCurrent;
         LoadManager.ShipDataSavable[] ships = LoadManager.Instance.saveData.Ships;
@@ -448,17 +446,6 @@ public class Ship : MonoBehaviour
         }
         PlayerController playerController = GetComponent<PlayerController>();
         playerController.SwitchFireMode(motherShip);
-        if (val < playerController.headBullets.Length)
-        {
-            if (playerController.headBullets[val])
-            {
-                playerController.headBullet = playerController.headBullets[val];
-            }
-        }
-        else
-        {
-            playerController.headBullet = null;
-        }
         ShipHeadSprite.sprite = ShipHeadSprites[val];
     }
 
@@ -486,7 +473,7 @@ public class Ship : MonoBehaviour
     
     public void CheckForDie()
     {
-        if (shipHealth.healthCount <= 0)
+        if (headHealth.healthCount <= 0)
         {
             AndroidManager.HapticFeedback();
             if (!isDead)

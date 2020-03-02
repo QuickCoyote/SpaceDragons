@@ -49,34 +49,28 @@ public class AnimalBossEnemy : Enemy
 
     protected override void Attack()
     {
-        if (hp.healthCount < hp.healthMax/2.0f) shootingSpeed = shootingSpeedIncrease;
-        
+        if (hp.healthCount < hp.healthMax / 2.0f) shootingSpeed = shootingSpeedIncrease;
+
         if (IsPlayerInSight())
         {
             shootingTimer -= Time.deltaTime;
             if (shootingTimer < 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
-                }
-            }
 
-            shootingTimer2 -= Time.deltaTime;
-            if (shootingTimer2 < 0.0f)
-            {
-                shootingTimer2 = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle2.transform.position, gunNozzle2.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle2.transform, attackDamage, gameObject);
-
-                }
+                GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
+                Projectile p = projectileGO.GetComponent<Projectile>();
+                p.Fire(gunNozzle.transform, attackDamage, gameObject);
             }
+        }
+
+        shootingTimer2 -= Time.deltaTime;
+        if (shootingTimer2 < 0.0f)
+        {
+            shootingTimer2 = shootingSpeed;
+            GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle2.transform.position, gunNozzle2.transform.rotation);
+            Projectile p = projectileGO.GetComponent<Projectile>();
+            p.Fire(gunNozzle2.transform, attackDamage, gameObject);
         }
 
         SpawnMinions();
@@ -93,7 +87,7 @@ public class AnimalBossEnemy : Enemy
 
         Vector3 TurretDirection1 = target - Turret1.transform.position;
         Vector3 TurretDirection2 = target - Turret2.transform.position;
-        
+
         float angle1 = Mathf.Atan2(TurretDirection1.x, TurretDirection1.y) * Mathf.Rad2Deg;
         Quaternion rotation1 = Quaternion.AngleAxis(-angle1, Vector3.forward);
         Turret1.transform.rotation = Quaternion.Slerp(Turret1.transform.rotation, rotation1, rotationSpeed * 2 * Time.deltaTime);

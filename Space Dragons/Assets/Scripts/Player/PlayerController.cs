@@ -27,14 +27,9 @@ public class PlayerController : MonoBehaviour
 
     public int money = 100;
 
-    public GameObject[] headBullets = null;
-    public GameObject head = null;
-    public GameObject headBullet = null;
-
-    public Health headHealth = null;
-
     public Inventory inventory = null;
-
+    WorldManager worldManager;
+    Ship ship;
 
     float dt = 0;
 
@@ -44,9 +39,9 @@ public class PlayerController : MonoBehaviour
 
     public void BasicFire()
     {
-        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
+        GameObject projectileGO = worldManager.SpawnFromPool("DefaultPlayerProjectile", ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.parentobj = head;
+        projectile.parentobj = ship.head;
         projectile.damage = attackDamage;
         projectile.Fire();
     }
@@ -65,11 +60,11 @@ public class PlayerController : MonoBehaviour
     private void FlameFire()
     {
         Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
-        Vector3 projectileDirection = rotAngle * head.transform.up;
-
-        GameObject projectileGO = (Instantiate(headBullet, head.transform.position + (bulletOffsetY * head.transform.up), Quaternion.identity, null) as GameObject);
+        Vector3 projectileDirection = rotAngle * ship.head.transform.up;
+        
+        GameObject projectileGO = worldManager.SpawnFromPool("FlamePlayerProjectile", ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
-        projectile.parentobj = head;
+        projectile.parentobj = ship.head;
         projectile.damage = attackDamage;
         projectile.goDirection = projectileDirection;
         projectile.lifetime = flameLifeSpan;
@@ -103,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
         float acceptableAngle = 30f;
 
-        Collider2D[] col2D = Physics2D.OverlapCircleAll(head.transform.position, lightningMaxDistance);
+        Collider2D[] col2D = Physics2D.OverlapCircleAll(ship.head.transform.position, lightningMaxDistance);
 
         foreach (Collider2D col in col2D)
         {
@@ -111,12 +106,12 @@ public class PlayerController : MonoBehaviour
             col.TryGetComponent(out hp);
             if (hp)
             {
-                if (hp != headHealth)
+                if (hp != ship.headHealth)
                 {
                     if (hp.gameObject.layer != 11 && hp.gameObject.layer != 8)
                     {
-                        Vector3 direction = col.transform.position - head.transform.position;
-                        if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+                        Vector3 direction = col.transform.position - ship.head.transform.position;
+                        if (Vector3.Angle(ship.head.transform.up, direction) < acceptableAngle)
                         {
                             objectsWithinRange.Add(hp);
                         }
@@ -127,11 +122,11 @@ public class PlayerController : MonoBehaviour
 
         if (objectsWithinRange.Count > 0)
         {
-            Vector3 direction = objectsWithinRange[0].transform.position - head.transform.position;
+            Vector3 direction = objectsWithinRange[0].transform.position - ship.head.transform.position;
             myTargetIcon.SetActive(true);
             myTargetIcon.transform.position = objectsWithinRange[0].transform.position;
             Debug.Log("I activated my boi; he's over here: " + myTargetIcon.transform.position);
-            if (Vector3.Angle(head.transform.up, direction) < acceptableAngle)
+            if (Vector3.Angle(ship.head.transform.up, direction) < acceptableAngle)
             {
                 enemiesShocked = 1;
                 ShockNext(objectsWithinRange[0]);
@@ -140,9 +135,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             myTargetIcon.SetActive(false);
-            Quaternion rotAngle = head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
-            Vector3 randomDirection = (rotAngle * head.transform.up);
-            randomDirection = (randomDirection.normalized * lightningMaxDistance) + head.transform.parent.position;
+            Quaternion rotAngle = ship.head.transform.rotation * Quaternion.Euler(0, 0, Random.Range(-acceptableAngle * 0.5f, acceptableAngle * 0.5f));
+            Vector3 randomDirection = (rotAngle * ship.head.transform.up);
+            randomDirection = (randomDirection.normalized * lightningMaxDistance) + ship.head.transform.parent.position;
 
             Shock(randomDirection);
         }
@@ -163,7 +158,7 @@ public class PlayerController : MonoBehaviour
             myLightning = gameObject.AddComponent<Lightning>();
         }
 
-        if (hp != headHealth)
+        if (hp != ship.headHealth)
         {
             myLightning.target = hp.transform.position;
         }
@@ -210,9 +205,9 @@ public class PlayerController : MonoBehaviour
             myLightning.RemoveLightning();
         }
 
-        if (shockPosition != head.transform.position)
+        if (shockPosition != ship.head.transform.position)
         {
-            head.gameObject.AddComponent<Lightning>().target = shockPosition;
+            ship.head.gameObject.AddComponent<Lightning>().target = shockPosition;
         }
         else
         {
@@ -264,7 +259,7 @@ public class PlayerController : MonoBehaviour
     {
         Health enemy = null;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(head.transform.position, 10);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(ship.head.transform.position, 10);
 
         foreach (Collider2D collider in colliders)
         {
@@ -343,7 +338,7 @@ public class PlayerController : MonoBehaviour
     public void SpawnDrone()
     {
         guardDroneCount++;
-        guardDrones.Add(Instantiate(guardDrone, head.transform.position, Quaternion.identity, null));
+        guardDrones.Add(Instantiate(guardDrone, ship.head.transform.position, Quaternion.identity, null));
 
         for (int i = 0; i < guardDrones.Count; i++)
         {
@@ -366,13 +361,13 @@ public class PlayerController : MonoBehaviour
             switch (drone.side)
             {
                 case 0:
-                    drone.targetPosition = head.transform.right + head.transform.position;
+                    drone.targetPosition = ship.head.transform.right + ship.head.transform.position;
                     break;
                 case 1:
-                    drone.targetPosition = head.transform.up + head.transform.position;
+                    drone.targetPosition = ship.head.transform.up + ship.head.transform.position;
                     break;
                 case 2:
-                    drone.targetPosition = -head.transform.right + head.transform.position;
+                    drone.targetPosition = -ship.head.transform.right + ship.head.transform.position;
                     break;
             }
         }
@@ -383,6 +378,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         inventory = GetComponent<Inventory>();
+        worldManager = WorldManager.Instance;
+        ship = worldManager.Ship;
         LoadData();
     }
 

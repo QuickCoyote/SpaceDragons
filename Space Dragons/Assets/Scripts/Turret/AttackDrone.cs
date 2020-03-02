@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class AttackDrone : MonoBehaviour
 {
-    public GameObject bullet = null;
+    public GameObject bulletSpawn = null;
     public GameObject parent = null;
     public GameObject enemyToAttack;
-    public GameObject bulletSpawn = null;
     public Transform idleLocation = null;
 
     public float damage;
@@ -37,7 +36,7 @@ public class AttackDrone : MonoBehaviour
         if (attackTimer > attackSpeed)
         {
             attackTimer = 0;
-            GameObject projectileGO = (Instantiate(bullet, bulletSpawn.transform.position, transform.rotation, null) as GameObject);
+            GameObject projectileGO = WorldManager.Instance.SpawnFromPool("AttackDroneProjectile", bulletSpawn.transform.position, transform.rotation);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = gameObject;
             projectile.Fire();

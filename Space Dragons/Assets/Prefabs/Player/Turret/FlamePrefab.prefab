@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec997aabe9545f844ae96d606eb0381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileName: FlameTurretProjectile
   damage: 0
   range: 55
   attackSpeed: 0.125
@@ -387,7 +388,6 @@ MonoBehaviour:
   travelDirection: {x: 0, y: 0, z: 0}
   burnDamage: 50
   rotationSpeed: 3
-  flames: {fileID: 2532223516486878601, guid: 746de27fffc96444eb717d99e8e40060, type: 3}
   flameAttackangle: 15
   bulletOffsetY: 1
   flameLifeSpan: 1.25

@@ -7,7 +7,6 @@ public class FlameTurret : Turret
 {
     [SerializeField] float burnDamage = 10.0f;
     [SerializeField] float rotationSpeed = 45f;
-    [SerializeField] GameObject flames = null;
 
     public Queue<Enemy> enemiesToBurn = new Queue<Enemy>();
     public int flameAttackangle;
@@ -72,7 +71,7 @@ public class FlameTurret : Turret
         Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
         Vector3 projectileDirection = rotAngle * rotateBoi.transform.up;
 
-        GameObject projectileGO = (Instantiate(flames, transform.position + (bulletOffsetY * rotateBoi.transform.up), Quaternion.identity, null) as GameObject);
+        GameObject projectileGO = worldManager.SpawnFromPool(projectileName, transform.position + (bulletOffsetY * rotateBoi.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.parentobj = gameObject;
         projectile.damage = 0.25f;

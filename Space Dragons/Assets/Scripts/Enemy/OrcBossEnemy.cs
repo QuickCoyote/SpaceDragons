@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OrcBossEnemy : Enemy
 {
-     new public void Die()
+    new public void Die()
     {
         for (int i = 0; i < lootnum; i++)
         {
@@ -23,7 +21,6 @@ public class OrcBossEnemy : Enemy
     public float fireWaveTimer = 0.5f;
     public float fireWaveReset = 0.5f;
     public float firewaveRotateSpeed = 15.0f;
-    [SerializeField] Projectile FireProjectile = null;
     [SerializeField] Transform FireNozzle = null;
     [SerializeField] GameObject FireGun = null;
 
@@ -50,13 +47,11 @@ public class OrcBossEnemy : Enemy
             if (shootingTimer <= 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
+                GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
 
-                    HomingMissile p = projectileGO.GetComponent<HomingMissile>();
-                    p.Fire(gunNozzle.transform, attackDamage, gameObject, WorldManager.Instance.Head);
-                }
+                HomingMissile p = projectileGO.GetComponent<HomingMissile>();
+                p.Fire(gunNozzle.transform, attackDamage, gameObject, WorldManager.Instance.Head);
+
             }
         }
 
@@ -64,13 +59,13 @@ public class OrcBossEnemy : Enemy
         if (fireWaveTimer <= 0.0f)
         {
             fireWaveTimer = fireWaveReset;
-            if (FireProjectile)
-            {
+
+                GameObject projectileGO = worldManager.SpawnFromPool("BossFlameProjectile", FireNozzle.position, FireNozzle.rotation);
                 FireNozzle.localRotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-30, 30));
-                Projectile p  = Instantiate(FireProjectile, FireNozzle.position, FireNozzle.rotation, null);
+                Projectile p = projectileGO.GetComponent<Projectile>();
                 p.Fire(FireNozzle, flameDamage, gameObject);
 
-            }
+            
         }
 
         FireGun.transform.Rotate(Vector3.forward, firewaveRotateSpeed * Time.deltaTime);

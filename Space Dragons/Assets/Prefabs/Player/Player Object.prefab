@@ -16330,7 +16330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 196209911218918717}
-  shipHealth: {fileID: 196209910265618379}
   bodyPartTransforms:
   - {fileID: 196209910265618381}
   bodyPartObjects: []
@@ -16348,6 +16347,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3adcac949a7718341a6d61520d72f13e, type: 3}
   - {fileID: 21300000, guid: 9b835cb6fb3c28e439ef2a4652ad2271, type: 3}
   ShipHeadSprite: {fileID: 196209910334023937}
+  headHealth: {fileID: 196209910265618379}
   minDst: 3
   startSize: 2
   maxShipsAllowed: 4
@@ -16386,19 +16386,12 @@ MonoBehaviour:
   fireType: 0
   attackSpeed: 0.5
   attackTimer: 0
-  money: 100
   attackDamage: 15
-  inventory: {fileID: 5215258217068158141}
-  head: {fileID: 196209910334023939}
-  headHealth: {fileID: 196209910265618379}
-  headBullet: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774,
-    type: 3}
-  headBullets:
-  - {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774, type: 3}
-  - {fileID: 2532223516486878601, guid: 46afdc19e532d5740a61925960b4a340, type: 3}
   bulletOffsetY: 1
   basicAttackSpeed: 0.25
   basicAttackDamage: 5
+  money: 100
+  inventory: {fileID: 5215258217068158141}
   flameSpeed: 8
   flameLifeSpan: 1.25
   flameAttackangle: 15
@@ -16435,9 +16428,9 @@ MonoBehaviour:
   PauseOnly: 1
   IsShop: 0
   helpScreen: 0
-  emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   inventoryDisplay: {fileID: 152004549}
   itemInfoPanel: {fileID: 417303761}
+  emptyItemImage: {fileID: 21300000, guid: a30c0a95b9747f240a3ccf1f359e43d8, type: 3}
   itemInfoPanelImage: {fileID: 792260484}
   itemInfoPanelName: {fileID: 1668860860}
   itemInfoPanelDesc: {fileID: 1179927840}

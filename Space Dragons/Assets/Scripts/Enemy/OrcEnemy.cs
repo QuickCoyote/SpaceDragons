@@ -12,12 +12,11 @@ public class OrcEnemy : Enemy
             if (shootingTimer < 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
+                GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
+
+                Projectile p = projectileGO.GetComponent<Projectile>();
                     p.Fire(gunNozzle.transform, attackDamage, gameObject);
-                }
+                
             }
         }
     }

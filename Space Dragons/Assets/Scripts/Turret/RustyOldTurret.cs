@@ -5,7 +5,6 @@ using System.Linq;
 
 public class RustyOldTurret : Turret
 {
-    [SerializeField] GameObject bullet = null;
     [SerializeField] float rotationSpeed = 45f;
     [SerializeField] float bulletOffsetY = 1f;
 
@@ -51,7 +50,7 @@ public class RustyOldTurret : Turret
         if (attackTimer > attackSpeed)
         {
             attackTimer = 0;
-            GameObject projectileGO = (Instantiate(bullet, transform.position + (bulletOffsetY * rotateBoi.transform.up), rotateBoi.transform.rotation, null) as GameObject);
+            GameObject projectileGO = worldManager.SpawnFromPool(projectileName, transform.position + (bulletOffsetY * rotateBoi.transform.up), rotateBoi.transform.rotation);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = rotateBoi;
             projectile.Fire();

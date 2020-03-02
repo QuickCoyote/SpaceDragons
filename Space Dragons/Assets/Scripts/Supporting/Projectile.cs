@@ -20,20 +20,19 @@ public class Projectile : MonoBehaviour
 
         if(lifetime < 0.0f)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject != parentobj) // make sure its not hitting itself
         {
             Health collidedHP = collision.gameObject.GetComponent<Health>();
             if (collidedHP)
             {
                 collidedHP.DealDamage(damage);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

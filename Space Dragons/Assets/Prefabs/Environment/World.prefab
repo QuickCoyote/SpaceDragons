@@ -5564,6 +5564,39 @@ MonoBehaviour:
     objectPrefab: {fileID: 2912807714242326508, guid: 68adc80050e331044bb4903d011e0333,
       type: 3}
     maxNumOfObject: 150
+  ProjectilePools:
+  - tag: BasicProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: DefaultTurretProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: 51c78af39cab59a4789cf13c55af15d3,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: FlameTurretProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: 746de27fffc96444eb717d99e8e40060,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: AttackDroneProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: DefaultPlayerProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: FlamePlayerProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: 46afdc19e532d5740a61925960b4a340,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: BossFlameProjectile
+    objectPrefab: {fileID: 2532223516486878601, guid: dd7bc936f2824e04881a6ddf73b51957,
+      type: 3}
+    maxNumOfObject: 50
+  - tag: BossHomingMissile
+    objectPrefab: {fileID: 8772730476961618180, guid: 137d958d411bbb146ac895c27c625816,
+      type: 3}
+    maxNumOfObject: 25
 --- !u!1001 &323123249055565024
 PrefabInstance:
   m_ObjectHideFlags: 0

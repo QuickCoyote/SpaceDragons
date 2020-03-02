@@ -31,6 +31,7 @@ public class WorldManager : Singleton<WorldManager>
     }
     public Dictionary<string, Queue<GameObject>> objectPools = new Dictionary<string, Queue<GameObject>>();
     public List<Pool> GenericPools = new List<Pool>();
+    public List<Pool> ProjectilePools = new List<Pool>(); //Separated mostly for ease of access
     private float dt = 0.0f;
 
     private void Start()
@@ -50,6 +51,18 @@ public class WorldManager : Singleton<WorldManager>
                 objectPool.Enqueue(obj);
             }
 
+            objectPools.Add(pool.tag, objectPool);
+        }
+
+        foreach (Pool pool in ProjectilePools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.maxNumOfObject; i++)
+            {
+                GameObject obj = Instantiate(pool.objectPrefab);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
             objectPools.Add(pool.tag, objectPool);
         }
     }
@@ -80,24 +93,6 @@ public class WorldManager : Singleton<WorldManager>
     }
 
     #region Spawner Methods
-
-    //public void SpawnRandomExplosion(Vector3 target)
-    //{
-    //    Explosion explosion = SpawnFromPool("Explosion", target, Quaternion.identity).GetComponent<Explosion>();
-    //    if (explosion) explosion.Activate();
-    //}
-
-    //public void SpawnWarpHole(Vector3 target)
-    //{
-    //    WarpHole warp = SpawnFromPool("WarpHole", target, Quaternion.identity).GetComponent<WarpHole>();
-    //    if(warp) warp.Activate();
-    //}
-
-    //public void SpawnAsteroidDestruction(Vector3 target)
-    //{
-    //    AsteroidBreakup breakup = SpawnFromPool("AsteroidDestruction", target, Quaternion.identity).GetComponent<AsteroidBreakup>();
-    //    if (breakup) breakup.Activate();
-    //}
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {

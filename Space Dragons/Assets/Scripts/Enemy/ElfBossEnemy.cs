@@ -54,12 +54,11 @@ public class ElfBossEnemy : Enemy
             if (shootingTimer < 0.0f)
             {
                 shootingTimer = shootingSpeed;
-                if (projectile)
-                {
-                    GameObject projectileGO = (Instantiate(projectile, gunNozzle.transform.position, gunNozzle.transform.rotation, null) as GameObject);
-                    Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
-                }
+                GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
+
+                Projectile p = projectileGO.GetComponent<Projectile>();
+                p.Fire(gunNozzle.transform, attackDamage, gameObject);
+
             }
         }
 
@@ -75,7 +74,7 @@ public class ElfBossEnemy : Enemy
             newlocation.x *= (Random.Range(0, 2) == 0) ? 1 : -1;
             newlocation.y *= (Random.Range(0, 2) == 0) ? 1 : -1;
             WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", transform.position, transform.rotation).GetComponent<WarpHole>();
-            if(warp1) warp1.Activate();
+            if (warp1) warp1.Activate();
             animator.SetTrigger("Warp");
             transform.position += newlocation;
             WarpHole warp2 = worldManager.SpawnFromPool("WarpHole", transform.position, transform.rotation).GetComponent<WarpHole>();

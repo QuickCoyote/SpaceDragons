@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Turret : MonoBehaviour
 {
+    public string projectileName = "";
     public float damage = 5;
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
@@ -23,12 +24,19 @@ public abstract class Turret : MonoBehaviour
 
     protected Queue<Enemy> enemies = new Queue<Enemy>();
     protected Health myHealth = null;
+    protected WorldManager worldManager;
+
     public abstract void Attack();
 
     protected void Awake()
     {
         myHealth = GetComponent<Health>();
         GetComponent<CircleCollider2D>().radius = range;
+    }
+    protected void Start()
+    {
+        worldManager = WorldManager.Instance;
+        if (projectileName == "") projectileName = "DefaultTurretProjectile";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

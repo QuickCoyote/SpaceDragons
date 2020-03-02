@@ -40,7 +40,7 @@ public class LoadManager : Singleton<LoadManager>
         {
             if (GameObject.FindGameObjectWithTag("Player"))
             {
-                saveData.PlayerHealth = WorldManager.Instance.Ship.shipHealth.healthCount;
+                saveData.PlayerHealth = WorldManager.Instance.Ship.headHealth.healthCount;
                 saveData.PlayerMoney = WorldManager.Instance.PlayerController.money;
                 saveData.PlayerFuelMax = WorldManager.Instance.Ship.boostFuelMAX;
                 saveData.PlayerFuelCurrent = WorldManager.Instance.Ship.boostFuel;

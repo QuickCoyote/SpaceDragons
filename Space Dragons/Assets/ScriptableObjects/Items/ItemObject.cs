@@ -19,7 +19,7 @@ public class ItemObject : MonoBehaviour
         {
             other.GetComponentInParent<Inventory>().AddItem(itemData, 1);
             other.GetComponentInParent<Inventory>().UpdateDisplay();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
