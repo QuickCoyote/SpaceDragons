@@ -2058,6 +2058,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.size
@@ -2780,6 +2790,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6600268545088139262, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5537,6 +5557,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7851826457358961477, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: Motherships.Array.size
@@ -5595,6 +5625,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AsteroidManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621478483943767822, guid: 28328e8298bffd743a1e33ede72d1e9e,
+        type: 3}
+      propertyPath: Pools.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621478483943767822, guid: 28328e8298bffd743a1e33ede72d1e9e,
+        type: 3}
+      propertyPath: Pools.Array.data[0].tag
+      value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621478483943767822, guid: 28328e8298bffd743a1e33ede72d1e9e,
+        type: 3}
+      propertyPath: Pools.Array.data[0].maxNumOfObject
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5203443758738299533, guid: 28328e8298bffd743a1e33ede72d1e9e,
         type: 3}
@@ -5913,6 +5958,16 @@ PrefabInstance:
     - target: {fileID: 6624302959233964642, guid: 5f4cf970ff9ecc042bd224115fa14acd,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223108378590493148, guid: 5f4cf970ff9ecc042bd224115fa14acd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7360681213223900737, guid: 5f4cf970ff9ecc042bd224115fa14acd,
@@ -6941,6 +6996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: World
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651800420884074864, guid: c03491f4a3e540f418e56991ec4cd7be,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8651800420884074866, guid: c03491f4a3e540f418e56991ec4cd7be,
         type: 3}
