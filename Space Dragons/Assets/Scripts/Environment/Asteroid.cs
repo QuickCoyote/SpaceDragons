@@ -48,22 +48,15 @@ public class Asteroid : MonoBehaviour
 
     public void KillAsteroid()
     {
-        if (asteroidSmaller)
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                Instantiate(asteroidSmaller, transform.position, transform.rotation, null); // creates new asteroids at 1/2 the size
-            }
-        }
         if (itemPrefab)
         {
             ItemObject g = Instantiate(itemPrefab, transform.position, transform.rotation, null); // drops item in world space
             g.itemData = WorldManager.Instance.GetRandomItemDataStepped();
             g.image.sprite = g.itemData.itemImage;
         }
-        AsteroidManager.Instance.SpawnAsteroidDestruction(transform.position);
-        AsteroidManager.Instance.AsteroidsDestroyed++;
-        Destroy(gameObject);
+        hp.healthCount = hp.healthMax;
+        gameObject.SetActive(false);
+        WorldManager.Instance.AsteroidsToRender.Remove(gameObject);
     }
 }
 

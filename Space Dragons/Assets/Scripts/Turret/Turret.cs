@@ -27,6 +27,7 @@ public abstract class Turret : MonoBehaviour
 
     protected void Awake()
     {
+        myHealth = GetComponent<Health>();
         GetComponent<CircleCollider2D>().radius = range;
     }
 

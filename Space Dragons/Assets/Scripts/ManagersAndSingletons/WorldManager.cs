@@ -19,14 +19,15 @@ public class WorldManager : Singleton<WorldManager>
 
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
 
-    [SerializeField] Rigidbody2D[] objectsToRender = null;
+    [SerializeField] Enemy[] enemiesToRender = null;
+
+    public List<GameObject> AsteroidsToRender = null;
 
     private float dt = 0.0f;
 
     private void Start()
     {
-        ResetList();
-        if (Head == null)
+        if (!Head)
         {
             Head = GameObject.FindGameObjectWithTag("Player");
         }
@@ -34,37 +35,27 @@ public class WorldManager : Singleton<WorldManager>
 
     private void FixedUpdate()
     {
-        dt += Time.fixedDeltaTime;
-        if (dt > 5)
+        ResetList();
+        foreach (Enemy go in enemiesToRender)
         {
-            ResetList();
-            foreach (Rigidbody2D go in objectsToRender)
+            if (Vector3.Distance(go.transform.position, Head.transform.position) > 50)
             {
-                if (Vector3.Distance(go.transform.position, Head.transform.position) > 150)
-                {
-                    if (go.gameObject.layer == 13)
-                    {
-                        go.gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.5f;
-                    }
-                }
-                else
-                {
-                    if (go.gameObject.layer == 13)
-                    {
-                        go.gameObject.SetActive(true);
-                    }
-                }
+                go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
+            }
+        }
+
+        foreach(GameObject asteroid in AsteroidsToRender)
+        {
+            if(Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
+            {
+                asteroid.SetActive(true);
             }
         }
     }
 
     public void ResetList()
     {
-        objectsToRender = FindObjectsOfType<Rigidbody2D>();
+        enemiesToRender = FindObjectsOfType<Enemy>();
     }
 
     #region Spawner Methods
