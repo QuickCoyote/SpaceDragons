@@ -6,8 +6,6 @@ public class HomingMissile : MonoBehaviour
 {
     public GameObject parentobj = null;
     public GameObject target = null;
-    public Rigidbody2D rb = null;
-
     public Vector3 goDirection = Vector3.zero;
 
     public string sound = "";
@@ -15,7 +13,13 @@ public class HomingMissile : MonoBehaviour
     public float bulletSpeed = 20;
     public float rotateSpeed = 5;
     public float lifetime = 4.0f;
+    public float resetLifetime = 4.0f;
     public float damage = 0.0f;
+
+    private void Start()
+    {
+        lifetime = resetLifetime;
+    }
 
     private void FixedUpdate()
     {
@@ -25,7 +29,7 @@ public class HomingMissile : MonoBehaviour
 
         if (lifetime < 0.0f)
         {
-            Destroy(gameObject);
+            ResetForPool();
         }
     }
 
@@ -38,9 +42,18 @@ public class HomingMissile : MonoBehaviour
             if (collidedHP)
             {
                 collidedHP.DealDamage(damage);
-                Destroy(gameObject);
+                ResetForPool();
             }
         }
+    }
+
+    public void ResetForPool()
+    {
+        lifetime = resetLifetime;
+        parentobj = null;
+        goDirection = Vector3.zero;
+        target = null;
+        gameObject.SetActive(false);
     }
 
     public void Fire(Transform firepoint, float Ownerdmg, GameObject owner, GameObject tar)

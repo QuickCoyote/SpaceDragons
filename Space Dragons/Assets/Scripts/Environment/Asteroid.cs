@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    
     [SerializeField] List<Sprite> asteroidImages = null;
-
+    [SerializeField] List<float> sizes = new List<float>();
+    
     public float sizeAndWeight = 1;
     public float maxHp = 50.0f;
     Rigidbody2D rb;
@@ -21,7 +23,7 @@ public class Asteroid : MonoBehaviour
 
         hp = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
-        setSizeAndWeight(sizeAndWeight);
+        setSizeAndWeight(sizes[Random.Range(0, sizes.Count)]);
 
         Vector2 randomForce = new Vector2(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f)); // Sends them in any random direction
         rb.AddForce(randomForce, ForceMode2D.Force);

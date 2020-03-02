@@ -5,21 +5,13 @@ using UnityEngine;
 public class WorldManager : Singleton<WorldManager>
 {
     [SerializeField] public Transform WorldCorner = null;
-
     [SerializeField] public List<ItemData> Items = null;
-
-    [SerializeField] public GameObject Warphole = null;
-    [SerializeField] public GameObject Head = null;
-
-    [SerializeField] public PlayerController PlayerController = null;
+    [SerializeField] public GameObject Head;
+    [SerializeField] public PlayerController PlayerController;
     [SerializeField] public Ship Ship;
-
     [SerializeField] public Material lightningMat = null;
-
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
-
     [SerializeField] Enemy[] enemiesToRender = null;
-
     public List<GameObject> AsteroidsToRender = null;
 
     [System.Serializable]
@@ -34,12 +26,16 @@ public class WorldManager : Singleton<WorldManager>
     public List<Pool> ProjectilePools = new List<Pool>(); //Separated mostly for ease of access
     private float dt = 0.0f;
 
-    private void Start()
+    private void Awake()
     {
+        base.Awake();
         if (!Head)
         {
             Head = GameObject.FindGameObjectWithTag("Player");
         }
+        enemyWaveManager = EnemyWaveManager.Instance;
+        PlayerController = FindObjectOfType<PlayerController>();
+        Ship = FindObjectOfType<Ship>();
         foreach (Pool pool in GenericPools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -98,7 +94,7 @@ public class WorldManager : Singleton<WorldManager>
     {
         if (!objectPools.ContainsKey(tag))
         {
-            Debug.LogWarning("Pool with tag " + tag + "doesn't exist.");
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
             return null;
         }
 

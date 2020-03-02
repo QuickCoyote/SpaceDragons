@@ -6,11 +6,16 @@ public class Projectile : MonoBehaviour
 {
     public float bulletSpeed;
     public float lifetime = 2f;
+    public float resetLifetime = 2f;
     public float damage = 0.0f;
     public GameObject parentobj = null;
     public Vector3 goDirection = Vector3.zero;
-    public Rigidbody2D rb = null;
     public string sound = "";
+
+    private void Start()
+    {
+        lifetime = resetLifetime;
+    }
 
     private void FixedUpdate()
     {
@@ -20,7 +25,7 @@ public class Projectile : MonoBehaviour
 
         if(lifetime < 0.0f)
         {
-            gameObject.SetActive(false);
+            ResetForPool();
         }
     }
    
@@ -32,9 +37,17 @@ public class Projectile : MonoBehaviour
             if (collidedHP)
             {
                 collidedHP.DealDamage(damage);
-                gameObject.SetActive(false);
+                ResetForPool();
             }
         }
+    }
+
+    public void ResetForPool()
+    {
+        lifetime = resetLifetime;
+        parentobj = null;
+        goDirection = Vector3.zero;
+        gameObject.SetActive(false);
     }
 
     public void Fire(Transform firepoint, float Ownerdmg, GameObject owner)

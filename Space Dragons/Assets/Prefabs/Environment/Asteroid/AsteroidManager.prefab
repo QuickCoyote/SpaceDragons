@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3183905938306756527
+--- !u!1 &1771843966238086546
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5203443758738299533}
-  - component: {fileID: 4621478483943767822}
+  - component: {fileID: 8893155474855253364}
+  - component: {fileID: 9078235298090263055}
   m_Layer: 0
   m_Name: AsteroidManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5203443758738299533
+--- !u!4 &8893155474855253364
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183905938306756527}
+  m_GameObject: {fileID: 1771843966238086546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.44887, y: 97.33168, z: -1365.9866}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4621478483943767822
+--- !u!114 &9078235298090263055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183905938306756527}
+  m_GameObject: {fileID: 1771843966238086546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 520c7511f2c787d4ba65dc6f0af11279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
-  asteroidBreakupPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
-    type: 3}
-  asteroidPrefabs:
-  - {fileID: 336725093998916287, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4, type: 3}
-  - {fileID: 336725093998916287, guid: 44fb2ab9734cf8a4fb3f4c85494541b0, type: 3}
-  - {fileID: 336725093998916287, guid: cf2b93270f4b1bb4e8b033b297921164, type: 3}
-  ClusterNum: 800
+  ClusterNum: 100
   AsteroidMinimum: 2
   AsteroidMaximum: 5
   AsteroidsDestroyed: 0
-  AsteroidPool:
-    tag: Asteroid
-    objectPrefab: {fileID: 336725093998916287, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4,
-      type: 3}
-    maxNumOfObject: 100
