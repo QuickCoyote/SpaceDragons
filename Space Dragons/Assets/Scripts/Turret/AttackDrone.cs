@@ -50,7 +50,6 @@ public class AttackDrone : MonoBehaviour
             Destroy(gameObject);
         }
 
-
         Vector3 direction = targetPosition - transform.position;
 
         if (enemyToAttack)
@@ -101,7 +100,7 @@ public class AttackDrone : MonoBehaviour
         transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
 
         CheckForAttack();
-        CheckForDie();
+        StartCoroutine("CheckForDie");
     }
 
     public void CheckForAttack()
@@ -115,7 +114,7 @@ public class AttackDrone : MonoBehaviour
         }
     }
 
-    public void CheckForDie()
+    public IEnumerator CheckForDie()
     {
         if (myHealth.healthCount <= 0)
         {
@@ -124,5 +123,7 @@ public class AttackDrone : MonoBehaviour
             if (explosion) explosion.Activate();
             Destroy(gameObject);
         }
+
+        yield return true;
     }
 }

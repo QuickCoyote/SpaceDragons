@@ -51,22 +51,6 @@ public class GasStationController : UIBaseClass
 
     void Update()
     {
-        #region Dev Tools
-        if (Input.GetKeyDown(KeyCode.F7))
-        {
-            StationFuel.value++;
-        }
-        if (Input.GetKeyDown(KeyCode.F8))
-        {
-            StationFuel.value--;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Slash))
-        {
-            playerShip.boostFuel = playerShip.boostFuelMAX;
-        }
-        #endregion
-
         if (UICanvas.activeSelf)
         {
             UpdateUI();
@@ -80,7 +64,6 @@ public class GasStationController : UIBaseClass
         {
             StationSetup();
         }
-
     }
 
 

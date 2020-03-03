@@ -15,7 +15,7 @@ public class AsteroidBreakup : MonoBehaviour
         particles.Play();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         m_lifetime -= Time.deltaTime;
         if (m_lifetime < 0.0f)

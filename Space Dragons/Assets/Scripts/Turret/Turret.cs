@@ -51,13 +51,18 @@ public abstract class Turret : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        StartCoroutine("CheckForDie");
+    }
+
     public void ApplyRarity()
     {
         damage *= rarityModifier;
         attackSpeed /= rarityModifier;
     }
 
-    public void CheckForDie()
+    public IEnumerator CheckForDie()
     {
         if(myHealth.healthCount <= 0)
         {
@@ -65,6 +70,8 @@ public abstract class Turret : MonoBehaviour
             if (explosion) explosion.Activate();
             WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
         }
+
+        yield return true;
     }
 
     public void Initialize()

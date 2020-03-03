@@ -19,15 +19,13 @@ public class FairyDrone : Enemy
 
                 Projectile p = projectileGO.GetComponent<Projectile>();
                 p.Fire(gunNozzle.transform, attackDamage, gameObject);
-
             }
         }
     }
 
     protected override void Move()
     {
-
-        target = WorldManager.Instance.Head.transform.position;
+        target = worldManager.Head.transform.position;
         if (IsPlayerInSight())
         {
             Vector3 direction = target - transform.position;

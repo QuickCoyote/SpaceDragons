@@ -18,7 +18,7 @@ public class WarpHole : MonoBehaviour
         m_lifetime = m_lifetimeReset;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         m_lifetime -= Time.deltaTime;
         if (m_lifetime < 0.0f)

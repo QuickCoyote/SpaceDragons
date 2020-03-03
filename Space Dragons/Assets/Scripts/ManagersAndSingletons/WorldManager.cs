@@ -66,6 +66,17 @@ public class WorldManager : Singleton<WorldManager>
     private void FixedUpdate()
     {
         ResetList();
+        MoveEnemies();
+        StartCoroutine("DisplayAsteroids");
+    }
+
+    public void ResetList()
+    {
+        enemiesToRender = FindObjectsOfType<Enemy>();
+    }
+
+    public void MoveEnemies()
+    {
         foreach (Enemy go in enemiesToRender)
         {
             if (Vector3.Distance(go.transform.position, Head.transform.position) > 50)
@@ -73,19 +84,19 @@ public class WorldManager : Singleton<WorldManager>
                 go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
             }
         }
+    }
 
-        foreach(GameObject asteroid in AsteroidsToRender)
+    IEnumerator DisplayAsteroids()
+    {
+        foreach (GameObject asteroid in AsteroidsToRender)
         {
-            if(Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
+            if (Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
             {
                 asteroid.SetActive(true);
             }
         }
-    }
 
-    public void ResetList()
-    {
-        enemiesToRender = FindObjectsOfType<Enemy>();
+        yield return new WaitForSeconds(5f);
     }
 
     #region Spawner Methods

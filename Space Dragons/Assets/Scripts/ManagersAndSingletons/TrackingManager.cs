@@ -24,7 +24,7 @@ public class TrackingManager : Singleton<TrackingManager>
         MiniMapFollow.Target = player;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 direction = Vector3.zero;
         if(MainMap.highlightIcon.activeSelf)

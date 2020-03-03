@@ -20,8 +20,6 @@ public class ElfEnemy : Enemy
 
     protected override void Move()
     {
-
-
         target = Player.transform.position;
 
         Vector3 direction = target - transform.position;

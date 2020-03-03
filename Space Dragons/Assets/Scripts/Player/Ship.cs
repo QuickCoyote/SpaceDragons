@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -85,13 +86,13 @@ public class Ship : MonoBehaviour
 
     private void Start()
     {
-        if(!headHealth)
+        if (!headHealth)
         {
             headHealth = head.GetComponent<Health>();
         }
 
         controller = WorldManager.Instance.PlayerController;
-       
+
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);
         LoadData();
         speed = defaultSpeed;
@@ -148,19 +149,19 @@ public class Ship : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateSpeed();
-       
-            if (PlayerPrefs.GetInt("JoystickControls") == 0)
-            {
-                AdjustJoystick();
-                MoveWithJoystick();
-            }
-            else
-            {
-                Move();
-            }
-        
+
+        if (PlayerPrefs.GetInt("JoystickControls") == 0)
+        {
+            AdjustJoystick();
+            MoveWithJoystick();
+        }
+        else
+        {
+            Move();
+        }
+
         UpdateFeulGauge();
-        CheckForDie();
+        StartCoroutine("CheckForDie");
     }
 
     #region Movement
@@ -172,7 +173,6 @@ public class Ship : MonoBehaviour
 
     public void CalculateSpeed()
     {
-        
         if (boosting)
         {
             AndroidManager.HapticFeedback();
@@ -185,7 +185,8 @@ public class Ship : MonoBehaviour
                 rotationSpeed = returnrotateSpeed;
                 boosting = false;
             }
-        } else if (!thrustersOn)
+        }
+        else if (!thrustersOn)
         {
             speed = Mathf.Lerp(speed, 0, Time.deltaTime);
         }
@@ -250,7 +251,7 @@ public class Ship : MonoBehaviour
             Vector3 targetPos = joystickknob.anchoredPosition;
             targetPos.z = 0;
 
-            Vector3 direction =  joystickMovement.InputDirection;
+            Vector3 direction = joystickMovement.InputDirection;
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
             bodyPartTransforms[0].rotation = Quaternion.Slerp(bodyPartTransforms[0].rotation, rotation, rotationSpeed * Time.deltaTime);
@@ -475,8 +476,8 @@ public class Ship : MonoBehaviour
         HealthBarManager.Instance.CreateAllHealthBars();
     }
     #endregion
-    
-    public void CheckForDie()
+
+    IEnumerator CheckForDie()
     {
         if (headHealth.healthCount <= 0)
         {
@@ -487,7 +488,8 @@ public class Ship : MonoBehaviour
                 LoadManager.Instance.Save();
                 LoadingScreen.Instance.Show(SceneManager.LoadSceneAsync("Death"));
             }
-
         }
+
+        yield return true;
     }
 }

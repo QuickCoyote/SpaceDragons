@@ -17,7 +17,6 @@ public class FairyEnemy : Enemy
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
                 Projectile p = projectileGO.GetComponent<Projectile>();
                 p.Fire(gunNozzle.transform, attackDamage, gameObject);
-
             }
         }
     }

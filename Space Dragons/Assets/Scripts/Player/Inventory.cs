@@ -63,6 +63,12 @@ public class Inventory : UIBaseClass
 
     private void FixedUpdate()
     {
+        StartCoroutine("CheckEmptyItems");
+        UpdateDisplay();
+    }
+
+    IEnumerator CheckEmptyItems()
+    {
         List<ItemData> itemsTemp = items.Keys.ToList();
         for (int i = 0; i < items.Keys.Count; i++)
         {
@@ -72,7 +78,7 @@ public class Inventory : UIBaseClass
                 items.Remove(item);
             }
         }
-        UpdateDisplay();
+        yield return new WaitForSeconds(3f);
     }
 
     public void UpdateInventory()

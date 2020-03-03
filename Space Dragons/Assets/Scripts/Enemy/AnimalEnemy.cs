@@ -2,7 +2,6 @@
 
 public class AnimalEnemy : Enemy
 {
-
     protected override void Attack()
     {
         if (IsPlayerInSight())
@@ -14,19 +13,17 @@ public class AnimalEnemy : Enemy
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
                 Projectile p = projectileGO.GetComponent<Projectile>();
                 p.Fire(gunNozzle.transform, attackDamage, gameObject);
-
-
             }
         }
     }
 
     protected override void Move()
     {
-        for (int i = 0; i < WorldManager.Instance.Ship.bodyPartObjects.Count; i++)
+        for (int i = 0; i < worldManager.Ship.bodyPartObjects.Count; i++)
         {
-            if (WorldManager.Instance.Ship.bodyPartObjects[i])
+            if (worldManager.Ship.bodyPartObjects[i])
             {
-                target = WorldManager.Instance.Ship.bodyPartObjects[i].transform.position;
+                target = worldManager.Ship.bodyPartObjects[i].transform.position;
             }
         }
         Vector3 direction = target - transform.position;

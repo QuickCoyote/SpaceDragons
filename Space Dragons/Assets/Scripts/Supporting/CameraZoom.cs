@@ -15,7 +15,12 @@ public class CameraZoom : MonoBehaviour
         targetGroup = GetComponent<CinemachineTargetGroup>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
+    {
+        StartCoroutine("SetZoom");
+    }
+
+    IEnumerator SetZoom()
     {
         targetGroup.m_Targets = new CinemachineTargetGroup.Target[ship.bodyPartTransforms.Count];
         offset = ship.bodyPartTransforms.Count * 2;
@@ -28,5 +33,7 @@ public class CameraZoom : MonoBehaviour
                 targetGroup.m_Targets[i].radius = ship.bodyPartObjects[i].GetComponentInChildren<SpriteRenderer>().sprite.bounds.max.magnitude + offset;
             }
         }
+
+        yield return new WaitForSeconds(5f);
     }
 }
