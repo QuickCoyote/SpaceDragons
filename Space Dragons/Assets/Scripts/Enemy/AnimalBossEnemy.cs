@@ -24,6 +24,7 @@ public class AnimalBossEnemy : Enemy
             }
         }
         base.Die();
+        Destroy(gameObject);
     }
 
     public float shootingSpeedIncrease = 2.0f;
@@ -32,7 +33,6 @@ public class AnimalBossEnemy : Enemy
     public float lootnum = 5.0f;
 
 
-    [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
     public float minionTimer = 60.0f;
     public float minionTimerReset = 60.0f;
@@ -42,7 +42,7 @@ public class AnimalBossEnemy : Enemy
         if (minionTimer < 0.0f)
         {
             minionTimer = minionTimerReset;
-            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
+            worldManager.SpawnFromPool("AnimalEnemy", SpawnPoint.position, SpawnPoint.rotation);
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }

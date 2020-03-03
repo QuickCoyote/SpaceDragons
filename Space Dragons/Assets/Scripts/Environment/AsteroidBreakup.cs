@@ -11,8 +11,11 @@ public class AsteroidBreakup : MonoBehaviour
     public void Activate()
     {
         AudioManager.Instance.Play("Explosion01");
-        particles.Clear();
-        particles.Play();
+        if (particles)
+        {
+            particles.Clear();
+            particles.Play();
+        }
     }
 
     private void Update()
