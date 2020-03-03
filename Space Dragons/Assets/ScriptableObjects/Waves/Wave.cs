@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Wave", menuName = "Wave")]
 public class Wave : ScriptableObject
 {
-    [SerializeField] List<string> myEnemies = new List<string>();
+    [SerializeField] List<GameObject> myEnemies = new List<GameObject>();
     [SerializeField] float minSpawnDistance = -50.0f;
     [SerializeField] float maxSpawnDistance = 50.0f;
 
@@ -19,7 +19,7 @@ public class Wave : ScriptableObject
             float randY = Random.Range(minSpawnDistance, maxSpawnDistance);
             Vector3 spawnPosition = new Vector3(player.transform.position.x + randX, player.transform.position.y + randY, 0.0f);
 
-            WorldManager.Instance.SpawnFromPool(myEnemies[i], spawnPosition, Quaternion.identity).GetComponent<Enemy>().Player = player;
+            Instantiate(myEnemies[i], spawnPosition, Quaternion.identity, null).GetComponent<Enemy>().Player = player;
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }

@@ -18,12 +18,6 @@ public class HumanEnemy : Enemy
         transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
     }
 
-    private void Start()
-    {
-        base.Start();
-        hp = GetComponent<Health>();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Health collidedHP = collision.gameObject.GetComponent<Health>();

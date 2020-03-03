@@ -42,10 +42,10 @@ public class FairyBossEnemy : Enemy
             }
         }
         base.Die();
-        Destroy(gameObject);
     }
 
     public float lootnum = 5.0f;
+    [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
     public float minionTimer = 60.0f;
     public float minionTimerReset = 60.0f;
@@ -55,7 +55,7 @@ public class FairyBossEnemy : Enemy
         if (minionTimer < 0.0f)
         {
             minionTimer = minionTimerReset;
-            worldManager.SpawnFromPool("FairyEnemy", SpawnPoint.position, SpawnPoint.rotation);
+            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
