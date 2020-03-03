@@ -2,6 +2,7 @@
 
 public class AnimalEnemy : Enemy
 {
+
     protected override void Attack()
     {
         if (IsPlayerInSight())

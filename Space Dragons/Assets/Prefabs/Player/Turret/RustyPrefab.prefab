@@ -373,10 +373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464ff57fb9fc4864da98124e399eccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: DefaultTurretProjectile
-  damage: 5
+  projectileName: 
+  damage: 20
   range: 55
-  attackSpeed: 0.625
+  attackSpeed: 0.0625
   price: 25
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}

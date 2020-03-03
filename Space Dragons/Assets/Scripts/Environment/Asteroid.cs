@@ -25,7 +25,7 @@ public class Asteroid : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         setSizeAndWeight(sizes[Random.Range(0, sizes.Count)]);
 
-        Vector2 randomForce = new Vector2(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
+        Vector2 randomForce = new Vector2(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f)); // Sends them in any random direction
         rb.AddForce(randomForce, ForceMode2D.Force);
         rb.AddTorque(Random.value * 15, ForceMode2D.Force);
     }
