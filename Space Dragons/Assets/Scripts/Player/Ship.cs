@@ -85,6 +85,11 @@ public class Ship : MonoBehaviour
 
     private void Start()
     {
+        if(!headHealth)
+        {
+            headHealth = head.GetComponent<Health>();
+        }
+
         controller = WorldManager.Instance.PlayerController;
        
         bodyPartObjects.Add(bodyPartTransforms[0].gameObject);

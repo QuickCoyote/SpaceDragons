@@ -122,7 +122,6 @@ MonoBehaviour:
   - {fileID: -8272436509152678118, guid: 2172eaa84ad8bfc498abfc8dadb1c280, type: 3}
   - {fileID: -2913350097118850848, guid: 2172eaa84ad8bfc498abfc8dadb1c280, type: 3}
   sizes:
-  - 2
   - 1.5
   - 1
   sizeAndWeight: 1

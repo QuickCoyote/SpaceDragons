@@ -5499,7 +5499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
-  WorldCorner: {fileID: 8090216341982672208}
+  WorldCorner: {fileID: 8090216341982672208, guid: 35ddc766b379dca40973c8ea6352237e,
+    type: 3}
   Items:
   - {fileID: 11400000, guid: 221da0f1a7f193b4aa1591eb48889353, type: 2}
   - {fileID: 11400000, guid: 4d8260c7b3de4d74ba3f6bc7c7cd057d, type: 2}
@@ -5538,8 +5539,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c005a3ef29311ca4c8f1302c328ffedf, type: 2}
   - {fileID: 11400000, guid: bfdbb1a29540d4f44a62e2993778731a, type: 2}
   - {fileID: 11400000, guid: 52373a7b60042d444a17979ac1ce4ae7, type: 2}
-  Warphole: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
-    type: 3}
   Head: {fileID: 0}
   PlayerController: {fileID: 0}
   Ship: {fileID: 0}
@@ -7299,11 +7298,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5000891563014941179, guid: 84db163076bab664fa8a5722948eb182,
-        type: 3}
-      propertyPath: m_Mode
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84db163076bab664fa8a5722948eb182, type: 3}
