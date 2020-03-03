@@ -79,7 +79,7 @@ public class ShipyardController : UIBaseClass
             (o => o.name == "Sell").FirstOrDefault();        
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (Timer > 0)
         {

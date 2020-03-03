@@ -49,21 +49,6 @@ public class OutpostController : UIBaseClass
 
     public void Update()
     {
-        #region Dev Debug Controls
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            ToggleUI();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleUI();
-        }
-        else if (Input.GetKeyDown(KeyCode.F12))
-        {
-            OutpostShopSetup();
-        }
-        #endregion
-
         if (Timer > 0)
         {
             int minutes = (int)Timer / 60;
@@ -76,7 +61,7 @@ public class OutpostController : UIBaseClass
             OutpostShopSetup();
         }
 
-        PlayerMoney.text = MotherShip.GetComponent<PlayerController>().ReturnMoney();
+        PlayerMoney.text = WorldManager.Instance.PlayerController.ReturnMoney();
 
         if (ShoppingPanel.activeInHierarchy)
         {
