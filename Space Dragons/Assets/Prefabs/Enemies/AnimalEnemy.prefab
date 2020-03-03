@@ -4849,7 +4849,7 @@ Transform:
   - {fileID: 711840412527071764}
   - {fileID: 2779033900685731005}
   - {fileID: 4622484910073700503}
-  - {fileID: 6796355809993763363}
+  - {fileID: 6725875310969961095}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4865,15 +4865,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39d5bed30288f5469fecaec1923cd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
-    type: 3}
   gunNozzle: {fileID: 306374253830341597}
+  projectileName: 
   speed: 2
   rotationSpeed: 3
   shootingSpeed: 0.5
   sightDistance: 25
   attackDamage: 5
   difficulty: 0
+  animator: {fileID: 0}
   DamageParticles: {fileID: 96126507658904060}
   Player: {fileID: 0}
 --- !u!50 &5405416691029662828
@@ -4909,10 +4909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarObj: {fileID: 6796355809689166357}
+  healthbarObj: {fileID: 0}
+  barTransform: {fileID: 2256652412086416072}
+  hbRenderer: {fileID: 9131537303935077402}
+  objectIndex: 0
   healthMax: 25
   healthCount: 25
-  objectIndex: 0
 --- !u!58 &5187557918588629459
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5353,17 +5355,28 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!224 &6796355809993763363 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!4 &6725875310969961095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 4871085730927675098}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6796355809689166357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!4 &2256652412086416072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
+    type: 3}
+  m_PrefabInstance: {fileID: 4871085730927675098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9131537303935077402 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4404571451192789696, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 4871085730927675098}
   m_PrefabAsset: {fileID: 0}

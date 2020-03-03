@@ -5190,7 +5190,7 @@ Transform:
   - {fileID: 7677391565700555792}
   - {fileID: 5042476312375907001}
   - {fileID: 671673852584926175}
-  - {fileID: 1635744927335979015}
+  - {fileID: 1564384268853577891}
   - {fileID: 266076687009599806}
   - {fileID: 2317404949597390036}
   - {fileID: 7623418618967593756}
@@ -5214,9 +5214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c96dfadb0db4147a1b49f2a7531280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
-    type: 3}
   gunNozzle: {fileID: 1296353699978481882}
+  projectileName: 
   speed: 0
   rotationSpeed: 0.25
   shootingSpeed: 0.5
@@ -5226,8 +5225,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   DamageParticles: {fileID: 882811326204626365}
   Player: {fileID: 0}
-  itemPrefab: {fileID: 2912807714242326499, guid: 68adc80050e331044bb4903d011e0333,
-    type: 3}
   droneSpawnPos: {fileID: 7609223944212064958}
   droneIdlePos1: {fileID: 1314259087529947036}
   droneIdlePos2: {fileID: 4660185213934332564}
@@ -5275,10 +5272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarObj: {fileID: 1635744927712956465}
+  healthbarObj: {fileID: 0}
+  barTransform: {fileID: 6319651611759427820}
+  hbRenderer: {fileID: 3916838710042328638}
+  objectIndex: 0
   healthMax: 300
   healthCount: 300
-  objectIndex: 0
 --- !u!95 &3035230043823972305
 Animator:
   serializedVersion: 3
@@ -5708,17 +5707,38 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!224 &1635744927335979015 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!4 &6319651611759427820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1635744927712956465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!212 &3916838710042328638 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4404571451192789696, guid: 30b0450af1fc5424980edd22858faf77,
+    type: 3}
+  m_PrefabInstance: {fileID: 827332386000614654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1564384268853577891 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}

@@ -279,7 +279,7 @@ Transform:
   - {fileID: 4836102037503244608}
   - {fileID: 4836102038586688553}
   - {fileID: 4836102038639340675}
-  - {fileID: 6833467094319865189}
+  - {fileID: 6760959059349310913}
   - {fileID: 8008928782356864845}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -317,9 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7378e9aaa14b20d4f8864c7f316b88e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2862818111219548718, guid: f42c686fcfce60f42b71078554d68d5b,
-    type: 3}
   gunNozzle: {fileID: 5972237475205579494}
+  projectileName: 
   speed: 3
   rotationSpeed: 30
   shootingSpeed: 0.05
@@ -331,7 +330,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   moveSpeed: 6
   fairySpeed: 6
-  parent: {fileID: 0}
   idleLocation: {fileID: 0}
   side: 1
 --- !u!58 &5690513399471114532
@@ -362,10 +360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6482ed93138e6a842823ec29fb41e5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarObj: {fileID: 6833467094017365331}
+  healthbarObj: {fileID: 0}
+  barTransform: {fileID: 2293993494343501198}
+  hbRenderer: {fileID: 9096540382615960412}
+  objectIndex: 0
   healthMax: 15
   healthCount: 15
-  objectIndex: 0
 --- !u!95 &5690513399471114536
 Animator:
   serializedVersion: 3
@@ -5374,17 +5374,38 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!224 &6833467094319865189 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2145986335355972857, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!4 &6760959059349310913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 4836102038108352924}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6833467094017365331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2145986335121630415, guid: 30b0450af1fc5424980edd22858faf77,
+--- !u!4 &2293993494343501198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
+    type: 3}
+  m_PrefabInstance: {fileID: 4836102038108352924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9096540382615960412 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4404571451192789696, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 4836102038108352924}
   m_PrefabAsset: {fileID: 0}

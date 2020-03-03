@@ -66,7 +66,8 @@ public class Health : MonoBehaviour
         else
         {
             barTransform.localScale = new Vector3(healthCount / healthMax, 1, 1);
-            barTransform.localPosition = new Vector3( hbRenderer.bounds.extents.x * (healthCount / healthMax) - hbRenderer.bounds.extents.x, 0, 0);
+            barTransform.localPosition = new Vector3((healthCount / healthMax) * 3.24f - 3.24f, 0, 0);
+            barTransform.parent.rotation = Quaternion.identity;
         }
 
         if (healthCount > healthMax)
