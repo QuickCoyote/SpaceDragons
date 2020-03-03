@@ -5538,6 +5538,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c005a3ef29311ca4c8f1302c328ffedf, type: 2}
   - {fileID: 11400000, guid: bfdbb1a29540d4f44a62e2993778731a, type: 2}
   - {fileID: 11400000, guid: 52373a7b60042d444a17979ac1ce4ae7, type: 2}
+  Warphole: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
+    type: 3}
   Head: {fileID: 0}
   PlayerController: {fileID: 0}
   Ship: {fileID: 0}
@@ -5599,27 +5601,6 @@ MonoBehaviour:
     objectPrefab: {fileID: 8772730476961618180, guid: 137d958d411bbb146ac895c27c625816,
       type: 3}
     maxNumOfObject: 25
-  EnemyPools:
-  - tag: OrcEnemy
-    objectPrefab: {fileID: 7044326793431985128, guid: 09c1a6d648b094e49b3e31e36635b894,
-      type: 3}
-    maxNumOfObject: 20
-  - tag: HumanEnemy
-    objectPrefab: {fileID: 191715261875707372, guid: af2dd19f2df86184682f1a444bf72bac,
-      type: 3}
-    maxNumOfObject: 20
-  - tag: ElfEnemy
-    objectPrefab: {fileID: 191715261875707372, guid: 464eb9711796e7e45b2a717746798ffc,
-      type: 3}
-    maxNumOfObject: 20
-  - tag: FairyEnemy
-    objectPrefab: {fileID: 191715261875707372, guid: 754d1740f297f95408e9b8ec5bb16fee,
-      type: 3}
-    maxNumOfObject: 30
-  - tag: AnimalEnemy
-    objectPrefab: {fileID: 191715261875707372, guid: 173b6e75a44eef54f9ba65941e3967d8,
-      type: 3}
-    maxNumOfObject: 60
 --- !u!1001 &323123249055565024
 PrefabInstance:
   m_ObjectHideFlags: 0

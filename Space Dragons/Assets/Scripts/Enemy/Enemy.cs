@@ -64,7 +64,7 @@ public abstract class Enemy : MonoBehaviour
         Explosion explosion = worldManager.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
         if (explosion) explosion.Activate();
         EnemyWaveManager.Instance.aliveEnemies--;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     public bool IsPlayerInSight()

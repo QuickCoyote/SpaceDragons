@@ -8,6 +8,7 @@ public class HumanBossEnemy : Enemy
 
     public float lootnum = 5.0f;
 
+    [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
     public float minionTimer = 60.0f;
     public float minionTimerReset = 60.0f;
@@ -17,7 +18,7 @@ public class HumanBossEnemy : Enemy
         if (minionTimer < 0.0f)
         {
             minionTimer = minionTimerReset;
-            worldManager.SpawnFromPool("HumanEnemy", SpawnPoint.position, SpawnPoint.rotation);
+            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
@@ -113,7 +114,6 @@ public class HumanBossEnemy : Enemy
             }
         }
         base.Die();
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

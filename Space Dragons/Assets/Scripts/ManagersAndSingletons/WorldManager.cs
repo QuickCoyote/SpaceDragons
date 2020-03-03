@@ -24,7 +24,6 @@ public class WorldManager : Singleton<WorldManager>
     public Dictionary<string, Queue<GameObject>> objectPools = new Dictionary<string, Queue<GameObject>>();
     public List<Pool> GenericPools = new List<Pool>();
     public List<Pool> ProjectilePools = new List<Pool>(); //Separated mostly for ease of access
-    public List<Pool> EnemyPools = new List<Pool>(); //Separated mostly for ease of access
     private float dt = 0.0f;
 
     private void Awake()
@@ -52,17 +51,6 @@ public class WorldManager : Singleton<WorldManager>
         }
 
         foreach (Pool pool in ProjectilePools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-            for (int i = 0; i < pool.maxNumOfObject; i++)
-            {
-                GameObject obj = Instantiate(pool.objectPrefab);
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
-            }
-            objectPools.Add(pool.tag, objectPool);
-        }
-        foreach (Pool pool in EnemyPools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.maxNumOfObject; i++)

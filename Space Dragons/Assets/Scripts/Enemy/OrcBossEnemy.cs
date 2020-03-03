@@ -14,7 +14,6 @@ public class OrcBossEnemy : Enemy
             }
         }
         base.Die();
-        Destroy(gameObject);
     }
 
     public float lootnum = 5.0f;
@@ -25,6 +24,7 @@ public class OrcBossEnemy : Enemy
     [SerializeField] Transform FireNozzle = null;
     [SerializeField] GameObject FireGun = null;
 
+    [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
     public float minionTimer = 60.0f;
     public float minionTimerReset = 60.0f;
@@ -34,7 +34,7 @@ public class OrcBossEnemy : Enemy
         if (minionTimer < 0.0f)
         {
             minionTimer = minionTimerReset;
-            worldManager.SpawnFromPool("OrcEnemy", SpawnPoint.position, SpawnPoint.rotation);
+            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }

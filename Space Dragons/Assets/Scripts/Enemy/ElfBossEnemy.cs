@@ -22,7 +22,6 @@ public class ElfBossEnemy : Enemy
             }
         }
         base.Die();
-        Destroy(gameObject);
     }
 
     public float teleportTimer = 10.0f;
@@ -30,6 +29,7 @@ public class ElfBossEnemy : Enemy
     public float lootnum = 5.0f;
 
 
+    [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
     public float minionTimer = 60.0f;
     public float minionTimerReset = 60.0f;
@@ -39,7 +39,7 @@ public class ElfBossEnemy : Enemy
         if (minionTimer < 0.0f)
         {
             minionTimer = minionTimerReset;
-            worldManager.SpawnFromPool("ElfEnemy", SpawnPoint.position, SpawnPoint.rotation);
+            Instantiate(Minion, SpawnPoint.position, SpawnPoint.rotation, null);
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
