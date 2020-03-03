@@ -24,7 +24,7 @@ public class HumanEnemy : Enemy
         if (collidedHP)
         {
             collidedHP.DealDamage(attackDamage);
-            hp.healthCount = 0;
+            GetComponent<Health>().healthCount = 0;
         }
     }
 }
