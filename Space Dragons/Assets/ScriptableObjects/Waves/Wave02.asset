@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wave02
   m_EditorClassIdentifier: 
   myEnemies:
-  - AnimalEnemy
-  - AnimalEnemy
-  - AnimalEnemy
-  - HumanEnemy
-  - HumanEnemy
+  - {fileID: 191715261875707372, guid: 173b6e75a44eef54f9ba65941e3967d8, type: 3}
+  - {fileID: 191715261875707372, guid: 173b6e75a44eef54f9ba65941e3967d8, type: 3}
+  - {fileID: 191715261875707372, guid: 173b6e75a44eef54f9ba65941e3967d8, type: 3}
+  - {fileID: 191715261875707372, guid: af2dd19f2df86184682f1a444bf72bac, type: 3}
+  - {fileID: 191715261875707372, guid: af2dd19f2df86184682f1a444bf72bac, type: 3}
   minSpawnDistance: -100
   maxSpawnDistance: 100
