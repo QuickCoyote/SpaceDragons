@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected GameObject gunNozzle = null;
-    [SerializeField] public string projectileName = "";
+    [SerializeField] public WorldManager.ePoolTag projectileName = WorldManager.ePoolTag.PROJECTILE_BASIC;
     [SerializeField] public float speed;
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float shootingSpeed;
@@ -39,7 +39,6 @@ public abstract class Enemy : MonoBehaviour
         hp = GetComponent<Health>();
         animator = GetComponent<Animator>();
         DamageParticles.SetActive(false);
-        if (projectileName == "") projectileName = "BasicProjectile";
     }
 
     void FixedUpdate()
@@ -61,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
-        Explosion explosion = worldManager.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+        Explosion explosion = worldManager.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
         if (explosion) explosion.Activate();
         EnemyWaveManager.Instance.aliveEnemies--;
         Destroy(gameObject);

@@ -16,7 +16,7 @@ public class AnimalBossEnemy : Enemy
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            ItemObject item = worldManager.SpawnFromPool(WorldManager.ePoolTag.ITEM, transform.position, transform.rotation).GetComponent<ItemObject>();
             if (item)
             {
                 item.itemData = worldManager.GetRandomItemDataWeighted();

@@ -49,14 +49,14 @@ public class Asteroid : MonoBehaviour
 
     public void KillAsteroid()
     {
-        ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+        ItemObject item = worldManager.SpawnFromPool(WorldManager.ePoolTag.ITEM, transform.position, transform.rotation).GetComponent<ItemObject>();
         if (item)
         {
             item.itemData = worldManager.GetRandomItemDataStepped();
             item.image.sprite = item.itemData.itemImage;
         }
 
-        AsteroidBreakup breakup = worldManager.SpawnFromPool("AsteroidDestruction", transform.position, Quaternion.identity).GetComponent<AsteroidBreakup>();
+        AsteroidBreakup breakup = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID_BREAKUP, transform.position, Quaternion.identity).GetComponent<AsteroidBreakup>();
         if (breakup) breakup.Activate();
         hp.healthCount = hp.healthMax;
         gameObject.SetActive(false);

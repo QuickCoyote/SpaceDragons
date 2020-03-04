@@ -129,7 +129,7 @@ public class TeleportController : UIBaseClass
     {
         UpdateUI();
         worldManager.PlayerController.RemoveMoney(cost);
-        WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", transform.position, Quaternion.identity).GetComponent<WarpHole>();
+        WarpHole warp1 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, transform.position, Quaternion.identity).GetComponent<WarpHole>();
         if (warp1) warp1.Activate();
         ToggleUI();
         TeleportTransition.SetTrigger("Warp");
@@ -140,7 +140,7 @@ public class TeleportController : UIBaseClass
     {
         AndroidManager.HapticFeedback();
         Vector3 pos = visitedTeleports[index].transform.position + (worldManager.Ship.bodyPartPrefabs[0].transform.up * 5.5f); //add an offset
-        WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", visitedTeleports[index].transform.position, Quaternion.identity).GetComponent<WarpHole>();
+        WarpHole warp1 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, visitedTeleports[index].transform.position, Quaternion.identity).GetComponent<WarpHole>();
         if (warp1) warp1.Activate();
         foreach (Transform t in worldManager.Ship.bodyPartTransforms)
         {

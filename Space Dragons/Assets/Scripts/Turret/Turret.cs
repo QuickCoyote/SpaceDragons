@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Turret : MonoBehaviour
 {
-    public string projectileName = "";
+    public WorldManager.ePoolTag projectileName = WorldManager.ePoolTag.PROJECTILE_TURRET_DEFAULT;
     public float damage = 5;
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
@@ -36,10 +36,6 @@ public abstract class Turret : MonoBehaviour
     protected void Start()
     {
         worldManager = WorldManager.Instance;
-        if (projectileName == "")
-        {
-            projectileName = "DefaultTurretProjectile";
-        }
         StartCoroutine("CheckForDie");
     }
 
@@ -69,7 +65,7 @@ public abstract class Turret : MonoBehaviour
     {
         if(myHealth.healthCount <= 0)
         {
-            Explosion explosion = WorldManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+            Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
             if (explosion) explosion.Activate();
             WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
         }

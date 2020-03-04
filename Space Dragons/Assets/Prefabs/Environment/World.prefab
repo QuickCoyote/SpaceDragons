@@ -5546,56 +5546,56 @@ MonoBehaviour:
   enemiesToRender: []
   AsteroidsToRender: []
   GenericPools:
-  - tag: WarpHole
+  - tag: 4
     objectPrefab: {fileID: 6862651786836030776, guid: b7e9f83175f02624b92299616db36b56,
       type: 3}
     maxNumOfObject: 50
-  - tag: Explosion
+  - tag: 2
     objectPrefab: {fileID: 7860787846816169698, guid: 52996effe82245b44812bc855a09a948,
       type: 3}
     maxNumOfObject: 50
-  - tag: AsteroidDestruction
+  - tag: 1
     objectPrefab: {fileID: 7860787846816169698, guid: d14248ae03e2b7a48a9849413028c66d,
       type: 3}
     maxNumOfObject: 50
-  - tag: Item
+  - tag: 3
     objectPrefab: {fileID: 2912807714242326508, guid: 68adc80050e331044bb4903d011e0333,
       type: 3}
     maxNumOfObject: 150
-  - tag: Asteroids
+  - tag: 0
     objectPrefab: {fileID: 336725093998916287, guid: 63c0a72e1a2ebeb44a8ed8357763a8d4,
       type: 3}
     maxNumOfObject: 150
   ProjectilePools:
-  - tag: BasicProjectile
+  - tag: 5
     objectPrefab: {fileID: 2532223516486878601, guid: c7e861c6c7be4654fbb00d82a74ea220,
       type: 3}
     maxNumOfObject: 50
-  - tag: DefaultTurretProjectile
+  - tag: 9
     objectPrefab: {fileID: 2532223516486878601, guid: 51c78af39cab59a4789cf13c55af15d3,
       type: 3}
     maxNumOfObject: 50
-  - tag: FlameTurretProjectile
+  - tag: 10
     objectPrefab: {fileID: 2532223516486878601, guid: 746de27fffc96444eb717d99e8e40060,
       type: 3}
     maxNumOfObject: 50
-  - tag: AttackDroneProjectile
+  - tag: 8
     objectPrefab: {fileID: 2532223516486878601, guid: 46b6b1f4bd64f024cb60f966874cea69,
       type: 3}
     maxNumOfObject: 50
-  - tag: DefaultPlayerProjectile
+  - tag: 6
     objectPrefab: {fileID: 2532223516486878601, guid: cf0525f2eb3a2794f85956f6b0081774,
       type: 3}
     maxNumOfObject: 50
-  - tag: FlamePlayerProjectile
+  - tag: 7
     objectPrefab: {fileID: 2532223516486878601, guid: 46afdc19e532d5740a61925960b4a340,
       type: 3}
     maxNumOfObject: 50
-  - tag: BossFlameProjectile
+  - tag: 11
     objectPrefab: {fileID: 2532223516486878601, guid: dd7bc936f2824e04881a6ddf73b51957,
       type: 3}
     maxNumOfObject: 50
-  - tag: BossHomingMissile
+  - tag: 12
     objectPrefab: {fileID: 8772730476961618180, guid: 137d958d411bbb146ac895c27c625816,
       type: 3}
     maxNumOfObject: 25

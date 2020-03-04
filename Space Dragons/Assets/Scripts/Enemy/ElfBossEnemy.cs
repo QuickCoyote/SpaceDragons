@@ -14,7 +14,7 @@ public class ElfBossEnemy : Enemy
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            ItemObject item = worldManager.SpawnFromPool(WorldManager.ePoolTag.ITEM, transform.position, transform.rotation).GetComponent<ItemObject>();
             if (item)
             {
                 item.itemData = worldManager.GetRandomItemDataWeighted();
@@ -73,11 +73,11 @@ public class ElfBossEnemy : Enemy
             Vector3 newlocation = new Vector3(Random.Range(10.0f, 20.0f), Random.Range(10.0f, 20.0f), 0);
             newlocation.x *= (Random.Range(0, 2) == 0) ? 1 : -1;
             newlocation.y *= (Random.Range(0, 2) == 0) ? 1 : -1;
-            WarpHole warp1 = worldManager.SpawnFromPool("WarpHole", transform.position, transform.rotation).GetComponent<WarpHole>();
+            WarpHole warp1 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, transform.position, transform.rotation).GetComponent<WarpHole>();
             if (warp1) warp1.Activate();
             animator.SetTrigger("Warp");
             transform.position += newlocation;
-            WarpHole warp2 = worldManager.SpawnFromPool("WarpHole", transform.position, transform.rotation).GetComponent<WarpHole>();
+            WarpHole warp2 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, transform.position, transform.rotation).GetComponent<WarpHole>();
             if (warp2) warp2.Activate();
         }
         target = Player.transform.position;

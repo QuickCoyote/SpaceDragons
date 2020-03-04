@@ -17,11 +17,27 @@ public class WorldManager : Singleton<WorldManager>
     [System.Serializable]
     public class Pool
     {
-        public string tag = "";
+        public ePoolTag tag;
         public GameObject objectPrefab;
         public int maxNumOfObject;
     }
-    public Dictionary<string, Queue<GameObject>> objectPools = new Dictionary<string, Queue<GameObject>>();
+    public enum ePoolTag
+    {
+        ASTEROID,
+        ASTEROID_BREAKUP,
+        EXPLOSION,
+        ITEM,
+        WARPHOLE,
+        PROJECTILE_BASIC,
+        PROJECTILE_PLAYER_DEFAULT,
+        PROJECTILE_PLAYER_FIRE,
+        PROJECTILE_DRONE,
+        PROJECTILE_TURRET_DEFAULT,
+        PROJECTILE_TURRET_FLAME,
+        PROJECTILE_BOSS_FLAME,
+        PROJECTILE_BOSS_HOMING
+    }
+    public Dictionary<ePoolTag, Queue<GameObject>> objectPools = new Dictionary<ePoolTag, Queue<GameObject>>();
     public List<Pool> GenericPools = new List<Pool>();
     public List<Pool> ProjectilePools = new List<Pool>(); //Separated mostly for ease of access
     private float dt = 0.0f;
@@ -101,23 +117,18 @@ public class WorldManager : Singleton<WorldManager>
     }
 
     #region Spawner Methods
-
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(ePoolTag tag, Vector3 position, Quaternion rotation)
     {
         if (!objectPools.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
             return null;
         }
-
         GameObject objectToSpawn = objectPools[tag].Dequeue();
-
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-
         objectPools[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
     }
 
