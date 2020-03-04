@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1624059430497926533, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 6138750917631527082, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -358,9 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarObj: {fileID: 0}
-  healthMax: 75
-  healthCount: 52.160015
+  barTransform: {fileID: 0}
+  hbRenderer: {fileID: 0}
   objectIndex: 0
+  healthMax: 75
+  healthCount: 75
 --- !u!114 &3550365470619791874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90ec602aa160f54b84a71fd00936c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileName: 9
   damage: 0
   range: 1
   attackSpeed: 0.0046296297
@@ -382,7 +385,7 @@ MonoBehaviour:
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 1
+  turretRarity: 0
   data: {fileID: 11400000, guid: 8766fd0860127474e9b943b8e7b714fd, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   healTimer: 0.01

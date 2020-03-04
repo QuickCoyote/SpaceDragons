@@ -11,14 +11,14 @@ public class ShipyardController : UIBaseClass
     public string ShipyardId;
     [Header("Stock")]
     public Ship MotherShip;
-    
+
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
 
     public List<ShipData> CommonShips;
     public List<ShipData> RareShips;
     public List<ShipData> EpicShips;
-    
+
     public List<MothershipData> Motherships;
     [Range(0, 2)] public int ShopDifficulty;
     [Header("UI")]
@@ -62,7 +62,8 @@ public class ShipyardController : UIBaseClass
         MotherShip = WorldManager.Instance.Ship;
         foreach (LoadManager.ShipyardMotherships s in LoadManager.Instance.saveData.shipyards)
         {
-            if (s.shipyardID == ShipyardId) {
+            if (s.shipyardID == ShipyardId)
+            {
                 CurrentMothership = (Ship.eMotherShip)s.mothershipEnum;
             }
         }
@@ -76,14 +77,14 @@ public class ShipyardController : UIBaseClass
         buyButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
             (o => o.name == "Buy").FirstOrDefault();
         sellButton = SelectionDisplay.GetComponentsInChildren<Button>().Where
-            (o => o.name == "Sell").FirstOrDefault();        
+            (o => o.name == "Sell").FirstOrDefault();
     }
 
-    public void FixedUpdate()
+    void FixedUpdate()
     {
         if (Timer > 0)
         {
-            int minutes = (int)(Timer * 0.1666666666666666666f);
+            int minutes = (int)(Timer * 0.0166666666666666f);
             int seconds = (int)Timer % 60;
             ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
             Timer -= 1 * Time.unscaledDeltaTime;
@@ -102,7 +103,7 @@ public class ShipyardController : UIBaseClass
                 }
             }
 
-            if(ShopMenu.activeInHierarchy)
+            if (ShopMenu.activeInHierarchy)
             {
                 OpenSelectedPanel(0);
                 GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
@@ -148,7 +149,7 @@ public class ShipyardController : UIBaseClass
 
     public void ShipyardMotherSetup(int MotherToDisplay, bool isPanelSwap)
     {
-        if(!isPanelSwap)
+        if (!isPanelSwap)
         {
             MothershipMenu.GetComponentsInChildren<Image>().Where
                 (o => o.name == "Mothership").FirstOrDefault().sprite = MotherShip.ShipHeadSprite.sprite;
@@ -173,7 +174,7 @@ public class ShipyardController : UIBaseClass
 
     public void MothershipPanelSwap(bool DisplayCurrent)
     {
-        if(DisplayCurrent)
+        if (DisplayCurrent)
         {
             ShipyardMotherSetup((int)CurrentMothership, true);
             MothershipDisplay.GetComponentsInChildren<Button>().Where
@@ -189,11 +190,11 @@ public class ShipyardController : UIBaseClass
             float hpToRestore = 0f;
             hpToRestore += MotherHealth.healthMax - MotherHealth.healthCount;
 
-            if(hpToRestore != 0 && hpToRestore > 0)
+            if (hpToRestore != 0 && hpToRestore > 0)
             {
                 string cost = ((int)(hpToRestore * repairCostPerHP)).ToString();
                 TradeInCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + cost;
-                if(WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
+                if (WorldManager.Instance.PlayerController.money > (int)(hpToRestore * repairCostPerHP))
                 {
                     RepairMotherButton.GetComponent<Button>().interactable = true;
                 }
@@ -469,7 +470,7 @@ public class ShipyardController : UIBaseClass
     {
         for (int i = 0; i < SelectionInfoPanels.Count; i++)
         {
-            if(i == num)
+            if (i == num)
             {
                 SelectionInfoPanels[i].SetActive(true);
                 SelectionInfoButtons[i].GetComponent<Button>().interactable = false;
@@ -484,9 +485,9 @@ public class ShipyardController : UIBaseClass
 
     public void CheckIfSpecial(GameObject selectedShip)
     {
-        if(selectedShip != null)
+        if (selectedShip != null)
         {
-            if(selectedShip.GetComponent<Turret>().data.isSpecial)
+            if (selectedShip.GetComponent<Turret>().data.isSpecial)
             {
                 SelectionInfoButtons[2].SetActive(true);
                 GetSpecialStats(selectedShip);
@@ -503,7 +504,7 @@ public class ShipyardController : UIBaseClass
                         break;
                     }
                 }
-                if(num == 2) { OpenSelectedPanel(0); }
+                if (num == 2) { OpenSelectedPanel(0); }
                 SelectionInfoButtons[2].SetActive(false);
             }
         }
@@ -557,7 +558,7 @@ public class ShipyardController : UIBaseClass
                 }
             }
 
-            if(isBuying)
+            if (isBuying)
             {
                 buyButton.gameObject.SetActive(true);
 
@@ -659,7 +660,7 @@ public class ShipyardController : UIBaseClass
         int num = 0;
         for (int i = 0; i < SelectionInfoPanels.Count; i++)
         {
-            if(SelectionInfoPanels[i].activeInHierarchy)
+            if (SelectionInfoPanels[i].activeInHierarchy)
             {
                 num = i;
                 break;
@@ -686,7 +687,7 @@ public class ShipyardController : UIBaseClass
         }
 
         OpenSelectedPanel(0);
-        GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() -1]);
+        GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage() - 1]);
         OpenSelectedPanel(num);
 
         CheckIfSpecial(ShopShips[scrollSnap.CurrentPage() - 1]);
@@ -858,7 +859,7 @@ public class ShipyardController : UIBaseClass
         }
         MothershipPanelSwap(true);
     }
-       
+
     #region UI
     public new void Open()
     {
@@ -868,6 +869,7 @@ public class ShipyardController : UIBaseClass
         AudioManager.Instance.PlayRandomMusic("Shop");
         CurrentMothership = MotherShip.GetComponent<Ship>().motherShip;
         ShipyardShipSetup();
+        ShipyardMotherSetup((int)CurrentMothership, false);
         MothershipPanelSwap(true);
     }
     public new void Close()
