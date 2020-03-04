@@ -19,6 +19,11 @@ public class Inventory : UIBaseClass
     public List<ItemData> inventory = new List<ItemData>();
     public Dictionary<ItemData, int> items = new Dictionary<ItemData, int>();
 
+    private void Start()
+    {
+        StartCoroutine("CheckEmptyItems");
+    }
+
     public void AddItem(ItemData item, int num)
     {
         if (items.ContainsKey(item))
@@ -63,22 +68,24 @@ public class Inventory : UIBaseClass
 
     private void FixedUpdate()
     {
-        StartCoroutine("CheckEmptyItems");
         UpdateDisplay();
     }
 
     IEnumerator CheckEmptyItems()
     {
-        List<ItemData> itemsTemp = items.Keys.ToList();
-        for (int i = 0; i < items.Keys.Count; i++)
+        while (true)
         {
-            ItemData item = itemsTemp[i];
-            if (items[item] <= 0)
+            List<ItemData> itemsTemp = items.Keys.ToList();
+            for (int i = 0; i < items.Keys.Count; i++)
             {
-                items.Remove(item);
+                ItemData item = itemsTemp[i];
+                if (items[item] <= 0)
+                {
+                    items.Remove(item);
+                }
             }
+            yield return new WaitForSeconds(3f);
         }
-        yield return new WaitForSeconds(3f);
     }
 
     public void UpdateInventory()

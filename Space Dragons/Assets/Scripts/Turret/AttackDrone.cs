@@ -27,6 +27,7 @@ public class AttackDrone : MonoBehaviour
     private void Start()
     {
         myHealth = GetComponent<Health>();
+        StartCoroutine("CheckForDie");
     }
 
     public void Attack()
@@ -100,7 +101,6 @@ public class AttackDrone : MonoBehaviour
         transform.Translate(transform.up * moveSpeed * Time.fixedDeltaTime, Space.World);
 
         CheckForAttack();
-        StartCoroutine("CheckForDie");
     }
 
     public void CheckForAttack()
@@ -116,14 +116,17 @@ public class AttackDrone : MonoBehaviour
 
     public IEnumerator CheckForDie()
     {
-        if (myHealth.healthCount <= 0)
+        while (true)
         {
-            parent.GetComponent<AttackDroneBay>().droneCount--;
-            Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
-            if (explosion) explosion.Activate();
-            Destroy(gameObject);
-        }
+            if (myHealth.healthCount <= 0)
+            {
+                parent.GetComponent<AttackDroneBay>().droneCount--;
+                Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
+                if (explosion) explosion.Activate();
+                Destroy(gameObject);
+            }
 
-        yield return true;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

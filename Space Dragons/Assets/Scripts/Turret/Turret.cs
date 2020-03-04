@@ -51,10 +51,6 @@ public abstract class Turret : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-    }
-
     public void ApplyRarity()
     {
         damage *= rarityModifier;
@@ -63,14 +59,16 @@ public abstract class Turret : MonoBehaviour
 
     public IEnumerator CheckForDie()
     {
-        if(myHealth.healthCount <= 0)
-        {
-            Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
-            if (explosion) explosion.Activate();
-            WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
-        }
+        while (true) {
+            if (myHealth.healthCount <= 0)
+            {
+                Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
+                if (explosion) explosion.Activate();
+                WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
+            }
 
-        yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void Initialize()

@@ -105,15 +105,18 @@ public class WorldManager : Singleton<WorldManager>
 
     IEnumerator DisplayAsteroids()
     {
-        foreach (GameObject asteroid in AsteroidsToRender)
+        while (true)
         {
-            if (Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
+            foreach (GameObject asteroid in AsteroidsToRender)
             {
-                asteroid.SetActive(true);
+                if (Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
+                {
+                    asteroid.SetActive(true);
+                }
             }
-        }
 
-        yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(5f);
+        }
     }
 
     #region Spawner Methods
