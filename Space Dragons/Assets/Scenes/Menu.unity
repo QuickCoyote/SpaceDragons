@@ -27,8 +27,8 @@ RenderSettings:
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
-  m_HaloStrength: 0.5
-  m_FlareStrength: 1
+  m_HaloStrength: 0
+  m_FlareStrength: 0
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 6407389442011f1478ccde889cfbfe39,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 3fbe4f9689be0384380ab6c00003c0e1,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10143,6 +10145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1949955911, guid: 3e35a4c4b9914494cb899df021ea7f41, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 856269590864592401, guid: 3e35a4c4b9914494cb899df021ea7f41,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -10248,10 +10254,20 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4408225494806991350, guid: 3e35a4c4b9914494cb899df021ea7f41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8359314878617167213, guid: 3e35a4c4b9914494cb899df021ea7f41,
         type: 3}
       propertyPath: m_Name
       value: HelpScreenManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944365508275059669, guid: 3e35a4c4b9914494cb899df021ea7f41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00048828125
       objectReference: {fileID: 0}
     - target: {fileID: 8992108094836013563, guid: 3e35a4c4b9914494cb899df021ea7f41,
         type: 3}
