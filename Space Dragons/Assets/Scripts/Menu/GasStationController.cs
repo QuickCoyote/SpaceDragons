@@ -186,7 +186,7 @@ public class GasStationController : UIBaseClass
         PlayerSetup();
         StationFuel.value = GasCount;
 
-        int minutes = (int)StockTimer / 60;
+        int minutes = (int)(StockTimer * 0.0166666666666666666666f);
         int seconds = (int)StockTimer % 60;
         timerReadout.text = minutes.ToString("00") + ":" + seconds.ToString("00");
         playerMoneyReadout.text = playerController.ReturnMoney();

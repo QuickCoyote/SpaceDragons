@@ -33,7 +33,7 @@ public class Asteroid : MonoBehaviour
     public void setSizeAndWeight(float sizeweight)
     {
         sizeAndWeight = sizeweight;
-        hp.healthMax = maxHp / 2 * sizeweight;
+        hp.healthMax = maxHp * 0.5f * sizeweight;
         hp.ResetHealth();
         transform.localScale = new Vector3(sizeweight, sizeweight, 1);
         rb.mass = sizeweight;

@@ -63,7 +63,7 @@ public class FairyDrone : Enemy
             else
             {
                 speed = fairySpeed + .05f;
-                transform.rotation = Quaternion.Slerp(transform.rotation, idleLocation.rotation, rotationSpeed / 10 * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, idleLocation.rotation, rotationSpeed * 0.1f * Time.deltaTime);
                 transform.Translate(transform.up * speed * Time.fixedDeltaTime, Space.World);
             }
         }

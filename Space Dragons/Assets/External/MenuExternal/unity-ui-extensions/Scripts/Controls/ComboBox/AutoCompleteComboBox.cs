@@ -103,7 +103,7 @@ namespace UnityEngine.UI.Extensions
                 _canvasRT = _canvas.GetComponent<RectTransform>();
 
                 _scrollRect = _scrollPanelRT.GetComponent<ScrollRect>();
-                _scrollRect.scrollSensitivity = _rectTransform.sizeDelta.y / 2;
+                _scrollRect.scrollSensitivity = _rectTransform.sizeDelta.y * 0.5f;
                 _scrollRect.movementType = ScrollRect.MovementType.Clamped;
                 _scrollRect.content = _itemsPanelRT;
 

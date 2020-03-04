@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 //Code Credits: https://www.windykeep.com/2018/02/15/make-loading-screen-unity/
 
 public class LoadingScreen : Singleton<LoadingScreen>

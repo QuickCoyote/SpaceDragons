@@ -9,7 +9,7 @@ public class AnimalBossEnemy : Enemy
     new private void Start()
     {
         base.Start();
-        shootingSpeedIncrease = shootingSpeed / 2;
+        shootingSpeedIncrease = shootingSpeed * 0.5f;
     }
 
     new public void Die()
@@ -49,7 +49,7 @@ public class AnimalBossEnemy : Enemy
 
     protected override void Attack()
     {
-        if (hp.healthCount < hp.healthMax / 2.0f) shootingSpeed = shootingSpeedIncrease;
+        if (hp.healthCount < hp.healthMax * .05f) shootingSpeed = shootingSpeedIncrease;
 
         if (IsPlayerInSight())
         {

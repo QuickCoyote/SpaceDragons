@@ -40,7 +40,7 @@ public class Lightning : MonoBehaviour
         Segments[9] = target;
         for (int i = 1; i < 9; i++)
         {
-            Vector3 normalized = TotalVector / 10;
+            Vector3 normalized = TotalVector * 0.1f;
             float rand = Random.Range(-1.0f, 1.0f);
             Segments[i] = normalized * (i + 1) + (new Vector3(normalized.y, normalized.x, 0) * rand) + transform.position;
             Segments[i] = new Vector3(Segments[i].x, Segments[i].y, -1);

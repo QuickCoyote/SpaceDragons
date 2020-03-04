@@ -488,7 +488,7 @@ public class PlayerController : MonoBehaviour
                 returncount = money.ToString();
                 break;
             case 1:
-                int thousands = money / 1000;
+                float thousands = money * .0001f;
                 int hundreds = money % 1000;
                 char[] hundie = { '0' };
                 if (hundreds >= 100)
@@ -498,15 +498,15 @@ public class PlayerController : MonoBehaviour
                 returncount = thousands.ToString() + "." + hundie[0] + "k";
                 break;
             case 2:
-                thousands = money / 1000;
+                thousands = money * .0001f;
                 returncount = thousands.ToString() + "k";
                 break;
             case 3:
-                int millions = money / 1000000;
+                float millions = money * .0000001f;
                 returncount = millions.ToString() + "m";
                 break;
             case 4:
-                int billions = money / 1000000000;
+                float billions = money * .0000000001f;
                 returncount = billions.ToString() + "b";
                 break;
             default:

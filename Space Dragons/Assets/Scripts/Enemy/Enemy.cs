@@ -50,7 +50,7 @@ public abstract class Enemy : MonoBehaviour
         if (hp.healthCount <= 0.0f)
         {
             Die();
-        } else if (hp.healthCount < hp.healthMax/2 && !DamageParticles.activeSelf)
+        } else if (hp.healthCount < hp.healthMax * 0.5f && !DamageParticles.activeSelf)
         {
             DamageParticles.SetActive(true);
         }

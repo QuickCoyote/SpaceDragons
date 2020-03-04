@@ -83,7 +83,7 @@ public class ShipyardController : UIBaseClass
     {
         if (Timer > 0)
         {
-            int minutes = (int)Timer / 60;
+            int minutes = (int)(Timer * 0.1666666666666666666f);
             int seconds = (int)Timer % 60;
             ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
             Timer -= 1 * Time.unscaledDeltaTime;

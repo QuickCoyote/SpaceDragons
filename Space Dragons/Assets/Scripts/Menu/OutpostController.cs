@@ -51,7 +51,7 @@ public class OutpostController : UIBaseClass
     {
         if (Timer > 0)
         {
-            int minutes = (int)Timer / 60;
+            int minutes = (int)(Timer *0.1666666666666666f);
             int seconds = (int)Timer % 60;
             ShopTimer.text = minutes.ToString("00") + ":" + seconds.ToString("00");
             Timer -= 1 * Time.unscaledDeltaTime;
@@ -319,7 +319,7 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3f)) ) / (CheckForAmount(item) + i + 1);
+            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) * 0.333333333333333f)) ) / (CheckForAmount(item) + i + 1);
         }
 
         price = Mathf.FloorToInt(tempPrice * 10);
@@ -332,7 +332,7 @@ public class OutpostController : UIBaseClass
 
         for (int i = 0; i < sliderValue; i++)
         {
-            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) / 3f)) ) / (CheckForAmount(item) - i + 1);
+            tempPrice += (itemBaseCost + (Mathf.Pow(itemBaseCost, ((int)item.rarity) * 0.333333333333333f)) ) / (CheckForAmount(item) - i + 1);
         }
 
         price = Mathf.FloorToInt(tempPrice * 22);

@@ -164,19 +164,19 @@ public class WorldManager : Singleton<WorldManager>
         float odds = Random.Range(0, 100);
         ItemData.eItemRarity rarity = ItemData.eItemRarity.COMMON;
 
-        if (odds < probablility * (1 / 5))
+        if (odds < probablility * (1 * .20))
         {
             rarity = ItemData.eItemRarity.LEGENDARY;
         }
-        else if (odds < probablility * (1 / 4))
+        else if (odds < probablility * (1 * .25))
         {
             rarity = ItemData.eItemRarity.EPIC;
         }
-        else if (odds < probablility * (1 / 3))
+        else if (odds < probablility * (1 *0.33))
         {
             rarity = ItemData.eItemRarity.RARE;
         }
-        else if (odds < probablility * (1 / 2))
+        else if (odds < probablility * (1 * 0.5))
         {
             rarity = ItemData.eItemRarity.UNCOMMON;
         }

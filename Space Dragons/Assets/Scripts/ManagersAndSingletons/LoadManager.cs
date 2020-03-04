@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+
 //C:\Users\Rowan Remy\AppData\LocalLow\Neumont Game Studio\Space Dragons
 //https://www.youtube.com/watch?v=BPu3oXma97Y
 public class LoadManager : Singleton<LoadManager>

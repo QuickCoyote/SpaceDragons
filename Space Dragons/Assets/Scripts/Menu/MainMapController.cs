@@ -80,8 +80,8 @@ public class MainMapController : UIBaseClass
             {
                 ptLocationRelativeToImageInScreenCoordinates.Set(ptPivotCancelledLocation.x, ptPivotCancelledLocation.y);
                 ptLocationRelativeToImage01.Set((ptLocationRelativeToImageInScreenCoordinates.x / uiImageObjectRect.rect.width), (ptLocationRelativeToImageInScreenCoordinates.y / uiImageObjectRect.rect.height));
-                ptLocationRelativeToImage01.x = (ptLocationRelativeToImage01.x * uiImageObject.sprite.rect.width) - (uiImageObject.sprite.rect.width / 2);
-                ptLocationRelativeToImage01.y = (ptLocationRelativeToImage01.y * uiImageObject.sprite.rect.height) - (uiImageObject.sprite.rect.height / 2);
+                ptLocationRelativeToImage01.x = (ptLocationRelativeToImage01.x * uiImageObject.sprite.rect.width) - (uiImageObject.sprite.rect.width * 0.5f);
+                ptLocationRelativeToImage01.y = (ptLocationRelativeToImage01.y * uiImageObject.sprite.rect.height) - (uiImageObject.sprite.rect.height * 0.5f);
 
             }
             return true;
