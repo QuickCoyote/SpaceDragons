@@ -30,13 +30,12 @@ public class PlayerHUD : UIBaseClass
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
 
         ship = WorldManager.Instance.Ship;
-
-        StartCoroutine("SetDetails");
     }
     private void FixedUpdate()
     {
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
+        StartCoroutine("SetDetails");
     }
 
     public IEnumerator SetDetails()
