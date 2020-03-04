@@ -23,7 +23,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
                 Vector3 location = new Vector3(Random.Range(-150, 150), Random.Range(-150, 150), 0);
-                GameObject asteroid = worldManager.SpawnFromPool("Asteroids", location + new Vector3(Random.value, Random.value, 0), Quaternion.identity);
+                GameObject asteroid = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity);
 
                 if (Vector3.Distance(asteroid.transform.position, worldManager.Head.transform.position) < 50)
                 {
@@ -60,7 +60,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             location += worldManager.Head.transform.position;
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                worldManager.SpawnFromPool("Asteroids", location, Quaternion.identity);
+                worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location, Quaternion.identity);
             }
             AsteroidsDestroyed = 0;
         }
@@ -70,7 +70,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
 
     IEnumerator MoveAsteroids()
     {
-        foreach (GameObject asteroid in worldManager.objectPools["Asteroids"])
+        foreach (GameObject asteroid in worldManager.objectPools[WorldManager.ePoolTag.ASTEROID])
         {
             val *= -1;
             val2 *= -1;

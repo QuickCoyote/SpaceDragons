@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public void BasicFire()
     {
-        GameObject projectileGO = worldManager.SpawnFromPool("DefaultPlayerProjectile", ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
+        GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_PLAYER_DEFAULT, ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.parentobj = ship.head;
         projectile.damage = attackDamage;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
         Vector3 projectileDirection = rotAngle * ship.head.transform.up;
         
-        GameObject projectileGO = worldManager.SpawnFromPool("FlamePlayerProjectile", ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
+        GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_PLAYER_FIRE, ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.parentobj = ship.head;
         projectile.damage = attackDamage;

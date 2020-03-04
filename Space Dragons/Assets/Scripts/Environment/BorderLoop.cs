@@ -35,16 +35,16 @@ public class BorderLoop : MonoBehaviour
         }
 
 
-        if (collision.transform.tag == "Player")
+        if (collision.transform.CompareTag("Player"))
         {
-            WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
+            WarpHole warp = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
             if (warp) warp.Activate();
             TeleportTransition.SetTrigger("Warp");
         }
     }
     public void MovePlayer()
     {
-        WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", pos, Quaternion.identity).GetComponent<WarpHole>();
+        WarpHole warp = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, pos, Quaternion.identity).GetComponent<WarpHole>();
         if (warp) warp.Activate();
         foreach (Transform t in WorldManager.Instance.Ship.bodyPartTransforms)
         {
@@ -78,11 +78,11 @@ public class BorderLoop : MonoBehaviour
             pos.y += 10.0f;
         }
 
-        if (collision.transform.tag != "Player" && collision.gameObject.layer != 8 && collision.gameObject.layer != 11) //dont do turrets or snake
+        if (!collision.transform.CompareTag("Player") && collision.gameObject.layer != 8 && collision.gameObject.layer != 11) //dont do turrets or snake
         {
-            WarpHole warp = WorldManager.Instance.SpawnFromPool("WarpHole", pos, Quaternion.identity).GetComponent<WarpHole>();
+            WarpHole warp = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, pos, Quaternion.identity).GetComponent<WarpHole>();
             if (warp) warp.Activate();
-            WarpHole warp2 = WorldManager.Instance.SpawnFromPool("WarpHole", collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
+            WarpHole warp2 = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
             if (warp2) warp2.Activate();
             collision.transform.position = pos;
         }

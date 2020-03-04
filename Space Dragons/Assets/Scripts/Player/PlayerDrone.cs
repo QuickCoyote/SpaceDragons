@@ -83,7 +83,7 @@ public class PlayerDrone : MonoBehaviour
         {
             WorldManager.Instance.PlayerController.guardDrones.Remove(gameObject);
             WorldManager.Instance.PlayerController.guardDroneCount--;
-            Explosion explosion = WorldManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+            Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
             if (explosion) explosion.Activate();
             Destroy(gameObject);
         }

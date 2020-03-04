@@ -83,7 +83,7 @@ public class ShipSelector : MonoBehaviour
 
             foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
             {
-                if(child.tag == "ShipyardShip")
+                if(child.CompareTag("ShipyardShip"))
                 {
                     for(int i = 0, j = child.transform.childCount-1; i < child.transform.childCount; i++, j--)
                     {
@@ -109,13 +109,13 @@ public class ShipSelector : MonoBehaviour
 
                 sellButton.onClick.RemoveAllListeners();
                 sellButton.onClick.AddListener(delegate { Sell(controller.GenerateSellPrice(SelectedShip)); });
-                if (child.tag == "RepairButton")
+                if (child.CompareTag("RepairButton"))
                 {
                     Button button = child.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
                     button.onClick.AddListener(delegate { Repair(); });
                 }
-                else if (child.tag == "UpgradeButton")
+                else if (child.CompareTag("UpgradeButton"))
                 {
                     Button button = child.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();

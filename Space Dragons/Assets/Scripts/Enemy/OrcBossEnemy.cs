@@ -6,7 +6,7 @@ public class OrcBossEnemy : Enemy
     {
         for (int i = 0; i < lootnum; i++)
         {
-            ItemObject item = worldManager.SpawnFromPool("Item", transform.position, transform.rotation).GetComponent<ItemObject>();
+            ItemObject item = worldManager.SpawnFromPool(WorldManager.ePoolTag.ITEM, transform.position, transform.rotation).GetComponent<ItemObject>();
             if (item)
             {
                 item.itemData = worldManager.GetRandomItemDataWeighted();
@@ -60,7 +60,7 @@ public class OrcBossEnemy : Enemy
         {
             fireWaveTimer = fireWaveReset;
 
-                GameObject projectileGO = worldManager.SpawnFromPool("BossFlameProjectile", FireNozzle.position, FireNozzle.rotation);
+                GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_BOSS_FLAME, FireNozzle.position, FireNozzle.rotation);
                 FireNozzle.localRotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-30, 30));
                 Projectile p = projectileGO.GetComponent<Projectile>();
                 p.Fire(FireNozzle, flameDamage, gameObject);

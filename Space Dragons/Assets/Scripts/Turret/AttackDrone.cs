@@ -36,7 +36,7 @@ public class AttackDrone : MonoBehaviour
         if (attackTimer > attackSpeed)
         {
             attackTimer = 0;
-            GameObject projectileGO = WorldManager.Instance.SpawnFromPool("AttackDroneProjectile", bulletSpawn.transform.position, transform.rotation);
+            GameObject projectileGO = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_DRONE, bulletSpawn.transform.position, transform.rotation);
             Projectile projectile = projectileGO.GetComponent<Projectile>();
             projectile.parentobj = gameObject;
             projectile.Fire();
@@ -119,7 +119,7 @@ public class AttackDrone : MonoBehaviour
         if (myHealth.healthCount <= 0)
         {
             parent.GetComponent<AttackDroneBay>().droneCount--;
-            Explosion explosion = WorldManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation).GetComponent<Explosion>();
+            Explosion explosion = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.EXPLOSION, transform.position, transform.rotation).GetComponent<Explosion>();
             if (explosion) explosion.Activate();
             Destroy(gameObject);
         }
