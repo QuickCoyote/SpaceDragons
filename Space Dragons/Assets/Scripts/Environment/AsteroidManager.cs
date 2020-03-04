@@ -24,7 +24,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
             {
                 Vector3 location = new Vector3(Random.Range(-150, 150), Random.Range(-150, 150), 0);
                 GameObject asteroid = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity);
-
+                asteroid.GetComponent<Rigidbody2D>().AddTorque(Random.value * 15, ForceMode2D.Force);
                 if (Vector3.Distance(asteroid.transform.position, worldManager.Head.transform.position) < 50)
                 {
                     worldManager.AsteroidsToRender.Add(asteroid);
@@ -60,7 +60,8 @@ public class AsteroidManager : Singleton<AsteroidManager>
             location += worldManager.Head.transform.position;
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location, Quaternion.identity);
+                GameObject asteroid = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location, Quaternion.identity);
+                asteroid.GetComponent<Rigidbody2D>().AddTorque(Random.value * 15, ForceMode2D.Force);
             }
             AsteroidsDestroyed = 0;
         }
