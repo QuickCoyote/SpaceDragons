@@ -36,7 +36,11 @@ public abstract class Turret : MonoBehaviour
     protected void Start()
     {
         worldManager = WorldManager.Instance;
-        if (projectileName == "") projectileName = "DefaultTurretProjectile";
+        if (projectileName == "")
+        {
+            projectileName = "DefaultTurretProjectile";
+        }
+        StartCoroutine("CheckForDie");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,7 +57,6 @@ public abstract class Turret : MonoBehaviour
 
     private void FixedUpdate()
     {
-        StartCoroutine("CheckForDie");
     }
 
     public void ApplyRarity()
@@ -71,7 +74,7 @@ public abstract class Turret : MonoBehaviour
             WorldManager.Instance.Ship.RemoveBodyPart(gameObject, false);
         }
 
-        yield return true;
+        yield return new WaitForFixedUpdate();
     }
 
     public void Initialize()

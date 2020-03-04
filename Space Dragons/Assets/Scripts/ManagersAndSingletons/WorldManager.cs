@@ -61,13 +61,14 @@ public class WorldManager : Singleton<WorldManager>
             }
             objectPools.Add(pool.tag, objectPool);
         }
+
+        StartCoroutine("DisplayAsteroids");
     }
 
     private void FixedUpdate()
     {
         ResetList();
         MoveEnemies();
-        StartCoroutine("DisplayAsteroids");
     }
 
     public void ResetList()
