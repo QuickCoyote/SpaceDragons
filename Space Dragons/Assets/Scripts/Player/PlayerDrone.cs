@@ -52,6 +52,11 @@ public class PlayerDrone : MonoBehaviour
                     targetPosition = new Vector3(idleLocation.position.x + 3, idleLocation.position.y, idleLocation.position.z);
                     break;
             }
+
+            if (Vector3.Distance(transform.position, idleLocation.position) > 100.0f)
+            {
+                myHealth.healthCount = 0.0f;
+            }
         }
         Vector3 direction = targetPosition - transform.position;
 
@@ -63,11 +68,6 @@ public class PlayerDrone : MonoBehaviour
         {
             moveSpeed = WorldManager.Instance.Ship.speed;
             direction = targetPosition - transform.position + transform.up;
-        }
-
-        if (Vector3.Distance(transform.position, idleLocation.position) > 100.0f)
-        {
-            myHealth.healthCount = 0.0f;
         }
 
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
