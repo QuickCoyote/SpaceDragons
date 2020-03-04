@@ -6,8 +6,8 @@ using UnityEngine;
 public class Wave : ScriptableObject
 {
     [SerializeField] List<GameObject> myEnemies = new List<GameObject>();
-    [SerializeField] float minSpawnDistance = -50.0f;
-    [SerializeField] float maxSpawnDistance = 50.0f;
+    [SerializeField] float minSpawnDistance = 50.0f;
+    [SerializeField] float maxSpawnDistance = 75.0f;
 
     public void StartWave()
     {
@@ -15,11 +15,12 @@ public class Wave : ScriptableObject
 
         for (int i = 0; i < myEnemies.Count; i++)
         {
-            float randX = Random.Range(minSpawnDistance, maxSpawnDistance);
-            float randY = Random.Range(minSpawnDistance, maxSpawnDistance);
-            Vector3 spawnPosition = new Vector3(player.transform.position.x + randX, player.transform.position.y + randY, 0.0f);
+            Vector3 newlocation = new Vector3(Random.Range(minSpawnDistance, maxSpawnDistance), Random.Range(minSpawnDistance, maxSpawnDistance), 0);
+            newlocation += player.transform.position;
+            newlocation.x *= Random.Range(-1, 1);
+            newlocation.y *= Random.Range(-1, 1);
 
-            Instantiate(myEnemies[i], spawnPosition, Quaternion.identity, null).GetComponent<Enemy>().Player = player;
+            Instantiate(myEnemies[i], newlocation, Quaternion.identity, null).GetComponent<Enemy>().Player = player;
             EnemyWaveManager.Instance.aliveEnemies++;
         }
     }
