@@ -490,6 +490,6 @@ public class Ship : MonoBehaviour
             }
         }
 
-        yield return true;
+        yield return new WaitForFixedUpdate();
     }
 }
