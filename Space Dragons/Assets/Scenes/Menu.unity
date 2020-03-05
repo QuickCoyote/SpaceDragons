@@ -4939,6 +4939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playtext: {fileID: 463741163}
   playbutton: {fileID: 1747616226}
+  resetbutton: {fileID: 632280523}
   tutorialbutton: {fileID: 357359067}
   creditsPopUp: {fileID: 760966147}
 --- !u!1 &1049133066

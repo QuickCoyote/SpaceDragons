@@ -18,7 +18,7 @@ public class DeathScreenController : MonoBehaviour
     bool continued = false;
     public void Start()
     {
-        wavesSurvived.text = "Waves Survived: " + LoadManager.Instance.saveData.CurrentWave.ToString();
+        wavesSurvived.text = "Waves Survived: " + ((LoadManager.Instance.saveData.CurrentWave + 1) + ((LoadManager.Instance.saveData.CurrentCycle - 1) * 10));
         moneyAccumulated.text = "Money Accumulated: " + LoadManager.Instance.saveData.PlayerMoney.ToString();
         LoadManager.Instance.ResetSaveData();
         timer = timerMax;
