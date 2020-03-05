@@ -91,11 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8772730476961618182}
-  - component: {fileID: 8772730476961618183}
   - component: {fileID: 2946266058233525778}
   - component: {fileID: 7962394230474132571}
   m_Layer: 12
-  m_Name: HomingMissile
+  m_Name: BossHomingMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,27 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &8772730476961618183
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8772730476961618180}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &2946266058233525778
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,12 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bc358b4477035458c0cb971afc82c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8
-  rotateSpeed: 90
-  lifetime: 5
-  damage: 10
   parentobj: {fileID: 0}
   target: {fileID: 0}
   goDirection: {x: 0, y: 0, z: 0}
-  rb: {fileID: 8772730476961618183}
   sound: 
+  bulletSpeed: 8
+  rotateSpeed: 90
+  lifetime: 5
+  resetLifetime: 4
+  damage: 10

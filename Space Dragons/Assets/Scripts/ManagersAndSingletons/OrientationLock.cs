@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class OrientationLock : Singleton<OrientationLock>
 {
-    private new void Awake()
-    {
-        base.Awake();
-        Application.targetFrameRate = 60;
-    }
-
     public enum eOrientationType
     {
         LANDSCAPE_LEFT,

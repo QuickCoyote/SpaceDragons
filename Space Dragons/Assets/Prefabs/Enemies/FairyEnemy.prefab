@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5292899726065166805}
   m_Layer: 0
   m_Name: FairyEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunNozzle: {fileID: 306374253830341597}
-  projectileName: 
+  projectileName: 5
   speed: 8
   rotationSpeed: 8
   shootingSpeed: 0.25

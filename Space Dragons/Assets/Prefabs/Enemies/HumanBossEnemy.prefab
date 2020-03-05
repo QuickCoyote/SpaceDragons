@@ -5248,7 +5248,7 @@ GameObject:
   - component: {fileID: 5086483948523726832}
   m_Layer: 0
   m_Name: HumanBossEnemy
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5290,7 +5290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunNozzle: {fileID: 7920608384468392784}
-  projectileName: 
+  projectileName: 5
   speed: 0
   rotationSpeed: 0.25
   shootingSpeed: 0

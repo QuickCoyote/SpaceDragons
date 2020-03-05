@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 2532223516486878603}
   - component: {fileID: 2532223516486878604}
   - component: {fileID: 1428152543217758845}
-  - component: {fileID: 3226264974775467374}
   m_Layer: 12
   m_Name: BossFlameProjectile
   m_TagString: Untagged
@@ -130,10 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 2
   lifetime: 5
+  resetLifetime: 2
   damage: 1
   parentobj: {fileID: 0}
   goDirection: {x: 0, y: 0, z: 0}
-  rb: {fileID: 3226264974775467374}
   sound: 
 --- !u!58 &1428152543217758845
 CircleCollider2D:
@@ -151,24 +150,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.55
---- !u!50 &3226264974775467374
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2532223516486878601}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

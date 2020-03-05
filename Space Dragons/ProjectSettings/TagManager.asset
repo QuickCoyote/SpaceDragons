@@ -11,6 +11,7 @@ TagManager:
   - UpgradeButton
   - Boss
   - Asteroid
+  - Enemy
   layers:
   - Default
   - TransparentFX

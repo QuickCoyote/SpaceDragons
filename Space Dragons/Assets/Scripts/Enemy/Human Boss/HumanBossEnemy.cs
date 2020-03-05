@@ -90,7 +90,6 @@ public class HumanBossEnemy : Enemy
         }
 
         SpawnMinions();
-
     }
     protected override void Move()
     {

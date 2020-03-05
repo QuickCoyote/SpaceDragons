@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 2532223516486878600}
   - component: {fileID: 2532223516486878604}
   - component: {fileID: 1428152543217758845}
-  - component: {fileID: -549227726596436088}
   m_Layer: 8
-  m_Name: DefaultHeadBullet
+  m_Name: DefaultPlayerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,10 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 40
   lifetime: 2
+  resetLifetime: 2
   damage: 5
   parentobj: {fileID: 0}
   goDirection: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
   sound: 
 --- !u!58 &1428152543217758845
 CircleCollider2D:
@@ -120,24 +119,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
---- !u!50 &-549227726596436088
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2532223516486878601}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

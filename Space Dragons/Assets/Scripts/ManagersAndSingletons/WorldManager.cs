@@ -5,13 +5,14 @@ using UnityEngine;
 public class WorldManager : Singleton<WorldManager>
 {
     [SerializeField] public Transform WorldCorner = null;
-    [SerializeField] public List<ItemData> Items = null;
+    [SerializeField] public ItemData[] Items = null;
     [SerializeField] public GameObject Head;
     [SerializeField] public PlayerController PlayerController;
     [SerializeField] public Ship Ship;
     [SerializeField] public Material lightningMat = null;
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
     [SerializeField] Enemy[] enemiesToRender = null;
+    //[SerializeField] GameObject[] enemiesToRender = null;
     public List<GameObject> AsteroidsToRender = null;
 
     [System.Serializable]
@@ -38,8 +39,8 @@ public class WorldManager : Singleton<WorldManager>
         PROJECTILE_BOSS_HOMING
     }
     public Dictionary<ePoolTag, Queue<GameObject>> objectPools = new Dictionary<ePoolTag, Queue<GameObject>>();
-    public List<Pool> GenericPools = new List<Pool>();
-    public List<Pool> ProjectilePools = new List<Pool>(); //Separated mostly for ease of access
+    public Pool[] GenericPools;
+    public Pool[] ProjectilePools; //Separated mostly for ease of access
     private float dt = 0.0f;
 
     private void Awake()
@@ -86,8 +87,10 @@ public class WorldManager : Singleton<WorldManager>
     IEnumerator MoveEnemies()
     {
         while (true)
-        {
+        { 
+            //enemiesToRender = GameObject.FindGameObjectsWithTag("Enemy");
             enemiesToRender = FindObjectsOfType<Enemy>();
+            //foreach (GameObject go in enemiesToRender)
             foreach (Enemy go in enemiesToRender)
             {
                 if (Vector3.Distance(go.transform.position, Head.transform.position) > 75)

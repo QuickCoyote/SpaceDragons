@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7661112003638043139}
   m_Layer: 0
   m_Name: OrcEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunNozzle: {fileID: 7434053356873250265}
-  projectileName: 
+  projectileName: 5
   speed: 1
   rotationSpeed: 3
   shootingSpeed: 1
