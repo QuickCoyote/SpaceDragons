@@ -766,7 +766,6 @@ GameObject:
   - component: {fileID: 7727138449686447947}
   - component: {fileID: 7727138449686447946}
   - component: {fileID: 5388016845805645641}
-  - component: {fileID: 1595774042}
   m_Layer: 0
   m_Name: MiniMapCam
   m_TagString: Untagged
@@ -846,19 +845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: -10}
   Target: {fileID: 0}
---- !u!114 &1595774042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727138449686447941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4620926015b24b428295386ac22f295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetIcon: {fileID: 1148951602629493408}
 --- !u!1 &7727138449886301174
 GameObject:
   m_ObjectHideFlags: 0
