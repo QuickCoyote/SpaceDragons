@@ -19,7 +19,7 @@ public class ShipyardController : UIBaseClass
     public ShipData[] RareShips;
     public ShipData[] EpicShips;
 
-    public List<MothershipData> Motherships;
+    public MothershipData[] Motherships;
     [Range(0, 2)] public int ShopDifficulty;
     [Header("UI")]
     public GameObject ShipScrollContent;
@@ -41,8 +41,8 @@ public class ShipyardController : UIBaseClass
     public TextMeshProUGUI ShopTimer;
     public TextMeshProUGUI MoneyNum;
 
-    public List<GameObject> SelectionInfoPanels;
-    public List<GameObject> SelectionInfoButtons;
+    public GameObject[] SelectionInfoPanels;
+    public GameObject[] SelectionInfoButtons;
 
     public Ship.eMotherShip TradeInMothership;
     public Ship.eMotherShip CurrentMothership;
@@ -94,7 +94,7 @@ public class ShipyardController : UIBaseClass
             ShopShips = new List<GameObject>();
             ShipyardShopSetup();
             int num = 0;
-            for (int i = 0; i < SelectionInfoPanels.Count; i++)
+            for (int i = 0; i < SelectionInfoPanels.Length; i++)
             {
                 if (SelectionInfoPanels[i].activeInHierarchy)
                 {
@@ -468,7 +468,7 @@ public class ShipyardController : UIBaseClass
 
     public void OpenSelectedPanel(int num)
     {
-        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        for (int i = 0; i < SelectionInfoPanels.Length; i++)
         {
             if (i == num)
             {
@@ -496,7 +496,7 @@ public class ShipyardController : UIBaseClass
             else
             {
                 int num = 0;
-                for (int i = 0; i < SelectionInfoPanels.Count; i++)
+                for (int i = 0; i < SelectionInfoPanels.Length; i++)
                 {
                     if (SelectionInfoPanels[i].activeSelf)
                     {
@@ -658,7 +658,7 @@ public class ShipyardController : UIBaseClass
     public void SelectionIncrement()
     {
         int num = 0;
-        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        for (int i = 0; i < SelectionInfoPanels.Length; i++)
         {
             if (SelectionInfoPanels[i].activeInHierarchy)
             {
@@ -677,7 +677,7 @@ public class ShipyardController : UIBaseClass
     public void SelectionDecrement()
     {
         int num = 0;
-        for (int i = 0; i < SelectionInfoPanels.Count; i++)
+        for (int i = 0; i < SelectionInfoPanels.Length; i++)
         {
             if (SelectionInfoPanels[i].activeInHierarchy)
             {
