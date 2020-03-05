@@ -320,8 +320,8 @@ MonoBehaviour:
   gunNozzle: {fileID: 5972237475205579494}
   projectileName: 5
   speed: 3
-  rotationSpeed: 30
-  shootingSpeed: 0.05
+  rotationSpeed: 0.5
+  shootingSpeed: 0.5
   sightDistance: 10
   attackDamage: 10
   difficulty: 0
