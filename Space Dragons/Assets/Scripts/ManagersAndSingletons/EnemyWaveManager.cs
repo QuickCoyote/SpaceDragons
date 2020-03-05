@@ -8,8 +8,8 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
 {
     [SerializeField] float waveSpawnTimer = 25.0f;
 
-    [SerializeField] List<GameObject> Bosses = new List<GameObject>();
-    [SerializeField] List<Wave> waves = new List<Wave>();
+    [SerializeField] GameObject[] Bosses;
+    [SerializeField] Wave[] waves;
     [SerializeField] TextMeshProUGUI WaveText = null;
     [SerializeField] TextMeshProUGUI EnemiesText = null;
     [SerializeField] GameObject BossIcon = null;
@@ -84,7 +84,7 @@ public class EnemyWaveManager : Singleton<EnemyWaveManager>
         newlocation.y *= Random.Range(-1, 1);
         Vector3 spawnPosition = new Vector3(Player.transform.position.x + newlocation.x, Player.transform.position.y + newlocation.y, 0.0f);
 
-        Instantiate(Bosses[Random.Range(0, Bosses.Count)], spawnPosition, Quaternion.identity, null);
+        Instantiate(Bosses[Random.Range(0, Bosses.Length)], spawnPosition, Quaternion.identity, null);
          aliveEnemies++;
     }
 

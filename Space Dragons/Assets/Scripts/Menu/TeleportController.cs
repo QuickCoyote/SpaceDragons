@@ -27,7 +27,7 @@ public class TeleportController : UIBaseClass
     int index = 0;
     int cost = 0;
     WorldManager worldManager;
-    List<TeleportController> visitedTeleports = null;
+    TeleportController[] visitedTeleports;
 
     void Start()
     {
@@ -35,9 +35,9 @@ public class TeleportController : UIBaseClass
         visited = LoadManager.Instance.saveData.VisitedTeleports.ToList().Exists(e => e == LocationName);
         nameReadout.text = LocationName;
         teleportLocationReadout.text = LocationName;
-        visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
+        visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToArray();
 
-        if (visitedTeleports.Count > 0)
+        if (visitedTeleports.Length > 0)
         {
             UpdateUI();
         }
@@ -54,7 +54,7 @@ public class TeleportController : UIBaseClass
     {
         index++;
 
-        if (index >= visitedTeleports.Count)
+        if (index >= visitedTeleports.Length)
         {
             index = 0;
         }
@@ -83,7 +83,7 @@ public class TeleportController : UIBaseClass
         {
             uiTeleportButton.SetActive(true);
         }
-        if (visitedTeleports.Count == 1)
+        if (visitedTeleports.Length == 1)
         {
             uiTeleportArrows.SetActive(false);
             messageReadout.text += "No Other Teleports Active.";
@@ -101,7 +101,7 @@ public class TeleportController : UIBaseClass
         index--;
         if (index < 0)
         {
-            index = visitedTeleports.Count - 1;
+            index = visitedTeleports.Length - 1;
         }
         UpdateUI();
     }
@@ -119,7 +119,7 @@ public class TeleportController : UIBaseClass
         if (collision.CompareTag("Player"))
         {
             visited = true;
-            visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToList();
+            visitedTeleports = FindObjectsOfType<TeleportController>().Where(e => e.visited == true).ToArray();
             UpdateUI();
             ToggleUI();
         }

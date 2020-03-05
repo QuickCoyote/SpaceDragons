@@ -4,8 +4,8 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     
-    [SerializeField] List<Sprite> asteroidImages = null;
-    [SerializeField] List<float> sizes = new List<float>();
+    [SerializeField] Sprite[] asteroidImages;
+    [SerializeField] float[] sizes;
     
     public float sizeAndWeight = 1;
     public float maxHp = 50.0f;
@@ -19,11 +19,11 @@ public class Asteroid : MonoBehaviour
         worldManager = WorldManager.Instance;
 
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = asteroidImages[Random.Range(0, asteroidImages.Count)];
+        sr.sprite = asteroidImages[Random.Range(0, asteroidImages.Length)];
 
         hp = GetComponent<Health>();
         rb = GetComponent<Rigidbody2D>();
-        setSizeAndWeight(sizes[Random.Range(0, sizes.Count)]);
+        setSizeAndWeight(sizes[Random.Range(0, sizes.Length)]);
 
         Vector2 randomForce = new Vector2(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f)); // Sends them in any random direction
         rb.AddForce(randomForce, ForceMode2D.Force);
@@ -60,7 +60,6 @@ public class Asteroid : MonoBehaviour
         if (breakup) breakup.Activate();
         hp.healthCount = hp.healthMax;
         gameObject.SetActive(false);
-        worldManager.AsteroidsToRender.Remove(gameObject);
     }
 }
 

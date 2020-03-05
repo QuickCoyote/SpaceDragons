@@ -5158,7 +5158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7044326793431985132}
   - component: {fileID: 8268284364116783863}
-  - component: {fileID: 2911718110754155112}
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 9160845143721558902}
@@ -5205,7 +5204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunNozzle: {fileID: 1510948794701550928}
-  projectileName: 
+  projectileName: 5
   speed: 0
   rotationSpeed: 0.25
   shootingSpeed: 0.5
@@ -5226,27 +5225,6 @@ MonoBehaviour:
   SpawnPoint: {fileID: 4739560282727827772}
   minionTimer: 60
   minionTimerReset: 60
---- !u!50 &2911718110754155112
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7044326793431985128}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &8148667534571169279
 MonoBehaviour:
   m_ObjectHideFlags: 0

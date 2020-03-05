@@ -3074,7 +3074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 726271075051879886}
   - component: {fileID: 2936312407238532651}
-  - component: {fileID: 1469356317189802310}
   m_Layer: 5
   m_Name: ShipCounter
   m_TagString: Untagged
@@ -3114,35 +3113,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2430480533705414058}
   m_CullTransparentMesh: 0
---- !u!114 &1469356317189802310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2430480533705414058}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2431358718049513846
 GameObject:
   m_ObjectHideFlags: 0
@@ -6337,7 +6307,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653247472184402}
   - component: {fileID: 2806653247472184428}
-  - component: {fileID: 2806653247472184403}
   m_Layer: 5
   m_Name: ShipCounter
   m_TagString: Untagged
@@ -6377,35 +6346,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653247472184401}
   m_CullTransparentMesh: 0
---- !u!114 &2806653247472184403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653247472184401}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653247476031286
 GameObject:
   m_ObjectHideFlags: 0
@@ -7833,7 +7773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653247812902295}
   - component: {fileID: 2806653247812902289}
-  - component: {fileID: 2806653247812902288}
   m_Layer: 5
   m_Name: ShipCounter
   m_TagString: Untagged
@@ -7873,35 +7812,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653247812902294}
   m_CullTransparentMesh: 0
---- !u!114 &2806653247812902288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653247812902294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653247827611399
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,7 +8409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653247917601105}
   - component: {fileID: 2806653247917601107}
-  - component: {fileID: 2806653247917601106}
   m_Layer: 5
   m_Name: ShopMenu
   m_TagString: Untagged
@@ -8543,35 +8452,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653247917601104}
   m_CullTransparentMesh: 0
---- !u!114 &2806653247917601106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653247917601104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653247920677777
 GameObject:
   m_ObjectHideFlags: 0
@@ -9504,7 +9384,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653248040009114}
   - component: {fileID: 2806653248040009109}
-  - component: {fileID: 2806653248040009108}
   - component: {fileID: 2806653248040009115}
   m_Layer: 5
   m_Name: Viewport
@@ -9541,35 +9420,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653248040009113}
   m_CullTransparentMesh: 0
---- !u!114 &2806653248040009108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248040009113}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2806653248040009115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12809,7 +12659,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653248660403132}
   - component: {fileID: 2806653248660403135}
-  - component: {fileID: 2806653248660403134}
   - component: {fileID: 2806653248660403133}
   m_Layer: 5
   m_Name: Scroll View
@@ -12847,35 +12696,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653248660403107}
   m_CullTransparentMesh: 0
---- !u!114 &2806653248660403134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248660403107}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2806653248660403133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13029,7 +12849,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653248721534960}
   - component: {fileID: 2806653248721534962}
-  - component: {fileID: 2806653248721534961}
   m_Layer: 5
   m_Name: Mother Ship Menu
   m_TagString: Untagged
@@ -13074,35 +12893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653248721534967}
   m_CullTransparentMesh: 0
---- !u!114 &2806653248721534961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248721534967}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653248752129603
 GameObject:
   m_ObjectHideFlags: 0
@@ -13152,7 +12942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653248758417266}
   - component: {fileID: 2806653248758417265}
-  - component: {fileID: 2806653248758417264}
   m_Layer: 5
   m_Name: ShipMenu
   m_TagString: Untagged
@@ -13197,35 +12986,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653248758417271}
   m_CullTransparentMesh: 0
---- !u!114 &2806653248758417264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653248758417271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653248782218515
 GameObject:
   m_ObjectHideFlags: 0
@@ -13869,7 +13629,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806653249002681661}
   - component: {fileID: 2806653249002681663}
-  - component: {fileID: 2806653249002681662}
   m_Layer: 5
   m_Name: ShipScroll
   m_TagString: Untagged
@@ -13909,35 +13668,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2806653249002681660}
   m_CullTransparentMesh: 0
---- !u!114 &2806653249002681662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806653249002681660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db8af6e8fe2b7ec4192dd44f2ad14884, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2806653249004087300
 GameObject:
   m_ObjectHideFlags: 0
@@ -24578,6 +24308,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451f84625bbe42746be9eb106db9f406, type: 3}
+--- !u!224 &6600268545016261909 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
+    type: 3}
+  m_PrefabInstance: {fileID: 7223108378590493862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6600268545016261908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4586212023677243826, guid: 451f84625bbe42746be9eb106db9f406,
@@ -24590,9 +24326,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6600268545016261909 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
-    type: 3}
-  m_PrefabInstance: {fileID: 7223108378590493862}
-  m_PrefabAsset: {fileID: 0}

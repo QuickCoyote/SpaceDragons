@@ -7,12 +7,12 @@ using UnityEngine.EventSystems;
 
 public class UIManager : Singleton<UIManager>
 {
-    List<UIBaseClass> AllUI = new List<UIBaseClass>();
+    UIBaseClass[] AllUI;
     public UIBaseClass CurrentlyOpen = null;
 
     private void Start()
     {
-        AllUI = FindObjectsOfType<UIBaseClass>().ToList();
+        AllUI = FindObjectsOfType<UIBaseClass>();
         foreach (UIBaseClass ui in AllUI)
         {
             ui.HideOnly();
@@ -23,7 +23,7 @@ public class UIManager : Singleton<UIManager>
     {
         if (LoadingScreen.Instance.IsLoadingOpen)
         {
-            AllUI = FindObjectsOfType<UIBaseClass>().ToList();
+            AllUI = FindObjectsOfType<UIBaseClass>();
             foreach (UIBaseClass ui in AllUI)
             {
                 ui.HideOnly();

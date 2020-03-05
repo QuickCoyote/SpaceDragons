@@ -13,8 +13,7 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public Material lightningMat = null;
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
     [SerializeField] Enemy[] enemiesToRender = null;
-    //[SerializeField] GameObject[] enemiesToRender = null;
-    public List<GameObject> AsteroidsToRender = null;
+    public Asteroid[] AsteroidsToRender = null;
 
     [System.Serializable]
     public class Pool
@@ -80,6 +79,7 @@ public class WorldManager : Singleton<WorldManager>
             objectPools.Add(pool.tag, objectPool);
         }
 
+        AsteroidsToRender = FindObjectsOfType<Asteroid>();
         StartCoroutine("DisplayAsteroids");
         StartCoroutine("MoveEnemies");
     }
@@ -107,11 +107,11 @@ public class WorldManager : Singleton<WorldManager>
     {
         while (true)
         {
-            foreach (GameObject asteroid in AsteroidsToRender)
+            foreach (Asteroid asteroid in AsteroidsToRender)
             {
                 if (Vector3.Distance(asteroid.transform.position, Head.transform.position) > 50)
                 {
-                    asteroid.SetActive(true);
+                    asteroid.gameObject.SetActive(true);
                 }
             }
 
