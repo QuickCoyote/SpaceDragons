@@ -15,9 +15,9 @@ public class ShipyardController : UIBaseClass
     public List<GameObject> Ships;
     public List<GameObject> ShopShips;
 
-    public List<ShipData> CommonShips;
-    public List<ShipData> RareShips;
-    public List<ShipData> EpicShips;
+    public ShipData[] CommonShips;
+    public ShipData[] RareShips;
+    public ShipData[] EpicShips;
 
     public List<MothershipData> Motherships;
     [Range(0, 2)] public int ShopDifficulty;
@@ -365,7 +365,7 @@ public class ShipyardController : UIBaseClass
             if (randNum > EpicProbability)
             {
                 //Add Random Epic to Shop List
-                int rand = Random.Range(0, EpicShips.Count);
+                int rand = Random.Range(0, EpicShips.Length);
                 ShipData EpicShip = EpicShips[rand];
                 GameObject Ship = CreateShipFromData(EpicShip);
 
@@ -374,7 +374,7 @@ public class ShipyardController : UIBaseClass
             else if (randNum > RareProbability)
             {
                 //Add Random Rare to Shop List
-                int rand = Random.Range(0, RareShips.Count);
+                int rand = Random.Range(0, RareShips.Length);
                 ShipData RareShip = RareShips[rand];
                 GameObject Ship = CreateShipFromData(RareShip);
 
@@ -383,7 +383,7 @@ public class ShipyardController : UIBaseClass
             else
             {
                 //Add Random Common to Shop List
-                int rand = Random.Range(0, CommonShips.Count);
+                int rand = Random.Range(0, CommonShips.Length);
                 ShipData CommonShip = CommonShips[rand];
                 GameObject Ship = CreateShipFromData(CommonShip);
 
