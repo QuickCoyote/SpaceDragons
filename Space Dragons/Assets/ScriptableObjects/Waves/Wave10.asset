@@ -23,5 +23,5 @@ MonoBehaviour:
   - {fileID: 7044326793431985128, guid: 09c1a6d648b094e49b3e31e36635b894, type: 3}
   - {fileID: 7044326793431985128, guid: 09c1a6d648b094e49b3e31e36635b894, type: 3}
   - {fileID: 191715261875707372, guid: 464eb9711796e7e45b2a717746798ffc, type: 3}
-  minSpawnDistance: -100
+  minSpawnDistance: 50
   maxSpawnDistance: 100

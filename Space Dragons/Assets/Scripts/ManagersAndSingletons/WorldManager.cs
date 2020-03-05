@@ -79,27 +79,23 @@ public class WorldManager : Singleton<WorldManager>
         }
 
         StartCoroutine("DisplayAsteroids");
+        StartCoroutine("MoveEnemies");
     }
 
-    private void FixedUpdate()
-    {
-        ResetList();
-        MoveEnemies();
-    }
 
-    public void ResetList()
+    IEnumerator MoveEnemies()
     {
-        enemiesToRender = FindObjectsOfType<Enemy>();
-    }
-
-    public void MoveEnemies()
-    {
-        foreach (Enemy go in enemiesToRender)
+        while (true)
         {
-            if (Vector3.Distance(go.transform.position, Head.transform.position) > 50)
+            enemiesToRender = FindObjectsOfType<Enemy>();
+            foreach (Enemy go in enemiesToRender)
             {
-                go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
+                if (Vector3.Distance(go.transform.position, Head.transform.position) > 75)
+                {
+                    go.transform.position = Head.transform.position + (go.transform.position - Head.transform.position) * 0.75f;
+                }
             }
+            yield return new WaitForSeconds(1f);
         }
     }
 
