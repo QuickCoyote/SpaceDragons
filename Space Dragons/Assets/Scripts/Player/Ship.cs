@@ -7,15 +7,6 @@ using UnityEngine.UI;
 public class Ship : MonoBehaviour
 {
     #region Enums
-    public enum eShipToTest
-    {
-        RUSTY,
-        LIGHTNING,
-        FLAME,
-        HEALER,
-        ATTACK_DRONE,
-    }
-
     public enum eMotherShip
     {
         BASIC = 0,
@@ -64,7 +55,6 @@ public class Ship : MonoBehaviour
 
     [Header("Enum Info")]
     public eMotherShip motherShip = eMotherShip.BASIC;
-    public eShipToTest shipToTest = eShipToTest.RUSTY;
 
     private float dst = 1.0f;
     private Transform curBodyPart = null;

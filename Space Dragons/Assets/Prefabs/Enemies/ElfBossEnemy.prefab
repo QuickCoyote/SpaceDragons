@@ -5210,7 +5210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7044326793431985132}
   - component: {fileID: 7309972181547723759}
-  - component: {fileID: 2911718110754155112}
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 6249397873492437001}
@@ -5257,7 +5256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunNozzle: {fileID: 756622909274207942}
-  projectileName: 
+  projectileName: 5
   speed: 0
   rotationSpeed: 0.25
   shootingSpeed: 0.5
@@ -5275,27 +5274,6 @@ MonoBehaviour:
   SpawnPoint: {fileID: 8851336295602080983}
   minionTimer: 60
   minionTimerReset: 60
---- !u!50 &2911718110754155112
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7044326793431985128}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &8148667534571169279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5991,9 +5969,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!4 &6319651611759427820 stripped
+--- !u!4 &1564384268853577891 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
+  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
@@ -6003,9 +5981,9 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1564384268853577891 stripped
+--- !u!4 &6319651611759427820 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
