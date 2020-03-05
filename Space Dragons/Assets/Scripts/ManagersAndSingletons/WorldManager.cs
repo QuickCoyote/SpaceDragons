@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WorldManager : Singleton<WorldManager>
@@ -140,7 +141,7 @@ public class WorldManager : Singleton<WorldManager>
 
     public ItemData GetRandomItemData()
     {
-        return Items[Random.Range(0, Items.Count)];
+        return Items[Random.Range(0, Items.Length)];
     }
 
     public ItemData GetRandomItemDataWeighted() // Better odds, more even possibilities.
@@ -202,8 +203,8 @@ public class WorldManager : Singleton<WorldManager>
 
     public ItemData GetRandomItemWithRarity(ItemData.eItemRarity rarity)
     {
-        List<ItemData> itemsWithRarity = Items.FindAll(e => e.rarity == rarity);
-        return itemsWithRarity[Random.Range(0, itemsWithRarity.Count)];
+        ItemData[] itemsWithRarity = Items.Where(e => e.rarity == rarity).ToArray();
+        return itemsWithRarity[Random.Range(0, itemsWithRarity.Length)];
     }
 
     public ItemData GetItemById(string Id)
