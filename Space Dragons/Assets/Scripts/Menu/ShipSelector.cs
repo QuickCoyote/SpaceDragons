@@ -34,7 +34,7 @@ public class ShipSelector : MonoBehaviour
             SelecionDisplay.SetActive(true);
 
             int num = 0;
-            for (int i = 0; i < controller.SelectionInfoPanels.Count; i++)
+            for (int i = 0; i < controller.SelectionInfoPanels.Length; i++)
             {
                 if (controller.SelectionInfoPanels[i].activeInHierarchy)
                 {
