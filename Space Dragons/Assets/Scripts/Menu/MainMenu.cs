@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI playtext = null;
     [SerializeField] Button playbutton = null;
+    [SerializeField] Button resetbutton = null;
     [SerializeField] Button tutorialbutton = null;
     [SerializeField] GameObject creditsPopUp = null;
 
@@ -17,10 +18,12 @@ public class MainMenu : MonoBehaviour
         if (LoadManager.Instance.saveData.CurrentWave == 0 && LoadManager.Instance.saveData.CurrentCycle == 1 && LoadManager.Instance.saveData.PlayerPosition.ToVector() == Vector3.zero)
         {
             playtext.text = "NEW GAME";
+            resetbutton.interactable = false;
         }
         else
         {
             playtext.text = "PLAY";
+            resetbutton.interactable = true;
         }
     }
 
