@@ -13,8 +13,7 @@ public class WorldManager : Singleton<WorldManager>
     [SerializeField] public Material lightningMat = null;
     [SerializeField] public EnemyWaveManager enemyWaveManager = null;
     [SerializeField] Enemy[] enemiesToRender = null;
-    //[SerializeField] GameObject[] enemiesToRender = null;
-    public List<GameObject> AsteroidsToRender = null;
+    public GameObject[] AsteroidsToRender = null;
 
     [System.Serializable]
     public class Pool
