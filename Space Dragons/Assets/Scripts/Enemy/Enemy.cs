@@ -12,7 +12,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] public float sightDistance;
     [SerializeField] public float attackDamage;
     [SerializeField] public EnemyDifficutlty difficulty;
-    [SerializeField] public Animator animator;
     [SerializeField] protected GameObject DamageParticles = null;
 
     public enum EnemyDifficutlty
@@ -37,7 +36,6 @@ public abstract class Enemy : MonoBehaviour
         Player = worldManager.Head;
         rb = GetComponent<Rigidbody2D>();
         hp = GetComponent<Health>();
-        animator = GetComponent<Animator>();
         DamageParticles.SetActive(false);
     }
 

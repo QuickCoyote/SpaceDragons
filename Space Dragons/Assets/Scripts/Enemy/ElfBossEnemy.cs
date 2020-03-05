@@ -75,7 +75,6 @@ public class ElfBossEnemy : Enemy
             newlocation.y *= (Random.Range(0, 2) == 0) ? 1 : -1;
             WarpHole warp1 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, transform.position, transform.rotation).GetComponent<WarpHole>();
             if (warp1) warp1.Activate();
-            animator.SetTrigger("Warp");
             transform.position += newlocation;
             WarpHole warp2 = worldManager.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, transform.position, transform.rotation).GetComponent<WarpHole>();
             if (warp2) warp2.Activate();
