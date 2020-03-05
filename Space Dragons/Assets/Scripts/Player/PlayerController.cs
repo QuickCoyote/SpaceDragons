@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = objectsWithinRange[0].transform.position - ship.head.transform.position;
             myTargetIcon.SetActive(true);
             myTargetIcon.transform.position = objectsWithinRange[0].transform.position;
-            Debug.Log("I activated my boi; he's over here: " + myTargetIcon.transform.position);
             if (Vector3.Angle(ship.head.transform.up, direction) < acceptableAngle)
             {
                 enemiesShocked = 1;

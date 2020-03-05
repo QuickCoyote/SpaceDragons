@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 5999706987651362429}
   - component: {fileID: 6111596496924924786}
   - component: {fileID: 5518216971948190161}
+  - component: {fileID: 1098419310144187637}
   m_Layer: 11
   m_Name: ShockPrefab
   m_TagString: Untagged
@@ -340,7 +341,7 @@ MonoBehaviour:
   hbRenderer: {fileID: 0}
   objectIndex: 0
   healthMax: 75
-  healthCount: 75
+  healthCount: 56
 --- !u!114 &5518216971948190161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,9 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileName: 9
-  damage: 3
+  damage: 4.5
   range: 45
-  attackSpeed: 1.3333334
+  attackSpeed: 1
   price: 150
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}
@@ -368,6 +369,27 @@ MonoBehaviour:
   travelDirection: {x: 0, y: 0, z: 0}
   chainDistance: 20
   rotationSpeed: 3
+--- !u!50 &1098419310144187637
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4977157105735039448}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5907399425726392834
 GameObject:
   m_ObjectHideFlags: 0
