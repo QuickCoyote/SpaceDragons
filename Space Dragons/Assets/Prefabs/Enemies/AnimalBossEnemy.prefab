@@ -5161,6 +5161,7 @@ GameObject:
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 9160845143721558902}
+  - component: {fileID: 6695046165420809344}
   m_Layer: 12
   m_Name: AnimalBossEnemy
   m_TagString: Boss
@@ -5307,6 +5308,27 @@ PolygonCollider2D:
       - {x: 1.5880356, y: -2.8829832}
       - {x: 0.46691132, y: -1.2196884}
       - {x: 2.2009354, y: -0.7374544}
+--- !u!50 &6695046165420809344
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044326793431985128}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7599876707502327477
 GameObject:
   m_ObjectHideFlags: 0

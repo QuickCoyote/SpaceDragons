@@ -5245,6 +5245,7 @@ GameObject:
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 5086483948523726832}
+  - component: {fileID: -5733154532455117286}
   m_Layer: 0
   m_Name: HumanBossEnemy
   m_TagString: Enemy
@@ -5397,6 +5398,27 @@ PolygonCollider2D:
       - {x: 3.464466, y: -0.2706213}
       - {x: 1.7541866, y: 2.460947}
       - {x: 1.0773029, y: 1.9097805}
+--- !u!50 &-5733154532455117286
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044326793431985128}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7599876707502327477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,15 +5851,15 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6319651611759427820 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
-    type: 3}
-  m_PrefabInstance: {fileID: 827332386000614654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1564384268853577891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+    type: 3}
+  m_PrefabInstance: {fileID: 827332386000614654}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6319651611759427820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}

@@ -5213,6 +5213,7 @@ GameObject:
   - component: {fileID: 8148667534571169279}
   - component: {fileID: 3035230043823972305}
   - component: {fileID: 6249397873492437001}
+  - component: {fileID: -2561699228473818370}
   m_Layer: 12
   m_Name: ElfBossEnemy
   m_TagString: Boss
@@ -5356,6 +5357,27 @@ PolygonCollider2D:
       - {x: 2.3096657, y: 3.2701359}
       - {x: 2.615118, y: 1.9773893}
       - {x: 0.46287155, y: 0.9439125}
+--- !u!50 &-2561699228473818370
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044326793431985128}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7599876707502327477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,9 +5991,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0450af1fc5424980edd22858faf77, type: 3}
---- !u!4 &1564384268853577891 stripped
+--- !u!4 &6319651611759427820 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
+  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
@@ -5981,9 +6003,9 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6319651611759427820 stripped
+--- !u!4 &1564384268853577891 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6685786901529195538, guid: 30b0450af1fc5424980edd22858faf77,
+  m_CorrespondingSourceObject: {fileID: 2219862710936681565, guid: 30b0450af1fc5424980edd22858faf77,
     type: 3}
   m_PrefabInstance: {fileID: 827332386000614654}
   m_PrefabAsset: {fileID: 0}

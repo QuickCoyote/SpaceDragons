@@ -420,7 +420,7 @@ MonoBehaviour:
   projectileName: 9
   damage: 33215.062
   range: 55
-  attackSpeed: 0
+  attackSpeed: 0.5
   price: 100
   rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
