@@ -344,7 +344,7 @@ public class Ship : MonoBehaviour
         float min = 23;
         float max = 60;
         float scale = max - min;
-        float gauge = scale * (boostFuel / boostFuelMAX);
+        float gauge = scale * ((float)boostFuel / (float)boostFuelMAX);
         boostSliderJoystick.value = Mathf.Lerp(boostSliderJoystick.value, min + gauge, 1.5f * Time.deltaTime);
 
         boostSliderTouch.maxValue = boostFuelMAX;
