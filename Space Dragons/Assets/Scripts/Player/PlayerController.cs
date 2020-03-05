@@ -390,6 +390,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!(fireType == eFireType.LIGHTNING))
+        {
+            myTargetIcon.SetActive(false);
+        }
+
         if (fireType == eFireType.GUARD_DRONE)
         {
             if (guardDroneCount < 3)
