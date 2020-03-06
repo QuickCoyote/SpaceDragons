@@ -16403,6 +16403,40 @@ MonoBehaviour:
   lightningAttackDamage: 10
   lightningMaxDistance: 10
   myTargetIcon: {fileID: 5798952350720690051}
+  LeechWidthCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.02538684
+      outSlope: -0.02538684
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.23637646
+    - serializedVersion: 3
+      time: 0.5000418
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0002366
+      value: 1.0009835
+      inSlope: 0.040177386
+      outSlope: 0.040177386
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19825087
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  LeechLineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   healingSpeed: 0.25
   healingAmount: 25
   guardDrone: {fileID: 4073881857116389269, guid: eb7982f4f6af798498b4b0d0d431b0e4,
@@ -16525,7 +16559,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -27033,6 +27067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SelectedIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502966243522521938, guid: 561a513dac6686a4a9107ae4db181151,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8045930391335427251, guid: 561a513dac6686a4a9107ae4db181151,
         type: 3}
