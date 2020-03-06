@@ -745,7 +745,21 @@ public class ShipyardController : UIBaseClass
                 }
                 ShopShips[scrollSnap.CurrentPage()] = null;
                 SortShips();
+
+                int num = 0;
+                for (int i = 0; i < SelectionInfoPanels.Length; i++)
+                {
+                    if (SelectionInfoPanels[i].activeInHierarchy)
+                    {
+                        num = i;
+                        break;
+                    }
+                }
+
+                OpenSelectedPanel(0);
                 GetSelectionInfo(true, ShopShips[scrollSnap.CurrentPage()]);
+                OpenSelectedPanel(num);
+
                 CheckIfSpecial(ShopShips[scrollSnap.CurrentPage()]);
                 ShipyardShipSetup();
                 ShipyardShopSetup();

@@ -136,6 +136,7 @@ public class ShipSelector : MonoBehaviour
             ShopMenu.SetActive(true);
             ShipMenu.SetActive(false);
             SelecionDisplay.SetActive(true);
+            controller.OpenSelectedPanel(0);
             controller.GetSelectionInfo(true, controller.ShopShips[controller.scrollSnap.CurrentPage()]);
             controller.CheckIfSpecial(controller.ShopShips[controller.scrollSnap.CurrentPage()]);
             controller.OpenSelectedPanel(0);
