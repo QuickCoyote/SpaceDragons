@@ -24343,7 +24343,7 @@ PrefabInstance:
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023677243827, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
@@ -24398,29 +24398,49 @@ PrefabInstance:
     - target: {fileID: 4586212023931978312, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 14.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023931978312, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023931978312, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023931978312, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 46
+      value: 29.999998
       objectReference: {fileID: 0}
     - target: {fileID: 4586212023931978313, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 79d285a3e43980246aab3869a765bfae,
+      objectReference: {fileID: 21300000, guid: c8a949628c713584ea75922ea8b89126,
         type: 3}
+    - target: {fileID: 4586212023931978313, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586212023931978313, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586212023931978313, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586212023931978313, guid: 451f84625bbe42746be9eb106db9f406,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4586212023931978319, guid: 451f84625bbe42746be9eb106db9f406,
         type: 3}
       propertyPath: m_Layer
