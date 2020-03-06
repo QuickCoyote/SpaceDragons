@@ -220,6 +220,8 @@ public class PlayerController : MonoBehaviour
     #region Healing
 
     [Header("Healing Attacks")]
+    [SerializeField] AnimationCurve LeechWidthCurve = null;
+    [SerializeField] Material LeechLineMat = null;
     [SerializeField] float healingSpeed = 0f;
     [SerializeField] float healingAmount = 0f;
     Health HealthImHealing = null;
@@ -246,6 +248,35 @@ public class PlayerController : MonoBehaviour
                 if (enemyHealth)
                 {
                     enemyHealth.healthCount -= healingAmount * Time.deltaTime;
+                    LineRenderer enemyLR;
+                    if(enemyHealth.gameObject.TryGetComponent(out enemyLR))
+                    {
+
+                    }
+                    else
+                    {
+                        enemyLR = enemyHealth.gameObject.AddComponent<LineRenderer>();
+                        enemyLR.widthCurve = LeechWidthCurve;
+                        enemyLR.material = LeechLineMat;
+                        enemyLR.sortingLayerName = "Default";
+                        enemyLR.sortingOrder = 95;
+                        Color myColor = Color.red;
+                        myColor.a = 1f;
+                        enemyLR.startColor = myColor;
+
+                        myColor = Color.green;
+                        myColor.a = 1.0f;
+                        enemyLR.endColor = myColor;
+                    }
+
+                    Vector3[] points = new Vector3[2];
+
+                    points[0] = enemyHealth.transform.position;
+                    points[1] = ship.head.transform.position;
+
+                    enemyLR.SetPositions(points);
+
+                    Debug.Log("I have drawn my line to Leech");
                 }
 
                 // Heal
