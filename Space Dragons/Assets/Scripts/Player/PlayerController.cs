@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
         Vector3 projectileDirection = rotAngle * ship.head.transform.up;
-        
+
         GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_PLAYER_FIRE, ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.parentobj = ship.head;
@@ -226,6 +226,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float healingAmount = 0f;
     Health HealthImHealing = null;
 
+    Health prevEnemyHealth = null;
+    Health enemyHealth = null;
+
     private void HealthyFire()
     {
         if (!HealthImHealing)
@@ -234,6 +237,7 @@ public class PlayerController : MonoBehaviour
         }
 
         dt += Time.deltaTime;
+        LineRenderer enemyLR = null;
         if (dt >= healingSpeed)
         {
             if (HealthImHealing)
@@ -244,44 +248,50 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Deal Damage to Enemy
-                Health enemyHealth = FindEnemyToDamage();
+                prevEnemyHealth = enemyHealth;
+                enemyHealth = FindEnemyToDamage();
                 if (enemyHealth)
                 {
+                    if (prevEnemyHealth != enemyHealth)
+                    {
+                        Destroy(prevEnemyHealth.GetComponent<LineRenderer>());
+                    }
+
                     enemyHealth.healthCount -= healingAmount * Time.deltaTime;
-                    LineRenderer enemyLR;
-                    if(enemyHealth.gameObject.TryGetComponent(out enemyLR))
+                    if (enemyHealth.gameObject.TryGetComponent(out enemyLR))
                     {
 
                     }
                     else
                     {
                         enemyLR = enemyHealth.gameObject.AddComponent<LineRenderer>();
-                        enemyLR.widthCurve = LeechWidthCurve;
+                        enemyLR.startWidth = 0.5f;
+                        enemyLR.endWidth = 0.5f;
                         enemyLR.material = LeechLineMat;
                         enemyLR.sortingLayerName = "Default";
                         enemyLR.sortingOrder = 95;
                         Color myColor = Color.red;
-                        myColor.a = 1f;
+                        myColor.a = .5f;
                         enemyLR.startColor = myColor;
 
                         myColor = Color.green;
-                        myColor.a = 1.0f;
+                        myColor.a = .5f;
                         enemyLR.endColor = myColor;
                     }
-
-                    Vector3[] points = new Vector3[2];
-
-                    points[0] = enemyHealth.transform.position;
-                    points[1] = ship.head.transform.position;
-
-                    enemyLR.SetPositions(points);
-
-                    Debug.Log("I have drawn my line to Leech");
                 }
 
                 // Heal
-                HealthImHealing.healthCount += healingAmount * Time.deltaTime;
+                HealthImHealing.healthCount += healingAmount * Time.fixedDeltaTime;
             }
+        }
+        if(enemyHealth)
+        {
+            Vector3[] points = new Vector3[2];
+
+            points[0] = enemyHealth.transform.position;
+            points[1] = ship.head.transform.position;
+
+            enemyLR.SetPositions(points);
         }
     }
 
@@ -421,7 +431,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!(fireType == eFireType.LIGHTNING))
+        if (!(fireType == eFireType.LIGHTNING))
         {
             myTargetIcon.SetActive(false);
         }
