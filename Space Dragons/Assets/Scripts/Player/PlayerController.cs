@@ -546,19 +546,19 @@ public class PlayerController : MonoBehaviour
                 {
                     hundie = hundreds.ToString().ToCharArray();
                 }
-                returncount = thousands.ToString() + "." + hundie[0] + "k";
+                returncount = ((int)thousands).ToString() + "." + hundie[0] + "k";
                 break;
             case 2:
                 thousands = money * .0001f;
-                returncount = thousands.ToString() + "k";
+                returncount = ((int)thousands).ToString() + "k";
                 break;
             case 3:
                 float millions = money * .0000001f;
-                returncount = millions.ToString() + "m";
+                returncount = ((int)millions).ToString() + "m";
                 break;
             case 4:
                 float billions = money * .0000000001f;
-                returncount = billions.ToString() + "b";
+                returncount = ((int)billions).ToString() + "b";
                 break;
             default:
                 break;
