@@ -258,6 +258,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     enemyHealth.healthCount -= healingAmount * Time.deltaTime;
+                    if (!enemyHealth.gameObject.TryGetComponent(out enemyLR))
                     {
                         enemyLR = enemyHealth.gameObject.AddComponent<LineRenderer>();
                         enemyLR.startWidth = 0.5f;
