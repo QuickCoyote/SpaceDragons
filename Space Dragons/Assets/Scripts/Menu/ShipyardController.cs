@@ -566,6 +566,8 @@ public class ShipyardController : UIBaseClass
 
                 sellButton.gameObject.SetActive(false);
 
+                selectedShip.GetComponent<Turret>().data.buyPrice = (int)(GenerateSellPrice(selectedShip) * 1.5);
+
                 TurretCost.GetComponentInChildren<TextMeshProUGUI>().text = "$" + selectedShip.GetComponent<Turret>().data.buyPrice;
 
             }
