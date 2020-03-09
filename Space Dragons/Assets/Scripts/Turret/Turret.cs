@@ -8,7 +8,9 @@ public abstract class Turret : MonoBehaviour
     public float damage = 5;
     public float range = 1.0f;
     public float attackSpeed = 0.25f;
-    public float price = 10.0f;
+    public float basePrice = 0f;
+    public float buyPrice = 10.0f;
+    public float sellPrice = 10.0f;
     public GameObject rotateBoi = null;
     public SpriteRenderer spriteRendererBase = null;
     public SpriteRenderer spriteRendererTurret = null;
@@ -37,6 +39,10 @@ public abstract class Turret : MonoBehaviour
     {
         worldManager = WorldManager.Instance;
         StartCoroutine("CheckForDie");
+        Initialize();
+        basePrice = data.buyPrice;
+        buyPrice = basePrice * (int)turretRarity * (myHealth.healthCount / myHealth.healthMax);
+        sellPrice = buyPrice * 0.8f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

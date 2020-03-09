@@ -460,7 +460,7 @@ public class ShipyardController : UIBaseClass
         }
 
 
-        ShipTurret.price = data.buyPrice;
+        ShipTurret.basePrice = data.buyPrice;
         ShipTurret.turretRarity = data.rarity;
 
         return Ship;
@@ -697,16 +697,7 @@ public class ShipyardController : UIBaseClass
 
     public int GenerateSellPrice(GameObject selectedShip)
     {
-        int price = 0;
-
-        Turret turret = selectedShip.GetComponent<Turret>();
-        Health health = selectedShip.GetComponent<Health>();
-
-        price = (int)((turret.price * 0.8) * ((int)turret.turretRarity + 1) * (health.healthCount / health.healthMax));
-
-        selectedShip.GetComponent<Turret>().data.sellPrice = price;
-
-        return price;
+        return (int)selectedShip.GetComponent<Turret>().sellPrice;
     }
 
     public void Purchase()
@@ -720,7 +711,7 @@ public class ShipyardController : UIBaseClass
                 {
                     if (Ships[i] == null)
                     {
-                        if (WorldManager.Instance.PlayerController.RemoveMoney(purchase.GetComponent<Turret>().data.buyPrice))
+                        if (WorldManager.Instance.PlayerController.RemoveMoney((int)purchase.GetComponent<Turret>().buyPrice))
                         {
                             AndroidManager.HapticFeedback();
 
