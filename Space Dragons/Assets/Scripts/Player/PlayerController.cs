@@ -258,11 +258,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     enemyHealth.healthCount -= healingAmount * Time.deltaTime;
-                    if (enemyHealth.gameObject.TryGetComponent(out enemyLR))
-                    {
-
-                    }
-                    else
+                    if (!enemyHealth.gameObject.TryGetComponent(out enemyLR))
                     {
                         enemyLR = enemyHealth.gameObject.AddComponent<LineRenderer>();
                         enemyLR.startWidth = 0.5f;
@@ -319,7 +315,7 @@ public class PlayerController : MonoBehaviour
 
     public Health FindObjectToHeal()
     {
-        List<GameObject> turretobjs = WorldManager.Instance.Ship.bodyPartObjects;
+        GameObject[] turretobjs = WorldManager.Instance.Ship.bodyPartObjects.ToArray();
         Health turretToHeal = null;
 
         foreach (GameObject obj in turretobjs)
@@ -444,6 +440,16 @@ public class PlayerController : MonoBehaviour
             }
 
             AlignDrones();
+        }
+        else
+        {
+            if(guardDroneCount > 0)
+            {
+                foreach(GameObject drone in guardDrones)
+                {
+                    Destroy(drone);
+                }
+            }
         }
 
         for (int i = 0; i < guardDrones.Count; i++)
