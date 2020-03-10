@@ -91,7 +91,7 @@ public class ShipyardController : UIBaseClass
         }
         else if (Timer <= 0)
         {
-            ShopShips = new List<GameObject>();
+            ShopShips.Clear();
             ShipyardShopSetup();
             int num = 0;
             for (int i = 0; i < SelectionInfoPanels.Length; i++)

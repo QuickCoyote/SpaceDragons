@@ -24,8 +24,8 @@ public class Ship : MonoBehaviour
     PlayerController controller;
 
     [Header("Body Info")]
-    public List<Transform> bodyPartTransforms = new List<Transform>();
-    public List<GameObject> bodyPartObjects = new List<GameObject>();
+    public List<Transform> bodyPartTransforms = new List<Transform>(5);
+    public List<GameObject> bodyPartObjects = new List<GameObject>(5);
     public GameObject[] bodyPartPrefabs = null;
 
     [Header("Head Info")]

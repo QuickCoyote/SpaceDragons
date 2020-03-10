@@ -95,7 +95,7 @@ public class OutpostController : UIBaseClass
 
         outpostInventory = new Inventory();
 
-        numsGenerated = new List<int>();
+        numsGenerated.Clear();
 
         int numOfItems = 1;
         int amountOfEachItem = 1;

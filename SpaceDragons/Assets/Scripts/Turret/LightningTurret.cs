@@ -9,7 +9,7 @@ public class LightningTurret : Turret
     public float rotationSpeed = 15.0f;
 
     int enemiesShocked = 1;
-    List<Enemy> shockedBois = new List<Enemy>();
+    List<Enemy> shockedBois = new List<Enemy>(10);
 
     void FixedUpdate()
     {
