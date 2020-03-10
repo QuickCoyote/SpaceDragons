@@ -59,7 +59,6 @@ public class TutorialManager : Singleton<TutorialManager>
             {
                 SkipTips();
                 orderIndex--;
-
             }
             else
             {
@@ -82,7 +81,6 @@ public class TutorialManager : Singleton<TutorialManager>
             {
                 SkipTips();
                 orderIndex--;
-
             }
             else
             {

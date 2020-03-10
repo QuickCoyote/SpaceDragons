@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    
     [SerializeField] Sprite[] asteroidImages;
     [SerializeField] float[] sizes;
     

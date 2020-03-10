@@ -28,9 +28,7 @@ public class AnimalBossEnemy : Enemy
 
     public float shootingSpeedIncrease = 2.0f;
     public float shootingTimer2 = 0.5f;
-    public bool enraged = false;
     public float lootnum = 5.0f;
-
 
     [SerializeField] GameObject Minion = null;
     [SerializeField] Transform SpawnPoint = null;
@@ -59,8 +57,7 @@ public class AnimalBossEnemy : Enemy
                 shootingTimer = shootingSpeed;
 
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
-                Projectile p = projectileGO.GetComponent<Projectile>();
-                p.Fire(gunNozzle.transform, attackDamage, gameObject);
+                projectileGO.GetComponent<Projectile>().Fire(gunNozzle.transform, attackDamage, gameObject);
             }
         }
 
@@ -69,8 +66,7 @@ public class AnimalBossEnemy : Enemy
         {
             shootingTimer2 = shootingSpeed;
             GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle2.transform.position, gunNozzle2.transform.rotation);
-            Projectile p = projectileGO.GetComponent<Projectile>();
-            p.Fire(gunNozzle2.transform, attackDamage, gameObject);
+            projectileGO.GetComponent<Projectile>().Fire(gunNozzle2.transform, attackDamage, gameObject);
         }
 
         SpawnMinions();
@@ -78,22 +74,34 @@ public class AnimalBossEnemy : Enemy
     }
     protected override void Move()
     {
+        Vector3 direction = Vector3.zero;
+        float angle;
+        Quaternion rotation;
+
         target = Player.transform.position;
 
-        Vector3 direction = target - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        // This is rotating the actual boss
+
+        direction = target - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-        Vector3 TurretDirection1 = target - Turret1.transform.position;
-        Vector3 TurretDirection2 = target - Turret2.transform.position;
+        // This is getting the direction for the First Turret
 
-        float angle1 = Mathf.Atan2(TurretDirection1.x, TurretDirection1.y) * Mathf.Rad2Deg;
-        Quaternion rotation1 = Quaternion.AngleAxis(-angle1, Vector3.forward);
-        Turret1.transform.rotation = Quaternion.Slerp(Turret1.transform.rotation, rotation1, rotationSpeed * 2 * Time.deltaTime);
+        direction = target - Turret1.transform.position;
 
-        float angle2 = Mathf.Atan2(TurretDirection2.x, TurretDirection2.y) * Mathf.Rad2Deg;
-        Quaternion rotation2 = Quaternion.AngleAxis(-angle2, Vector3.forward);
-        Turret2.transform.rotation = Quaternion.Slerp(Turret2.transform.rotation, rotation2, rotationSpeed * 2 * Time.deltaTime);
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        Turret1.transform.rotation = Quaternion.Slerp(Turret1.transform.rotation, rotation, rotationSpeed * 2 * Time.deltaTime);
+
+
+        // This is getting the direction for the Second Turret
+
+        direction = target - Turret2.transform.position;
+
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        Turret2.transform.rotation = Quaternion.Slerp(Turret2.transform.rotation, rotation, rotationSpeed * 2 * Time.deltaTime);
     }
 }

@@ -14,6 +14,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] public EnemyDifficutlty difficulty;
     [SerializeField] protected GameObject DamageParticles = null;
 
+    protected Vector3 direction = Vector3.zero;
+    protected float angle = 0.0f;
+    protected Quaternion rotation;
+
     public enum EnemyDifficutlty
     {
         EASY,

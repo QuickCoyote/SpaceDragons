@@ -81,7 +81,7 @@ public class ShipSelector : MonoBehaviour
             ShipMenu.GetComponentsInChildren<Button>().Where
                 (o => o.name == "Upgrade").FirstOrDefault().interactable = false;
 
-            foreach (Transform child in ShipMenu.GetComponentsInChildren<Transform>())
+            foreach (Transform child in ShipMenu.transform)
             {
                 if(child.CompareTag("ShipyardShip"))
                 {

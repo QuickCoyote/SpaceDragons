@@ -22,8 +22,7 @@ public class AsteroidManager : Singleton<AsteroidManager>
         {
             for (int j = 0; j < Random.Range(AsteroidMinimum, AsteroidMaximum); j++)
             {
-                Vector3 location = new Vector3(Random.Range(-150, 150), Random.Range(-150, 150), 0);
-                GameObject asteroid = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, location + new Vector3(Random.value, Random.value, 0), Quaternion.identity);
+                GameObject asteroid = worldManager.SpawnFromPool(WorldManager.ePoolTag.ASTEROID, new Vector3(Random.Range(-150, 150), Random.Range(-150, 150), 0) + new Vector3(Random.value, Random.value, 0), Quaternion.identity);
                 asteroid.GetComponent<Rigidbody2D>().AddTorque(Random.value * 15, ForceMode2D.Force);
             }
         }

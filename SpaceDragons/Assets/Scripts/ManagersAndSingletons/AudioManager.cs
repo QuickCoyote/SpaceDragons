@@ -105,9 +105,9 @@ public class AudioManager : Singleton<AudioManager>
 
     public void StopAll()
     {
-        foreach (Sound sound in m_sounds)
+        for(int i = 0; i < m_sounds.Length; i++)
         {
-            sound.audioSource.Stop();
+            m_sounds[i].audioSource.Stop();
         }
     }
 

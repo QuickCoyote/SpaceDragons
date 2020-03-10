@@ -15,8 +15,7 @@ public class FairyEnemy : Enemy
                 shootingTimer = shootingSpeed;
 
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
-                Projectile p = projectileGO.GetComponent<Projectile>();
-                p.Fire(gunNozzle.transform, attackDamage, gameObject);
+                projectileGO.GetComponent<Projectile>().Fire(gunNozzle.transform, attackDamage, gameObject);
             }
         }
     }
@@ -25,22 +24,27 @@ public class FairyEnemy : Enemy
     {
         if (Vector3.Distance(transform.position, target) < targetChangeDistance)
         {
-            Vector3 newDirection = Player.transform.position - transform.position;
-            target = transform.position + (newDirection * targetflydistance);
+            direction = Player.transform.position - transform.position;
+            target = transform.position + (direction * targetflydistance);
         }
 
-        Vector3 direction = target - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        direction = target - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
         if (Vector3.Distance(transform.position, target) > .25f) //Stop moving if player gets too close.
         {
             transform.Translate(transform.up * speed * Time.smoothDeltaTime, Space.World);
         }
 
-        Vector3 turretdirection = Player.transform.position - transform.position;
-        float turretangle = Mathf.Atan2(turretdirection.x, turretdirection.y) * Mathf.Rad2Deg;
-        Quaternion turretrotation = Quaternion.AngleAxis(-turretangle, Vector3.forward);
-        Turret.transform.rotation = Quaternion.Slerp(Turret.transform.rotation, turretrotation, rotationSpeed * 2 * Time.deltaTime);
+        // This is setting the turret's rotation
+
+        direction = Player.transform.position - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
+        Turret.transform.rotation = Quaternion.Slerp(Turret.transform.rotation, rotation, rotationSpeed * 2 * Time.deltaTime);
     }
 }

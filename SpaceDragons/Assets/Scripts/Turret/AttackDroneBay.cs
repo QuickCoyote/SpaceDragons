@@ -22,13 +22,13 @@ public class AttackDroneBay : Turret
 
     public override void Attack()
     {
-        foreach (GameObject go in drones)
+        for(int i = 0; i < drones.Count; i++)
         {
-            if (go)
+            if (drones[i])
             {
                 AttackDrone atk = null;
 
-                if (go.TryGetComponent(out atk))
+                if (drones[i].TryGetComponent(out atk))
                 {
                     if (enemies.Count > 0)
                     {
@@ -67,12 +67,12 @@ public class AttackDroneBay : Turret
 
     public void AssignParents()
     {
-        foreach (GameObject go in drones)
+        for(int i = 0; i < drones.Count; i++)
         {
-            if (go)
+            if (drones[i])
             {
-                go.GetComponent<AttackDrone>().parent = gameObject;
-                go.GetComponent<AttackDrone>().side = side;
+                drones[i].GetComponent<AttackDrone>().parent = gameObject;
+                drones[i].GetComponent<AttackDrone>().side = side;
                 side *= -1;
             }
         }
@@ -105,13 +105,13 @@ public class AttackDroneBay : Turret
         }
         droneCount++;
 
-        foreach (GameObject go in drones)
+        for(int i = 0; i < drones.Count; i++)
         {
             AttackDrone atk = null;
 
-            if (go)
+            if (drones[i])
             {
-                if (go.TryGetComponent(out atk))
+                if (drones[i].TryGetComponent(out atk))
                 {
                     atk.side = side;
                     switch (side)

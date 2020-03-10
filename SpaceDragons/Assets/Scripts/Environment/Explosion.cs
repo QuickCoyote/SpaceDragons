@@ -22,6 +22,7 @@ public class Explosion : MonoBehaviour
     }
 
     public float damage = 1.0f;
+
     void Destoyself()
     {
         gameObject.SetActive(false);

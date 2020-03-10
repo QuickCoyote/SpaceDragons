@@ -56,23 +56,23 @@ public class Healer : Turret
         List<GameObject> turretobjs = WorldManager.Instance.Ship.bodyPartObjects;
         Health turretToHeal = null;
 
-        foreach (GameObject obj in turretobjs)
+        for(int i = 0; i < turretobjs.Count; i++)
         {
             Health health;
-            if(!obj)
+            if(!turretobjs[i])
             {
                 continue;
             }
 
-            if (obj.TryGetComponent(out health))
+            if (turretobjs[i].TryGetComponent(out health))
             {
                 if (turretToHeal == null)
                 {
-                    turretToHeal = obj.GetComponent<Health>();
+                    turretToHeal = turretobjs[i].GetComponent<Health>();
                 }
-                else if ((obj.GetComponent<Health>().healthCount/obj.GetComponent<Health>().healthMax) < (turretToHeal.healthCount/turretToHeal.healthMax))
+                else if ((turretobjs[i].GetComponent<Health>().healthCount/ turretobjs[i].GetComponent<Health>().healthMax) < (turretToHeal.healthCount/turretToHeal.healthMax))
                 {
-                    turretToHeal = obj.GetComponent<Health>();
+                    turretToHeal = turretobjs[i].GetComponent<Health>();
                 }
             }
         }

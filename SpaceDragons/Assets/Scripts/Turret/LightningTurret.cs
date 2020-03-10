@@ -112,7 +112,6 @@ public class LightningTurret : Turret
                         shockedBois.Add(en);
                         enemy.gameObject.AddComponent<Lightning>().target = en.transform.position;
                         enemiesShocked++;
-                        Debug.Log("Shocked enemies: " + enemiesShocked);
                         ShockNext(en);
                     }
                     en.GetComponent<Health>().healthCount -= damage;

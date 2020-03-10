@@ -13,9 +13,7 @@ public class OrcEnemy : Enemy
             {
                 shootingTimer = shootingSpeed;
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
-
-                Projectile p = projectileGO.GetComponent<Projectile>();
-                    p.Fire(gunNozzle.transform, attackDamage, gameObject);
+                projectileGO.GetComponent<Projectile>().Fire(gunNozzle.transform, attackDamage, gameObject);
                 
             }
         }
@@ -25,9 +23,10 @@ public class OrcEnemy : Enemy
     {
         target = Player.transform.position;
 
-        Vector3 direction = target - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        direction = target - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, target) > stoppingDistance)

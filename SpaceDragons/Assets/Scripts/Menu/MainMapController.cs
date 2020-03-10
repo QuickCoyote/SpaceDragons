@@ -11,16 +11,6 @@ public class MainMapController : UIBaseClass
     public Vector3 highlightPrevPos = Vector3.zero;
     public Image map;
 
-    float mapX = 1000f;
-    float mapY = 1000f;
-
-    private float minX;
-    private float maxX;
-    private float minY;
-    private float maxY;
-
-    Vector3 panStart;
-
     private void FixedUpdate()
     {
         shortestdistanceReadout.text = Mathf.CeilToInt(TrackingManager.Instance.ReturnDistanceToTracker()).ToString() + "au";

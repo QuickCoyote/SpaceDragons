@@ -59,9 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlameFire()
     {
-        Quaternion rotAngle = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle));
-        Vector3 projectileDirection = rotAngle * ship.head.transform.up;
-
+        Vector3 projectileDirection = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-flameAttackangle, flameAttackangle)) * ship.head.transform.up;
         GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_PLAYER_FIRE, ship.head.transform.position + (bulletOffsetY * ship.head.transform.up), Quaternion.identity);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.parentobj = ship.head;
@@ -93,8 +91,8 @@ public class PlayerController : MonoBehaviour
 
     private void FireLightning()
     {
-        objectsWithinRange = new List<Health>();
-        objectsShocked = new List<Health>();
+        objectsWithinRange.Clear();
+        objectsShocked.Clear();
 
         float acceptableAngle = 30f;
 
@@ -220,7 +218,6 @@ public class PlayerController : MonoBehaviour
     #region Healing
 
     [Header("Healing Attacks")]
-    [SerializeField] AnimationCurve LeechWidthCurve = null;
     [SerializeField] Material LeechLineMat = null;
     [SerializeField] float healingSpeed = 0f;
     [SerializeField] float healingAmount = 0f;
@@ -297,11 +294,11 @@ public class PlayerController : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(ship.head.transform.position, 10);
 
-        foreach (Collider2D collider in colliders)
+        for(int i = 0; i < colliders.Length; i++)
         {
-            if (collider.gameObject.layer != 11 && collider.gameObject.layer != 8)
+            if (colliders[i].gameObject.layer != 11 && colliders[i].gameObject.layer != 8)
             {
-                collider.TryGetComponent(out enemy);
+                colliders[i].TryGetComponent(out enemy);
 
                 if (enemy)
                 {
@@ -318,24 +315,24 @@ public class PlayerController : MonoBehaviour
         GameObject[] turretobjs = WorldManager.Instance.Ship.bodyPartObjects.ToArray();
         Health turretToHeal = null;
 
-        foreach (GameObject obj in turretobjs)
+        for(int i = 0; i < turretobjs.Length; i++)
         {
             Health health;
-            if (!obj)
+            if (!turretobjs[i])
             {
                 turretToHeal = GetComponent<Health>();
             }
-            obj.TryGetComponent(out health);
+            turretobjs[i].TryGetComponent(out health);
 
             if (health != null)
             {
                 if (turretToHeal == null)
                 {
-                    turretToHeal = obj.GetComponent<Health>();
+                    turretToHeal = turretobjs[i].GetComponent<Health>();
                 }
-                else if (obj.GetComponent<Health>().healthCount < turretToHeal.healthCount)
+                else if (turretobjs[i].GetComponent<Health>().healthCount < turretToHeal.healthCount)
                 {
-                    turretToHeal = obj.GetComponent<Health>();
+                    turretToHeal = turretobjs[i].GetComponent<Health>();
                 }
             }
         }
@@ -349,7 +346,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Guard Drones")]
     [SerializeField] GameObject guardDrone = null;
-    [SerializeField] float guardDroneFireTime = 0.75f;
 
     public List<GameObject> guardDrones = new List<GameObject>();
     public GameObject droneHolder = null;

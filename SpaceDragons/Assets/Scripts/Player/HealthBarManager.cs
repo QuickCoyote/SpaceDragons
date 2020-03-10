@@ -22,8 +22,7 @@ public class HealthBarManager : Singleton<HealthBarManager>
         {
             if (WorldManager.Instance.Ship.bodyPartObjects[i] != null)
             {
-                GameObject HealthBar = Instantiate(healthBarPrefab, HealthBarParent.transform);
-                WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = HealthBar;
+                WorldManager.Instance.Ship.bodyPartObjects[i].GetComponent<Health>().healthbarObj = Instantiate(healthBarPrefab, HealthBarParent.transform);
             }
         }
     }

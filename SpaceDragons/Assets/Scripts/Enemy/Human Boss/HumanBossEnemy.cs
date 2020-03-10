@@ -95,9 +95,10 @@ public class HumanBossEnemy : Enemy
     {
         target = Player.transform.position;
 
-        Vector3 direction = target - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        direction = target - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 

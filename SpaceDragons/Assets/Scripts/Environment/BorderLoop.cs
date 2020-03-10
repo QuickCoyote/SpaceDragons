@@ -34,7 +34,6 @@ public class BorderLoop : MonoBehaviour
             pos.y += 10.0f;
         }
 
-
         if (collision.transform.CompareTag("Player"))
         {
             WarpHole warp = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, collision.transform.position, Quaternion.identity).GetComponent<WarpHole>();
@@ -42,6 +41,7 @@ public class BorderLoop : MonoBehaviour
             TeleportTransition.SetTrigger("Warp");
         }
     }
+
     public void MovePlayer()
     {
         WarpHole warp = WorldManager.Instance.SpawnFromPool(WorldManager.ePoolTag.WARPHOLE, pos, Quaternion.identity).GetComponent<WarpHole>();

@@ -26,7 +26,7 @@ public class Ship : MonoBehaviour
     [Header("Body Info")]
     public List<Transform> bodyPartTransforms = new List<Transform>();
     public List<GameObject> bodyPartObjects = new List<GameObject>();
-    public List<GameObject> bodyPartPrefabs = null;
+    public GameObject[] bodyPartPrefabs = null;
 
     [Header("Head Info")]
     public GameObject head = null;
@@ -371,11 +371,11 @@ public class Ship : MonoBehaviour
     {
         GameObject bPart = null;
 
-        foreach (GameObject bodyPart in bodyPartPrefabs)
+        for(int i = 0; i < bodyPartPrefabs.Length; i++)
         {
-            if (bodyPart.name.Equals(partName))
+            if (bodyPartPrefabs[i].name.Equals(partName))
             {
-                bPart = bodyPart;
+                bPart = bodyPartPrefabs[i];
                 break;
             }
         }

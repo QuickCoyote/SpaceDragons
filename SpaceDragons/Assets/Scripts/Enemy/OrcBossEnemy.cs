@@ -48,10 +48,7 @@ public class OrcBossEnemy : Enemy
             {
                 shootingTimer = shootingSpeed;
                 GameObject projectileGO = worldManager.SpawnFromPool(projectileName, gunNozzle.transform.position, gunNozzle.transform.rotation);
-
-                HomingMissile p = projectileGO.GetComponent<HomingMissile>();
-                p.Fire(gunNozzle.transform, attackDamage, gameObject, WorldManager.Instance.Head);
-
+                projectileGO.GetComponent<HomingMissile>().Fire(gunNozzle.transform, attackDamage, gameObject, WorldManager.Instance.Head);
             }
         }
 
@@ -60,12 +57,9 @@ public class OrcBossEnemy : Enemy
         {
             fireWaveTimer = fireWaveReset;
 
-                GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_BOSS_FLAME, FireNozzle.position, FireNozzle.rotation);
-                FireNozzle.localRotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-30, 30));
-                Projectile p = projectileGO.GetComponent<Projectile>();
-                p.Fire(FireNozzle, flameDamage, gameObject);
-
-            
+            GameObject projectileGO = worldManager.SpawnFromPool(WorldManager.ePoolTag.PROJECTILE_BOSS_FLAME, FireNozzle.position, FireNozzle.rotation);
+            FireNozzle.localRotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-30, 30));
+            projectileGO.GetComponent<Projectile>().Fire(FireNozzle, flameDamage, gameObject);
         }
 
         FireGun.transform.Rotate(Vector3.forward, firewaveRotateSpeed * Time.deltaTime);
@@ -76,9 +70,10 @@ public class OrcBossEnemy : Enemy
     {
         target = Player.transform.position;
 
-        Vector3 direction = target - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+        direction = target - transform.position;
+        angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(-angle, Vector3.forward);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 }

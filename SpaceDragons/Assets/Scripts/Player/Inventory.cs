@@ -90,7 +90,7 @@ public class Inventory : UIBaseClass
 
     public void UpdateInventory()
     {
-        inventory = new List<ItemData>();
+        inventory.Clear();
         for (int i = 0; i < items.Keys.Count; i++)
         {
             if (items[items.Keys.ElementAt(i)] > 0)
@@ -102,7 +102,7 @@ public class Inventory : UIBaseClass
 
     public void UpdateDisplay()
     {
-        inventory = new List<ItemData>();
+        inventory.Clear();
         for (int i = 0; i < items.Keys.Count; i++)
         {
             if (items[items.Keys.ElementAt(i)] > 0)

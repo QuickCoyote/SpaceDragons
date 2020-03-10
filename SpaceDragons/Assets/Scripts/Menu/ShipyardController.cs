@@ -595,10 +595,10 @@ public class ShipyardController : UIBaseClass
                 (o => o.name == "Type").FirstOrDefault().text = "EMPTY";
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: " + "EMPTY";
+                (o => o.name == "Rarity").FirstOrDefault().text = "Rarity: EMPTY";
 
             SelectionDisplay.GetComponentsInChildren<TextMeshProUGUI>().Where
-                (o => o.name == "Description").FirstOrDefault().text = "Description:\n" + "EMPTY";
+                (o => o.name == "Description").FirstOrDefault().text = "Description:\nEMPTY";
 
             buyButton.gameObject.SetActive(true);
 
