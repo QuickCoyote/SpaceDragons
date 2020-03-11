@@ -113,9 +113,11 @@ public class LoadingScreen : Singleton<LoadingScreen>
         // Reset slow load
         slowProgress = 0.0f;
 
+        anim.enabled = true;
         Time.timeScale = 1;
         isLoading = true;
         IsLoadingOpen = true;
+
     }
     // Call this to hide it:
     public void Hide()
@@ -125,5 +127,6 @@ public class LoadingScreen : Singleton<LoadingScreen>
         if (LoadingPanel) LoadingPanel.SetActive(false);
         isLoading = false;
         IsLoadingOpen = false;
+        anim.enabled = false;
     }
 }
