@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 3d4b9a9c851c6564290393148fdff9b0
+guid: 1314aa32f2c6f5b4db8f7322863071a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5797540346010133309
-    second: BasicButtons_0
+      213: -3277783543207947098
+    second: TextBoxesLargeFilled_0
   - first:
-      213: -1855156316316728941
-    second: BasicButtons_1
+      213: 1923715136030094541
+    second: TextBoxesLargeFilled_1
   - first:
-      213: -1441823662770586100
-    second: BasicButtons_2
+      213: 7571689910340146230
+    second: TextBoxesLargeFilled_2
+  - first:
+      213: 1725831838632041511
+    second: TextBoxesLargeFilled_3
+  - first:
+      213: -2585965285279685432
+    second: TextBoxesLargeFilled_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -121,12 +127,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BasicButtons_0
+      name: TextBoxesLargeFilled_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 172
-        width: 124
+        x: 101
+        y: 160
+        width: 152
         height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -135,19 +141,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0705924922bb80443bb9bdcf1664049c
-      internalID: -5797540346010133309
+      spriteID: 55432b8c18ebcbf4393f2c36890ec343
+      internalID: -3277783543207947098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasicButtons_1
+      name: TextBoxesLargeFilled_1
       rect:
         serializedVersion: 2
-        x: 346
-        y: 171
-        width: 123
+        x: 265
+        y: 160
+        width: 151
         height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -156,19 +162,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57dff3733baf41043a635dddeece33ee
-      internalID: -1855156316316728941
+      spriteID: 038b1faf68286e84791052e6073f8a63
+      internalID: 1923715136030094541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BasicButtons_2
+      name: TextBoxesLargeFilled_2
       rect:
         serializedVersion: 2
-        x: 190
-        y: 32
-        width: 124
+        x: 16
+        y: 13
+        width: 153
         height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,8 +183,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daa1473b2d593f14bb131fc56ba4f031
-      internalID: -1441823662770586100
+      spriteID: c93c000fa3f22c44d96d4b261b4b8c6f
+      internalID: 7571689910340146230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TextBoxesLargeFilled_3
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 12
+        width: 151
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704818f1734a516499812bec7679e2f1
+      internalID: 1725831838632041511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TextBoxesLargeFilled_4
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 5
+        width: 150
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac08c47a70a49949a5ed323387f525a
+      internalID: -2585965285279685432
       vertices: []
       indices: 
       edges: []
