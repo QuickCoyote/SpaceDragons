@@ -226,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5447370022736960061, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 8707681804326772231, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -418,9 +418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileName: 9
-  damage: 74733.89
+  damage: 378340.3
   range: 55
-  attackSpeed: 0.22222222
+  attackSpeed: 0.043895748
   basePrice: 0
   buyPrice: 100
   sellPrice: 90
@@ -429,7 +429,7 @@ MonoBehaviour:
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 0
+  turretRarity: 1
   data: {fileID: 11400000, guid: 368034b0997b65643a07eeaeb3cc1474, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   droneSpawnPos1: {fileID: 5128541019205800547}

@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7931572574924838184, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
+  m_Sprite: {fileID: 5313162079129869480, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   projectileName: 9
   damage: 0
   range: 55
-  attackSpeed: 0.083333336
+  attackSpeed: 0.037037037
   basePrice: 0
   buyPrice: 70
   sellPrice: 50
@@ -366,7 +366,7 @@ MonoBehaviour:
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 0
+  turretRarity: 1
   data: {fileID: 11400000, guid: 65578f5eab0facf45afd75853811ef11, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   burnDamage: 50
