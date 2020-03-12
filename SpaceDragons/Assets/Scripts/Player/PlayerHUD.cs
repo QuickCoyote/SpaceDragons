@@ -35,10 +35,13 @@ public class PlayerHUD : UIBaseClass
     {
         JoystickControls.SetActive(PlayerPrefs.GetInt("JoystickControls") == 0);
         TouchControls.SetActive(PlayerPrefs.GetInt("JoystickControls") != 0);
-        StartCoroutine("SetDetails");
+        if (UICanvas.activeSelf)
+        {
+            SetDetails();
+        }
     }
 
-    public IEnumerator SetDetails()
+    public void SetDetails()
     {
         ShipIcon.sprite = WorldManager.Instance.Head.GetComponentInChildren<SpriteRenderer>().sprite;
 
@@ -74,8 +77,6 @@ public class PlayerHUD : UIBaseClass
                 HUD_Mothership_Text.text = "Race: Fairy, Abilities: Guard Drones, Description: Made of Purple Ore";
                 break;
         }
-
-        yield return new WaitUntil(() => UICanvas.activeSelf);
     }
 
     public void ToggleJoystickControls(bool toggled)
