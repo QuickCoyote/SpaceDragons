@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 216d2dee75b8cdb4ba590c5fb631a578
+guid: 1a07632443907974b85eb27f6b86aedf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3947006892003513550
-    second: OutpostLeftBox_0
+      213: 6063458383523659970
+    second: BasicBorder2_0
   - first:
-      213: 6587387508812954068
-    second: OutpostLeftBox_1
+      213: -5089425871253466400
+    second: BasicBorder2_1
   - first:
-      213: -6733057691793421640
-    second: OutpostLeftBox_2
+      213: -477677127162995592
+    second: BasicBorder2_2
   - first:
-      213: 9129018441063686450
-    second: OutpostLeftBox_3
+      213: -1253931716009731409
+    second: BasicBorder2_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OutpostLeftBox_0
+      name: BasicBorder2_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 495
-        width: 469
-        height: 445
+        x: 11
+        y: 12
+        width: 245
+        height: 463
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02c6e192246967243a1e4d4c8f12b56b
-      internalID: 3947006892003513550
+      spriteID: 3ea0cbc5ee677524f96955551ba63c8d
+      internalID: 6063458383523659970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OutpostLeftBox_1
+      name: BasicBorder2_1
       rect:
         serializedVersion: 2
-        x: 514
-        y: 495
-        width: 469
-        height: 446
+        x: 264
+        y: 15
+        width: 245
+        height: 464
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce2567f1884da0b4a9c920263d4527a8
-      internalID: 6587387508812954068
+      spriteID: 74cd1e09116ab9b47801daaf6197e023
+      internalID: -5089425871253466400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OutpostLeftBox_2
+      name: BasicBorder2_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 37
-        width: 468
-        height: 445
+        x: 516
+        y: 14
+        width: 245
+        height: 463
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab13a3496b1cbb44d96d3e149aef8b9e
-      internalID: -6733057691793421640
+      spriteID: 6f80e98204208fd4aafefc19d822a119
+      internalID: -477677127162995592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OutpostLeftBox_3
+      name: BasicBorder2_3
       rect:
         serializedVersion: 2
-        x: 520
-        y: 33
-        width: 468
-        height: 445
+        x: 768
+        y: 13
+        width: 245
+        height: 463
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 895274fde942c0c40acd8b7d138e73c3
-      internalID: 9129018441063686450
+      spriteID: 60349885958b08644988e319704f1347
+      internalID: -1253931716009731409
       vertices: []
       indices: 
       edges: []

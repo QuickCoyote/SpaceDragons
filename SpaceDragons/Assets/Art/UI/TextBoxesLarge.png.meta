@@ -129,10 +129,10 @@ TextureImporter:
       name: TextBoxesLarge_0
       rect:
         serializedVersion: 2
-        x: 101
-        y: 160
-        width: 152
-        height: 138
+        x: 203
+        y: 311
+        width: 302
+        height: 285
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,7 +140,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59d8994dae3bf6e4082b07558228d4d1
+      spriteID: 12e2dd18e9a88e34392ae31b218941f1
       internalID: -5431723671724710613
       vertices: []
       indices: 
@@ -150,10 +150,10 @@ TextureImporter:
       name: TextBoxesLarge_1
       rect:
         serializedVersion: 2
-        x: 265
-        y: 160
-        width: 151
-        height: 138
+        x: 530
+        y: 320
+        width: 301
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56adae156785e73429d1b8d8d1a132de
+      spriteID: eca09da1a0722f34387923ee87580e31
       internalID: -1471193198608035764
       vertices: []
       indices: 
@@ -171,10 +171,10 @@ TextureImporter:
       name: TextBoxesLarge_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 13
-        width: 153
-        height: 138
+        x: 698
+        y: 11
+        width: 307
+        height: 409
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,7 +182,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecd0f105e20eb8d41a5903cda6e77fc2
+      spriteID: 27abb4c4f54ca8f44967669b1ac8f54b
       internalID: -1131671159385352117
       vertices: []
       indices: 
@@ -192,10 +192,10 @@ TextureImporter:
       name: TextBoxesLarge_3
       rect:
         serializedVersion: 2
-        x: 183
-        y: 12
-        width: 151
-        height: 139
+        x: 33
+        y: 7
+        width: 305
+        height: 295
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,7 +203,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6af2e53ec9fecf34787dafee03f9a033
+      spriteID: de82f2e289f9c20439d973fb2db37f53
       internalID: -3194564353545919475
       vertices: []
       indices: 
@@ -213,10 +213,10 @@ TextureImporter:
       name: TextBoxesLarge_4
       rect:
         serializedVersion: 2
-        x: 349
-        y: 5
-        width: 150
-        height: 146
+        x: 366
+        y: 25
+        width: 301
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,7 +224,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3320467b5c16391468c874f94ed4c580
+      spriteID: ac5cdb79382ff3b4ab7bce37a102a867
       internalID: 7396368929573921686
       vertices: []
       indices: 

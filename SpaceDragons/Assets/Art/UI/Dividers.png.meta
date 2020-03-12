@@ -129,10 +129,10 @@ TextureImporter:
       name: Dividers_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 303
-        width: 422
-        height: 30
+        x: 94
+        y: 606
+        width: 844
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,7 +140,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b2ebdd2b614e5241af65f596df25e03
+      spriteID: e2f5a223e1c3a4c4ebd694531210dd7c
       internalID: -4624210169400399571
       vertices: []
       indices: 
@@ -150,10 +150,10 @@ TextureImporter:
       name: Dividers_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 236
-        width: 425
-        height: 30
+        x: 88
+        y: 473
+        width: 850
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11e1ffed310041a489600e5eb7ea33f5
+      spriteID: 985ecd49133d2fb4581189f5ce193389
       internalID: -1026785701718661602
       vertices: []
       indices: 
@@ -171,10 +171,10 @@ TextureImporter:
       name: Dividers_2
       rect:
         serializedVersion: 2
-        x: 45
-        y: 162
-        width: 425
-        height: 30
+        x: 90
+        y: 324
+        width: 850
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,7 +182,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7c07f97f5f0ce8409141672990ed07e
+      spriteID: 3b3454d832c6ebe40af22b88d547fe1f
       internalID: 1846891428040147179
       vertices: []
       indices: 
@@ -192,10 +192,10 @@ TextureImporter:
       name: Dividers_3
       rect:
         serializedVersion: 2
-        x: 43
-        y: 96
-        width: 426
-        height: 28
+        x: 87
+        y: 192
+        width: 851
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,7 +203,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cda96e3cb8be24544814647da4dab984
+      spriteID: 015befd3309ca4645a0cae0a5d651540
       internalID: 3029366877119240092
       vertices: []
       indices: 
@@ -213,10 +213,10 @@ TextureImporter:
       name: Dividers_4
       rect:
         serializedVersion: 2
-        x: 45
-        y: 28
-        width: 426
-        height: 30
+        x: 90
+        y: 57
+        width: 851
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,7 +224,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf2919dc241b2234cb96cf51662fc67c
+      spriteID: ece2ad713e8dd9c4caa1c160f5a6bb38
       internalID: 4412378115094953161
       vertices: []
       indices: 
