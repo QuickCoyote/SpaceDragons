@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: Tap or Drag anywhere to move your DRAGON.
   UIWaypoint: {x: -465, y: 250, z: 0}
-  ArrowWaypoint: {x: 0, y: -400, z: 0}
+  ArrowWaypoint: {x: 40, y: -220, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}
