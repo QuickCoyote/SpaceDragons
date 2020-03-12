@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: e8951f637e3845f40be0e018dde009f4
+guid: 09ca9dff837d45e4caa1b3f2d3680bc7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5431723671724710613
-    second: TextBoxesLarge_0
+      213: -8999894871746985736
+    second: BasicBorder2Filled_0
   - first:
-      213: -1471193198608035764
-    second: TextBoxesLarge_1
+      213: -1878534723744042812
+    second: BasicBorder2Filled_1
   - first:
-      213: -1131671159385352117
-    second: TextBoxesLarge_2
+      213: -3301756595993263639
+    second: BasicBorder2Filled_2
   - first:
-      213: -3194564353545919475
-    second: TextBoxesLarge_3
-  - first:
-      213: 7396368929573921686
-    second: TextBoxesLarge_4
+      213: -8529318712524525750
+    second: BasicBorder2Filled_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -100,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -112,7 +109,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -127,106 +124,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TextBoxesLarge_0
+      name: BasicBorder2Filled_0
       rect:
         serializedVersion: 2
-        x: 203
-        y: 319
-        width: 302
-        height: 277
+        x: 11
+        y: 12
+        width: 245
+        height: 463
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12e2dd18e9a88e34392ae31b218941f1
-      internalID: -5431723671724710613
+      spriteID: f63b3f6c161fe51498617bef54650661
+      internalID: -8999894871746985736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TextBoxesLarge_1
+      name: BasicBorder2Filled_1
       rect:
         serializedVersion: 2
-        x: 530
-        y: 320
-        width: 301
-        height: 276
+        x: 264
+        y: 15
+        width: 245
+        height: 464
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eca09da1a0722f34387923ee87580e31
-      internalID: -1471193198608035764
+      spriteID: d9e485d0b130db0449c97f7aff4e0d7b
+      internalID: -1878534723744042812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TextBoxesLarge_2
+      name: BasicBorder2Filled_2
       rect:
         serializedVersion: 2
-        x: 698
-        y: 27
-        width: 300
-        height: 275
+        x: 516
+        y: 14
+        width: 245
+        height: 463
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27abb4c4f54ca8f44967669b1ac8f54b
-      internalID: -1131671159385352117
+      spriteID: 25ff970b68d4ff84f93aaff5f228e573
+      internalID: -3301756595993263639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TextBoxesLarge_3
+      name: BasicBorder2Filled_3
       rect:
         serializedVersion: 2
-        x: 33
-        y: 25
-        width: 305
-        height: 277
+        x: 768
+        y: 13
+        width: 245
+        height: 463
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de82f2e289f9c20439d973fb2db37f53
-      internalID: -3194564353545919475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TextBoxesLarge_4
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 25
-        width: 301
-        height: 276
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac5cdb79382ff3b4ab7bce37a102a867
-      internalID: 7396368929573921686
+      spriteID: 88cbb89d431df7c4c8a2ebe6ae10ea94
+      internalID: -8529318712524525750
       vertices: []
       indices: 
       edges: []

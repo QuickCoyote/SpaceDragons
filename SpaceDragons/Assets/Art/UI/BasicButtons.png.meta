@@ -124,10 +124,10 @@ TextureImporter:
       name: BasicButtons_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 172
-        width: 124
-        height: 138
+        x: 59
+        y: 345
+        width: 246
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +135,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0705924922bb80443bb9bdcf1664049c
+      spriteID: 3e1479139e7223040b531efbcb8d58b1
       internalID: -5797540346010133309
       vertices: []
       indices: 
@@ -145,10 +145,10 @@ TextureImporter:
       name: BasicButtons_1
       rect:
         serializedVersion: 2
-        x: 346
-        y: 171
-        width: 123
-        height: 138
+        x: 692
+        y: 342
+        width: 246
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57dff3733baf41043a635dddeece33ee
+      spriteID: 75e84ad90b021ce42ae1c612236c23ea
       internalID: -1855156316316728941
       vertices: []
       indices: 
@@ -166,10 +166,10 @@ TextureImporter:
       name: BasicButtons_2
       rect:
         serializedVersion: 2
-        x: 190
-        y: 32
-        width: 124
-        height: 138
+        x: 381
+        y: 65
+        width: 246
+        height: 275
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daa1473b2d593f14bb131fc56ba4f031
+      spriteID: c840a3d4f04fb8540a2b221f42f75e55
       internalID: -1441823662770586100
       vertices: []
       indices: 

@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 63a806b380ed35d428d6a719a413a07b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1321675298148999390
+    second: BasicBorder3_0
+  - first:
+      213: 2794659254555713463
+    second: BasicBorder3_1
+  - first:
+      213: 189356216159592937
+    second: BasicBorder3_2
+  - first:
+      213: -4177559883732076256
+    second: BasicBorder3_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -41,7 +53,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -110,7 +122,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BasicBorder3_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 495
+        width: 469
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfcbcc37ccfa7564c8106081b75ff7fa
+      internalID: 1321675298148999390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasicBorder3_1
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 495
+        width: 469
+        height: 446
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af65de719784424586bce31578fdbe6
+      internalID: 2794659254555713463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasicBorder3_2
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 37
+        width: 468
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0e9d1fe0e1bd84bae3f4cf44a9b0e6
+      internalID: 189356216159592937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BasicBorder3_3
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 33
+        width: 468
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63587e40c8e9508438992c336be8f76d
+      internalID: -4177559883732076256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
