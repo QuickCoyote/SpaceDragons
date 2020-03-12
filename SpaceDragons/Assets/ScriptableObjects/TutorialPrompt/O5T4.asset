@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: 'ELF: These ENEMIES will dodge out of your DRAGON''s line of fire'
   UIWaypoint: {x: 0, y: -200, z: 0}
-  ArrowWaypoint: {x: 15, y: 640, z: 0}
+  ArrowWaypoint: {x: -16, y: 555, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 0}

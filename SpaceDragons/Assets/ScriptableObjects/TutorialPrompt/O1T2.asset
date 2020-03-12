@@ -15,5 +15,5 @@ MonoBehaviour:
   PromptText: You can always press QUIT, and access the TUTORIAL later from the MAIN
     MENU.
   UIWaypoint: {x: 0, y: 0, z: 0}
-  ArrowWaypoint: {x: 0, y: -475, z: 0}
+  ArrowWaypoint: {x: 30.7, y: -475, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 180}

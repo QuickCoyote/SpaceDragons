@@ -7931,6 +7931,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677608, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de7b1730005f8cb4696c98c818fe66ee,
+        type: 3}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -81.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1076
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479790785295677609, guid: 1d98b7556afda9846af3123d681c6a48,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 525
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d98b7556afda9846af3123d681c6a48, type: 3}
 --- !u!4 &8090216342473062134

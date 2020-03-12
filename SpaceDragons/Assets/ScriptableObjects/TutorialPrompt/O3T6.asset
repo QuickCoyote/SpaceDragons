@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PromptText: These are your Turrets' Healthbars.
   UIWaypoint: {x: 0, y: -200, z: 0}
-  ArrowWaypoint: {x: -535, y: 375, z: 0}
+  ArrowWaypoint: {x: -335, y: 225, z: 0}
   ArrowRotationWaypoint: {x: 0, y: 0, z: 90}
