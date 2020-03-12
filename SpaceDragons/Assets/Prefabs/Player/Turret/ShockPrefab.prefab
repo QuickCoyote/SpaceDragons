@@ -227,8 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6761716525866257232, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f,
-    type: 3}
+  m_Sprite: {fileID: -43064866181220950, guid: 2f51c2abe4ecd3e48a34cab4d3b6839f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -341,7 +340,7 @@ MonoBehaviour:
   hbRenderer: {fileID: 0}
   objectIndex: 0
   healthMax: 75
-  healthCount: 56
+  healthCount: 75
 --- !u!114 &5518216971948190161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,9 +354,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileName: 9
-  damage: 4.5
+  damage: 6.75
   range: 45
-  attackSpeed: 1
+  attackSpeed: 0.6666667
   basePrice: 0
   buyPrice: 100
   sellPrice: 80
@@ -366,7 +365,7 @@ MonoBehaviour:
   spriteRendererTurret: {fileID: 6893461471801671079}
   spriteRendererWings: {fileID: 2604695303973877405}
   spriteRendererBadge: {fileID: 4604111021239675149}
-  turretRarity: 0
+  turretRarity: 1
   data: {fileID: 11400000, guid: c29bdb004a5424945ba58536cb4d16e6, type: 2}
   travelDirection: {x: 0, y: 0, z: 0}
   chainDistance: 20
