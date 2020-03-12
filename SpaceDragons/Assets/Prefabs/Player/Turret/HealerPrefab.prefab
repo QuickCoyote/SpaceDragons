@@ -359,8 +359,8 @@ MonoBehaviour:
   range: 1
   attackSpeed: 0.0125
   basePrice: 0
-  buyPrice: 10
-  sellPrice: 10
+  buyPrice: 200
+  sellPrice: 150
   rotateBoi: {fileID: 0}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}

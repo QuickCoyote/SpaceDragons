@@ -358,7 +358,9 @@ MonoBehaviour:
   damage: 30
   range: 55
   attackSpeed: 0.625
-  price: 25
+  basePrice: 0
+  buyPrice: 50
+  sellPrice: 40
   rotateBoi: {fileID: 2013710388852829490}
   spriteRendererBase: {fileID: 754460446724932777}
   spriteRendererTurret: {fileID: 6893461471801671079}
