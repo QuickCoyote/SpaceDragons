@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: e7824f1d2dc84814989a0bd5eddf743f
+=======
+guid: 1fa2015ab6bc1bd48a75d06a6d899e4a
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -23,6 +27,10 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+<<<<<<< Updated upstream
+=======
+  vTOnly: 0
+>>>>>>> Stashed changes
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0

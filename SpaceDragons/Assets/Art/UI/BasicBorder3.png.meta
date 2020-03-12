@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 63a806b380ed35d428d6a719a413a07b
 TextureImporter:
   internalIDToNameTable:
@@ -14,6 +15,11 @@ TextureImporter:
   - first:
       213: -4177559883732076256
     second: BasicBorder3_3
+=======
+guid: 034d99f80da59204c8d72e50efe05abf
+TextureImporter:
+  internalIDToNameTable: []
+>>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -35,6 +41,10 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+<<<<<<< Updated upstream
+=======
+  vTOnly: 0
+>>>>>>> Stashed changes
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -52,7 +62,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< Updated upstream
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -83,6 +97,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< Updated upstream
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -206,6 +221,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> Stashed changes
     outline: []
     physicsShape: []
     bones: []
