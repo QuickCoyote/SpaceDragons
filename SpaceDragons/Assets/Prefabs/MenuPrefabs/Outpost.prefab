@@ -2824,7 +2824,7 @@ MonoBehaviour:
   IsShop: 1
   helpScreen: 2
   OutpostContent: {fileID: 8717131724943996467}
-  PlayerContent: {fileID: 6309769841675418469}
+  PlayerContent: {fileID: 1238236646675801690}
   ShoppingPanel: {fileID: 8717131724469146496}
   ItemLayoutPrefab: {fileID: 8128334842999994235, guid: 12a62749c24d312458935ee98f468fe2,
     type: 3}
